@@ -10,16 +10,18 @@
                     <i class="fa fa-folder"></i>
                     {{ __('panel.manage_page_categories') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-2">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            {{-- <i class="fa fa-solid fa-chevron-left chevron"></i> --}}
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            {{-- <i class="fa fa-solid fa-chevron-right chevron"></i> --}}
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         {{ __('panel.show_page_categories') }}
                     </li>
                 </ul>
