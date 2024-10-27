@@ -3,8 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\PageCategoryRequest;
 use App\Models\PageCategory;
+use DateTimeImmutable;
 use Illuminate\Http\Request;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\File;
+
+
 
 class PageCategoriesController extends Controller
 {
@@ -34,11 +41,10 @@ class PageCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-
         return view('backend.page_categories.create');
     }
 
-    public function store(PageRequest $request)
+    public function store(PageCategoryRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_page_categories')) {
             return redirect('admin/index');
@@ -54,25 +60,25 @@ class PageCategoriesController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $page = Page::create($input);
+        $page_category = PageCategory::create($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
-            $i = $page->photos->count() + 1;
+            $i = $page_category->photos->count() + 1;
 
             $images = $request->file('images');
 
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $page->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $page_category->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/pages/' . $file_name));
+                $img->save(base_path('public/assets/page_categories/' . $file_name));
 
-                $page->photos()->create([
+                $page_category->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -83,7 +89,7 @@ class PageCategoriesController extends Controller
             }
         }
 
-        if ($page) {
+        if ($page_category) {
             return redirect()->route('admin.page_categories.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -106,21 +112,21 @@ class PageCategoriesController extends Controller
         return view('backend.page_categories.show');
     }
 
-    public function edit($page)
+    public function edit($page_category)
     {
         if (!auth()->user()->ability('admin', 'update_page_categories')) {
             return redirect('admin/index');
         }
 
-        $page = Page::where('id', $page)->first();
+        $page_category = PageCategory::where('id', $page_category)->first();
 
-        return view('backend.page_categories.edit', compact('page'));
+        return view('backend.page_categories.edit', compact('page_category'));
     }
 
-    public function update(PageRequest $request, $page)
+    public function update(PageCategoryRequest $request, $page_category)
     {
 
-        $page = Page::where('id', $page)->first();
+        $page_category = PageCategory::where('id', $page_category)->first();
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
@@ -131,25 +137,25 @@ class PageCategoriesController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $page->update($input);
+        $page_category->update($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
-            $i = $page->photos->count() + 1;
+            $i = $page_category->photos->count() + 1;
 
             $images = $request->file('images');
 
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $page->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $page_category->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
                 $img->save(base_path('public/assets/pages/' . $file_name));
 
-                $page->photos()->create([
+                $page_category->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -160,7 +166,7 @@ class PageCategoriesController extends Controller
             }
         }
 
-        if ($page) {
+        if ($page_category) {
             return redirect()->route('admin.page_categories.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -173,15 +179,15 @@ class PageCategoriesController extends Controller
         ]);
     }
 
-    public function destroy($page)
+    public function destroy($page_category)
     {
         if (!auth()->user()->ability('admin', 'delete_page_categories')) {
             return redirect('admin/index');
         }
 
-        $page = Page::where('id', $page)->first()->delete();
+        $page_category = PageCategory::where('id', $page_category)->first()->delete();
 
-        if ($page) {
+        if ($page_category) {
             return redirect()->route('admin.page_categories.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -199,10 +205,10 @@ class PageCategoriesController extends Controller
         if (!auth()->user()->ability('admin', 'delete_page_categories')) {
             return redirect('admin/index');
         }
-        $page = Page::findOrFail($request->page_id);
-        $image = $page->photos()->where('id', $request->image_id)->first();
-        if (File::exists('assets/pages/' . $image->file_name)) {
-            unlink('assets/pages/' . $image->file_name);
+        $page_category = PageCategory::findOrFail($request->page_category_id);
+        $image = $page_category->photos()->where('id', $request->image_id)->first();
+        if (File::exists('assets/page_categories/' . $image->file_name)) {
+            unlink('assets/page_categories/' . $image->file_name);
         }
         $image->delete();
         return true;
