@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_page') }}
+                    {{ __('panel.edit_existing_page_category') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.pages.index') }}">
-                            {{ __('panel.show_pages') }}
+                        <a href="{{ route('admin.page_categories.index') }}">
+                            {{ __('panel.show_page_categories') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,8 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.pages.update', $page->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.page_categories.update', $page_category->id) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -54,14 +55,6 @@
                             type="button" role="tab" aria-controls="content"
                             aria-selected="true">{{ __('panel.content_tab') }}</button>
                     </li>
-
-                    {{-- <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="Photoalbum-tab" data-bs-toggle="tab" data-bs-target="#Photoalbum"
-                            type="button" role="tab" aria-controls="Photoalbum"
-                            aria-selected="false">{{ __('panel.Photoalbum_tab') }}
-                        </button>
-                    </li> --}}
-
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
@@ -85,7 +78,7 @@
                                         </label>
                                         <input type="text" name="title[{{ $key }}]"
                                             id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $page->getTranslation('title', $key)) }}"
+                                            value="{{ old('title.' . $key, $page_category->getTranslation('title', $key)) }}"
                                             class="form-control">
                                         @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -104,7 +97,7 @@
                                             {{ __('panel.in') }}
                                             ({{ __('panel.' . $key) }})
                                         </label>
-                                        <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page->getTranslation('content', $key)) !!}</textarea>
+                                        <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page_category->getTranslation('content', $key)) !!}</textarea>
 
                                         {{-- <textarea id="elm1"  name="area"></textarea> --}}
 
@@ -236,25 +229,25 @@
                 overwriteInitial: false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
                 // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
+                // because there are maybe more than one image we will go for each image and show them in the edit page_category 
                 initialPreview: [
-                    @if ($page->photos()->count() > 0)
-                        @foreach ($page->photos as $media)
-                            "{{ asset('assets/pages/' . $media->file_name) }}",
+                    @if ($page_category->photos()->count() > 0)
+                        @foreach ($page_category->photos as $media)
+                            "{{ asset('assets/page_categories/' . $media->file_name) }}",
                         @endforeach
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($page->photos()->count() > 0)
-                        @foreach ($page->photos as $media)
+                    @if ($page_category->photos()->count() > 0)
+                        @foreach ($page_category->photos as $media)
                             {
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.pages.remove_image', ['image_id' => $media->id, 'page_id' => $page->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.page_categories.remove_image', ['image_id' => $media->id, 'page_category_id' => $page_category->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach
