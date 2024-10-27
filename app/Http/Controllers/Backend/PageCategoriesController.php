@@ -155,7 +155,7 @@ class PageCategoriesController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/pages/' . $file_name));
+                $img->save(base_path('public/assets/page_categories/' . $file_name));
 
                 $page_category->photos()->create([
                     'file_name' => $file_name,
@@ -187,7 +187,24 @@ class PageCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-        $page_category = PageCategory::where('id', $page_category)->first()->delete();
+        // Find the page category
+        $page_category = PageCategory::findOrFail($page_category);
+
+        // Get all related images
+        $images = $page_category->photos;
+
+        // Loop through each image and delete the file from the storage
+        foreach ($images as $image) {
+            if (File::exists(public_path('assets/page_categories/' . $image->file_name))) {
+                File::delete(public_path('assets/page_categories/' . $image->file_name));
+            }
+            // Delete the image record from the database
+            $image->delete();
+        }
+
+        // Now delete the page category record
+        $page_category->delete();
+
 
         if ($page_category) {
             return redirect()->route('admin.page_categories.index')->with([
