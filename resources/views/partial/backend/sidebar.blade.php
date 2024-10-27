@@ -18,7 +18,11 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.' . $menu->as) }}" class="nav-link">
                             <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
-                            <span class="link-title">{{ $menu->display_name }}</span>
+                            {{-- <span class="link-title">{{ $menu->display_name }}</span> --}}
+
+                            <span class="link-title">
+                                {{ \Illuminate\Support\Str::limit($menu->display_name, 18) }}
+                            </span>
                         </a>
                     </li>
                 @else
@@ -26,7 +30,10 @@
                         <a class="nav-link" data-bs-toggle="collapse" href="#{{ $menu->name }}" role="button"
                             aria-expanded="false" aria-controls="{{ $menu->name }}">
                             <i class="{{ $menu->icon != null ? $menu->icon : 'fas fa-home' }}"></i>
-                            <span class="link-title">{{ $menu->display_name }}</span>
+                            {{-- <span class="link-title">{{ $menu->display_name }}</span> --}}
+                            <span class="link-title">
+                                {{ \Illuminate\Support\Str::limit($menu->display_name, 18) }}
+                            </span>
                             <i class="link-arrow" data-feather="chevron-down"></i>
                         </a>
                         @if ($menu->appearedChildren !== null && count($menu->appearedChildren) > 0)
