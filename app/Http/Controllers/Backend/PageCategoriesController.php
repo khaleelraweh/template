@@ -53,13 +53,13 @@ class PageCategoriesController extends Controller
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
+
         $input['metadata_title'] = $request->metadata_title;
         $input['metadata_description'] = $request->metadata_description;
         $input['metadata_keywords'] = $request->metadata_keywords;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
-
 
         $page_category = PageCategory::create($input);
 
@@ -132,11 +132,12 @@ class PageCategoriesController extends Controller
         $input['title'] = $request->title;
         $input['content'] = $request->content;
 
+        $input['metadata_title'] = $request->metadata_title;
+        $input['metadata_description'] = $request->metadata_description;
+        $input['metadata_keywords'] = $request->metadata_keywords;
+
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
 
         $page_category->update($input);
 
