@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DocumentArchivesController;
 use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
+use App\Http\Controllers\Backend\PageCategoriesController;
 use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SiteSettingsController;
@@ -104,6 +105,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('topics_menus', TopicsMenuController::class);
         Route::resource('tracks_menus', TracksMenuController::class);
         Route::resource('support_menus', SupportMenuController::class);
+
+        // ==============   Page Categories Tab   ==============  //
+        Route::post('page-categories/remove-image', [PageCategoriesController::class, 'remove_image'])->name('page_categories.remove_image');
+        Route::resource('page-categories', PageCategoriesController::class);
+
 
         // ==============   Pages Tab   ==============  //
         Route::post('pages/remove-image', [PagesController::class, 'remove_image'])->name('pages.remove_image');
