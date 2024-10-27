@@ -13,6 +13,8 @@ return [
     'total_menus'               =>  'Total Menus',
     'total_supervisors'         =>  'Total Supervisors',
     'total_admin_pages'         =>  'Total Admin Pages',
+    'ibb'                       =>  'Ibb',
+    'univercity'                =>  'Univercity',
 
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage Web Menus',
