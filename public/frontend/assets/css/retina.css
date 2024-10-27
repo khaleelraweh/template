@@ -1,0 +1,38 @@
+/* Retina Images */
+@media (max-width: 767px) {
+    img.retina-logo,
+    img.retina-img {
+        display: block !important;
+    }
+
+    /*.blog-list-main-sec .blog-list-main-content .blog-list-block .image img, .blog-list-main-sec .blog-list-main-content .blog-list-block .image iframe {
+        display: none;
+    }*/
+}
+
+
+@media (min-width: 768px) {
+
+    img.retina-logo,
+    img.retina-img {
+        display: none !important;
+    }
+
+    /*.blog-list-main-sec .blog-list-main-content .blog-list-block .image img, .blog-list-main-sec .blog-list-main-content .blog-list-block .image iframe {
+        display: block;
+    }*/
+}
+
+
+@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
+only screen and (-moz-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3 / 2),
+only screen and (min-device-pixel-ratio: 1.5) {
+
+    .default-logo {
+        display: none !important;
+    }
+    .retina-logo {
+        display: block !important;
+    }
+}
