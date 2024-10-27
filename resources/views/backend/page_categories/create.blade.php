@@ -164,7 +164,7 @@
                                             </label>
                                         </div>
                                         <div class="col-sm-12 col-md-10">
-                                            <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control">{!! old('content.' . $key) !!}</textarea>
+                                            <textarea name="content[{{ $key }}]" rows="10" class="form-control">{!! old('content.' . $key) !!}</textarea>
                                             @error('content.' . $key)
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -173,6 +173,7 @@
                                 </div>
                             </div>
                         @endforeach
+
 
 
                         <div class="row pt-3">

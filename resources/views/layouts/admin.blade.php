@@ -96,6 +96,18 @@
     <script src="{{ asset('backend/vendors/core/core.js') }}"></script>
     <!-- endinject -->
 
+    <!-- Plugin js for Tinymce -->
+    <script src="{{ asset('backend/vendors/tinymce/tinymce.min.js') }}"></script>
+    <!-- End plugin js for Tinymce -->
+
+    <!-- Custom js for the Tinymce -->
+    <script src="{{ asset('backend/js/tinymce.js') }}"></script>
+    <!-- End custom js for Tinymce -->
+
+    <!--tinymce js for editor -->
+    {{-- <script src="{{ asset('backend/js/pages/form-editor.js') }}"></script> --}}
+
+
     <!-- Plugin js for this page -->
     <script src="{{ asset('backend/vendors/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('backend/vendors/apexcharts/apexcharts.min.js') }}"></script>
@@ -124,6 +136,7 @@
     <script src="{{ asset('backend/vendors/datepicker/picker.time.js') }}"></script>
     {{-- Calling fontawesome icon picker   --}}
     <script src="{{ asset('backend/vendors/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
+
 
 
     {{-- End added new  --}}
@@ -187,6 +200,14 @@
             colseOnSelect: false,
             minimumResultsForSearch: Infinity,
             matcher: matchStart
+        });
+    </script>
+
+    {{-- for Tinymce Editor setting  --}}
+    <script>
+        tinymce.init({
+            selector: 'textarea', // change this value according to your HTML
+            language: '{{ app()->getLocale() }}'
         });
     </script>
 
