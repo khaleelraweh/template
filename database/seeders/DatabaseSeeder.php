@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TracksMenuSeeder::class);
         $this->call(SupportMenuSeeder::class);
 
+        $this->call(PageCategorySeeder::class);
         $this->call(PageSeeder::class);
 
         $this->call(PostSeeder::class);

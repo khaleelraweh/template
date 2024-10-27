@@ -2,14 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\Page;
-use App\Models\WebMenu;
-use Carbon\Carbon;
+use App\Models\PageCategory;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Carbon;
 
-class PageSeeder extends Seeder
+class PageCategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,9 +19,14 @@ class PageSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        $page = Page::create([
+        $page = PageCategory::create([
             'title' => ['ar' => 'العنوان', 'en' => 'title'],
-            'content' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+            'content' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+
+            'metadata_title' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_keywords' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+
             'status' => true,
             'published_on' => Carbon::now(),
             'created_by' => $faker->realTextBetween(10, 20),
