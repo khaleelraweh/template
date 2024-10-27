@@ -78,7 +78,7 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.pages.index') }}">
+                        <a href="{{ route('admin.page_categories.index') }}">
                             {{ __('panel.show_pages') }}
                         </a>
                     </li>
@@ -99,7 +99,7 @@
             @endif
 
 
-            <form action="{{ route('admin.pages.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.page_categories.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
