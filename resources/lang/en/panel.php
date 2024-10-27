@@ -986,6 +986,7 @@ return [
     // ------------ Tabs name -----------------/
     'content_tab'           => 'Content Data ',
     'published_tab'         => 'Publish Data',
+    'SEO_tab'               =>  'SEO',
     'Photoalbum_tab'        =>  'Photo Album',
     'url_tab'               =>  'URLS',
     'price_tab'             => 'Price',
