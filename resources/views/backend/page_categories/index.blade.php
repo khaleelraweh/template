@@ -46,11 +46,12 @@
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                     <tr>
-                        <th>{{ __('panel.title') }}</th>
-                        <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                        <th>{{ __('panel.status') }}</th>
-                        <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
-                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
+                        <th class="wd-5p border-bottom-0">#</th>
+                        <th class="wd-40p border-bottom-0">{{ __('panel.title') }}</th>
+                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.author') }}</th>
+                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.status') }}</th>
+                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.created_at') }}</th>
+                        <th class="text-center border-bottom-0" style="width:30px;">{{ __('panel.actions') }}</th>
 
                     </tr>
                 </thead>
@@ -59,6 +60,9 @@
                 <tbody>
                     @forelse ($page_categories as $page_category)
                         <tr>
+                            <td class="text-center"><input type="checkbox" name="checkfilter"
+                                    value="{{ $page_category->id }}">
+                            </td>
                             <td>
                                 {{ $page_category->title }}
                                 <br>
@@ -70,9 +74,9 @@
                                 @endif
                             </td>
                             <td class="d-none d-sm-table-cell">{{ $page_category->created_by }}</td>
-                            <td>
+                            <td class="d-none d-sm-table-cell">
                                 <span
-                                    class="btn btn-round rounded-pill btn-success btn-xs">{{ $page_category->status() }}</span>
+                                    class="btn btn-round rounded-pill btn-success btn-xs ">{{ $page_category->status() }}</span>
                             </td>
                             <td class="d-none d-sm-table-cell">{{ $page_category->created_at }}</td>
                             <td>
