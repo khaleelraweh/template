@@ -80,7 +80,7 @@
                                 <span
                                     class="btn btn-round rounded-pill btn-success btn-xs ">{{ $page_category->status() }}</span>
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page_category->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $page_category->created_at->format('Y/m/d') }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.page_categories.edit', $page_category->id) }}"
