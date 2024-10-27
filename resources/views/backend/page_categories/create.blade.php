@@ -179,29 +179,34 @@
 
                         <div class="row pt-3">
                             <div class="col-12">
-                                <label for="images">
-                                    {{ __('panel.image') }} / {{ __('panel.images') }}
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-2">
+                                        <label for="images">
+                                            {{ __('panel.image') }} / {{ __('panel.images') }}
 
-                                    <span>
-                                        <br>
-                                        <small> {{ __('panel.best_size') }}</small>
-                                        <br>
-                                        <small>-{{ __('panel.Image_show_in_main_page') }}: 350 * 250</small>
-                                        <br>
-                                        <small>-{{ __('panel.Image_show_in_blog_single') }}: 1920 *
-                                            600</small>
-                                    </span>
+                                            <span>
+                                                <br>
+                                                <small> {{ __('panel.best_size') }}</small>
+                                                <small> 350 * 250</small>
 
-                                </label>
-                                <br>
-                                <div class="file-loading">
-                                    <input type="file" name="images[]" id="product_images" class="file-input-overview"
-                                        multiple="multiple">
+                                            </span>
 
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-10">
+                                        <div class="file-loading">
+                                            <input type="file" name="images[]" id="product_images"
+                                                class="file-input-overview" multiple="multiple">
+
+                                        </div>
+                                        @error('images')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
                                 </div>
-                                @error('images')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+
+
+
                             </div>
                         </div>
 
