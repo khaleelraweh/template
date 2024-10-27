@@ -66,10 +66,8 @@
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            {{-- <i class="fa fa-solid fa-chevron-left chevron"></i> --}}
                             /
                         @else
-                            {{-- <i class="fa fa-solid fa-chevron-right chevron"></i> --}}
                             \
                         @endif
                     </li>
@@ -106,12 +104,6 @@
                         </button>
                     </li>
 
-                    {{-- <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="Photoalbum-tab" data-bs-toggle="tab" data-bs-target="#Photoalbum"
-                            type="button" role="tab" aria-controls="Photoalbum"
-                            aria-selected="false">{{ __('panel.Photoalbum_tab') }}
-                        </button>
-                    </li> --}}
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
@@ -126,9 +118,9 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-12 pt-3">
                                     <div class="form-group">
                                         <label for="title[{{ $key }}]">
                                             {{ __('panel.title') }}
@@ -142,14 +134,12 @@
                                         @enderror
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
 
-
-
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-12 pt-3">
                                     <div class="form-group">
                                         <label for="content[{{ $key }}]">
                                             {{ __('panel.f_content') }}
@@ -162,8 +152,8 @@
                                         @enderror
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
 
 
                         <div class="row pt-3">
