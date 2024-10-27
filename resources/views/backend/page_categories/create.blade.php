@@ -228,8 +228,8 @@
                                 </div>
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_title[{{ $key }}]"
-                                        id="metadata_title[{{ $key }}]" value="{{ old('title.' . $key) }}"
-                                        class="form-control">
+                                        id="metadata_title[{{ $key }}]"
+                                        value="{{ old('metadata_title.' . $key) }}" class="form-control">
                                     @error('metadata_title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -254,7 +254,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_description[{{ $key }}]"
                                         id="metadata_description[{{ $key }}]"
-                                        value="{{ old('title.' . $key) }}" class="form-control">
+                                        value="{{ old('metadata_description.' . $key) }}" class="form-control">
                                     @error('metadata_description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -267,8 +267,8 @@
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
-                                    <label for="metadata_description[{{ $key }}]">
-                                        {{ __('panel.metadata_description') }}
+                                    <label for="metadata_keywords[{{ $key }}]">
+                                        {{ __('panel.metadata_keywords') }}
                                         <span class="language-type">
                                             <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
                                                 title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
@@ -277,10 +277,10 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-9 pt-3">
-                                    <input type="text" name="metadata_description[{{ $key }}]"
-                                        id="metadata_description[{{ $key }}]"
-                                        value="{{ old('title.' . $key) }}" class="form-control">
-                                    @error('metadata_description.' . $key)
+                                    <input type="text" name="metadata_keywords[{{ $key }}]"
+                                        id="metadata_keywords[{{ $key }}]"
+                                        value="{{ old('metadata_keywords.' . $key) }}" class="form-control">
+                                    @error('metadata_keywords.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
