@@ -284,6 +284,19 @@ return [
 
     // ........... commons in Pages ....... //
 
+    ########################### Manage Page Categories  ##################################
+
+    // =============  Manage Page Categories  ===============//
+    'manage_page_categories'                          => 'إدارة تصنيف الصفحات',
+
+    // --------------- Page Categories  --------------//
+    'show_page_categories'                            => 'تصنيف الصفحات',
+    'add_new_page_category'                          => 'اضافة تصنيف صفحة جديد',
+    'edit_existing_page_category'                    => 'تعديل تصنيف صفحة موجود',
+
+    // ........... commons in Pages ....... //
+
+
 
     ########################### Manage About Instatute  ##################################
 

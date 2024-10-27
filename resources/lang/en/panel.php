@@ -280,6 +280,19 @@ return [
     // ........... commons in Pages ....... //
 
 
+    ########################### Manage Page Categories  ##################################
+
+    // =============  Manage Page Categories  ===============//
+    'manage_page_categories'                          => 'Manage Page Categories',
+
+    // --------------- Page Categories  --------------//
+    'show_page_categories'                            => 'Page Categories',
+    'add_new_page_category'                          => 'Add New Page Category',
+    'edit_existing_page_category'                    => 'Edit Existing Page Category',
+
+    // ........... commons in Pages ....... //
+
+
     ########################### Manage About Instatute  ##################################
 
     // =============  Manage About Instatutes  ===============//
