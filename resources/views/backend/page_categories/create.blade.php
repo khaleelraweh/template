@@ -46,6 +46,13 @@
         .active {
             display: block;
         }
+
+        .language-type {
+            display: inline-block;
+            background-color: #f8f9fa;
+            padding: 5px 7px;
+            border-radius: 5px;
+        }
     </style>
 @endsection
 
@@ -122,7 +129,11 @@
                                         <div class="col-sm-12 col-md-2">
                                             <label for="title[{{ $key }}]">
                                                 {{ __('panel.title') }}
-                                                {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                                <span class="language-type">
+                                                    <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                        title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                    {{ __('panel.' . $key) }}
+                                                </span>
                                             </label>
                                         </div>
                                         <div class="col-sm-12 col-md-10">
@@ -145,7 +156,11 @@
                                         <div class="col-sm-12 col-md-2">
                                             <label for="content[{{ $key }}]">
                                                 {{ __('panel.f_content') }}
-                                                {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                                <span class="language-type">
+                                                    <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                        title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                    {{ __('panel.' . $key) }}
+                                                </span>
                                             </label>
                                         </div>
                                         <div class="col-sm-12 col-md-10">
