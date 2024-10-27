@@ -28,7 +28,6 @@ class PageCategorySeeder extends Seeder
             'metadata_keywords' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
 
             'status' => true,
-            'published_on' => Carbon::now(),
             'created_by' => $faker->realTextBetween(10, 20),
             'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
         ]);

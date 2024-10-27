@@ -13,7 +13,7 @@ class PageCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,72 @@ class PageCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        switch ($this->method()) {
+            case 'POST': {
+                    return [
+                        'title.*'       =>  'required|max:255',
+                        'content.*'     =>  'nullable',
+                        'metadata_title.*'     =>  'nullable',
+                        'metadata_description.*'     =>  'nullable',
+                        'metadata_keywords.*'     =>  'nullable',
+                        'parent_id'     =>  'nullable',
+                        'section'       =>  'nullable',
+                        'images'        =>  'required',
+                        'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH': {
+                    return [
+                        'title.*'           =>   'required|max:255',
+                        'content.*'         =>   'nullable',
+                        'metadata_title.*'     =>  'nullable',
+                        'metadata_description.*'     =>  'nullable',
+                        'metadata_keywords.*'     =>  'nullable',
+                        'parent_id'         =>   'nullable',
+                        'section'           =>   'nullable',
+                        // 'images'        =>  'required',
+                        'images.*'      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+
+
+                        // used always 
+                        'status'             =>  'required',
+                        'published_on'       =>  'nullable',
+                        'published_on_time'  =>  'nullable',
+                        'created_by'         =>  'nullable',
+                        'updated_by'         =>  'nullable',
+                        'deleted_by'         =>  'nullable',
+                        // end of used always 
+                    ];
+                }
+
+            default:
+                break;
+        }
+    }
+
+    public function attributes(): array
+    {
+        $attr = [
+            'content'      => '( ' . __('panel.f_content') . ' )',
+            'status'    =>  '( ' . __('panel.status') . ' )',
         ];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+        }
+
+
+        return $attr;
     }
 }
