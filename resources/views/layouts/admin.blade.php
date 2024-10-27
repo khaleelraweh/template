@@ -100,6 +100,10 @@
     <script src="{{ asset('backend/vendors/tinymce/tinymce.min.js') }}"></script>
     <!-- End plugin js for Tinymce -->
 
+    <script>
+        var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+    </script>
+
     <!-- Custom js for the Tinymce -->
     <script src="{{ asset('backend/js/tinymce.js') }}"></script>
     <!-- End custom js for Tinymce -->

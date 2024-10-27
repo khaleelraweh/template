@@ -7,7 +7,9 @@ $(function() {
   //Tinymce editor
   if ($("#tinymceExample").length) {
     tinymce.init({
-      selector: '#tinymceExample',
+      // selector: '#tinymceExample',
+      selector: 'textarea',
+      language: typeof tinymceLanguage !== 'undefined' ? tinymceLanguage : 'en', // Default to 'en' if no language set
       min_height: 350,
       default_text_color: 'red',
       plugins: [
