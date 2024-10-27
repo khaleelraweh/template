@@ -290,7 +290,10 @@ return [
     'add_new_page_category'                          => 'Add New Page Category',
     'edit_existing_page_category'                    => 'Edit Existing Page Category',
 
-    // ........... commons in Pages ....... //
+    // ........... commons in Page Categories ....... //
+    'metadata_title'                                =>  'Introduction page title ( Page Title)',
+    'metadata_description'                          =>  'Introduction page link (SEO Page URL)',
+    'metadata_description'                          =>  'Introduction page description (Page Description)',
 
 
     ########################### Manage About Instatute  ##################################

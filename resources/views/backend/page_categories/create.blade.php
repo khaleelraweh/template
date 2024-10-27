@@ -219,7 +219,90 @@
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
-                        SEO Tap
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3">
+                                            <label for="metadata_title[{{ $key }}]">
+                                                {{ __('panel.metadata_title') }}
+                                                <span class="language-type">
+                                                    <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                        title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                    {{ __('panel.' . $key) }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9">
+                                            <input type="text" name="metadata_title[{{ $key }}]"
+                                                id="metadata_title[{{ $key }}]"
+                                                value="{{ old('title.' . $key) }}" class="form-control">
+                                            @error('metadata_title.' . $key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3">
+                                            <label for="metadata_description[{{ $key }}]">
+                                                {{ __('panel.metadata_description') }}
+                                                <span class="language-type">
+                                                    <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                        title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                    {{ __('panel.' . $key) }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9">
+                                            <input type="text" name="metadata_description[{{ $key }}]"
+                                                id="metadata_description[{{ $key }}]"
+                                                value="{{ old('title.' . $key) }}" class="form-control">
+                                            @error('metadata_description.' . $key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-12 pt-3">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3">
+                                            <label for="metadata_description[{{ $key }}]">
+                                                {{ __('panel.metadata_description') }}
+                                                <span class="language-type">
+                                                    <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                        title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                    {{ __('panel.' . $key) }}
+                                                </span>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-9">
+                                            <input type="text" name="metadata_description[{{ $key }}]"
+                                                id="metadata_description[{{ $key }}]"
+                                                value="{{ old('title.' . $key) }}" class="form-control">
+                                            @error('metadata_description.' . $key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
 
 

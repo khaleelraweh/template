@@ -294,7 +294,10 @@ return [
     'add_new_page_category'                          => 'اضافة تصنيف صفحة جديد',
     'edit_existing_page_category'                    => 'تعديل تصنيف صفحة موجود',
 
-    // ........... commons in Pages ....... //
+    // ........... commons in Page Categories ....... //
+    'metadata_title'                                =>  'عنوان صفحة تعريفية ( Page Title)',
+    'metadata_description'                          =>  'رابط صفحة تعريفية (SEO Page URL)',
+    'metadata_description'                          =>  'وصف صفحة تعريفية (Page Description)',
 
 
 
