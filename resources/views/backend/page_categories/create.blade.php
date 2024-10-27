@@ -118,27 +118,22 @@
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
                                 <div class="col-sm-12 col-md-12 pt-3">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-sm-2">
-                                                <label for="title[{{ $key }}]">
-                                                    {{ __('panel.title') }}
-                                                    {{ __('panel.in') }} ({{ __('panel.' . $key) }})
-                                                </label>
-                                            </div>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="title[{{ $key }}]"
-                                                    id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
-                                                    class="form-control">
-                                                @error('title.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-2">
+                                            <label for="title[{{ $key }}]">
+                                                {{ __('panel.title') }}
+                                                {{ __('panel.in') }} ({{ __('panel.' . $key) }})
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-12 col-md-10">
+                                            <input type="text" name="title[{{ $key }}]"
+                                                id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                                class="form-control">
+                                            @error('title.' . $key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         @endforeach
@@ -147,13 +142,13 @@
                             <div class="row ">
                                 <div class="col-sm-12 col-md-12 pt-3">
                                     <div class="row">
-                                        <div class="col-sm-3 col-md-12">
+                                        <div class="col-sm-12 col-md-2">
                                             <label for="content[{{ $key }}]">
                                                 {{ __('panel.f_content') }}
                                                 {{ __('panel.in') }} ({{ __('panel.' . $key) }})
                                             </label>
                                         </div>
-                                        <div class="col-sm-9 col-md-12">
+                                        <div class="col-sm-12 col-md-10">
                                             <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control">{!! old('content.' . $key) !!}</textarea>
                                             @error('content.' . $key)
                                                 <span class="text-danger">{{ $message }}</span>
