@@ -1,5 +1,17 @@
 @extends('layouts.admin')
 
+@section('style')
+    <style>
+        .language-type {
+            display: inline-block;
+            background-color: #f8f9fa;
+            color: black;
+            padding: 5px 7px;
+            border-radius: 5px;
+        }
+    </style>
+@endsection
+
 @section('content')
     {{-- main holder page  --}}
     <div class="card shadow mb-4">
@@ -12,16 +24,16 @@
                     <i class="fa fa-edit"></i>
                     {{ __('panel.edit_existing_page_category') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-2">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         <a href="{{ route('admin.page_categories.index') }}">
                             {{ __('panel.show_page_categories') }}
                         </a>
@@ -57,9 +69,9 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}</button>
+                        <button class="nav-link" id="SEO-tab" data-bs-toggle="tab" data-bs-target="#SEO" type="button"
+                            role="tab" aria-controls="SEO" aria-selected="false">{{ __('panel.SEO_tab') }}
+                        </button>
                     </li>
 
                 </ul>
@@ -67,48 +79,53 @@
                 <div class="tab-content" id="myTabContent">
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="title[{{ $key }}]">
-                                            {{ __('panel.title') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $page_category->getTranslation('title', $key)) }}"
-                                            class="form-control">
-                                        @error('title.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="title[{{ $key }}]">
+                                        {{ __('panel.title') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
                                 </div>
-                            @endforeach
-                        </div>
-
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="content[{{ $key }}]">
-                                            {{ __('panel.f_content') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page_category->getTranslation('content', $key)) !!}</textarea>
-
-                                        {{-- <textarea id="elm1"  name="area"></textarea> --}}
-
-
-                                        @error('content.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" name="title[{{ $key }}]"
+                                        id="title[{{ $key }}]"
+                                        value="{{ old('title.' . $key, $page_category->getTranslation('title', $key)) }}"
+                                        class="form-control">
+                                    @error('title.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="content[{{ $key }}]">
+                                        {{ __('panel.f_content') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+
+
+                                </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page_category->getTranslation('content', $key)) !!}</textarea>
+
+                                    @error('content.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
 
                         <div class="row">
                             <div class="col-12 pt-4">
