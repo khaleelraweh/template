@@ -216,6 +216,33 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-3">
+                                <div class="row">
+                                    <div class="col-sm-12 col-md-2">
+                                        <label for="status" class="control-label">
+                                            <span>{{ __('panel.status') }}</span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-10">
+                                        <select name="status" class="form-control">
+                                            <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                                {{ __('panel.status_active') }}
+                                            </option>
+                                            <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                                {{ __('panel.status_inactive') }}
+                                            </option>
+                                        </select>
+                                        @error('status')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
