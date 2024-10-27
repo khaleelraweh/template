@@ -174,6 +174,8 @@
                             </div>
                         @endforeach
 
+                        <textarea name="tinymceExample" id="tinymceExample" class="tinymceExample" cols="30" rows="10"></textarea>
+
 
 
                         <div class="row pt-3">

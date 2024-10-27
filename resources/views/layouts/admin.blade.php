@@ -205,10 +205,10 @@
 
     {{-- for Tinymce Editor setting  --}}
     <script>
-        tinymce.init({
-            selector: 'textarea', // change this value according to your HTML
-            language: '{{ app()->getLocale() }}'
-        });
+        // tinymce.init({
+        //     selector: 'textarea', // change this value according to your HTML
+        //     language: '{{ app()->getLocale() }}'
+        // });
     </script>
 
 
