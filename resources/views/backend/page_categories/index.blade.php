@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_pages') }}
+                    {{ __('panel.manage_page_categories') }}
                 </h3>
                 <ul class="breadcrumb">
                     <li>
@@ -20,13 +20,13 @@
                         @endif
                     </li>
                     <li>
-                        {{ __('panel.show_pages') }}
+                        {{ __('panel.show_page_categories') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_pages')
-                    <a href="{{ route('admin.pages.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_page_categories')
+                    <a href="{{ route('admin.page_categories.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        @include('backend.pages.filter.filter')
+        @include('backend.page_categories.filter.filter')
 
         <div class="card-body">
 
@@ -55,45 +55,46 @@
 
 
                 <tbody>
-                    @forelse ($pages as $page)
+                    @forelse ($page_categories as $page_category)
                         <tr>
                             <td>
-                                {{ $page->title }}
+                                {{ $page_category->title }}
                                 <br>
-                                @if ($page->parent != null)
+                                @if ($page_category->parent != null)
                                     <small
                                         style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
                                         {{-- تابع للقائمة: --}}
-                                        <span>{{ $page->parent?->title }}</span> </small>
+                                        <span>{{ $page_category->parent?->title }}</span> </small>
                                 @endif
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page->created_by }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $page_category->created_by }}</td>
                             <td>
-                                <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
+                                <span
+                                    class="btn btn-round rounded-pill btn-success btn-xs">{{ $page_category->status() }}</span>
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $page_category->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
-                                        title="Edit the page">
+                                    <a href="{{ route('admin.page_categories.edit', $page_category->id) }}"
+                                        class="btn btn-primary" title="Edit the page_category">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="https://teqni.era-t.com/pages/{{ $page->slug }}"
+                                        data-copy-text="https://teqni.era-t.com/page_categories/{{ $page_category->slug }}"
                                         title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                     <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the page">
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page_category->id }}').submit();}else{return false;}"
+                                        class="btn btn-danger" title="Delete the page_category">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
                                 </div>
-                                <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post" class="d-none"
-                                    id="delete-product-category-{{ $page->id }}">
+                                <form action="{{ route('admin.page_categories.destroy', $page_category->id) }}"
+                                    method="post" class="d-none" id="delete-product-category-{{ $page_category->id }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>
