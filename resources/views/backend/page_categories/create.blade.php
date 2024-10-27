@@ -50,6 +50,7 @@
         .language-type {
             display: inline-block;
             background-color: #f8f9fa;
+            color: black;
             padding: 5px 7px;
             border-radius: 5px;
         }
@@ -114,13 +115,6 @@
                         </button>
                     </li>
 
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}
-                        </button>
-                    </li>
 
                 </ul>
 
@@ -333,56 +327,7 @@
                     </div>
 
 
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('published_on')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
-                                        class="form-control">
-                                    @error('published_on_time')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-2 col-sm-12 ">
-                                    <span>{{ __('panel.status') }}</span>
-                                </label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                    </div>
 
 
 
@@ -418,35 +363,6 @@
                 overwriteInitial: false
             });
 
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true,
-                selectYears: true,
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker');
-
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = $('#published_on').val();
-                if (selected_ci_date != null) {
-                    var cidate = new Date(selected_ci_date);
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() + 1);
-                    enddate.set('min', min_codate);
-                }
-            });
-
-            $('#published_on_time').pickatime({
-
-                clear: ''
-            });
         });
     </script>
 
