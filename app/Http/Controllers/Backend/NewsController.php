@@ -185,24 +185,24 @@ class NewsController extends Controller
         ]);
     }
 
-    public function destroy($post)
+    public function destroy($new)
     {
         if (!auth()->user()->ability('admin', 'delete_news')) {
             return redirect('admin/index');
         }
 
-        $post = Post::where('id', $post)->first();
-        if ($post->photos->count() > 0) {
-            foreach ($post->photos as $photo) {
+        $new = Post::where('id', $new)->first();
+        if ($new->photos->count() > 0) {
+            foreach ($new->photos as $photo) {
                 if (File::exists('assets/news/' . $photo->file_name)) {
                     unlink('assets/news/' . $photo->file_name);
                 }
                 $photo->delete();
             }
         }
-        $post->delete();
+        $new->delete();
 
-        if ($post) {
+        if ($new) {
             return redirect()->route('admin.news.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -218,8 +218,8 @@ class NewsController extends Controller
         if (!auth()->user()->ability('admin', 'delete_courses')) {
             return redirect('admin/index');
         }
-        $post = Post::findOrFail($request->course_id);
-        $image = $post->photos()->where('id', $request->image_id)->first();
+        $new = Post::findOrFail($request->course_id);
+        $image = $new->photos()->where('id', $request->image_id)->first();
         if (File::exists('assets/news/' . $image->file_name)) {
             unlink('assets/news/' . $image->file_name);
         }
