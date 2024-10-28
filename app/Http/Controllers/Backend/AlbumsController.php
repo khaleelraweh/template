@@ -123,16 +123,16 @@ class AlbumsController extends Controller
         return view('backend.albums.edit', compact('album'));
     }
 
-    public function update(PageCategoryRequest $request, $page_category)
+    public function update(AlbumRequest $request, $album)
     {
         if (!auth()->user()->ability('admin', 'update_albums')) {
             return redirect('admin/index');
         }
 
-        $page_category = PageCategory::where('id', $page_category)->first();
+        $album = Album::where('id', $album)->first();
 
         $input['title'] = $request->title;
-        $input['content'] = $request->content;
+        $input['description'] = $request->description;
 
         $input['metadata_title'] = $request->metadata_title;
         $input['metadata_description'] = $request->metadata_description;
@@ -141,25 +141,25 @@ class AlbumsController extends Controller
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
-        $page_category->update($input);
+        $album->update($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
-            $i = $page_category->photos->count() + 1;
+            $i = $album->photos->count() + 1;
 
             $images = $request->file('images');
 
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $page_category->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $album->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
                 $img->save(base_path('public/assets/albums/' . $file_name));
 
-                $page_category->photos()->create([
+                $album->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -170,7 +170,7 @@ class AlbumsController extends Controller
             }
         }
 
-        if ($page_category) {
+        if ($album) {
             return redirect()->route('admin.albums.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -183,17 +183,17 @@ class AlbumsController extends Controller
         ]);
     }
 
-    public function destroy($page_category)
+    public function destroy($album)
     {
         if (!auth()->user()->ability('admin', 'delete_albums')) {
             return redirect('admin/index');
         }
 
         // Find the page category
-        $page_category = PageCategory::findOrFail($page_category);
+        $album = Album::findOrFail($album);
 
         // Get all related images
-        $images = $page_category->photos;
+        $images = $album->photos;
 
         // Loop through each image and delete the file from the storage
         foreach ($images as $image) {
@@ -205,10 +205,10 @@ class AlbumsController extends Controller
         }
 
         // Now delete the page category record
-        $page_category->delete();
+        $album->delete();
 
 
-        if ($page_category) {
+        if ($album) {
             return redirect()->route('admin.albums.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -226,8 +226,8 @@ class AlbumsController extends Controller
         if (!auth()->user()->ability('admin', 'delete_albums')) {
             return redirect('admin/index');
         }
-        $page_category = PageCategory::findOrFail($request->page_category_id);
-        $image = $page_category->photos()->where('id', $request->image_id)->first();
+        $album = Album::findOrFail($request->album_id);
+        $image = $album->photos()->where('id', $request->image_id)->first();
         if (File::exists('assets/albums/' . $image->file_name)) {
             unlink('assets/albums/' . $image->file_name);
         }

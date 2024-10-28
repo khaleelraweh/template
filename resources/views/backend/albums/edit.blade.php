@@ -22,7 +22,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_page_category') }}
+                    {{ __('panel.edit_existing_album') }}
                 </h3>
                 <ul class="breadcrumb pt-2">
                     <li>
@@ -34,8 +34,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.page_categories.index') }}">
-                            {{ __('panel.show_page_categories') }}
+                        <a href="{{ route('admin.albums.index') }}">
+                            {{ __('panel.show_albums') }}
                         </a>
                     </li>
                 </ul>
@@ -56,8 +56,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.page_categories.update', $page_category->id) }}" method="post"
-                enctype="multipart/form-data">
+            <form action="{{ route('admin.albums.update', $album->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -94,7 +93,7 @@
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="title[{{ $key }}]"
                                         id="title[{{ $key }}]"
-                                        value="{{ old('title.' . $key, $page_category->getTranslation('title', $key)) }}"
+                                        value="{{ old('title.' . $key, $album->getTranslation('title', $key)) }}"
                                         class="form-control">
                                     @error('title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -106,8 +105,8 @@
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
-                                    <label for="content[{{ $key }}]">
-                                        {{ __('panel.f_content') }}
+                                    <label for="description[{{ $key }}]">
+                                        {{ __('panel.f_description') }}
                                         <span class="language-type">
                                             <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
                                                 title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
@@ -116,8 +115,8 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page_category->getTranslation('content', $key)) !!}</textarea>
-                                    @error('content.' . $key)
+                                    <textarea id="tinymceExample" name="description[{{ $key }}]" rows="10" class="form-control ">{!! old('description.' . $key, $album->getTranslation('description', $key)) !!}</textarea>
+                                    @error('description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -154,12 +153,10 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
-                                    <option value="1"
-                                        {{ old('status', $page_category->status) == '1' ? 'selected' : null }}>
+                                    <option value="1" {{ old('status', $album->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0"
-                                        {{ old('status', $page_category->status) == '0' ? 'selected' : null }}>
+                                    <option value="0" {{ old('status', $album->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -187,7 +184,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_title[{{ $key }}]"
                                         id="metadata_title[{{ $key }}]"
-                                        value="{{ old('metadata_title.' . $key, $page_category->getTranslation('metadata_title', $key)) }}"
+                                        value="{{ old('metadata_title.' . $key, $album->getTranslation('metadata_title', $key)) }}"
                                         class="form-control">
                                     @error('metadata_title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -213,7 +210,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_description[{{ $key }}]"
                                         id="metadata_description[{{ $key }}]"
-                                        value="{{ old('metadata_description.' . $key, $page_category->getTranslation('metadata_description', $key)) }}"
+                                        value="{{ old('metadata_description.' . $key, $album->getTranslation('metadata_description', $key)) }}"
                                         class="form-control">
                                     @error('metadata_description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -239,7 +236,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_keywords[{{ $key }}]"
                                         id="metadata_keywords[{{ $key }}]"
-                                        value="{{ old('metadata_keywords.' . $key, $page_category->getTranslation('metadata_keywords', $key)) }}"
+                                        value="{{ old('metadata_keywords.' . $key, $album->getTranslation('metadata_keywords', $key)) }}"
                                         class="form-control">
                                     @error('metadata_keywords.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -283,25 +280,25 @@
                 overwriteInitial: false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
                 // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page_category 
+                // because there are maybe more than one image we will go for each image and show them in the edit album 
                 initialPreview: [
-                    @if ($page_category->photos()->count() > 0)
-                        @foreach ($page_category->photos as $media)
-                            "{{ asset('assets/page_categories/' . $media->file_name) }}",
+                    @if ($album->photos()->count() > 0)
+                        @foreach ($album->photos as $media)
+                            "{{ asset('assets/albums/' . $media->file_name) }}",
                         @endforeach
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($page_category->photos()->count() > 0)
-                        @foreach ($page_category->photos as $media)
+                    @if ($album->photos()->count() > 0)
+                        @foreach ($album->photos as $media)
                             {
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.page_categories.remove_image', ['image_id' => $media->id, 'page_category_id' => $page_category->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.albums.remove_image', ['image_id' => $media->id, 'album_id' => $album->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach
