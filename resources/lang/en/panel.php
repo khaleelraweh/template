@@ -663,6 +663,21 @@ return [
 
     ##############################################################
 
+    // =============  Manage Advertisement   ===============//
+    'manage_advs'                      => 'Manage Advertisement',
+
+    // --------------- News   --------------//
+    'show_advs'                        => 'Advertisement',
+    'add_new_adv'                      => 'Add New Advertisement',
+    'edit_existing_adv'                => 'Edit Existing Advertisement',
+
+
+    // ........... commons in Advertisement   ....... //
+
+
+
+    ##############################################################
+
     // =============  Manage Card Codes    ===============//
     'manage_card_codes'                      => 'Manage Card Codes',
 

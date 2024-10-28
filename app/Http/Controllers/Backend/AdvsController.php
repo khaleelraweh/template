@@ -16,12 +16,12 @@ class AdvsController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_news , show_news')) {
+        if (!auth()->user()->ability('admin', 'manage_advs , show_advs')) {
             return redirect('admin/index');
         }
 
-        $news = Post::query()
-            ->whereSection(2)
+        $advs = Post::query()
+            ->whereSection(3)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -31,23 +31,23 @@ class AdvsController extends Controller
             ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-        return view('backend.news.index', compact('news'));
+        return view('backend.advs.index', compact('advs'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_news')) {
+        if (!auth()->user()->ability('admin', 'create_advs')) {
             return redirect('admin/index');
         }
 
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
 
-        return view('backend.news.create', compact('tags'));
+        return view('backend.advs.create', compact('tags'));
     }
 
     public function store(PostRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_news')) {
+        if (!auth()->user()->ability('admin', 'create_advs')) {
             return redirect('admin/index');
         }
         $input['title'] = $request->title;
@@ -94,36 +94,36 @@ class AdvsController extends Controller
 
 
         if ($posts) {
-            return redirect()->route('admin.news.index')->with([
+            return redirect()->route('admin.advs.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
-        return redirect()->route('admin.news.index')->with([
+        return redirect()->route('admin.advs.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
     }
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_news')) {
+        if (!auth()->user()->ability('admin', 'display_advs')) {
             return redirect('admin/index');
         }
-        return view('backend.news.show');
+        return view('backend.advs.show');
     }
     public function edit($new)
     {
-        if (!auth()->user()->ability('admin', 'update_news')) {
+        if (!auth()->user()->ability('admin', 'update_advs')) {
             return redirect('admin/index');
         }
         $new = Post::where('id', $new)->first();
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
-        return view('backend.news.edit', compact('new', 'tags'));
+        return view('backend.advs.edit', compact('new', 'tags'));
     }
 
     public function update(PostRequest $request,  $new)
     {
-        if (!auth()->user()->ability('admin', 'update_news')) {
+        if (!auth()->user()->ability('admin', 'update_advs')) {
             return redirect('admin/index');
         }
         $new = Post::where('id', $new)->first();
@@ -174,12 +174,12 @@ class AdvsController extends Controller
 
 
         if ($new) {
-            return redirect()->route('admin.news.index')->with([
+            return redirect()->route('admin.advs.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
-        return redirect()->route('admin.news.index')->with([
+        return redirect()->route('admin.advs.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -187,7 +187,7 @@ class AdvsController extends Controller
 
     public function destroy($new)
     {
-        if (!auth()->user()->ability('admin', 'delete_news')) {
+        if (!auth()->user()->ability('admin', 'delete_advs')) {
             return redirect('admin/index');
         }
 
@@ -203,12 +203,12 @@ class AdvsController extends Controller
         $new->delete();
 
         if ($new) {
-            return redirect()->route('admin.news.index')->with([
+            return redirect()->route('admin.advs.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
-        return redirect()->route('admin.news.index')->with([
+        return redirect()->route('admin.advs.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
