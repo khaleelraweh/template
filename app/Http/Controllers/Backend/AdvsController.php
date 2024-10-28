@@ -57,31 +57,31 @@ class AdvsController extends Controller
         $input['metadata_description'] = $request->metadata_description;
         $input['metadata_keywords'] = $request->metadata_keywords;
 
-        $input['section']            =   2; // for news
+        $input['section']            =   3; // for advertisement
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
 
 
-        $posts = Post::create($input);
+        $adv = Post::create($input);
 
-        $posts->tags()->attach($request->tags);
-        $posts->users()->attach(Auth::user()->id);
+        $adv->tags()->attach($request->tags);
+        $adv->users()->attach(Auth::user()->id);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
-            $i = $posts->photos->count() + 1;
+            $i = $adv->photos->count() + 1;
             $images = $request->file('images');
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $posts->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $adv->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
                 $img->save(base_path('public/assets/news/' . $file_name));
 
-                $posts->photos()->create([
+                $adv->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -93,7 +93,7 @@ class AdvsController extends Controller
         }
 
 
-        if ($posts) {
+        if ($adv) {
             return redirect()->route('admin.advs.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -111,14 +111,14 @@ class AdvsController extends Controller
         }
         return view('backend.advs.show');
     }
-    public function edit($new)
+    public function edit($adv)
     {
         if (!auth()->user()->ability('admin', 'update_advs')) {
             return redirect('admin/index');
         }
-        $new = Post::where('id', $new)->first();
+        $adv = Post::where('id', $adv)->first();
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
-        return view('backend.advs.edit', compact('new', 'tags'));
+        return view('backend.advs.edit', compact('adv', 'tags'));
     }
 
     public function update(PostRequest $request,  $new)
