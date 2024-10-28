@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_blogs') }}
+                    {{ __('panel.manage_news') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -20,14 +20,14 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        {{ __('panel.show_posts') }}
+                        {{ __('panel.show_news') }}
                     </li>
                 </ul>
             </div>
 
             <div class="ml-auto">
-                @ability('admin', 'create_posts')
-                    <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_news')
+                    <a href="{{ route('admin.news.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
@@ -40,7 +40,7 @@
 
         <div class="card-body">
             {{-- filter form part  --}}
-            @include('backend.posts.filter.filter')
+            @include('backend.news.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -58,50 +58,50 @@
                     </thead>
                     <tbody>
 
-                        @forelse ($posts as $post)
+                        @forelse ($news as $new)
                             <tr>
                                 <td class="text-center"><input type="checkbox" name="checkfilter"
-                                        value="{{ $post->id }}">
+                                        value="{{ $new->id }}">
                                 </td>
                                 <td>
-                                    {{ Str::limit($post->title, 50) }}
+                                    {{ Str::limit($new->title, 50) }}
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $post->created_by }}
+                                    {{ $new->created_by }}
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
                                     <span class="btn btn-round rounded-pill btn-success btn-xs ">
-                                        {{ $post->status() }}
+                                        {{ $new->status() }}
                                     </span>
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $post->created_at->format('Y/m/d') }}
+                                    {{ $new->created_at->format('Y/m/d') }}
                                 </td>
 
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.news.edit', $new->id) }}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
                                         <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                            data-copy-text="https://teqni.era-t.com/blog-single/{{ $post->slug }}"
+                                            data-copy-text="https://teqni.era-t.com/blog-single/{{ $new->slug }}"
                                             title="Copy the link">
                                             <i class="far fa-copy"></i>
                                         </a>
                                         <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-post-{{ $post->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-post-{{ $new->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.posts.destroy', $post->id) }}" method="post"
-                                        class="d-none" id="delete-post-{{ $post->id }}">
+                                    <form action="{{ route('admin.news.destroy', $new->id) }}" method="post"
+                                        class="d-none" id="delete-post-{{ $new->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -117,7 +117,7 @@
                         <tr>
                             <td colspan="6">
                                 <div class="float-right">
-                                    {!! $posts->appends(request()->all())->links() !!}
+                                    {!! $news->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>

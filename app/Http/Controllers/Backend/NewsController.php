@@ -20,7 +20,7 @@ class NewsController extends Controller
             return redirect('admin/index');
         }
 
-        $posts = Post::query()
+        $news = Post::query()
             ->whereSection(2)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
@@ -31,7 +31,7 @@ class NewsController extends Controller
             ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-        return view('backend.news.index', compact('posts'));
+        return view('backend.news.index', compact('news'));
     }
 
     public function create()
