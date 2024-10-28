@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\DocumentArchivesController;
 use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
+use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PageCategoriesController;
 use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\PostController;
@@ -120,6 +121,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('posts/remove-image', [PostController::class, 'remove_image'])->name('posts.remove_image');
         Route::resource('posts', PostController::class);
 
+
+        // ==============   News Tab   ==============  //
+        Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
+        Route::resource('news', NewsController::class);
 
 
 

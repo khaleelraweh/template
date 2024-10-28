@@ -12,16 +12,16 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Illuminate\Support\Facades\File;
 
-class PostController extends Controller
+class NewsController extends Controller
 {
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_posts , show_posts')) {
+        if (!auth()->user()->ability('admin', 'manage_news , show_news')) {
             return redirect('admin/index');
         }
 
         $posts = Post::query()
-            ->whereSection(1)
+            ->whereSection(2)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -31,23 +31,23 @@ class PostController extends Controller
             ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-        return view('backend.posts.index', compact('posts'));
+        return view('backend.news.index', compact('posts'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_posts')) {
+        if (!auth()->user()->ability('admin', 'create_news')) {
             return redirect('admin/index');
         }
 
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
 
-        return view('backend.posts.create', compact('tags'));
+        return view('backend.news.create', compact('tags'));
     }
 
     public function store(PostRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_posts')) {
+        if (!auth()->user()->ability('admin', 'create_news')) {
             return redirect('admin/index');
         }
         $input['title'] = $request->title;
@@ -78,7 +78,7 @@ class PostController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/posts/' . $file_name));
+                $img->save(base_path('public/assets/news/' . $file_name));
 
                 $posts->photos()->create([
                     'file_name' => $file_name,
@@ -93,36 +93,36 @@ class PostController extends Controller
 
 
         if ($posts) {
-            return redirect()->route('admin.posts.index')->with([
+            return redirect()->route('admin.news.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
-        return redirect()->route('admin.posts.index')->with([
+        return redirect()->route('admin.news.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
     }
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_posts')) {
+        if (!auth()->user()->ability('admin', 'display_news')) {
             return redirect('admin/index');
         }
-        return view('backend.posts.show');
+        return view('backend.news.show');
     }
     public function edit($post)
     {
-        if (!auth()->user()->ability('admin', 'update_posts')) {
+        if (!auth()->user()->ability('admin', 'update_news')) {
             return redirect('admin/index');
         }
         $post = Post::where('id', $post)->first();
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
-        return view('backend.posts.edit', compact('post', 'tags'));
+        return view('backend.news.edit', compact('post', 'tags'));
     }
 
     public function update(PostRequest $request,  $post)
     {
-        if (!auth()->user()->ability('admin', 'update_posts')) {
+        if (!auth()->user()->ability('admin', 'update_news')) {
             return redirect('admin/index');
         }
         $post = Post::where('id', $post)->first();
@@ -157,7 +157,7 @@ class PostController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/posts/' . $file_name));
+                $img->save(base_path('public/assets/news/' . $file_name));
 
                 $post->photos()->create([
                     'file_name' => $file_name,
@@ -173,12 +173,12 @@ class PostController extends Controller
 
 
         if ($post) {
-            return redirect()->route('admin.posts.index')->with([
+            return redirect()->route('admin.news.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
-        return redirect()->route('admin.posts.index')->with([
+        return redirect()->route('admin.news.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -186,15 +186,15 @@ class PostController extends Controller
 
     public function destroy($post)
     {
-        if (!auth()->user()->ability('admin', 'delete_posts')) {
+        if (!auth()->user()->ability('admin', 'delete_news')) {
             return redirect('admin/index');
         }
 
         $post = Post::where('id', $post)->first();
         if ($post->photos->count() > 0) {
             foreach ($post->photos as $photo) {
-                if (File::exists('assets/posts/' . $photo->file_name)) {
-                    unlink('assets/posts/' . $photo->file_name);
+                if (File::exists('assets/news/' . $photo->file_name)) {
+                    unlink('assets/news/' . $photo->file_name);
                 }
                 $photo->delete();
             }
@@ -202,12 +202,12 @@ class PostController extends Controller
         $post->delete();
 
         if ($post) {
-            return redirect()->route('admin.posts.index')->with([
+            return redirect()->route('admin.news.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
-        return redirect()->route('admin.posts.index')->with([
+        return redirect()->route('admin.news.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -219,8 +219,8 @@ class PostController extends Controller
         }
         $post = Post::findOrFail($request->course_id);
         $image = $post->photos()->where('id', $request->image_id)->first();
-        if (File::exists('assets/posts/' . $image->file_name)) {
-            unlink('assets/posts/' . $image->file_name);
+        if (File::exists('assets/news/' . $image->file_name)) {
+            unlink('assets/news/' . $image->file_name);
         }
         $image->delete();
         return true;

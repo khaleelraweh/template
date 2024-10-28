@@ -35,14 +35,14 @@ class PostSeeder extends Seeder
                 'title' => ['ar' => 'مؤتمر تصميم جديد لصندوق الضوء الأنيق من قطع الورق', 'en' => 'Elegant Light Box Paper Cut Dioramas New Design Conference'],
                 'content'               => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
             ],
-            // [
-            //     'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
-            //     'content'               => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
-            // ],
-            // [
-            //     'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
-            //     'content'               => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
-            // ],
+            [
+                'title' => ['ar' => 'اكتشف القانون - التحق بأفضل كليات الحقوق في المملكة المتحدة', 'en' => 'Discover Law - Get into the best UK law schools'],
+                'content'               => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+            ],
+            [
+                'title' => ['ar' => 'الأحداث المفتوحة للطلاب الجامعيين في جامعة كينجستون 2019-20', 'en' => 'Kingston College undergraduate Open Events 2019-20'],
+                'content'               => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+            ],
 
         ];
 
@@ -57,7 +57,7 @@ class PostSeeder extends Seeder
                 'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
                 'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
 
-                'section'   =>  1,
+                'section'   =>  rand(1, 2),
 
                 'status' => true,
                 'created_by' => $faker->realTextBetween(10, 20),
