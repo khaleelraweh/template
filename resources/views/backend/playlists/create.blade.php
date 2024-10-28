@@ -66,7 +66,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_album') }}
+                    {{ __('panel.add_new_playlist') }}
                 </h3>
                 <ul class="breadcrumb pt-2">
                     <li>
@@ -78,8 +78,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.albums.index') }}">
-                            {{ __('panel.show_albums') }}
+                        <a href="{{ route('admin.playlists.index') }}">
+                            {{ __('panel.show_playlists') }}
                         </a>
                     </li>
                 </ul>
@@ -99,7 +99,7 @@
             @endif
 
 
-            <form action="{{ route('admin.albums.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.playlists.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">

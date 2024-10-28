@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AlbumRequest;
 use App\Http\Requests\Backend\PageCategoryRequest;
+use App\Http\Requests\Backend\PlaylistRequest;
 use App\Models\Album;
 use App\Models\PageCategory;
+use App\Models\Playlist;
 use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
@@ -21,7 +23,7 @@ class PlaylistsController extends Controller
             return redirect('admin/index');
         }
 
-        $playlists = Album::query()
+        $playlists = Playlist::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -43,7 +45,7 @@ class PlaylistsController extends Controller
         return view('backend.playlists.create');
     }
 
-    public function store(AlbumRequest $request)
+    public function store(PlaylistRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_playlists')) {
             return redirect('admin/index');
@@ -60,25 +62,25 @@ class PlaylistsController extends Controller
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
-        $album = Album::create($input);
+        $playlist = Playlist::create($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
-            $i = $album->photos->count() + 1;
+            $i = $playlist->photos->count() + 1;
 
             $images = $request->file('images');
 
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $album->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $playlist->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/albums/' . $file_name));
+                $img->save(base_path('public/assets/playlists/' . $file_name));
 
-                $album->photos()->create([
+                $playlist->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -89,7 +91,7 @@ class PlaylistsController extends Controller
             }
         }
 
-        if ($album) {
+        if ($playlist) {
             return redirect()->route('admin.playlists.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -157,7 +159,7 @@ class PlaylistsController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/albums/' . $file_name));
+                $img->save(base_path('public/assets/playlists/' . $file_name));
 
                 $album->photos()->create([
                     'file_name' => $file_name,
@@ -197,8 +199,8 @@ class PlaylistsController extends Controller
 
         // Loop through each image and delete the file from the storage
         foreach ($images as $image) {
-            if (File::exists(public_path('assets/albums/' . $image->file_name))) {
-                File::delete(public_path('assets/albums/' . $image->file_name));
+            if (File::exists(public_path('assets/playlists/' . $image->file_name))) {
+                File::delete(public_path('assets/playlists/' . $image->file_name));
             }
             // Delete the image record from the database
             $image->delete();
@@ -228,8 +230,8 @@ class PlaylistsController extends Controller
         }
         $album = Album::findOrFail($request->album_id);
         $image = $album->photos()->where('id', $request->image_id)->first();
-        if (File::exists('assets/albums/' . $image->file_name)) {
-            unlink('assets/albums/' . $image->file_name);
+        if (File::exists('assets/playlists/' . $image->file_name)) {
+            unlink('assets/playlists/' . $image->file_name);
         }
         $image->delete();
         return true;
