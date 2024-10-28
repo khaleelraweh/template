@@ -126,6 +126,9 @@ class PageCategoriesController extends Controller
 
     public function update(PageCategoryRequest $request, $page_category)
     {
+        if (!auth()->user()->ability('admin', 'update_page_categories')) {
+            return redirect('admin/index');
+        }
 
         $page_category = PageCategory::where('id', $page_category)->first();
 

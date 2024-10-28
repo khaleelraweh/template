@@ -120,33 +120,36 @@ class PostController extends Controller
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
         return view('backend.posts.edit', compact('post', 'tags'));
     }
+
     public function update(PostRequest $request,  $post)
     {
         if (!auth()->user()->ability('admin', 'update_posts')) {
             return redirect('admin/index');
         }
         $post = Post::where('id', $post)->first();
-        $input['title']                         =   $request->title;
-        $input['description']                   =   $request->description;
-        // always added 
+
+        $input['title'] = $request->title;
+        $input['content'] = $request->content;
+
+
+        $input['metadata_title'] = $request->metadata_title;
+        $input['metadata_description'] = $request->metadata_description;
+        $input['metadata_keywords'] = $request->metadata_keywords;
+
         $input['status']            =   $request->status;
-        $input['created_by']        =   auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
-        // end of always added 
+        $input['created_by'] = auth()->user()->full_name;
+
+
         $post->update($input);
+
         $post->tags()->sync($request->tags);
+
         $post->users()->attach(Auth::user()->id);
 
 
-
         if ($request->hasFile('images') && count($request->images) > 0) {
-
             $i = $post->photos->count() + 1;
-
             $images = $request->file('images');
-
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
@@ -187,6 +190,7 @@ class PostController extends Controller
         if (!auth()->user()->ability('admin', 'delete_posts')) {
             return redirect('admin/index');
         }
+
         $post = Post::where('id', $post)->first();
         if ($post->photos->count() > 0) {
             foreach ($post->photos as $photo) {
@@ -197,6 +201,7 @@ class PostController extends Controller
             }
         }
         $post->delete();
+
         if ($post) {
             return redirect()->route('admin.posts.index')->with([
                 'message' => __('panel.deleted_successfully'),
