@@ -26,7 +26,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_post') }}
+                    {{ __('panel.add_new_news') }}
 
                 </h3>
                 <ul class="breadcrumb pt-3">
@@ -39,8 +39,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.posts.index') }}">
-                            {{ __('panel.show_posts') }}
+                        <a href="{{ route('admin.news.index') }}">
+                            {{ __('panel.show_news') }}
                         </a>
                     </li>
                 </ul>
@@ -62,7 +62,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.posts.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 {{-- links of tabs --}}
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

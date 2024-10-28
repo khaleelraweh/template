@@ -57,6 +57,7 @@ class NewsController extends Controller
         $input['metadata_description'] = $request->metadata_description;
         $input['metadata_keywords'] = $request->metadata_keywords;
 
+        $input['section']            =   2; // for news
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
 
