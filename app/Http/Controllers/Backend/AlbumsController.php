@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AlbumRequest;
 use App\Http\Requests\Backend\PageCategoryRequest;
-use App\Models\Albums;
+use App\Models\Album;
 use App\Models\PageCategory;
 use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -21,7 +21,7 @@ class AlbumsController extends Controller
             return redirect('admin/index');
         }
 
-        $albums = Albums::query()
+        $albums = Album::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -60,7 +60,7 @@ class AlbumsController extends Controller
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
-        $album = Albums::create($input);
+        $album = Album::create($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
@@ -118,7 +118,7 @@ class AlbumsController extends Controller
             return redirect('admin/index');
         }
 
-        $album = Albums::where('id', $album)->first();
+        $album = Album::where('id', $album)->first();
 
         return view('backend.albums.edit', compact('album'));
     }

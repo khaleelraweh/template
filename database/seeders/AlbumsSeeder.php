@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Albums;
+use App\Models\Album;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -18,7 +18,7 @@ class AlbumsSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        $album = Albums::create([
+        $album = Album::create([
             'title' => ['ar' => 'العنوان', 'en' => 'title'],
             'description' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
 

@@ -12,7 +12,7 @@ use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\Sluggable\SlugOptions;
 use Spatie\Translatable\HasTranslations;
 
-class Albums extends Model
+class Album extends Model
 {
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
