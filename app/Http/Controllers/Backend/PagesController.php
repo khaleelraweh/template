@@ -53,6 +53,7 @@ class PagesController extends Controller
 
         $input['title']                 = $request->title;
         $input['content']               = $request->content;
+        $input['page_category_id']      =   $request->page_category_id;
 
         $input['metadata_title']        = $request->metadata_title;
         $input['metadata_description']  = $request->metadata_description;
@@ -132,6 +133,8 @@ class PagesController extends Controller
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
+
+        $input['page_category_id']   =   $request->page_category_id;
 
         $input['metadata_title'] = $request->metadata_title;
         $input['metadata_description'] = $request->metadata_description;
