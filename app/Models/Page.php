@@ -19,7 +19,7 @@ class Page extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['title', 'slug', 'content'];
+    public $translatable = ['title', 'slug', 'content', 'metadata_title', 'metadata_description', 'metadata_keywords'];
 
     // searchable lab 
     protected $searchable = [

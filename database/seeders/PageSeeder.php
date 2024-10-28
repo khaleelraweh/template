@@ -21,12 +21,16 @@ class PageSeeder extends Seeder
         $faker = Factory::create();
 
         $page = Page::create([
-            'title' => ['ar' => 'العنوان', 'en' => 'title'],
-            'content' => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
-            'status' => true,
-            'published_on' => Carbon::now(),
-            'created_by' => $faker->realTextBetween(10, 20),
-            'updated_by' => $faker->realTextBetween(10, 20), // Assuming you want this as well
+            'title'                 => ['ar' => 'العنوان', 'en' => 'title'],
+            'content'               => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
+
+            'metadata_title'        => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+
+            'status'                => true,
+            'created_by'            => $faker->realTextBetween(10, 20),
+            'updated_by'            => $faker->realTextBetween(10, 20), // Assuming you want this as well
         ]);
     }
 }
