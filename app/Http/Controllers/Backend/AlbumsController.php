@@ -10,9 +10,7 @@ use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\File;
 
-
-
-class PageCategoriesController extends Controller
+class AlbumsController extends Controller
 {
 
     public function index()
@@ -76,7 +74,7 @@ class PageCategoriesController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/page_categories/' . $file_name));
+                $img->save(base_path('public/assets/albums/' . $file_name));
 
                 $page_category->photos()->create([
                     'file_name' => $file_name,
@@ -157,7 +155,7 @@ class PageCategoriesController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/page_categories/' . $file_name));
+                $img->save(base_path('public/assets/albums/' . $file_name));
 
                 $page_category->photos()->create([
                     'file_name' => $file_name,
@@ -197,8 +195,8 @@ class PageCategoriesController extends Controller
 
         // Loop through each image and delete the file from the storage
         foreach ($images as $image) {
-            if (File::exists(public_path('assets/page_categories/' . $image->file_name))) {
-                File::delete(public_path('assets/page_categories/' . $image->file_name));
+            if (File::exists(public_path('assets/albums/' . $image->file_name))) {
+                File::delete(public_path('assets/albums/' . $image->file_name));
             }
             // Delete the image record from the database
             $image->delete();
@@ -228,8 +226,8 @@ class PageCategoriesController extends Controller
         }
         $page_category = PageCategory::findOrFail($request->page_category_id);
         $image = $page_category->photos()->where('id', $request->image_id)->first();
-        if (File::exists('assets/page_categories/' . $image->file_name)) {
-            unlink('assets/page_categories/' . $image->file_name);
+        if (File::exists('assets/albums/' . $image->file_name)) {
+            unlink('assets/albums/' . $image->file_name);
         }
         $image->delete();
         return true;

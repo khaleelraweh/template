@@ -301,6 +301,17 @@ class EntrustSeeder extends Seeder
         $updateNews  =  Permission::create(['name' => 'update_news', 'display_name'     =>  ['ar'   =>  'تعديل خبر',   'en'    =>  'Edit News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
         $deleteNews =  Permission::create(['name'  => 'delete_news', 'display_name'     =>  ['ar'   =>  'حذف خبر',   'en'    =>  'Delete News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
 
+        // Albums
+        $manageAlbums  = Permission::create(['name' => 'manage_albums', 'display_name' => ['ar'  =>  'إدارة البومات الصور',    'en'    =>  'Manage Albums'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.index', 'icon' => 'fas fas fa-albumspaper', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
+        $manageAlbums->parent_show = $manageAlbums->id;
+        $manageAlbums->save();
+        $showAlbums   =  Permission::create(['name'  => 'show_albums', 'display_name'       =>  ['ar'   =>  'البومات الصور',   'en'    =>  'Albums'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.index', 'icon' => 'fas fas fa-albumspaper', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $createAlbums =  Permission::create(['name'  => 'create_albums', 'display_name'     =>  ['ar'   =>  'إنشاء البوم جديد',   'en'    =>  'Create Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $displayAlbums =  Permission::create(['name' => 'display_albums', 'display_name'    =>  ['ar'   =>  'عرض البوم ',   'en'    =>  'Display Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $updateAlbums  =  Permission::create(['name' => 'update_albums', 'display_name'     =>  ['ar'   =>  'تعديل البوم',   'en'    =>  'Edit Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $deleteAlbums =  Permission::create(['name'  => 'delete_albums', 'display_name'     =>  ['ar'   =>  'حذف البوم',   'en'    =>  'Delete Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+
+
         //Tags
         $manageTags = Permission::create(['name' => 'manage_tags', 'display_name' => ['ar'  =>  'إدارة الكلمات المفتاحية',  'en'    =>  'Manage Tags'], 'route' => 'tags', 'module' => 'tags', 'as' => 'tags.index', 'icon' => 'fas fa-tags', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '130',]);
         $manageTags->parent_show = $manageTags->id;

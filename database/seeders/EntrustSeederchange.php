@@ -28,14 +28,14 @@ class EntrustSeeder extends Seeder
     {
 
 
-        // news
-        $manageNews = Permission::create(['name' => 'manage_news', 'display_name' => ['ar'  =>  'إدارة الاخبار',    'en'    =>  'Manage News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.index', 'icon' => 'fas fas fa-newspaper', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
-        $manageNews->parent_show = $manageNews->id;
-        $manageNews->save();
-        $showNews   =  Permission::create(['name'  => 'show_news', 'display_name'       =>  ['ar'   =>  'الاخبار',   'en'    =>  'News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.index', 'icon' => 'fas fas fa-newspaper', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $createNews =  Permission::create(['name'  => 'create_news', 'display_name'     =>  ['ar'   =>  'إنشاء خبر',   'en'    =>  'Create News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $displayNews =  Permission::create(['name' => 'display_news', 'display_name'    =>  ['ar'   =>  'عرض خبر',   'en'    =>  'Display News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $updateNews  =  Permission::create(['name' => 'update_news', 'display_name'     =>  ['ar'   =>  'تعديل خبر',   'en'    =>  'Edit News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $deleteNews =  Permission::create(['name'  => 'delete_news', 'display_name'     =>  ['ar'   =>  'حذف خبر',   'en'    =>  'Delete News'], 'route' => 'news', 'module' => 'news', 'as' => 'news.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        // Albums
+        $manageAlbums  = Permission::create(['name' => 'manage_albums', 'display_name' => ['ar'  =>  'إدارة البومات الصور',    'en'    =>  'Manage Albums'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.index', 'icon' => 'fas fas fa-albumspaper', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
+        $manageAlbums->parent_show = $manageAlbums->id;
+        $manageAlbums->save();
+        $showAlbums   =  Permission::create(['name'  => 'show_albums', 'display_name'       =>  ['ar'   =>  'البومات الصور',   'en'    =>  'Albums'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.index', 'icon' => 'fas fas fa-albumspaper', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $createAlbums =  Permission::create(['name'  => 'create_albums', 'display_name'     =>  ['ar'   =>  'إنشاء البوم جديد',   'en'    =>  'Create Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $displayAlbums =  Permission::create(['name' => 'display_albums', 'display_name'    =>  ['ar'   =>  'عرض البوم ',   'en'    =>  'Display Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $updateAlbums  =  Permission::create(['name' => 'update_albums', 'display_name'     =>  ['ar'   =>  'تعديل البوم',   'en'    =>  'Edit Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $deleteAlbums =  Permission::create(['name'  => 'delete_albums', 'display_name'     =>  ['ar'   =>  'حذف البوم',   'en'    =>  'Delete Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
     }
 }
