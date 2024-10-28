@@ -75,7 +75,7 @@
                                     <option value=""> {{ __('panel.category_name') }} __ </option>
                                     @forelse ($page_categories as $page_category)
                                         <option value="{{ $page_category->id }}"
-                                            {{ old('page_category_id', $course->page_category_id) == $page_category->id ? 'selected' : null }}>
+                                            {{ old('page_category_id', $page->page_category_id) == $page_category->id ? 'selected' : null }}>
                                             {{ $page_category->title }} </option>
                                     @empty
                                     @endforelse
@@ -160,10 +160,10 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                    <option value="1" {{ old('status', $page->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                    <option value="0" {{ old('status', $page->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
