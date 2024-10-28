@@ -68,14 +68,14 @@
         <div class="mb-3 pb-3 border-bottom">
             <div class="form-check form-check-inline">
                 <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarLight"
-                    value="sidebar-light" checked>
+                    value="sidebar-light">
                 <label class="form-check-label" for="sidebarLight">
                     Light
                 </label>
             </div>
             <div class="form-check form-check-inline">
                 <input type="radio" class="form-check-input" name="sidebarThemeSettings" id="sidebarDark"
-                    value="sidebar-dark">
+                    value="sidebar-dark" checked>
                 <label class="form-check-label" for="sidebarDark">
                     Dark
                 </label>

@@ -75,7 +75,7 @@
     @yield('style')
 </head>
 
-<body>
+<body class="sidebar-dark">
     <!-- Begin main-wrapper -->
     <div id="app" class="main-wrapper">
         <!-- start  sidebar -->
