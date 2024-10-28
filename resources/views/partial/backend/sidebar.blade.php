@@ -21,7 +21,7 @@
                             {{-- <span class="link-title">{{ $menu->display_name }}</span> --}}
 
                             <span class="link-title">
-                                {{ \Illuminate\Support\Str::limit($menu->display_name, 20) }}
+                                {{ \Illuminate\Support\Str::limit($menu->display_name, 25) }}
                             </span>
                         </a>
                     </li>
