@@ -154,10 +154,12 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
+                                    <option value="1"
+                                        {{ old('status', $page_category->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
+                                    <option value="0"
+                                        {{ old('status', $page_category->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
