@@ -31,7 +31,7 @@
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        {{ __('panel.add_new_post') }}
+                        {{ __('panel.add_new_news') }}
                     </a>
                 @endability
             </div>
@@ -95,13 +95,13 @@
                                         <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-post-{{ $new->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-new-{{ $new->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
                                     <form action="{{ route('admin.news.destroy', $new->id) }}" method="post"
-                                        class="d-none" id="delete-post-{{ $new->id }}">
+                                        class="d-none" id="delete-new-{{ $new->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
