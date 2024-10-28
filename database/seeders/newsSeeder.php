@@ -2,14 +2,13 @@
 
 namespace Database\Seeders;
 
-use App\Models\CourseCategory;
 use App\Models\Post;
 use App\Models\User;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class PostSeeder extends Seeder
+class newsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -57,7 +56,7 @@ class PostSeeder extends Seeder
                 'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
                 'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
 
-                'section'   =>  1, // 1 is post  
+                'section'   =>  2, // 3 is advs 
 
                 'status' => true,
                 'created_by' => $faker->realTextBetween(10, 20),
