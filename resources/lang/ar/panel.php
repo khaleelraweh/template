@@ -296,8 +296,8 @@ return [
 
     // ........... commons in Page Categories ....... //
     'metadata_title'                                =>  'عنوان صفحة تعريفية ( Page Title)',
-    'metadata_description'                          =>  'رابط صفحة تعريفية (SEO Page URL)',
     'metadata_description'                          =>  'وصف صفحة تعريفية (Page Description)',
+    'metadata_keywords'                             =>  'وصف الكلمات التعريفية (Page Keywords)',
 
 
 
