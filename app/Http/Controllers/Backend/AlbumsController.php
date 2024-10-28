@@ -112,15 +112,15 @@ class AlbumsController extends Controller
         return view('backend.albums.show');
     }
 
-    public function edit($page_category)
+    public function edit($album)
     {
         if (!auth()->user()->ability('admin', 'update_albums')) {
             return redirect('admin/index');
         }
 
-        $page_category = PageCategory::where('id', $page_category)->first();
+        $album = Albums::where('id', $album)->first();
 
-        return view('backend.albums.edit', compact('page_category'));
+        return view('backend.albums.edit', compact('album'));
     }
 
     public function update(PageCategoryRequest $request, $page_category)
