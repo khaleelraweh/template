@@ -215,7 +215,7 @@ class AdvsController extends Controller
     }
     public function remove_image(Request $request)
     {
-        if (!auth()->user()->ability('admin', 'delete_courses')) {
+        if (!auth()->user()->ability('admin', 'delete_advs')) {
             return redirect('admin/index');
         }
         $adv = Post::findOrFail($request->course_id);

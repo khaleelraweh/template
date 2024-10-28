@@ -215,7 +215,7 @@ class NewsController extends Controller
     }
     public function remove_image(Request $request)
     {
-        if (!auth()->user()->ability('admin', 'delete_courses')) {
+        if (!auth()->user()->ability('admin', 'delete_news')) {
             return redirect('admin/index');
         }
         $new = Post::findOrFail($request->course_id);
