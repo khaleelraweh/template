@@ -1245,6 +1245,7 @@ return [
 
     //user control panel 
     'f_content'                                         =>  'Content',
+    'f_description'                                     =>  'Description',
     'f_profile'                                         =>  'Profile',
     'f_user_profile'                                    =>  'User Profile',
     'f_control_panel'                                   =>  'Control Panel',

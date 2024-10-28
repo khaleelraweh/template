@@ -1200,12 +1200,13 @@ return [
 
     'f_welcome'                                         =>  'مرحبا',
     'f_insure_user_email'                               =>  'تاكيد عنوان البريد الإلكتروني ',
-    'f_we_sent_link_insurent_to_your_email'                =>  'تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.',
+    'f_we_sent_link_insurent_to_your_email'             =>  'تم إرسال رابط تحقق جديد إلى عنوان بريدك الإلكتروني.',
     'f_before_start_check_email_to_continue'            =>  'قبل المتابعة، يرجى التحقق من بريدك الإلكتروني للحصول على رابط التحقق.',
     'f_if_you_didnt_receive_an_email'                   =>  'إذا لم تتلق البريد الإلكتروني',
     'f_click_here_to_get_another'                       =>  'انقر هنا لطلب آخر',
 
     'f_content'                                         =>  'المحتوي',
+    'f_description'                                     =>  'الوصف',
     'f_profile'                                         =>  'الملف الشخصي',
     'f_user_profile'                                    =>  'الملف الشخصي للمستخدم ',
     'f_control_panel'                                   =>  'لوحة التحكم',

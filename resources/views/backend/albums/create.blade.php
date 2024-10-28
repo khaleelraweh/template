@@ -66,7 +66,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_page') }}
+                    {{ __('panel.add_new_album') }}
                 </h3>
                 <ul class="breadcrumb pt-2">
                     <li>
@@ -78,8 +78,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.page_categories.index') }}">
-                            {{ __('panel.show_page_categories') }}
+                        <a href="{{ route('admin.albums.index') }}">
+                            {{ __('panel.show_albums') }}
                         </a>
                     </li>
                 </ul>
@@ -99,7 +99,7 @@
             @endif
 
 
-            <form action="{{ route('admin.page_categories.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.albums.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -148,8 +148,8 @@
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row">
                                 <div class="col-sm-12 col-md-2 pt-3">
-                                    <label for="content[{{ $key }}]">
-                                        {{ __('panel.f_content') }}
+                                    <label for="description[{{ $key }}]">
+                                        {{ __('panel.f_description') }}
                                         <span class="language-type">
                                             <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
                                                 title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
@@ -158,8 +158,8 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <textarea name="content[{{ $key }}]" id="tinymceExample" rows="10" class="form-control">{!! old('content.' . $key) !!}</textarea>
-                                    @error('content.' . $key)
+                                    <textarea name="description[{{ $key }}]" id="tinymceExample" rows="10" class="form-control">{!! old('description.' . $key) !!}</textarea>
+                                    @error('description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
