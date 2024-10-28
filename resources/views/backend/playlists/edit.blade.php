@@ -22,7 +22,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_album') }}
+                    {{ __('panel.edit_existing_playlist') }}
                 </h3>
                 <ul class="breadcrumb pt-2">
                     <li>
@@ -34,8 +34,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.albums.index') }}">
-                            {{ __('panel.show_albums') }}
+                        <a href="{{ route('admin.playlists.index') }}">
+                            {{ __('panel.show_playlists') }}
                         </a>
                     </li>
                 </ul>
@@ -56,7 +56,8 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.albums.update', $album->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.playlists.update', $playlist->id) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -93,7 +94,7 @@
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="title[{{ $key }}]"
                                         id="title[{{ $key }}]"
-                                        value="{{ old('title.' . $key, $album->getTranslation('title', $key)) }}"
+                                        value="{{ old('title.' . $key, $playlist->getTranslation('title', $key)) }}"
                                         class="form-control">
                                     @error('title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -115,7 +116,7 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <textarea id="tinymceExample" name="description[{{ $key }}]" rows="10" class="form-control ">{!! old('description.' . $key, $album->getTranslation('description', $key)) !!}</textarea>
+                                    <textarea id="tinymceExample" name="description[{{ $key }}]" rows="10" class="form-control ">{!! old('description.' . $key, $playlist->getTranslation('description', $key)) !!}</textarea>
                                     @error('description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -153,10 +154,12 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $album->status) == '1' ? 'selected' : null }}>
+                                    <option value="1"
+                                        {{ old('status', $playlist->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0" {{ old('status', $album->status) == '0' ? 'selected' : null }}>
+                                    <option value="0"
+                                        {{ old('status', $playlist->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -184,7 +187,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_title[{{ $key }}]"
                                         id="metadata_title[{{ $key }}]"
-                                        value="{{ old('metadata_title.' . $key, $album->getTranslation('metadata_title', $key)) }}"
+                                        value="{{ old('metadata_title.' . $key, $playlist->getTranslation('metadata_title', $key)) }}"
                                         class="form-control">
                                     @error('metadata_title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -210,7 +213,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_description[{{ $key }}]"
                                         id="metadata_description[{{ $key }}]"
-                                        value="{{ old('metadata_description.' . $key, $album->getTranslation('metadata_description', $key)) }}"
+                                        value="{{ old('metadata_description.' . $key, $playlist->getTranslation('metadata_description', $key)) }}"
                                         class="form-control">
                                     @error('metadata_description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -236,7 +239,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_keywords[{{ $key }}]"
                                         id="metadata_keywords[{{ $key }}]"
-                                        value="{{ old('metadata_keywords.' . $key, $album->getTranslation('metadata_keywords', $key)) }}"
+                                        value="{{ old('metadata_keywords.' . $key, $playlist->getTranslation('metadata_keywords', $key)) }}"
                                         class="form-control">
                                     @error('metadata_keywords.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -280,25 +283,25 @@
                 overwriteInitial: false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
                 // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit album 
+                // because there are maybe more than one image we will go for each image and show them in the edit playlist 
                 initialPreview: [
-                    @if ($album->photos()->count() > 0)
-                        @foreach ($album->photos as $media)
-                            "{{ asset('assets/albums/' . $media->file_name) }}",
+                    @if ($playlist->photos()->count() > 0)
+                        @foreach ($playlist->photos as $media)
+                            "{{ asset('assets/playlists/' . $media->file_name) }}",
                         @endforeach
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($album->photos()->count() > 0)
-                        @foreach ($album->photos as $media)
+                    @if ($playlist->photos()->count() > 0)
+                        @foreach ($playlist->photos as $media)
                             {
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.albums.remove_image', ['image_id' => $media->id, 'album_id' => $album->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.playlists.remove_image', ['image_id' => $media->id, 'playlist_id' => $playlist->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach

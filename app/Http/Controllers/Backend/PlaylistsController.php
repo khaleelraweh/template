@@ -114,24 +114,24 @@ class PlaylistsController extends Controller
         return view('backend.playlists.show');
     }
 
-    public function edit($album)
+    public function edit($playlist)
     {
         if (!auth()->user()->ability('admin', 'update_playlists')) {
             return redirect('admin/index');
         }
 
-        $album = Album::where('id', $album)->first();
+        $playlist = Playlist::where('id', $playlist)->first();
 
-        return view('backend.playlists.edit', compact('album'));
+        return view('backend.playlists.edit', compact('playlist'));
     }
 
-    public function update(AlbumRequest $request, $album)
+    public function update(PlaylistRequest $request, $playlist)
     {
         if (!auth()->user()->ability('admin', 'update_playlists')) {
             return redirect('admin/index');
         }
 
-        $album = Album::where('id', $album)->first();
+        $playlist = Playlist::where('id', $playlist)->first();
 
         $input['title'] = $request->title;
         $input['description'] = $request->description;
@@ -143,25 +143,25 @@ class PlaylistsController extends Controller
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
-        $album->update($input);
+        $playlist->update($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
-            $i = $album->photos->count() + 1;
+            $i = $playlist->photos->count() + 1;
 
             $images = $request->file('images');
 
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $album->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $playlist->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
                 $img->save(base_path('public/assets/playlists/' . $file_name));
 
-                $album->photos()->create([
+                $playlist->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -172,7 +172,7 @@ class PlaylistsController extends Controller
             }
         }
 
-        if ($album) {
+        if ($playlist) {
             return redirect()->route('admin.playlists.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -185,17 +185,17 @@ class PlaylistsController extends Controller
         ]);
     }
 
-    public function destroy($album)
+    public function destroy($playlist)
     {
         if (!auth()->user()->ability('admin', 'delete_playlists')) {
             return redirect('admin/index');
         }
 
         // Find the page category
-        $album = Album::findOrFail($album);
+        $playlist = Playlist::findOrFail($playlist);
 
         // Get all related images
-        $images = $album->photos;
+        $images = $playlist->photos;
 
         // Loop through each image and delete the file from the storage
         foreach ($images as $image) {
@@ -207,10 +207,10 @@ class PlaylistsController extends Controller
         }
 
         // Now delete the page category record
-        $album->delete();
+        $playlist->delete();
 
 
-        if ($album) {
+        if ($playlist) {
             return redirect()->route('admin.playlists.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -228,8 +228,8 @@ class PlaylistsController extends Controller
         if (!auth()->user()->ability('admin', 'delete_playlists')) {
             return redirect('admin/index');
         }
-        $album = Album::findOrFail($request->album_id);
-        $image = $album->photos()->where('id', $request->image_id)->first();
+        $playlist = Playlist::findOrFail($request->playlist_id);
+        $image = $playlist->photos()->where('id', $request->image_id)->first();
         if (File::exists('assets/playlists/' . $image->file_name)) {
             unlink('assets/playlists/' . $image->file_name);
         }
