@@ -28,14 +28,14 @@ class EntrustSeeder extends Seeder
     {
 
 
-        // PlayLists
-        $managePlayLists  = Permission::create(['name' => 'manage_playlists', 'display_name' => ['ar'  =>  'إدارة قوائم التشغيل  ',    'en'    =>  'Manage Playlists'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.index', 'icon' => 'fas fa-video', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
-        $managePlayLists->parent_show = $managePlayLists->id;
-        $managePlayLists->save();
-        $showPlayLists   =  Permission::create(['name'  => 'show_playlists', 'display_name'       =>  ['ar'   =>  'قوائم التشغيل',   'en'    =>  'Playlists'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.index', 'icon' => 'fas fa-video', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $createPlayLists =  Permission::create(['name'  => 'create_playlists', 'display_name'     =>  ['ar'   =>  'إنشاء قائمة تشغيل جديد',   'en'    =>  'Create Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $displayPlayLists =  Permission::create(['name' => 'display_playlists', 'display_name'    =>  ['ar'   =>  'عرض قائمة تشغيل ',   'en'    =>  'Display Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $updatePlayLists  =  Permission::create(['name' => 'update_playlists', 'display_name'     =>  ['ar'   =>  'تعديل قائمة تشغيل',   'en'    =>  'Edit Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $deletePlayLists =  Permission::create(['name'  => 'delete_playlists', 'display_name'     =>  ['ar'   =>  'حذف قائمة تشغيل',   'en'    =>  'Delete Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        // Advs
+        $manageAdvs = Permission::create(['name' => 'manage_advs', 'display_name' => ['ar'  =>  'إدارة الإعلانات',    'en'    =>  'Manage Advertisements'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.index', 'icon' => 'fas fas fa-newspaper', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
+        $manageAdvs->parent_show = $manageAdvs->id;
+        $manageAdvs->save();
+        $showAdvs   =  Permission::create(['name'  => 'show_advs', 'display_name'       =>  ['ar'   =>  'الإعلانات',   'en'    =>  'Advertisements'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.index', 'icon' => 'fas fas fa-newspaper', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $createAdvs =  Permission::create(['name'  => 'create_advs', 'display_name'     =>  ['ar'   =>  'إنشاء اعلان',   'en'    =>  'Create Advertisement'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $displayAdvs =  Permission::create(['name' => 'display_advs', 'display_name'    =>  ['ar'   =>  'عرض اعلان',   'en'    =>  'Display Advertisement'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $updateAdvs  =  Permission::create(['name' => 'update_advs', 'display_name'     =>  ['ar'   =>  'تعديل اعلان',   'en'    =>  'Edit Advertisement'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $deleteAdvs =  Permission::create(['name'  => 'delete_advs', 'display_name'     =>  ['ar'   =>  'حذف اعلان',   'en'    =>  'Delete Advertisement'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
     }
 }

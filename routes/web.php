@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdvertisorSliderController;
+use App\Http\Controllers\Backend\AdvsController;
 use App\Http\Controllers\Backend\AlbumsController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CompanyMenuController;
@@ -127,6 +128,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // ==============   News Tab   ==============  //
         Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
         Route::resource('news', NewsController::class);
+
+        // ==============   advs Tab   ==============  //
+        Route::post('advs/remove-image', [AdvsController::class, 'remove_image'])->name('advs.remove_image');
+        Route::resource('advs', AdvsController::class);
 
 
         // ==============   albums Tab   ==============  //
