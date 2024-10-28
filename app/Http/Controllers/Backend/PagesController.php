@@ -32,8 +32,6 @@ class PagesController extends Controller
             ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 100);
 
-
-
         return view('backend.pages.index', compact('pages'));
     }
 
@@ -42,8 +40,6 @@ class PagesController extends Controller
         if (!auth()->user()->ability('admin', 'create_pages')) {
             return redirect('admin/index');
         }
-
-
         return view('backend.pages.create');
     }
 
@@ -53,15 +49,16 @@ class PagesController extends Controller
             return redirect('admin/index');
         }
 
+        $input['title']                 = $request->title;
+        $input['content']               = $request->content;
 
-        $input['title'] = $request->title;
-        $input['content'] = $request->content;
+        $input['metadata_title']        = $request->metadata_title;
+        $input['metadata_description']  = $request->metadata_description;
+        $input['metadata_keywords']     = $request->metadata_keywords;
 
-        $input['status']            =   $request->status;
-        $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
+        $input['status']                =   $request->status;
+        $input['created_by']            = auth()->user()->full_name;
+
 
         $page = Page::create($input);
 
@@ -134,11 +131,12 @@ class PagesController extends Controller
         $input['title'] = $request->title;
         $input['content'] = $request->content;
 
+        $input['metadata_title'] = $request->metadata_title;
+        $input['metadata_description'] = $request->metadata_description;
+        $input['metadata_keywords'] = $request->metadata_keywords;
+
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
 
         $page->update($input);
 
@@ -188,7 +186,25 @@ class PagesController extends Controller
             return redirect('admin/index');
         }
 
-        $page = Page::where('id', $page)->first()->delete();
+        // Find the page category
+        $page = Page::findOrFail($page);
+
+        // Get all related images
+        $images = $page->photos;
+
+        // Loop through each image and delete the file from the storage
+        foreach ($images as $image) {
+            if (File::exists(public_path('assets/pages/' . $image->file_name))) {
+                File::delete(public_path('assets/pages/' . $image->file_name));
+            }
+            // Delete the image record from the database
+            $image->delete();
+        }
+
+        // Now delete the page category record
+        $page->delete();
+
+        // $page = Page::where('id', $page)->first()->delete();
 
         if ($page) {
             return redirect()->route('admin.pages.index')->with([
