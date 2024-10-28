@@ -121,9 +121,10 @@ class PagesController extends Controller
             return redirect('admin/index');
         }
 
+        $page_categories = PageCategory::whereStatus(1)->get(['id', 'title']);
         $page = Page::where('id', $page)->first();
 
-        return view('backend.pages.edit', compact('page'));
+        return view('backend.pages.edit', compact('page', 'page_categories'));
     }
 
     public function update(PageRequest $request, $page)
