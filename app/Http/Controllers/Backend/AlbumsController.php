@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PageCategoryRequest;
+use App\Models\Albums;
 use App\Models\PageCategory;
 use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -15,11 +16,11 @@ class AlbumsController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_page_categories , show_page_categories')) {
+        if (!auth()->user()->ability('admin', 'manage_albums , show_albums')) {
             return redirect('admin/index');
         }
 
-        $page_categories = PageCategory::query()
+        $albums = Albums::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -29,21 +30,21 @@ class AlbumsController extends Controller
             ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 100);
 
-        return view('backend.page_categories.index', compact('page_categories'));
+        return view('backend.albums.index', compact('albums'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_page_categories')) {
+        if (!auth()->user()->ability('admin', 'create_albums')) {
             return redirect('admin/index');
         }
 
-        return view('backend.page_categories.create');
+        return view('backend.albums.create');
     }
 
     public function store(PageCategoryRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_page_categories')) {
+        if (!auth()->user()->ability('admin', 'create_albums')) {
             return redirect('admin/index');
         }
 
@@ -88,13 +89,13 @@ class AlbumsController extends Controller
         }
 
         if ($page_category) {
-            return redirect()->route('admin.page_categories.index')->with([
+            return redirect()->route('admin.albums.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.page_categories.index')->with([
+        return redirect()->route('admin.albums.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -104,26 +105,26 @@ class AlbumsController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_page_categories')) {
+        if (!auth()->user()->ability('admin', 'display_albums')) {
             return redirect('admin/index');
         }
-        return view('backend.page_categories.show');
+        return view('backend.albums.show');
     }
 
     public function edit($page_category)
     {
-        if (!auth()->user()->ability('admin', 'update_page_categories')) {
+        if (!auth()->user()->ability('admin', 'update_albums')) {
             return redirect('admin/index');
         }
 
         $page_category = PageCategory::where('id', $page_category)->first();
 
-        return view('backend.page_categories.edit', compact('page_category'));
+        return view('backend.albums.edit', compact('page_category'));
     }
 
     public function update(PageCategoryRequest $request, $page_category)
     {
-        if (!auth()->user()->ability('admin', 'update_page_categories')) {
+        if (!auth()->user()->ability('admin', 'update_albums')) {
             return redirect('admin/index');
         }
 
@@ -169,13 +170,13 @@ class AlbumsController extends Controller
         }
 
         if ($page_category) {
-            return redirect()->route('admin.page_categories.index')->with([
+            return redirect()->route('admin.albums.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.page_categories.index')->with([
+        return redirect()->route('admin.albums.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -183,7 +184,7 @@ class AlbumsController extends Controller
 
     public function destroy($page_category)
     {
-        if (!auth()->user()->ability('admin', 'delete_page_categories')) {
+        if (!auth()->user()->ability('admin', 'delete_albums')) {
             return redirect('admin/index');
         }
 
@@ -207,13 +208,13 @@ class AlbumsController extends Controller
 
 
         if ($page_category) {
-            return redirect()->route('admin.page_categories.index')->with([
+            return redirect()->route('admin.albums.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.page_categories.index')->with([
+        return redirect()->route('admin.albums.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -221,7 +222,7 @@ class AlbumsController extends Controller
 
     public function remove_image(Request $request)
     {
-        if (!auth()->user()->ability('admin', 'delete_page_categories')) {
+        if (!auth()->user()->ability('admin', 'delete_albums')) {
             return redirect('admin/index');
         }
         $page_category = PageCategory::findOrFail($request->page_category_id);

@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_page_categories') }}
+                    {{ __('panel.manage_albums') }}
                 </h3>
                 <ul class="breadcrumb pt-2">
                     <li>
@@ -22,13 +22,13 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        {{ __('panel.show_page_categories') }}
+                        {{ __('panel.show_albums') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_page_categories')
-                    <a href="{{ route('admin.page_categories.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_albums')
+                    <a href="{{ route('admin.albums.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50 d-none d-sm-inline-block">
                             <i class="fa fa-plus-square">
 
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        @include('backend.page_categories.filter.filter')
+        @include('backend.albums.filter.filter')
 
         <div class="card-body">
 
@@ -59,47 +59,46 @@
 
 
                 <tbody>
-                    @forelse ($page_categories as $page_category)
+                    @forelse ($albums as $album)
                         <tr>
-                            <td class="text-center"><input type="checkbox" name="checkfilter"
-                                    value="{{ $page_category->id }}">
+                            <td class="text-center"><input type="checkbox" name="checkfilter" value="{{ $album->id }}">
                             </td>
                             <td>
-                                {{ $page_category->title }}
+                                {{ $album->title }}
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $page_category->created_by }}
+                                {{ $album->created_by }}
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 <span class="btn btn-round rounded-pill btn-success btn-xs ">
-                                    {{ $page_category->status() }}
+                                    {{ $album->status() }}
                                 </span>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $page_category->created_at->format('Y/m/d') }}
+                                {{ $album->created_at->format('Y/m/d') }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.page_categories.edit', $page_category->id) }}"
-                                        class="btn btn-primary" title="Edit the page_category">
+                                    <a href="{{ route('admin.albums.edit', $album->id) }}" class="btn btn-primary"
+                                        title="Edit the album">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="https://teqni.era-t.com/page_categories/{{ $page_category->slug }}"
+                                        data-copy-text="https://teqni.era-t.com/albums/{{ $album->slug }}"
                                         title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                     <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page_category->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the page_category">
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $album->id }}').submit();}else{return false;}"
+                                        class="btn btn-danger" title="Delete the album">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
                                 </div>
-                                <form action="{{ route('admin.page_categories.destroy', $page_category->id) }}"
-                                    method="post" class="d-none" id="delete-product-category-{{ $page_category->id }}">
+                                <form action="{{ route('admin.albums.destroy', $album->id) }}" method="post"
+                                    class="d-none" id="delete-product-category-{{ $album->id }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>

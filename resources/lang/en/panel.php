@@ -298,6 +298,19 @@ return [
     'metadata_keywords'                             =>  'Introduction page Keywords (Page Keywords)',
 
 
+    ########################### Manage Albums  ##################################
+
+    // =============  Manage Albums  ===============//
+    'manage_albums'                          => 'Manage Albums',
+
+    // --------------- Albums  --------------//
+    'show_albums'                            => 'Albums',
+    'add_new_album'                          => 'Add New Album',
+    'edit_existing_album'                    => 'Edit Existing Album',
+
+    // ........... commons in Albums ....... //
+
+
     ########################### Manage About Instatute  ##################################
 
     // =============  Manage About Instatutes  ===============//
