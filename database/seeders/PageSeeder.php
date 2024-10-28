@@ -24,6 +24,8 @@ class PageSeeder extends Seeder
             'title'                 => ['ar' => 'العنوان', 'en' => 'title'],
             'content'               => ['ar' => $faker->realText(50), 'en' => $faker->realText(50), 'ca' => $faker->realText(50)],
 
+            'page_category_id'      => 1,
+
             'metadata_title'        => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
             'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
             'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
