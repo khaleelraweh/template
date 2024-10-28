@@ -29,6 +29,8 @@ class PageRequest extends FormRequest
                         'title.*'                       =>  'required|max:255',
                         'content.*'                     =>  'nullable',
 
+                        'page_category_id'              =>  'required',
+
                         'metadata_title.*'              =>  'nullable',
                         'metadata_description.*'        =>  'nullable',
                         'metadata_keywords.*'           =>  'nullable',
@@ -49,6 +51,9 @@ class PageRequest extends FormRequest
                     return [
                         'title.*'                           =>   'required|max:255',
                         'content.*'                         =>   'nullable',
+
+                        'page_category_id'                  =>  'required',
+
 
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',

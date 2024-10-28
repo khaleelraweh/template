@@ -122,6 +122,33 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3 ">
+                                <label for="category_id">
+                                    {{ __('panel.course_title') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+
+                                <select name="page_category_id" class="form-control" id="page_category_id">
+                                    <option value="">{{ __('panel.main_category') }} __</option>
+                                    @forelse ($page_categories as $page_category)
+                                        <option value="{{ $page_category->id }}"
+                                            {{ old('page_category_id') == $page_category->id ? 'selected' : null }}>
+                                            {{ $page_category->title }}
+                                        </option>
+
+                                    @empty
+                                    @endforelse
+                                </select>
+                                @error('page_category_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                        </div>
+
+
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\PageRequest;
 use App\Models\Page;
+use App\Models\PageCategory;
 use App\Models\WebMenu;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
@@ -40,7 +41,8 @@ class PagesController extends Controller
         if (!auth()->user()->ability('admin', 'create_pages')) {
             return redirect('admin/index');
         }
-        return view('backend.pages.create');
+        $page_categories = PageCategory::whereStatus(1)->get(['id', 'title']);
+        return view('backend.pages.create', compact('page_categories'));
     }
 
     public function store(PageRequest $request)

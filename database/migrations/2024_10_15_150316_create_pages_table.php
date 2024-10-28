@@ -19,6 +19,8 @@ return new class extends Migration
             $table->json('slug');
             $table->json('content');
 
+            $table->foreignId('page_category_id')->constrained()->cascadeOnDelete();
+
             // SEO
             $table->json('metadata_title');
             $table->json('metadata_description');
