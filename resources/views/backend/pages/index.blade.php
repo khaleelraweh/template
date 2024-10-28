@@ -10,16 +10,16 @@
                     <i class="fa fa-folder"></i>
                     {{ __('panel.manage_pages') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         {{ __('panel.show_pages') }}
                     </li>
                 </ul>
@@ -44,12 +44,12 @@
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                     <tr>
-                        <th>{{ __('panel.title') }}</th>
-                        <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                        <th>{{ __('panel.status') }}</th>
-                        <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
-                        <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
-
+                        <th class="wd-5p border-bottom-0">#</th>
+                        <th class="wd-40p border-bottom-0">{{ __('panel.title') }}</th>
+                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.author') }}</th>
+                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.status') }}</th>
+                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.created_at') }}</th>
+                        <th class="text-center border-bottom-0" style="width:30px;">{{ __('panel.actions') }}</th>
                     </tr>
                 </thead>
 
@@ -57,21 +57,22 @@
                 <tbody>
                     @forelse ($pages as $page)
                         <tr>
+                            <td class="text-center"><input type="checkbox" name="checkfilter" value="{{ $page->id }}">
+                            </td>
                             <td>
                                 {{ $page->title }}
-                                <br>
-                                @if ($page->parent != null)
-                                    <small
-                                        style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
-                                        {{-- تابع للقائمة: --}}
-                                        <span>{{ $page->parent?->title }}</span> </small>
-                                @endif
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page->created_by }}</td>
-                            <td>
-                                <span class="btn btn-round rounded-pill btn-success btn-xs">{{ $page->status() }}</span>
+                            <td class="d-none d-sm-table-cell">
+                                {{ $page->created_by }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="btn btn-round rounded-pill btn-success btn-xs">
+                                    {{ $page->status() }}
+                                </span>
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                                {{ $page->created_at->format('Y/m/d') }}
+                            </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
@@ -104,9 +105,6 @@
                             <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
                         </tr>
                     @endforelse
-
-
-
 
                 </tbody>
             </table>

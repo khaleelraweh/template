@@ -54,7 +54,6 @@
                         <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.status') }}</th>
                         <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.created_at') }}</th>
                         <th class="text-center border-bottom-0" style="width:30px;">{{ __('panel.actions') }}</th>
-
                     </tr>
                 </thead>
 
@@ -67,20 +66,18 @@
                             </td>
                             <td>
                                 {{ $page_category->title }}
-                                <br>
-                                @if ($page_category->parent != null)
-                                    <small
-                                        style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
-                                        {{-- تابع للقائمة: --}}
-                                        <span>{{ $page_category->parent?->title }}</span> </small>
-                                @endif
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page_category->created_by }}</td>
                             <td class="d-none d-sm-table-cell">
-                                <span
-                                    class="btn btn-round rounded-pill btn-success btn-xs ">{{ $page_category->status() }}</span>
+                                {{ $page_category->created_by }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $page_category->created_at->format('Y/m/d') }}</td>
+                            <td class="d-none d-sm-table-cell">
+                                <span class="btn btn-round rounded-pill btn-success btn-xs ">
+                                    {{ $page_category->status() }}
+                                </span>
+                            </td>
+                            <td class="d-none d-sm-table-cell">
+                                {{ $page_category->created_at->format('Y/m/d') }}
+                            </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.page_categories.edit', $page_category->id) }}"
