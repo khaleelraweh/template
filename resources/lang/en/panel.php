@@ -293,7 +293,7 @@ return [
     // ........... commons in Page Categories ....... //
     'metadata_title'                                =>  'Introduction page title ( Page Title)',
     'metadata_description'                          =>  'Introduction page link (SEO Page URL)',
-    'metadata_description'                          =>  'Introduction page description (Page Description)',
+    'metadata_keywords'                             =>  'Introduction page description (Page Description)',
 
 
     ########################### Manage About Instatute  ##################################

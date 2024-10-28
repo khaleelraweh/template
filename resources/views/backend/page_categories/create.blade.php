@@ -79,7 +79,7 @@
                     </li>
                     <li class="ms-1">
                         <a href="{{ route('admin.page_categories.index') }}">
-                            {{ __('panel.show_pages') }}
+                            {{ __('panel.show_page_categories') }}
                         </a>
                     </li>
                 </ul>
@@ -287,11 +287,6 @@
                             </div>
                         @endforeach
                     </div>
-
-
-
-
-
 
                     <div class="row">
                         <div class="col-md-12">
