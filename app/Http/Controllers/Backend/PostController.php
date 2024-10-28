@@ -217,7 +217,7 @@ class PostController extends Controller
         if (!auth()->user()->ability('admin', 'delete_posts')) {
             return redirect('admin/index');
         }
-        $post = Post::findOrFail($request->course_id);
+        $post = Post::findOrFail($request->post_id);
         $image = $post->photos()->where('id', $request->image_id)->first();
         if (File::exists('assets/posts/' . $image->file_name)) {
             unlink('assets/posts/' . $image->file_name);

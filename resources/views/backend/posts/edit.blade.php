@@ -372,7 +372,7 @@
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.posts.remove_image', ['image_id' => $media->id, 'course_id' => $post->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.posts.remove_image', ['image_id' => $media->id, 'post_id' => $post->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach
