@@ -23,6 +23,7 @@ class PostController extends Controller
         }
 
         $posts = Post::query()
+            ->whereSection(1)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
