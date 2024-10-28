@@ -27,9 +27,13 @@ class PostRequest extends FormRequest
             case 'POST': {
                     return [
                         'title.*'               =>  'required|max:255|unique_translation:posts',
-                        'description.*'         =>  'nullable',
+                        'content.*'         =>  'nullable',
+
+                        'metadata_title.*'                  =>  'nullable',
+                        'metadata_description.*'            =>  'nullable',
+                        'metadata_keywords.*'               =>  'nullable',
+
                         'status'                =>  'required',
-                        'published_on'          =>  'nullable',
                         'tags.*'                =>  'required',
                         'images'                =>  'required',
                         'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
@@ -42,9 +46,13 @@ class PostRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.*'               =>  'required|max:255|unique_translation:posts,title,' . $this->route()->post,
-                        'description.*'         =>  'nullable',
+                        'content.*'         =>  'nullable',
+
+                        'metadata_title.*'                  =>  'nullable',
+                        'metadata_description.*'            =>  'nullable',
+                        'metadata_keywords.*'               =>  'nullable',
+
                         'status'                =>  'required',
-                        'published_on'          =>  'nullable',
                         'tags.*'                =>  'required',
                         'images'                =>  'nullable',
                         'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
@@ -68,7 +76,7 @@ class PostRequest extends FormRequest
 
         foreach (config('locales.languages') as $key => $val) {
             $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
-            $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['content.' . $key       =>  "( " . __('panel.content')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 
         return $attr;

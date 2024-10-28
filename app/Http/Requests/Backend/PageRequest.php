@@ -54,7 +54,6 @@ class PageRequest extends FormRequest
 
                         'page_category_id'                  =>  'required',
 
-
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
                         'metadata_keywords.*'               =>  'nullable',

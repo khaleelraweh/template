@@ -10,16 +10,16 @@
                     <i class="fa fa-folder"></i>
                     {{ __('panel.manage_blogs') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         {{ __('panel.show_posts') }}
                     </li>
                 </ul>
@@ -48,52 +48,39 @@
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>{{ __('panel.image') }}</th>
-                            <th>{{ __('panel.title') }}</th>
-                            <th>{{ __('panel.author') }}</th>
-                            <th>{{ __('panel.status') }}</th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.description') }}</th>
-                            <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
-                            <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
+                            <th class="wd-5p border-bottom-0">#</th>
+                            <th class="wd-40p border-bottom-0">{{ __('panel.title') }}</th>
+                            <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.author') }}</th>
+                            <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.status') }}</th>
+                            <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.created_at') }}</th>
+                            <th class="text-center border-bottom-0" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody>
 
                         @forelse ($posts as $post)
                             <tr>
-                                <td>
-
-                                    @php
-                                        if (
-                                            $post->photos->first() != null &&
-                                            $post->photos->first()->file_name != null
-                                        ) {
-                                            $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
-
-                                            if (
-                                                !file_exists(
-                                                    public_path('assets/posts/' . $post->photos->first()->file_name),
-                                                )
-                                            ) {
-                                                $post_img = asset('image/not_found/item_image_not_found.webp');
-                                            }
-                                        } else {
-                                            $post_img = asset('image/not_found/item_image_not_found.webp');
-                                        }
-                                    @endphp
-                                    <img src="{{ $post_img }}" width="60" height="60"
-                                        alt="{{ $post->name }}">
-
-
+                                <td class="text-center"><input type="checkbox" name="checkfilter"
+                                        value="{{ $post->id }}">
                                 </td>
                                 <td>
                                     {{ Str::limit($post->title, 50) }}
                                 </td>
-                                <td>{{ $post->created_by }}</td>
-                                <td>{{ $post->status() }}</td>
-                                <td class="d-none d-sm-table-cell">{!! Str::limit($post->description, 50, ' ...') !!}</td>
-                                <td class="d-none d-sm-table-cell">{{ $post->published_on->format('Y-m-d h:i a') ?? '-' }}
+
+                                <td class="d-none d-sm-table-cell">
+                                    {{ $post->created_by }}
                                 </td>
+
+                                <td class="d-none d-sm-table-cell">
+                                    <span class="btn btn-round rounded-pill btn-success btn-xs ">
+                                        {{ $post->status() }}
+                                    </span>
+                                </td>
+
+                                <td class="d-none d-sm-table-cell">
+                                    {{ $post->created_at->format('Y/m/d') }}
+                                </td>
+
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">

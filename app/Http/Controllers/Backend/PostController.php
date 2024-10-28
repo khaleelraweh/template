@@ -41,8 +41,6 @@ class PostController extends Controller
             return redirect('admin/index');
         }
 
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
-
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
 
         return view('backend.posts.create', compact('tags'));
@@ -53,24 +51,26 @@ class PostController extends Controller
         if (!auth()->user()->ability('admin', 'create_posts')) {
             return redirect('admin/index');
         }
-        $input['title']              =   $request->title;
-        $input['description']        =   $request->description;
+        $input['title'] = $request->title;
+        $input['content'] = $request->content;
+
+        $input['metadata_title'] = $request->metadata_title;
+        $input['metadata_description'] = $request->metadata_description;
+        $input['metadata_keywords'] = $request->metadata_keywords;
+
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
+
+
         $posts = Post::create($input);
+
         $posts->tags()->attach($request->tags);
         $posts->users()->attach(Auth::user()->id);
-
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
             $i = $posts->photos->count() + 1;
-
             $images = $request->file('images');
-
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 

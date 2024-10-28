@@ -23,18 +23,13 @@ class Post extends Model
     protected $guarded = [];
 
     // for translatable field 
-    public $translatable = ['title', 'slug', 'description', 'motavation'];
-
+    public $translatable = ['title', 'slug', 'content', 'metadata_title', 'metadata_description', 'metadata_keywords'];
 
     // searchable lab 
     protected $searchable = [
         'columns' => [
             'posts.title' => 10,
         ]
-    ];
-
-    protected $casts = [
-        'published_on' => 'datetime',
     ];
 
     // for slug 
@@ -74,7 +69,6 @@ class Post extends Model
         return 'slug';
     }
 
-
     public function status()
     {
         return $this->status ? __('panel.status_active') : __('panel.status_inactive');
@@ -85,28 +79,15 @@ class Post extends Model
         return $query->whereStatus(true);
     }
 
-
     public function scopeBlog($query)
     {
         return $query->whereSection(1);
     }
 
-
-    public function scopeActiveCourseCategory($query)
-    {
-        return $query->whereHas('courseCategory', function ($query) {
-            $query->whereStatus(1);
-        });
-    }
-
-
-
     public function tags(): MorphToMany
     {
         return $this->morphToMany(Tag::class, 'taggable');
     }
-
-
 
     public function photos(): MorphMany
     {

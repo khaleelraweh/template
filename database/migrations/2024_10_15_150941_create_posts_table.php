@@ -15,33 +15,23 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+
             $table->json('title');
             $table->json('slug');
+            $table->json('content');
 
-            $table->json('description');
-            $table->json('motavation')->nullable();
-            $table->unsignedBigInteger('section')->default(1); // 1 is post
+            // SEO
+            $table->json('metadata_title');
+            $table->json('metadata_description');
+            $table->json('metadata_keywords');
+            // end SEO
 
-
-
-            $table->string('video_promo')->nullable();
-            $table->double('price')->default(0.0);
-            $table->double('offer_price')->nullable()->default(0.0);
-            $table->date('offer_ends')->nullable();
-
-            $table->dateTime('start_date')->nullable();
-            $table->dateTime('end_date')->nullable();
-
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
-
-            $table->string('address')->nullable();
-
+            $table->unsignedBigInteger('section')->default(1); // 
+            $table->unsignedBigInteger('views')->default(0); // counting views
 
 
             // will be use always
-            $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable();
+            $table->boolean('status')->nullable()->default(true);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
