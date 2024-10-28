@@ -133,6 +133,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('albums', AlbumsController::class);
 
 
+        // ==============   playlists Tab   ==============  //
+        Route::post('playlists/remove-image', [AlbumsController::class, 'remove_image'])->name('playlists.remove_image');
+        Route::resource('playlists', AlbumsController::class);
+
+
 
         // ==============   Document Archive Tab   ==============  //
 

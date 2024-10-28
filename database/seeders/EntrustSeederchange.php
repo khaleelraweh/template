@@ -28,14 +28,14 @@ class EntrustSeeder extends Seeder
     {
 
 
-        // Albums
-        $manageAlbums  = Permission::create(['name' => 'manage_albums', 'display_name' => ['ar'  =>  'إدارة البومات الصور',    'en'    =>  'Manage Albums'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.index', 'icon' => 'fas fas fa-albumspaper', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
-        $manageAlbums->parent_show = $manageAlbums->id;
-        $manageAlbums->save();
-        $showAlbums   =  Permission::create(['name'  => 'show_albums', 'display_name'       =>  ['ar'   =>  'البومات الصور',   'en'    =>  'Albums'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.index', 'icon' => 'fas fas fa-albumspaper', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $createAlbums =  Permission::create(['name'  => 'create_albums', 'display_name'     =>  ['ar'   =>  'إنشاء البوم جديد',   'en'    =>  'Create Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $displayAlbums =  Permission::create(['name' => 'display_albums', 'display_name'    =>  ['ar'   =>  'عرض البوم ',   'en'    =>  'Display Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $updateAlbums  =  Permission::create(['name' => 'update_albums', 'display_name'     =>  ['ar'   =>  'تعديل البوم',   'en'    =>  'Edit Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $deleteAlbums =  Permission::create(['name'  => 'delete_albums', 'display_name'     =>  ['ar'   =>  'حذف البوم',   'en'    =>  'Delete Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        // PlayLists
+        $managePlayLists  = Permission::create(['name' => 'manage_playlists', 'display_name' => ['ar'  =>  'إدارة قوائم التشغيل  ',    'en'    =>  'Manage Playlists'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.index', 'icon' => 'fas fa-video', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
+        $managePlayLists->parent_show = $managePlayLists->id;
+        $managePlayLists->save();
+        $showPlayLists   =  Permission::create(['name'  => 'show_playlists', 'display_name'       =>  ['ar'   =>  'قوائم التشغيل',   'en'    =>  'Playlists'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.index', 'icon' => 'fas fa-video', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $createPlayLists =  Permission::create(['name'  => 'create_playlists', 'display_name'     =>  ['ar'   =>  'إنشاء قائمة تشغيل جديد',   'en'    =>  'Create Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $displayPlayLists =  Permission::create(['name' => 'display_playlists', 'display_name'    =>  ['ar'   =>  'عرض قائمة تشغيل ',   'en'    =>  'Display Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $updatePlayLists  =  Permission::create(['name' => 'update_playlists', 'display_name'     =>  ['ar'   =>  'تعديل قائمة تشغيل',   'en'    =>  'Edit Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $deletePlayLists =  Permission::create(['name'  => 'delete_playlists', 'display_name'     =>  ['ar'   =>  'حذف قائمة تشغيل',   'en'    =>  'Delete Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
     }
 }

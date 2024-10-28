@@ -39,5 +39,6 @@ class DatabaseSeeder extends Seeder
         $this->call(PostSeeder::class);
 
         $this->call(AlbumsSeeder::class);
+        $this->call(PlaylistSeeder::class);
     }
 }

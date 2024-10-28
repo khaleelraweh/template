@@ -312,6 +312,17 @@ class EntrustSeeder extends Seeder
         $deleteAlbums =  Permission::create(['name'  => 'delete_albums', 'display_name'     =>  ['ar'   =>  'حذف البوم',   'en'    =>  'Delete Album'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
 
 
+        // PlayLists
+        $managePlayLists  = Permission::create(['name' => 'manage_playlists', 'display_name' => ['ar'  =>  'إدارة قوائم التشغيل  ',    'en'    =>  'Manage Playlists'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.index', 'icon' => 'fas fa-video', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
+        $managePlayLists->parent_show = $managePlayLists->id;
+        $managePlayLists->save();
+        $showPlayLists   =  Permission::create(['name'  => 'show_playlists', 'display_name'       =>  ['ar'   =>  'قوائم التشغيل',   'en'    =>  'Playlists'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.index', 'icon' => 'fas fa-video', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $createPlayLists =  Permission::create(['name'  => 'create_playlists', 'display_name'     =>  ['ar'   =>  'إنشاء قائمة تشغيل جديد',   'en'    =>  'Create Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $displayPlayLists =  Permission::create(['name' => 'display_playlists', 'display_name'    =>  ['ar'   =>  'عرض قائمة تشغيل ',   'en'    =>  'Display Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $updatePlayLists  =  Permission::create(['name' => 'update_playlists', 'display_name'     =>  ['ar'   =>  'تعديل قائمة تشغيل',   'en'    =>  'Edit Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $deletePlayLists =  Permission::create(['name'  => 'delete_playlists', 'display_name'     =>  ['ar'   =>  'حذف قائمة تشغيل',   'en'    =>  'Delete Playlist'], 'route' => 'playlists', 'module' => 'playlists', 'as' => 'playlists.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+
+
         //Tags
         $manageTags = Permission::create(['name' => 'manage_tags', 'display_name' => ['ar'  =>  'إدارة الكلمات المفتاحية',  'en'    =>  'Manage Tags'], 'route' => 'tags', 'module' => 'tags', 'as' => 'tags.index', 'icon' => 'fas fa-tags', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '130',]);
         $manageTags->parent_show = $manageTags->id;
