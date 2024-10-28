@@ -79,7 +79,7 @@ class AdvsController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/news/' . $file_name));
+                $img->save(base_path('public/assets/advs/' . $file_name));
 
                 $adv->photos()->create([
                     'file_name' => $file_name,
@@ -121,12 +121,12 @@ class AdvsController extends Controller
         return view('backend.advs.edit', compact('adv', 'tags'));
     }
 
-    public function update(PostRequest $request,  $new)
+    public function update(PostRequest $request,  $adv)
     {
         if (!auth()->user()->ability('admin', 'update_advs')) {
             return redirect('admin/index');
         }
-        $new = Post::where('id', $new)->first();
+        $adv = Post::where('id', $adv)->first();
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
@@ -136,32 +136,32 @@ class AdvsController extends Controller
         $input['metadata_description'] = $request->metadata_description;
         $input['metadata_keywords'] = $request->metadata_keywords;
 
-        $input['section']            =   2; // for news
+        $input['section']            =   3; // for advs
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
 
-        $new->update($input);
+        $adv->update($input);
 
-        $new->tags()->sync($request->tags);
+        $adv->tags()->sync($request->tags);
 
-        $new->users()->attach(Auth::user()->id);
+        $adv->users()->attach(Auth::user()->id);
 
 
         if ($request->hasFile('images') && count($request->images) > 0) {
-            $i = $new->photos->count() + 1;
+            $i = $adv->photos->count() + 1;
             $images = $request->file('images');
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $new->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $adv->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/news/' . $file_name));
+                $img->save(base_path('public/assets/advs/' . $file_name));
 
-                $new->photos()->create([
+                $adv->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -173,7 +173,7 @@ class AdvsController extends Controller
         }
 
 
-        if ($new) {
+        if ($adv) {
             return redirect()->route('admin.advs.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -185,24 +185,24 @@ class AdvsController extends Controller
         ]);
     }
 
-    public function destroy($new)
+    public function destroy($adv)
     {
         if (!auth()->user()->ability('admin', 'delete_advs')) {
             return redirect('admin/index');
         }
 
-        $new = Post::where('id', $new)->first();
-        if ($new->photos->count() > 0) {
-            foreach ($new->photos as $photo) {
-                if (File::exists('assets/news/' . $photo->file_name)) {
-                    unlink('assets/news/' . $photo->file_name);
+        $adv = Post::where('id', $adv)->first();
+        if ($adv->photos->count() > 0) {
+            foreach ($adv->photos as $photo) {
+                if (File::exists('assets/advs/' . $photo->file_name)) {
+                    unlink('assets/advs/' . $photo->file_name);
                 }
                 $photo->delete();
             }
         }
-        $new->delete();
+        $adv->delete();
 
-        if ($new) {
+        if ($adv) {
             return redirect()->route('admin.advs.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -218,10 +218,10 @@ class AdvsController extends Controller
         if (!auth()->user()->ability('admin', 'delete_courses')) {
             return redirect('admin/index');
         }
-        $new = Post::findOrFail($request->course_id);
-        $image = $new->photos()->where('id', $request->image_id)->first();
-        if (File::exists('assets/news/' . $image->file_name)) {
-            unlink('assets/news/' . $image->file_name);
+        $adv = Post::findOrFail($request->course_id);
+        $image = $adv->photos()->where('id', $request->image_id)->first();
+        if (File::exists('assets/advs/' . $image->file_name)) {
+            unlink('assets/advs/' . $image->file_name);
         }
         $image->delete();
         return true;
