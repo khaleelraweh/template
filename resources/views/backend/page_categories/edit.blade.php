@@ -114,12 +114,9 @@
                                             {{ __('panel.' . $key) }}
                                         </span>
                                     </label>
-
-
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $page_category->getTranslation('content', $key)) !!}</textarea>
-
                                     @error('content.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -135,9 +132,7 @@
                                         <br>
                                         <small> {{ __('panel.best_size') }}</small>
                                         <small> 350 * 250</small>
-
                                     </span>
-
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10">
