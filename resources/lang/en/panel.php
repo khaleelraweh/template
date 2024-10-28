@@ -292,7 +292,7 @@ return [
 
     // ........... commons in Page Categories ....... //
     'metadata_title'                                =>  'Introduction page title ( Page Title)',
-    'metadata_description'                          =>  'Introduction page  (Page Description)',
+    'metadata_description'                          =>  'Introduction page  Description (Page Description)',
     'metadata_keywords'                             =>  'Introduction page Keywords (Page Keywords)',
 
 
