@@ -17,11 +17,11 @@ class PlaylistsController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_albums , show_albums')) {
+        if (!auth()->user()->ability('admin', 'manage_playlists , show_playlists')) {
             return redirect('admin/index');
         }
 
-        $albums = Album::query()
+        $playlists = Album::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -31,21 +31,21 @@ class PlaylistsController extends Controller
             ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 100);
 
-        return view('backend.albums.index', compact('albums'));
+        return view('backend.playlists.index', compact('playlists'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_albums')) {
+        if (!auth()->user()->ability('admin', 'create_playlists')) {
             return redirect('admin/index');
         }
 
-        return view('backend.albums.create');
+        return view('backend.playlists.create');
     }
 
     public function store(AlbumRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_albums')) {
+        if (!auth()->user()->ability('admin', 'create_playlists')) {
             return redirect('admin/index');
         }
 
@@ -90,13 +90,13 @@ class PlaylistsController extends Controller
         }
 
         if ($album) {
-            return redirect()->route('admin.albums.index')->with([
+            return redirect()->route('admin.playlists.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.albums.index')->with([
+        return redirect()->route('admin.playlists.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -106,26 +106,26 @@ class PlaylistsController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_albums')) {
+        if (!auth()->user()->ability('admin', 'display_playlists')) {
             return redirect('admin/index');
         }
-        return view('backend.albums.show');
+        return view('backend.playlists.show');
     }
 
     public function edit($album)
     {
-        if (!auth()->user()->ability('admin', 'update_albums')) {
+        if (!auth()->user()->ability('admin', 'update_playlists')) {
             return redirect('admin/index');
         }
 
         $album = Album::where('id', $album)->first();
 
-        return view('backend.albums.edit', compact('album'));
+        return view('backend.playlists.edit', compact('album'));
     }
 
     public function update(AlbumRequest $request, $album)
     {
-        if (!auth()->user()->ability('admin', 'update_albums')) {
+        if (!auth()->user()->ability('admin', 'update_playlists')) {
             return redirect('admin/index');
         }
 
@@ -171,13 +171,13 @@ class PlaylistsController extends Controller
         }
 
         if ($album) {
-            return redirect()->route('admin.albums.index')->with([
+            return redirect()->route('admin.playlists.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.albums.index')->with([
+        return redirect()->route('admin.playlists.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -185,7 +185,7 @@ class PlaylistsController extends Controller
 
     public function destroy($album)
     {
-        if (!auth()->user()->ability('admin', 'delete_albums')) {
+        if (!auth()->user()->ability('admin', 'delete_playlists')) {
             return redirect('admin/index');
         }
 
@@ -209,13 +209,13 @@ class PlaylistsController extends Controller
 
 
         if ($album) {
-            return redirect()->route('admin.albums.index')->with([
+            return redirect()->route('admin.playlists.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.albums.index')->with([
+        return redirect()->route('admin.playlists.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -223,7 +223,7 @@ class PlaylistsController extends Controller
 
     public function remove_image(Request $request)
     {
-        if (!auth()->user()->ability('admin', 'delete_albums')) {
+        if (!auth()->user()->ability('admin', 'delete_playlists')) {
             return redirect('admin/index');
         }
         $album = Album::findOrFail($request->album_id);

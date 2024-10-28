@@ -311,6 +311,19 @@ return [
     // ........... commons in Albums ....... //
 
 
+    ########################### Manage Playlists  ##################################
+
+    // =============  Manage Playlists  ===============//
+    'manage_playlists'                          => 'Manage Playlists',
+
+    // --------------- Playlists  --------------//
+    'show_playlists'                            => 'Playlists',
+    'add_new_playlist'                          => 'Add New Playlist',
+    'edit_existing_playlist'                    => 'Edit Existing Playlist',
+
+    // ........... commons in Playlist ....... //
+
+
     ########################### Manage About Instatute  ##################################
 
     // =============  Manage About Instatutes  ===============//

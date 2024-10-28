@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_albums') }}
+                    {{ __('panel.manage_playlists') }}
                 </h3>
                 <ul class="breadcrumb pt-2">
                     <li>
@@ -22,13 +22,13 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        {{ __('panel.show_albums') }}
+                        {{ __('panel.show_playlists') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_albums')
-                    <a href="{{ route('admin.albums.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_playlists')
+                    <a href="{{ route('admin.playlists.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50 d-none d-sm-inline-block">
                             <i class="fa fa-plus-square">
 
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        @include('backend.albums.filter.filter')
+        @include('backend.playlists.filter.filter')
 
         <div class="card-body">
 
@@ -59,46 +59,46 @@
 
 
                 <tbody>
-                    @forelse ($albums as $album)
+                    @forelse ($playlists as $playlist)
                         <tr>
-                            <td class="text-center"><input type="checkbox" name="checkfilter" value="{{ $album->id }}">
+                            <td class="text-center"><input type="checkbox" name="checkfilter" value="{{ $playlist->id }}">
                             </td>
                             <td>
-                                {{ $album->title }}
+                                {{ $playlist->title }}
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $album->created_by }}
+                                {{ $playlist->created_by }}
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 <span class="btn btn-round rounded-pill btn-success btn-xs ">
-                                    {{ $album->status() }}
+                                    {{ $playlist->status() }}
                                 </span>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $album->created_at->format('Y/m/d') }}
+                                {{ $playlist->created_at->format('Y/m/d') }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.albums.edit', $album->id) }}" class="btn btn-primary"
-                                        title="Edit the album">
+                                    <a href="{{ route('admin.playlists.edit', $playlist->id) }}" class="btn btn-primary"
+                                        title="Edit the playlist">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="https://teqni.era-t.com/albums/{{ $album->slug }}"
+                                        data-copy-text="https://teqni.era-t.com/playlists/{{ $playlist->slug }}"
                                         title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                     <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $album->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the album">
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $playlist->id }}').submit();}else{return false;}"
+                                        class="btn btn-danger" title="Delete the playlist">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
                                 </div>
-                                <form action="{{ route('admin.albums.destroy', $album->id) }}" method="post"
-                                    class="d-none" id="delete-product-category-{{ $album->id }}">
+                                <form action="{{ route('admin.playlists.destroy', $playlist->id) }}" method="post"
+                                    class="d-none" id="delete-product-category-{{ $playlist->id }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>

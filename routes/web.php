@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PageCategoriesController;
 use App\Http\Controllers\Backend\PagesController;
+use App\Http\Controllers\Backend\PlaylistsController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SiteSettingsController;
 use App\Http\Controllers\Backend\SpecializationController;
@@ -134,8 +135,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   playlists Tab   ==============  //
-        Route::post('playlists/remove-image', [AlbumsController::class, 'remove_image'])->name('playlists.remove_image');
-        Route::resource('playlists', AlbumsController::class);
+        Route::post('playlists/remove-image', [PlaylistsController::class, 'remove_image'])->name('playlists.remove_image');
+        Route::resource('playlists', PlaylistsController::class);
 
 
 

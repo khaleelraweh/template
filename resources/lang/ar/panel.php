@@ -316,6 +316,18 @@ return [
     // ........... commons in Albums ....... //
 
 
+    ########################### Manage Playlists  ##################################
+
+    // =============  Manage Playlists  ===============//
+    'manage_playlists'                          => 'إدارة قوائم التشغيل',
+
+    // --------------- Playlists  --------------//
+    'show_playlists'                            => 'قوائم التشغيل',
+    'add_new_playlist'                          => 'إضافة قائمة تشغيل جديدة',
+    'edit_existing_playlist'                    => 'تعديل قائمة تشغيل موجودة',
+
+    // ........... commons in Playlist ....... //
+
 
     ########################### Manage About Instatute  ##################################
 
