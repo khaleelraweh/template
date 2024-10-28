@@ -111,22 +111,22 @@ class NewsController extends Controller
         }
         return view('backend.news.show');
     }
-    public function edit($post)
+    public function edit($new)
     {
         if (!auth()->user()->ability('admin', 'update_news')) {
             return redirect('admin/index');
         }
-        $post = Post::where('id', $post)->first();
+        $new = Post::where('id', $new)->first();
         $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
-        return view('backend.news.edit', compact('post', 'tags'));
+        return view('backend.news.edit', compact('new', 'tags'));
     }
 
-    public function update(PostRequest $request,  $post)
+    public function update(PostRequest $request,  $new)
     {
         if (!auth()->user()->ability('admin', 'update_news')) {
             return redirect('admin/index');
         }
-        $post = Post::where('id', $post)->first();
+        $new = Post::where('id', $new)->first();
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
@@ -136,31 +136,32 @@ class NewsController extends Controller
         $input['metadata_description'] = $request->metadata_description;
         $input['metadata_keywords'] = $request->metadata_keywords;
 
+        $input['section']            =   2; // for news
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
 
-        $post->update($input);
+        $new->update($input);
 
-        $post->tags()->sync($request->tags);
+        $new->tags()->sync($request->tags);
 
-        $post->users()->attach(Auth::user()->id);
+        $new->users()->attach(Auth::user()->id);
 
 
         if ($request->hasFile('images') && count($request->images) > 0) {
-            $i = $post->photos->count() + 1;
+            $i = $new->photos->count() + 1;
             $images = $request->file('images');
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $post->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $new->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
                 $img->save(base_path('public/assets/news/' . $file_name));
 
-                $post->photos()->create([
+                $new->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -172,8 +173,7 @@ class NewsController extends Controller
         }
 
 
-
-        if ($post) {
+        if ($new) {
             return redirect()->route('admin.news.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'

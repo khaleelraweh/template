@@ -26,8 +26,9 @@ class PostRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'               =>  'required|max:255|unique_translation:posts',
-                        'content.*'         =>  'nullable',
+                        // 'title.*'               =>  'required|max:255|unique_translation:posts',
+                        'title.*'                           =>  'required|max:255',
+                        'content.*'                         =>  'nullable',
 
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
@@ -45,7 +46,8 @@ class PostRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'               =>  'required|max:255|unique_translation:posts,title,' . $this->route()->post,
+                        // 'title.*'               =>  'required|max:255|unique_translation:posts,title,' . $this->route()->post,
+                        'title.*'               =>  'required|max:255',
                         'content.*'         =>  'nullable',
 
                         'metadata_title.*'                  =>  'nullable',

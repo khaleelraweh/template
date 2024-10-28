@@ -27,7 +27,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_post') }}
+                    {{ __('panel.edit_existing_news') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -39,8 +39,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.posts.index') }}">
-                            {{ __('panel.show_posts') }}
+                        <a href="{{ route('admin.news.index') }}">
+                            {{ __('panel.show_news') }}
                         </a>
                     </li>
                 </ul>
@@ -63,7 +63,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.news.update', $new->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -104,7 +104,7 @@
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="title[{{ $key }}]"
                                         id="title[{{ $key }}]"
-                                        value="{{ old('title.' . $key, $post->getTranslation('title', $key)) }}"
+                                        value="{{ old('title.' . $key, $new->getTranslation('title', $key)) }}"
                                         class="form-control">
                                     @error('title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -126,7 +126,7 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $post->getTranslation('content', $key)) !!}</textarea>
+                                    <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $new->getTranslation('content', $key)) !!}</textarea>
                                     @error('content.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -142,7 +142,7 @@
                                 <select name="tags[]" class="form-control select2" multiple="multiple">
                                     @forelse ($tags as $tag)
                                         <option value="{{ $tag->id }}"
-                                            {{ in_array($tag->id, old('tags', $post->tags->pluck('id')->toArray())) ? 'selected' : null }}>
+                                            {{ in_array($tag->id, old('tags', $new->tags->pluck('id')->toArray())) ? 'selected' : null }}>
                                             {{ $tag->name }}</option>
                                     @empty
                                     @endforelse
@@ -180,10 +180,10 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $post->status) == '1' ? 'selected' : null }}>
+                                    <option value="1" {{ old('status', $new->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0" {{ old('status', $post->status) == '0' ? 'selected' : null }}>
+                                    <option value="0" {{ old('status', $new->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -213,7 +213,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_title[{{ $key }}]"
                                         id="metadata_title[{{ $key }}]"
-                                        value="{{ old('metadata_title.' . $key, $post->getTranslation('metadata_title', $key)) }}"
+                                        value="{{ old('metadata_title.' . $key, $new->getTranslation('metadata_title', $key)) }}"
                                         class="form-control">
                                     @error('metadata_title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -239,7 +239,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_description[{{ $key }}]"
                                         id="metadata_description[{{ $key }}]"
-                                        value="{{ old('metadata_description.' . $key, $post->getTranslation('metadata_description', $key)) }}"
+                                        value="{{ old('metadata_description.' . $key, $new->getTranslation('metadata_description', $key)) }}"
                                         class="form-control">
                                     @error('metadata_description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -265,7 +265,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_keywords[{{ $key }}]"
                                         id="metadata_keywords[{{ $key }}]"
-                                        value="{{ old('metadata_keywords.' . $key, $post->getTranslation('metadata_keywords', $key)) }}"
+                                        value="{{ old('metadata_keywords.' . $key, $new->getTranslation('metadata_keywords', $key)) }}"
                                         class="form-control">
                                     @error('metadata_keywords.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -356,23 +356,23 @@
                 // delete images from photos and assets/products 
                 // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
-                    @if ($post->photos()->count() > 0)
-                        @foreach ($post->photos as $media)
-                            "{{ asset('assets/posts/' . $media->file_name) }}",
+                    @if ($new->photos()->count() > 0)
+                        @foreach ($new->photos as $media)
+                            "{{ asset('assets/news/' . $media->file_name) }}",
                         @endforeach
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($post->photos()->count() > 0)
-                        @foreach ($post->photos as $media)
+                    @if ($new->photos()->count() > 0)
+                        @foreach ($new->photos as $media)
                             {
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.posts.remove_image', ['image_id' => $media->id, 'course_id' => $post->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.news.remove_image', ['image_id' => $media->id, 'course_id' => $new->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach
