@@ -283,6 +283,8 @@ return [
     'edit_existing_page'                    => 'تعديل بيانات الصفحة',
 
     // ........... commons in Pages ....... //
+    'category_title'                        =>  'عنوان الفئة',
+    'category_name'                         =>  'اسم الفئة',
 
     ########################### Manage Page Categories  ##################################
 

@@ -278,6 +278,8 @@ return [
     'edit_existing_page'                    => 'Edit Existing Page',
 
     // ........... commons in Pages ....... //
+    'category_title'                        =>  'Category Title',
+    'category_name'                         =>  'Category Name',
 
 
     ########################### Manage Page Categories  ##################################

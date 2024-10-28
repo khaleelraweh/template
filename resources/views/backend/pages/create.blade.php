@@ -125,13 +125,13 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3 ">
                                 <label for="category_id">
-                                    {{ __('panel.course_title') }}
+                                    {{ __('panel.category_title') }}
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
 
                                 <select name="page_category_id" class="form-control" id="page_category_id">
-                                    <option value="">{{ __('panel.main_category') }} __</option>
+                                    <option value="">{{ __('panel.category_name') }} __</option>
                                     @forelse ($page_categories as $page_category)
                                         <option value="{{ $page_category->id }}"
                                             {{ old('page_category_id') == $page_category->id ? 'selected' : null }}>
