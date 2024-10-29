@@ -327,10 +327,6 @@
 @endsection
 
 @section('script')
-    {{-- Call select2 plugin --}}
-    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
-
-
     <script>
         $(function() {
 
@@ -416,32 +412,6 @@
                 console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
 
-
-            // ======= start pickadate codeing  for start and end date ===========
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
-            // ======= End pickadate codeing for publish start and end date  ===========
 
             $('.summernote').summernote({
                 tabSize: 2,
