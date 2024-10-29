@@ -659,7 +659,10 @@ return [
     'show_events'                        => 'الاحداث القادمة',
     'add_new_event'                      => 'إضافة حدث جديد',
     'edit_existing_event'                => 'تعديل حدث موجود',
+
     // ........... commons in Event   ....... //
+    'the_start_time_and_date_of_the_next_event'     =>  'وقت وتاريخ بدء الحدث القادم',
+    'event_end_time_and_date'                       =>  'وقت وتاريخ انتهاء الحدث ',
 
 
     ##############################################################

@@ -685,6 +685,8 @@ return [
     'add_new_event'                      => 'Add New Event',
     'edit_existing_event'                => 'Edit Existing Event',
     // ........... commons in Event   ....... //
+    'the_start_time_and_date_of_the_next_event'     =>  'The start time and date of the next event',
+    'event_end_time_and_date'                       =>  'Event end time and date',
 
 
     ##############################################################

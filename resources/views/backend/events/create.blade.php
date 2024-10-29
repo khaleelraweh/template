@@ -172,8 +172,12 @@
                             </div>
                         </div>
 
+
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                وقت وتاريخ بدء الحدث
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
                                     <input type="text" class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
