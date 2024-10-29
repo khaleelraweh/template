@@ -31,16 +31,16 @@
                         <tr>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" name="videoLinks[{{ $index }}][title]"
-                                        class="form-control" wire:model="videoLinks.{{ $index }}.title"
+                                    <input type="text" name="videoLinks[{{ $index }}][link]"
+                                        class="form-control" wire:model="videoLinks.{{ $index }}.link"
                                         placeholder="{{ __('panel.playlist_video_add_your_video_link_here') }}" />
-                                    <span class="input-group-text">{{ 160 - strlen($videoLinks[$index]['title']) }}
+                                    <span class="input-group-text">{{ 160 - strlen($videoLinks[$index]['link']) }}
                                     </span>
                                 </div>
 
 
                                 <!-- Display validation error for current intended -->
-                                @error('videoLinks.' . $index . '.title')
+                                @error('videoLinks.' . $index . '.link')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
 

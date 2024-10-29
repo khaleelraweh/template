@@ -19,17 +19,17 @@ class CreatePlayListVideosComponent extends Component
     public function mount()
     {
         $this->videoLinks = [
-            ['title' => ''],
+            ['link' => ''],
         ];
     }
 
-    //add Intended
+    //add videoLink
     public function addVideoLink()
     {
-        $this->videoLinks[] = ['title' => ''];
+        $this->videoLinks[] = ['link' => ''];
     }
 
-    // remove Intended
+    // remove videoLink
     public function removeVideoLink($index)
     {
         unset($this->videoLinks[$index]);
