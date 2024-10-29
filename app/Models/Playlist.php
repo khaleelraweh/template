@@ -82,4 +82,9 @@ class Playlist extends Model
     {
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
     }
+
+    public function videoLinks(): MorphMany
+    {
+        return $this->morphMany(VideoLink::class, 'video_linkable');
+    }
 }
