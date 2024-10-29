@@ -675,6 +675,17 @@ return [
     // ........... commons in Advertisement   ....... //
 
 
+    ##############################################################
+
+    // =============  Manage events   ===============//
+    'manage_events'                      => 'Manage Events',
+
+    // --------------- News   --------------//
+    'show_events'                        => 'Events',
+    'add_new_event'                      => 'Add New Event',
+    'edit_existing_event'                => 'Edit Existing Event',
+    // ........... commons in Event   ....... //
+
 
     ##############################################################
 

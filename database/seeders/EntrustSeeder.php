@@ -311,6 +311,17 @@ class EntrustSeeder extends Seeder
         $updateAdvs  =  Permission::create(['name' => 'update_advs', 'display_name'     =>  ['ar'   =>  'تعديل اعلان',   'en'    =>  'Edit Advertisement'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
         $deleteAdvs =  Permission::create(['name'  => 'delete_advs', 'display_name'     =>  ['ar'   =>  'حذف اعلان',   'en'    =>  'Delete Advertisement'], 'route' => 'advs', 'module' => 'advs', 'as' => 'advs.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
 
+        // Events
+        $manageEvents = Permission::create(['name' => 'manage_events', 'display_name' => ['ar'  =>  'إدارة الاحداث القادمة',    'en'    =>  'Manage ُEvents'], 'route' => 'events', 'module' => 'events', 'as' => 'events.index', 'icon' => 'far fa-calendar-alt', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
+        $manageEvents->parent_show = $manageEvents->id;
+        $manageEvents->save();
+        $showEvents   =  Permission::create(['name'  => 'show_events', 'display_name'       =>  ['ar'   =>  'الاحداث القادمة',   'en'    =>  'ُEvents'], 'route' => 'events', 'module' => 'events', 'as' => 'events.index', 'icon' => 'far fa-calendar-alt', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $createEvents =  Permission::create(['name'  => 'create_events', 'display_name'     =>  ['ar'   =>  'إنشاء حدث',   'en'    =>  'Create Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $displayEvents =  Permission::create(['name' => 'display_events', 'display_name'    =>  ['ar'   =>  'عرض حدث',   'en'    =>  'Display Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $updateEvents  =  Permission::create(['name' => 'update_events', 'display_name'     =>  ['ar'   =>  'تعديل حدث',   'en'    =>  'Edit Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $deleteEvents =  Permission::create(['name'  => 'delete_events', 'display_name'     =>  ['ar'   =>  'حذف حدث',   'en'    =>  'Delete Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+
+
         // Albums
         $manageAlbums  = Permission::create(['name' => 'manage_albums', 'display_name' => ['ar'  =>  'إدارة البومات الصور',    'en'    =>  'Manage Albums'], 'route' => 'albums', 'module' => 'albums', 'as' => 'albums.index', 'icon' => 'far fa-images', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
         $manageAlbums->parent_show = $manageAlbums->id;

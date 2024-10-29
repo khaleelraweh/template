@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CompanyMenuController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DocumentArchivesController;
+use App\Http\Controllers\Backend\EventsController;
 use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainSliderController;
@@ -132,6 +133,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // ==============   advs Tab   ==============  //
         Route::post('advs/remove-image', [AdvsController::class, 'remove_image'])->name('advs.remove_image');
         Route::resource('advs', AdvsController::class);
+
+
+        // ==============   events Tab   ==============  //
+        Route::post('events/remove-image', [EventsController::class, 'remove_image'])->name('events.remove_image');
+        Route::resource('events', EventsController::class);
 
 
         // ==============   albums Tab   ==============  //
