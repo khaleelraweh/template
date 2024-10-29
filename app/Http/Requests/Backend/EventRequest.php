@@ -33,43 +33,44 @@ class EventRequest extends FormRequest
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
                         'metadata_keywords.*'               =>  'nullable',
-                        'start_date'                        =>  'nullable',
-                        'end_date'                      =>  'nullable',
-                        'start_time'                        =>  'nullable',
-                        'end_time'                      =>  'nullable',
 
-                        'status'                =>  'required',
-                        'tags.*'                =>  'required',
-                        'images'                =>  'required',
-                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                        'created_by'            =>  'nullable',
-                        'updated_by'            =>  'nullable',
-                        'deleted_by'            =>  'nullable',
+                        'start_date'                        =>  'require',
+                        'end_date'                          =>  'nullable',
+                        'start_time'                        =>  'nullable',
+                        'end_time'                          =>  'nullable',
+
+                        'status'                            =>  'required',
+                        'tags.*'                            =>  'required',
+                        'images'                            =>  'required',
+                        'images.*'                          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'created_by'                        =>  'nullable',
+                        'updated_by'                        =>  'nullable',
+                        'deleted_by'                        =>  'nullable',
                     ];
                 }
             case 'PUT':
             case 'PATCH': {
                     return [
                         // 'title.*'               =>  'required|max:255|unique_translation:posts,title,' . $this->route()->post,
-                        'title.*'               =>  'required|max:255',
-                        'content.*'         =>  'nullable',
+                        'title.*'                           =>  'required|max:255',
+                        'content.*'                         =>  'nullable',
 
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
                         'metadata_keywords.*'               =>  'nullable',
 
-                        'start_date'                        =>  'nullable',
-                        'end_date'                      =>  'nullable',
+                        'start_date'                        =>  'require',
+                        'end_date'                          =>  'nullable',
                         'start_time'                        =>  'nullable',
-                        'end_time'                      =>  'nullable',
+                        'end_time'                          =>  'nullable',
 
-                        'status'                =>  'required',
-                        'tags.*'                =>  'required',
-                        'images'                =>  'nullable',
-                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
-                        'created_by'            =>  'nullable',
-                        'updated_by'            =>  'nullable',
-                        'deleted_by'            =>  'nullable',
+                        'status'                            =>  'required',
+                        'tags.*'                            =>  'required',
+                        'images'                            =>  'nullable',
+                        'images.*'                          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+                        'created_by'                        =>  'nullable',
+                        'updated_by'                        =>  'nullable',
+                        'deleted_by'                        =>  'nullable',
                     ];
                 }
 

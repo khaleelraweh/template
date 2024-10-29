@@ -194,8 +194,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="start_date" class="form-control"
-                                        placeholder="Select date" data-input>
+                                    <input type="text" name="end_date" class="form-control" placeholder="Select date"
+                                        data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i data-feather="calendar"></i>
                                     </span>
