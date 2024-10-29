@@ -193,7 +193,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
-                                    {{ __('panel.image') }} / {{ __('panel.images') }}
+                                    {{ __('panel.album_images') }}
                                     <span>
                                         <br>
                                         <small> {{ __('panel.best_size') }}</small>
