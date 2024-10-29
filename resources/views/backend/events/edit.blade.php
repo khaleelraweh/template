@@ -27,7 +27,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_adv') }}
+                    {{ __('panel.edit_existing_event') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -39,8 +39,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.advs.index') }}">
-                            {{ __('panel.show_advs') }}
+                        <a href="{{ route('admin.events.index') }}">
+                            {{ __('panel.show_events') }}
                         </a>
                     </li>
                 </ul>
@@ -63,7 +63,7 @@
             @endif
 
             {{-- enctype used cause we will save images  --}}
-            <form action="{{ route('admin.advs.update', $adv->id) }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.events.update', $event->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -104,7 +104,7 @@
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="title[{{ $key }}]"
                                         id="title[{{ $key }}]"
-                                        value="{{ old('title.' . $key, $adv->getTranslation('title', $key)) }}"
+                                        value="{{ old('title.' . $key, $event->getTranslation('title', $key)) }}"
                                         class="form-control">
                                     @error('title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -126,7 +126,7 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $adv->getTranslation('content', $key)) !!}</textarea>
+                                    <textarea id="tinymceExample" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $event->getTranslation('content', $key)) !!}</textarea>
                                     @error('content.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -142,7 +142,7 @@
                                 <select name="tags[]" class="form-control select2" multiple="multiple">
                                     @forelse ($tags as $tag)
                                         <option value="{{ $tag->id }}"
-                                            {{ in_array($tag->id, old('tags', $adv->tags->pluck('id')->toArray())) ? 'selected' : null }}>
+                                            {{ in_array($tag->id, old('tags', $event->tags->pluck('id')->toArray())) ? 'selected' : null }}>
                                             {{ $tag->name }}</option>
                                     @empty
                                     @endforelse
@@ -180,10 +180,10 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $adv->status) == '1' ? 'selected' : null }}>
+                                    <option value="1" {{ old('status', $event->status) == '1' ? 'selected' : null }}>
                                         {{ __('panel.status_active') }}
                                     </option>
-                                    <option value="0" {{ old('status', $adv->status) == '0' ? 'selected' : null }}>
+                                    <option value="0" {{ old('status', $event->status) == '0' ? 'selected' : null }}>
                                         {{ __('panel.status_inactive') }}
                                     </option>
                                 </select>
@@ -213,7 +213,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_title[{{ $key }}]"
                                         id="metadata_title[{{ $key }}]"
-                                        value="{{ old('metadata_title.' . $key, $adv->getTranslation('metadata_title', $key)) }}"
+                                        value="{{ old('metadata_title.' . $key, $event->getTranslation('metadata_title', $key)) }}"
                                         class="form-control">
                                     @error('metadata_title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -239,7 +239,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_description[{{ $key }}]"
                                         id="metadata_description[{{ $key }}]"
-                                        value="{{ old('metadata_description.' . $key, $adv->getTranslation('metadata_description', $key)) }}"
+                                        value="{{ old('metadata_description.' . $key, $event->getTranslation('metadata_description', $key)) }}"
                                         class="form-control">
                                     @error('metadata_description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -265,7 +265,7 @@
                                 <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="metadata_keywords[{{ $key }}]"
                                         id="metadata_keywords[{{ $key }}]"
-                                        value="{{ old('metadata_keywords.' . $key, $adv->getTranslation('metadata_keywords', $key)) }}"
+                                        value="{{ old('metadata_keywords.' . $key, $event->getTranslation('metadata_keywords', $key)) }}"
                                         class="form-control">
                                     @error('metadata_keywords.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -356,23 +356,23 @@
                 // delete images from photos and assets/products 
                 // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
-                    @if ($adv->photos()->count() > 0)
-                        @foreach ($adv->photos as $media)
-                            "{{ asset('assets/advs/' . $media->file_name) }}",
+                    @if ($event->photos()->count() > 0)
+                        @foreach ($event->photos as $media)
+                            "{{ asset('assets/events/' . $media->file_name) }}",
                         @endforeach
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($adv->photos()->count() > 0)
-                        @foreach ($adv->photos as $media)
+                    @if ($event->photos()->count() > 0)
+                        @foreach ($event->photos as $media)
                             {
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
                                 // url : الراوت المستخدم لحذف الصورة
-                                url: "{{ route('admin.advs.remove_image', ['image_id' => $media->id, 'course_id' => $adv->id, '_token' => csrf_token()]) }}",
+                                url: "{{ route('admin.events.remove_image', ['image_id' => $media->id, 'course_id' => $event->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },
                         @endforeach
