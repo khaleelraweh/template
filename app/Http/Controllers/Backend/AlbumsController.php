@@ -259,24 +259,11 @@ class AlbumsController extends Controller
 
         $album = Album::findOrFail($request->album_id);
 
-        // Remove album profile image if it exists
-        if (File::exists('assets/albums/' . $album->album_profile)) {
-            unlink('assets/albums/' . $album->album_profile);
-            $album->album_profile = null;
-            $album->save();
-        }
-
-        // Find the specific image and check if it exists
         $image = $album->photos()->where('id', $request->image_id)->first();
-        if ($image) {
-            if (File::exists('assets/albums/' . $image->file_name)) {
-                unlink('assets/albums/' . $image->file_name);
-            }
-            $image->delete();
-        } else {
-            return response()->json(['message' => 'Image not found.'], 404);
+        if (File::exists('assets/albums/' . $image->file_name)) {
+            unlink('assets/albums/' . $image->file_name);
         }
-
-        return response()->json(['message' => 'Image deleted successfully.']);
+        $image->delete();
+        return true;
     }
 }
