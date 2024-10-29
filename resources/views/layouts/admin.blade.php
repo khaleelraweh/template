@@ -104,6 +104,7 @@
 
     <script>
         var tinymceLanguage = '{{ app()->getLocale() }}'; // Get the current locale from Laravel config
+        var flatPickrLanguage = '{{ app()->getLocale() }}';
     </script>
 
     <!-- Custom js for the Tinymce -->
@@ -117,6 +118,7 @@
     <!-- Plugin js for this page -->
     <script src="{{ asset('backend/vendors/flatpickr/flatpickr.min.js') }}"></script>
     <script src="{{ asset('backend/js/flatpickr.js') }}"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ar.js"></script>
     <script src="{{ asset('backend/vendors/apexcharts/apexcharts.min.js') }}"></script>
     <!-- End plugin js for this page -->
 
@@ -210,13 +212,7 @@
         });
     </script>
 
-    {{-- for Tinymce Editor setting  --}}
-    <script>
-        // tinymce.init({
-        //     selector: 'textarea', // change this value according to your HTML
-        //     language: '{{ app()->getLocale() }}'
-        // });
-    </script>
+
 
 
     @yield('script')

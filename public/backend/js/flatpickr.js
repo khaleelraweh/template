@@ -4,6 +4,8 @@
 $(function() {
   'use strict';
 
+  const locale = "{{ app()->getLocale() }}";
+
   // date picker 
   if($('#flatpickr-date').length) {
     flatpickr("#flatpickr-date", {
@@ -27,7 +29,8 @@ $(function() {
       enableTime: true,
       wrap: true,
       dateFormat: "Y/m/d H:i K",
-      "locale": "ru"
+      // locale: "ar"
+      locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
     });
   }
 
