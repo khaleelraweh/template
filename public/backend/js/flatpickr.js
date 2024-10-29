@@ -28,7 +28,7 @@ $(function() {
     flatpickr("#flatpickr-datetime", {
       enableTime: true,
       wrap: true,
-      dateFormat: "Y/m/d H:i K",
+      dateFormat: "Y/m/d h:i K",
       // locale: "ar"
       locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
     });
