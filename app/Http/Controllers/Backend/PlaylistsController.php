@@ -177,6 +177,11 @@ class PlaylistsController extends Controller
             }
         }
 
+        $playlist->videoLinks()->delete();
+        if ($request->videoLinks) {
+            $playlist->videoLinks()->createMany($request->videoLinks);
+        }
+
         if ($playlist) {
             return redirect()->route('admin.playlists.index')->with([
                 'message' => __('panel.updated_successfully'),
