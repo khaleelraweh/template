@@ -309,6 +309,8 @@ return [
     'edit_existing_album'                    => 'Edit Existing Album',
 
     // ........... commons in Albums ....... //
+    'album_profile_image'                   =>  'Album Profile Image',
+    'album_images'                          =>  'Album Images',
 
 
     ########################### Manage Playlists  ##################################

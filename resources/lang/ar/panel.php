@@ -314,6 +314,9 @@ return [
     'edit_existing_album'                    => 'تعديل بيانات البوم صور موجود',
 
     // ........... commons in Albums ....... //
+    'album_profile_image'                   =>  'صورة الملف الشخصي للألبوم',
+    'album_images'                          =>  'صور الألبوم
+',
 
 
     ########################### Manage Playlists  ##################################

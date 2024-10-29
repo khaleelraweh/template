@@ -169,7 +169,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
-                                    Ablum Profile
+                                    {{ __('panel.album_profile_image') }}
                                     <span>
                                         <br>
                                         <small> {{ __('panel.best_size') }}</small>
