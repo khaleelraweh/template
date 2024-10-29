@@ -31,6 +31,10 @@ class AlbumRequest extends FormRequest
                         'metadata_title.*'          =>  'nullable',
                         'metadata_description.*'    =>  'nullable',
                         'metadata_keywords.*'       =>  'nullable',
+
+                        'album_profile'                => 'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
+
+
                         'images'                    =>  'required',
                         'images.*'                  =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
@@ -51,7 +55,9 @@ class AlbumRequest extends FormRequest
                         'metadata_title.*'          =>  'nullable',
                         'metadata_description.*'    =>  'nullable',
                         'metadata_keywords.*'       =>  'nullable',
-                        'images.*'                  =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+
+                        'album_profile'                 => 'nullable|mimes:jpg,jpeg,png,svg,gif,webp|max:3000',
+                        'images.*'                      =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
 
                         // used always 

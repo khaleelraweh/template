@@ -26,6 +26,7 @@ return new class extends Migration
             // end SEO
 
             $table->unsignedBigInteger('views')->default(0); // counting views
+            $table->string('album_profile')->nullable();
 
 
             // will be use always
