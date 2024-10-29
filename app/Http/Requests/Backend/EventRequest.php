@@ -33,6 +33,10 @@ class EventRequest extends FormRequest
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
                         'metadata_keywords.*'               =>  'nullable',
+                        'start_date'                        =>  'nullable',
+                        'end_date'                      =>  'nullable',
+                        'start_time'                        =>  'nullable',
+                        'end_time'                      =>  'nullable',
 
                         'status'                =>  'required',
                         'tags.*'                =>  'required',
@@ -53,6 +57,11 @@ class EventRequest extends FormRequest
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
                         'metadata_keywords.*'               =>  'nullable',
+
+                        'start_date'                        =>  'nullable',
+                        'end_date'                      =>  'nullable',
+                        'start_time'                        =>  'nullable',
+                        'end_time'                      =>  'nullable',
 
                         'status'                =>  'required',
                         'tags.*'                =>  'required',
