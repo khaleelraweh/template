@@ -131,8 +131,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10">
                                 <div class="file-loading">
-                                    <input type="file" name="images[]" id="album_profile" class="file-input-overview"
-                                        multiple="multiple">
+                                    <input type="file" name="album_profile" id="album_profile"
+                                        class="file-input-overview" multiple="multiple">
                                     @error('images')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -281,7 +281,7 @@
         </div>
 
     </div>
-    {{ $album->album_profile }} khaleelk jkjdkjaskfj kj fk
+
 @endsection
 
 
@@ -371,28 +371,6 @@
                 ]
             });
 
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
 
         });
     </script>

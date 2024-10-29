@@ -150,7 +150,27 @@ class AlbumsController extends Controller
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
+
+
+
+        // Save album profile 
+        if ($albumImage = $request->file('album_profile')) {
+
+            if (File::exists('assets/albums/' . $albumImage)) {
+                unlink('assets/albums/' . $albumImage);
+            }
+
+            $manager = new ImageManager(new Driver());
+            $file_name = 'album' . time() . '.' . $albumImage->extension();
+            $img = $manager->read($request->file('album_profile'));
+            $img->toJpeg(80)->save(base_path('public/assets/albums/' . $file_name));
+            $input['album_profile'] = $file_name;
+        }
+
         $album->update($input);
+
+
+
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
@@ -230,17 +250,33 @@ class AlbumsController extends Controller
         ]);
     }
 
+
     public function remove_image(Request $request)
     {
         if (!auth()->user()->ability('admin', 'delete_albums')) {
             return redirect('admin/index');
         }
+
         $album = Album::findOrFail($request->album_id);
-        $image = $album->photos()->where('id', $request->image_id)->first();
-        if (File::exists('assets/albums/' . $image->file_name)) {
-            unlink('assets/albums/' . $image->file_name);
+
+        // Remove album profile image if it exists
+        if (File::exists('assets/albums/' . $album->album_profile)) {
+            unlink('assets/albums/' . $album->album_profile);
+            $album->album_profile = null;
+            $album->save();
         }
-        $image->delete();
-        return true;
+
+        // Find the specific image and check if it exists
+        $image = $album->photos()->where('id', $request->image_id)->first();
+        if ($image) {
+            if (File::exists('assets/albums/' . $image->file_name)) {
+                unlink('assets/albums/' . $image->file_name);
+            }
+            $image->delete();
+        } else {
+            return response()->json(['message' => 'Image not found.'], 404);
+        }
+
+        return response()->json(['message' => 'Image deleted successfully.']);
     }
 }
