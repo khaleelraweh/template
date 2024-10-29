@@ -126,6 +126,23 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
+                                    Ablum Profile
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10">
+                                <div class="file-loading">
+                                    <input type="file" name="images[]" id="album_profile" class="file-input-overview"
+                                        multiple="multiple">
+                                    @error('images')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="images">
                                     {{ __('panel.image') }} / {{ __('panel.images') }}
                                     <span>
                                         <br>
@@ -264,6 +281,7 @@
         </div>
 
     </div>
+    {{ $album->album_profile }} khaleelk jkjdkjaskfj kj fk
 @endsection
 
 
@@ -309,6 +327,35 @@
                 console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
         });
+
+        $("#album_profile").fileinput({
+            theme: "fa5",
+            maxFileCount: 1,
+            allowedFileTypes: ['image'],
+            showCancel: true,
+            showRemove: false,
+            showUpload: false,
+            overwriteInitial: false,
+            initialPreview: [
+                @if ($album->album_profile != '')
+                    "{{ asset('assets/albums/' . $album->album_profile) }}",
+                @endif
+            ],
+            initialPreviewAsData: true,
+            initialPreviewFileType: 'image',
+            initialPreviewConfig: [
+                @if ($album->album_profile != '')
+                    {
+                        caption: "{{ $album->album_profile }}",
+                        size: '1111',
+                        width: "120px",
+                        url: "{{ route('admin.albums.remove_image', ['album_id' => $album->id, '_token' => csrf_token()]) }}",
+                        key: {{ $album->id }}
+                    }
+                @endif
+            ]
+        });
+
         $(function() {
             $('.summernote').summernote({
                 tabSize: 2,

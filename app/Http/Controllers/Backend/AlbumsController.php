@@ -60,6 +60,15 @@ class AlbumsController extends Controller
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
 
+        // Save album profile 
+        if ($image = $request->file('album_profile')) {
+            $manager = new ImageManager(new Driver());
+            $file_name = 'album' . time() . '.' . $image->extension();
+            $img = $manager->read($request->file('album_profile'));
+            $img->toJpeg(80)->save(base_path('public/assets/albums/' . $file_name));
+            $input['album_profile'] = $file_name;
+        }
+
         $album = Album::create($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {

@@ -169,6 +169,30 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
+                                    Ablum Profile
+                                    <span>
+                                        <br>
+                                        <small> {{ __('panel.best_size') }}</small>
+                                        <small> 350 * 250</small>
+
+                                    </span>
+
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="album_profile" id="album_profile"
+                                        class="file-input-overview">
+                                </div>
+                                @error('images')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="images">
                                     {{ __('panel.image') }} / {{ __('panel.images') }}
                                     <span>
                                         <br>
@@ -307,6 +331,22 @@
 @endsection
 
 @section('script')
+    <script>
+        $(function() {
+
+            $("#album_profile").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false
+            });
+
+        });
+    </script>
+
     <script>
         $(function() {
 
