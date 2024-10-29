@@ -24,13 +24,13 @@ class CreatePlayListVideosComponent extends Component
     }
 
     //add Intended
-    public function addIntended()
+    public function addVideoLink()
     {
         $this->intendeds[] = ['title' => ''];
     }
 
     // remove Intended
-    public function removeIntended($index)
+    public function removeVideoLink($index)
     {
         unset($this->intendeds[$index]);
         $this->intendeds = array_values($this->intendeds);

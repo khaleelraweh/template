@@ -47,7 +47,7 @@
                             </td>
                             <td>
                                 <a href="#"
-                                    wire:click.prevent="removeIntended({{ $index }})">{{ __('panel.delete') }}</a>
+                                    wire:click.prevent="removeVideoLink({{ $index }})">{{ __('panel.delete') }}</a>
                             </td>
                         </tr>
                     @endforeach
@@ -56,7 +56,7 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <button class="btn btn-sm btn-secondary" wire:click.prevent="addIntended">
+                    <button class="btn btn-sm btn-secondary" wire:click.prevent="addVideoLink">
                         + {{ __('panel.playlist_video_add_new_video_link') }}
                     </button>
                 </div>
