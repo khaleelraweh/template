@@ -26,7 +26,7 @@ $(function() {
     flatpickr("#flatpickr-datetime", {
       enableTime: true,
       wrap: true,
-      dateFormat: "Y-m-d H:i",
+      dateFormat: "Y/m/d H:i K",
       "locale": "ru"
     });
   }
