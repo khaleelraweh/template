@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\EventRequest;
 use App\Models\Event;
 use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\ImageManager;
@@ -49,16 +50,26 @@ class EventsController extends Controller
         if (!auth()->user()->ability('admin', 'create_events')) {
             return redirect('admin/index');
         }
-        $input['title'] = $request->title;
-        $input['content'] = $request->content;
+        $input['title']                 = $request->title;
+        $input['content']               = $request->content;
 
-        $input['metadata_title'] = $request->metadata_title;
-        $input['metadata_description'] = $request->metadata_description;
-        $input['metadata_keywords'] = $request->metadata_keywords;
+        $input['metadata_title']        = $request->metadata_title;
+        $input['metadata_description']  = $request->metadata_description;
+        $input['metadata_keywords']     = $request->metadata_keywords;
 
-        $input['section']            =   3; // for eventertisement
-        $input['status']            =   $request->status;
-        $input['created_by']        =   auth()->user()->full_name;
+        $start_date = str_replace(['ص', 'م'], ['AM', 'PM'], $request->start_date);
+        $end_date = str_replace(['ص', 'م'], ['AM', 'PM'], $request->end_date);
+
+        $startDate = Carbon::createFromFormat('Y/m/d h:i A', $start_date)->format('Y-m-d H:i:s');
+        $endDate = Carbon::createFromFormat('Y/m/d h:i A', $end_date)->format('Y-m-d H:i:s');
+
+
+        $input['start_date']            = $startDate;
+        $input['end_date']              = $endDate;
+
+        $input['section']               =   3; // for eventertisement
+        $input['status']                =   $request->status;
+        $input['created_by']            =   auth()->user()->full_name;
 
 
         $event = Event::create($input);
@@ -127,17 +138,17 @@ class EventsController extends Controller
         }
         $event = Event::where('id', $event)->first();
 
-        $input['title'] = $request->title;
-        $input['content'] = $request->content;
+        $input['title']                 = $request->title;
+        $input['content']               = $request->content;
 
 
-        $input['metadata_title'] = $request->metadata_title;
-        $input['metadata_description'] = $request->metadata_description;
-        $input['metadata_keywords'] = $request->metadata_keywords;
+        $input['metadata_title']        = $request->metadata_title;
+        $input['metadata_description']  = $request->metadata_description;
+        $input['metadata_keywords']     = $request->metadata_keywords;
 
-        $input['section']            =   3; // for events
-        $input['status']            =   $request->status;
-        $input['created_by'] = auth()->user()->full_name;
+        $input['section']               =   3; // for events
+        $input['status']                =   $request->status;
+        $input['created_by']            = auth()->user()->full_name;
 
 
         $event->update($input);

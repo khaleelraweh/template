@@ -1,3 +1,4 @@
+<?php use Carbon\Carbon; ?>
 @extends('layouts.admin')
 
 @section('style')
@@ -168,6 +169,38 @@
                                     @error('images')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.the_start_time_and_date_of_the_next_event') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="start_date" class="form-control" placeholder="Select date"
+                                        data-input
+                                        value="{{ old('start_date', Carbon::parse($event->start_date)->format('Y/m/d h:i A')) }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.event_end_time_and_date') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="end_date" class="form-control" placeholder="Select date"
+                                        data-input
+                                        value="{{ old('end_date', Carbon::parse($event->end_date)->format('Y/m/d h:i A')) }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
