@@ -6,10 +6,10 @@
                 <h6>{{ __('panel.playlist_video_tip') }}</h6>
 
                 <!-- Display validation errors -->
-                @if ($errors->has('intendeds'))
+                @if ($errors->has('videoLinks'))
                     <div class="alert alert-danger">
                         <ul>
-                            @foreach ($errors->get('intendeds') as $error)
+                            @foreach ($errors->get('videoLinks') as $error)
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
@@ -17,7 +17,7 @@
                 @endif
             </div>
             <div>
-                @if ($intendedsValid || ($formSubmitted && !$errors->any()))
+                @if ($videoLinksValid || ($formSubmitted && !$errors->any()))
                     <i class="mdi mdi-check-circle-outline text-success display-4"></i>
                 @endif
             </div>
@@ -27,20 +27,20 @@
 
             <table class="table" id="products_table">
                 <tbody>
-                    @foreach ($intendeds as $index => $intended)
+                    @foreach ($videoLinks as $index => $intended)
                         <tr>
                             <td>
                                 <div class="input-group">
-                                    <input type="text" name="intendeds[{{ $index }}][title]"
-                                        class="form-control" wire:model="intendeds.{{ $index }}.title"
+                                    <input type="text" name="videoLinks[{{ $index }}][title]"
+                                        class="form-control" wire:model="videoLinks.{{ $index }}.title"
                                         placeholder="{{ __('panel.playlist_video_add_your_video_link_here') }}" />
-                                    <span class="input-group-text">{{ 160 - strlen($intendeds[$index]['title']) }}
+                                    <span class="input-group-text">{{ 160 - strlen($videoLinks[$index]['title']) }}
                                     </span>
                                 </div>
 
 
                                 <!-- Display validation error for current intended -->
-                                @error('intendeds.' . $index . '.title')
+                                @error('videoLinks.' . $index . '.title')
                                     <div class="text-danger">{{ $message }}</div>
                                 @enderror
 

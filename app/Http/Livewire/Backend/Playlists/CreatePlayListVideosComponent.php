@@ -9,16 +9,16 @@ class CreatePlayListVideosComponent extends Component
 {
 
     use LivewireAlert;
-    public $intendeds = [];
+    public $videoLinks = [];
 
     public $formSubmitted = false;
     public $databaseDataValid = false;
 
-    public $intendedsValid = false;
+    public $videoLinksValid = false;
 
     public function mount()
     {
-        $this->intendeds = [
+        $this->videoLinks = [
             ['title' => ''],
         ];
     }
@@ -26,14 +26,14 @@ class CreatePlayListVideosComponent extends Component
     //add Intended
     public function addVideoLink()
     {
-        $this->intendeds[] = ['title' => ''];
+        $this->videoLinks[] = ['title' => ''];
     }
 
     // remove Intended
     public function removeVideoLink($index)
     {
-        unset($this->intendeds[$index]);
-        $this->intendeds = array_values($this->intendeds);
+        unset($this->videoLinks[$index]);
+        $this->videoLinks = array_values($this->videoLinks);
     }
 
     public function render()
