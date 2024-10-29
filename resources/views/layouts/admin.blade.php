@@ -116,6 +116,8 @@
 
     <!-- Plugin js for this page -->
     <script src="{{ asset('backend/vendors/flatpickr/flatpickr.min.js') }}"></script>
+    <script src="{{ asset('backend/js/flatpickr.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/{{ app()->getLocale() }}.js"></script>
     <script src="{{ asset('backend/vendors/apexcharts/apexcharts.min.js') }}"></script>
     <!-- End plugin js for this page -->
 

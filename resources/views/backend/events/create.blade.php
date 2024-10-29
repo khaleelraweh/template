@@ -173,6 +173,17 @@
                         </div>
 
                         <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-date">
+                                    <input type="text" class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status" class="control-label">
                                     <span>{{ __('panel.status') }}</span>
