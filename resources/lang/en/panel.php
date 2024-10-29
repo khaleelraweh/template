@@ -324,6 +324,10 @@ return [
     'edit_existing_playlist'                    => 'Edit Existing Playlist',
 
     // ........... commons in Playlist ....... //
+    'playlist_videos'                           =>   'PlayList Videos',
+    'playlist_video_tip'                        =>  'This card enables you to add video clips to this playlist by copying video links from the YouTube channel and adding them here',
+    'playlist_video_add_your_video_link_here'   =>  'Add your video link here',
+    'playlist_video_add_new_video_link'         =>  'Add new video Link',
 
 
     ########################### Manage About Instatute  ##################################

@@ -74,6 +74,9 @@
     <!-- End layout styles -->
 
     <link rel="shortcut icon" href="{{ asset('backend/images/favicon.png') }}" />
+
+    @livewireStyles
+
     @yield('style')
 </head>
 
@@ -212,9 +215,7 @@
         });
     </script>
 
-
-
-
+    @livewireScripts
     @yield('script')
 
 

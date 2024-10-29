@@ -211,6 +211,17 @@
                                 @enderror
                             </div>
                         </div>
+
+                        {{-- Deal with playlist --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.playlist_videos') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                @livewire('backend.playlists.create-play-list-videos-component')
+
+                            </div>
+                        </div>
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">

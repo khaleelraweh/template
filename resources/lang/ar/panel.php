@@ -330,6 +330,11 @@ return [
     'edit_existing_playlist'                    => 'تعديل قائمة تشغيل موجودة',
 
     // ........... commons in Playlist ....... //
+    'playlist_videos'                           =>   'مقاطع فيديو قائمة التشغيل',
+    'playlist_video_tip'                        =>  'هذه البطاقة تمكنك من إضافة مقاطع الفيديو التابعة لقائمة التشغيل هذه عبر نسخ روابط الفيديو من قناة اليوتيوب واضافتها هنا ',
+    'playlist_video_add_your_video_link_here'   =>  'أضف رابط الفيديو الخاص بك هنا',
+    'playlist_video_add_new_video_link'         =>  'أضف رابط فيديو جديد',
+
 
 
     ########################### Manage About Instatute  ##################################
