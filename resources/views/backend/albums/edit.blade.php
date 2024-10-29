@@ -126,8 +126,14 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
-                                    Ablum Profile
+                                    {{ __('panel.album_profile_image') }}
+                                    <span>
+                                        <br>
+                                        <small> {{ __('panel.best_size') }}</small>
+                                        <small> 350 * 250</small>
+                                    </span>
                                 </label>
+
                             </div>
                             <div class="col-sm-12 col-md-10">
                                 <div class="file-loading">
@@ -143,7 +149,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
-                                    {{ __('panel.image') }} / {{ __('panel.images') }}
+                                    {{ __('panel.album_images') }}
                                     <span>
                                         <br>
                                         <small> {{ __('panel.best_size') }}</small>
@@ -296,9 +302,6 @@
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false,
-                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit album 
                 initialPreview: [
                     @if ($album->photos()->count() > 0)
                         @foreach ($album->photos as $media)
