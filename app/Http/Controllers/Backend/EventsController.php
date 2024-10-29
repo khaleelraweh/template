@@ -21,7 +21,6 @@ class EventsController extends Controller
         }
 
         $events = Event::query()
-            ->whereSection(3)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })

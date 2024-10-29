@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_advs') }}
+                    {{ __('panel.manage_events') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -20,18 +20,18 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        {{ __('panel.show_advs') }}
+                        {{ __('panel.show_events') }}
                     </li>
                 </ul>
             </div>
 
             <div class="ml-auto">
-                @ability('admin', 'create_advs')
-                    <a href="{{ route('admin.advs.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_events')
+                    <a href="{{ route('admin.events.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        {{ __('panel.add_new_adv') }}
+                        {{ __('panel.add_new_event') }}
                     </a>
                 @endability
             </div>
@@ -40,7 +40,7 @@
 
         <div class="card-body">
             {{-- filter form part  --}}
-            @include('backend.advs.filter.filter')
+            @include('backend.events.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -58,50 +58,50 @@
                     </thead>
                     <tbody>
 
-                        @forelse ($advs as $adv)
+                        @forelse ($events as $event)
                             <tr>
                                 <td class="text-center"><input type="checkbox" name="checkfilter"
-                                        value="{{ $adv->id }}">
+                                        value="{{ $event->id }}">
                                 </td>
                                 <td>
-                                    {{ Str::limit($adv->title, 50) }}
+                                    {{ Str::limit($event->title, 50) }}
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $adv->created_by }}
+                                    {{ $event->created_by }}
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
                                     <span class="btn btn-round rounded-pill btn-success btn-xs ">
-                                        {{ $adv->status() }}
+                                        {{ $event->status() }}
                                     </span>
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $adv->created_at->format('Y/m/d') }}
+                                    {{ $event->created_at->format('Y/m/d') }}
                                 </td>
 
                                 <td>
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.advs.edit', $adv->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
 
                                         <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                            data-copy-text="https://teqni.era-t.com/blog-single/{{ $adv->slug }}"
+                                            data-copy-text="https://teqni.era-t.com/blog-single/{{ $event->slug }}"
                                             title="Copy the link">
                                             <i class="far fa-copy"></i>
                                         </a>
                                         <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-adv-{{ $adv->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-event-{{ $event->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.advs.destroy', $adv->id) }}" method="post"
-                                        class="d-none" id="delete-adv-{{ $adv->id }}">
+                                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="post"
+                                        class="d-none" id="delete-event-{{ $event->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -117,7 +117,7 @@
                         <tr>
                             <td colspan="6">
                                 <div class="float-right">
-                                    {!! $advs->appends(request()->all())->links() !!}
+                                    {!! $events->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>
