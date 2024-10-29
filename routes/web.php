@@ -141,6 +141,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   albums Tab   ==============  //
+        Route::post('albums/remove-album-image', [AlbumsController::class, 'remove_album_image'])->name('albums.remove_album_image');
         Route::post('albums/remove-image', [AlbumsController::class, 'remove_image'])->name('albums.remove_image');
         Route::resource('albums', AlbumsController::class);
 

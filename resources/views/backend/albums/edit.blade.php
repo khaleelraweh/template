@@ -328,6 +328,7 @@
             });
         });
 
+
         $("#album_profile").fileinput({
             theme: "fa5",
             maxFileCount: 1,
@@ -344,17 +345,19 @@
             initialPreviewAsData: true,
             initialPreviewFileType: 'image',
             initialPreviewConfig: [
-                @if ($album->album_profile != '')
+                @if (auth()->user()->user_image != '')
                     {
                         caption: "{{ $album->album_profile }}",
                         size: '1111',
                         width: "120px",
-                        url: "{{ route('admin.albums.remove_image', ['album_id' => $album->id, '_token' => csrf_token()]) }}",
+                        url: "{{ route('admin.albums.remove_album_image', ['album_id' => $album->id, '_token' => csrf_token()]) }}",
                         key: {{ $album->id }}
                     }
                 @endif
             ]
         });
+
+
 
         $(function() {
             $('.summernote').summernote({

@@ -266,4 +266,20 @@ class AlbumsController extends Controller
         $image->delete();
         return true;
     }
+
+    public function remove_album_image(Request $request)
+    {
+        $album = Album::findOrFail($request->album_id);
+
+        if ($album->album_profile != '') {
+            if (File::exists('assets/albums/' . $album->album_profile)) {
+                unlink('assets/albums/' . $album->album_profile);
+            }
+
+            $album->album_profile = null;
+            $album->save();
+
+            return true;
+        }
+    }
 }
