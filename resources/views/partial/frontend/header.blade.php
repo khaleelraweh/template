@@ -247,13 +247,13 @@
                                  </li>
 
                              </ul>
-                             {{-- <span>
+                             <span>
                                  <a id="nav-expander" class="nav-expander">
                                      <span class="dot1"></span>
                                      <span class="dot2"></span>
                                      <span class="dot3"></span>
                                  </a>
-                             </span> --}}
+                             </span>
                          </div>
                      </div>
                  </div>
@@ -262,7 +262,7 @@
          <!-- Menu End -->
 
          <!-- Canvas Menu start -->
-         {{-- <nav class="right_menu_togle hidden-md">
+         <nav class="right_menu_togle hidden-md">
              <div class="close-btn">
                  <div id="nav-close">
                      <div class="line">
@@ -314,7 +314,7 @@
                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                  </ul>
              </div>
-         </nav> --}}
+         </nav>
          <!-- Canvas Menu end -->
      </header>
      <!--Header End-->

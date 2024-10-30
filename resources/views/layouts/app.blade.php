@@ -34,7 +34,8 @@
     <!-- slick css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/slick.css') }}">
     <!-- off canvas css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/off-canvas.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/off-canvas.css') }}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/off-canvas-rtl.css') }}">
     <!-- linea-font css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/fonts/linea-fonts.css') }}">
     <!-- flaticon css  -->
