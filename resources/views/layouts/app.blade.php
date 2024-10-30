@@ -30,7 +30,7 @@
     <!-- animate css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/animate.css') }}">
     <!-- owl.carousel css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/owl.carousel.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ar/owl.carousel.css') }}">
     <!-- slick css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/slick.css') }}">
     <!-- off canvas css -->
@@ -108,7 +108,7 @@
     <!-- op nav js -->
     <script src="{{ asset('frontend/js/jquery.nav.js') }}"></script>
     <!-- owl.carousel js -->
-    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/ar/owl.carousel.min.js') }}"></script>
     <!-- Slick js -->
     <script src="{{ asset('frontend/js/slick.min.js') }}"></script>
     <!-- isotope.pkgd.min js -->
@@ -131,7 +131,8 @@
     <!-- contact form js -->
     <script src="{{ asset('frontend/js/contact.form.js') }}"></script>
     <!-- main js -->
-    <script src="{{ asset('frontend/js/main.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/js/main.js') }}"></script> --}}
+    <script src="{{ asset('frontend/js/main-rtl.js') }}"></script>
 
 
     @livewireScripts
