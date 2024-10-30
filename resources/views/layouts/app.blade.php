@@ -45,7 +45,8 @@
     {{-- <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main-rtl.css') }}">
     <!-- spacing css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing.css') }}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing-rtl.css') }}">
     <!-- style css -->
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}"> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style-rtl.css') }}">
