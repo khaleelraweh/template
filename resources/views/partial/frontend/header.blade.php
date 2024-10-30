@@ -262,7 +262,7 @@
          <!-- Menu End -->
 
          <!-- Canvas Menu start -->
-         <nav class="right_menu_togle hidden-md">
+         {{-- <nav class="right_menu_togle hidden-md">
              <div class="close-btn">
                  <div id="nav-close">
                      <div class="line">
@@ -314,7 +314,7 @@
                      <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                  </ul>
              </div>
-         </nav>
+         </nav> --}}
          <!-- Canvas Menu end -->
      </header>
      <!--Header End-->

@@ -23,7 +23,8 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.html">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/fav-orange.png') }}">
     <!-- Bootstrap v4.4.1 css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ar/bootstrap-rtl.min.css') }}">
     <!-- font-awesome css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}">
     <!-- animate css -->
@@ -45,7 +46,8 @@
     <!-- spacing css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing.css') }}">
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}">
+    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}"> --}}
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style-rtl.css') }}">
     <!-- This stylesheet dynamically changed from style.less -->
     <!-- responsive css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
@@ -59,7 +61,7 @@
 
 </head>
 
-<body class="theme-frist">
+<body class="theme-frist" dir="rtl">
 
     <!--Preloader area start here-->
     <div id="loader" class="loader orange-color">
