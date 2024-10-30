@@ -4833,7 +4833,7 @@ body .modal-backdrop {
 }
 .rs-slider.main-home .owl-nav .owl-next i:before,
 .rs-slider.main-home .owl-nav .owl-prev i:before {
-  content: "\f138";
+  content: "\f137";
   font-family: Flaticon;
 }
 .rs-slider.main-home .owl-nav .owl-next:hover,
@@ -4845,7 +4845,7 @@ body .modal-backdrop {
   right: unset;
 }
 .rs-slider.main-home .owl-nav .owl-next i:before {
-  content: "\f137";
+  content: "\f138";
 }
 .rs-slider.main-home:hover .owl-nav .owl-next,
 .rs-slider.main-home:hover .owl-nav .owl-prev {
