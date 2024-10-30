@@ -42,7 +42,8 @@
     <!-- magnific popup css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/magnific-popup.css') }}">
     <!-- Main Menu css -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main-rtl.css') }}">
     <!-- spacing css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing.css') }}">
     <!-- style css -->
