@@ -247,13 +247,13 @@
                                  </li>
 
                              </ul>
-                             <span>
+                             {{-- <span>
                                  <a id="nav-expander" class="nav-expander">
                                      <span class="dot1"></span>
                                      <span class="dot2"></span>
                                      <span class="dot3"></span>
                                  </a>
-                             </span>
+                             </span> --}}
                          </div>
                      </div>
                  </div>
