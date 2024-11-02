@@ -65,13 +65,31 @@
                         @forelse ($mainSliders as $slider)
                             <tr>
                                 <td>
-                                    @if ($slider->firstMedia)
-                                        <img src="{{ asset('assets/main_sliders/' . $slider->firstMedia->file_name) }}"
-                                            width="60" height="60" alt="{{ $slider->title }}">
-                                    @else
-                                        <img src="{{ asset('image/not_found/item_image_not_found.png') }}" width="60"
-                                            height="60" alt="{{ $slider->title }}">
-                                    @endif
+
+                                    @php
+                                        if ($slider->firstMedia != null && $slider->firstMedia->file_name != null) {
+                                            $slider_img = asset(
+                                                'assets/main_sliders/' . $slider->firstMedia->file_name,
+                                            );
+
+                                            if (
+                                                !file_exists(
+                                                    public_path(
+                                                        'assets/main_sliders/' . $slider->firstMedia->file_name,
+                                                    ),
+                                                )
+                                            ) {
+                                                $slider_img = asset('image/not_found/item_image_not_found.webp');
+                                            }
+                                        } else {
+                                            $slider_img = asset('image/not_found/item_image_not_found.webp');
+                                        }
+                                    @endphp
+
+                                    <img src="{{ $slider_img }}" width="60" height="60"
+                                        alt="{{ $slider->title }}">
+
+
 
                                 </td>
                                 <td>{{ $slider->title }}</td>
