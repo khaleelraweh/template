@@ -20,26 +20,36 @@ class MainSliderSeeder extends Seeder
         $faker = Factory::create();
         $target = ['_self', '_blank'];
 
-        for ($i = 1; $i <= 1; $i++) {
-            $sliders[] = [
-                'title'         => json_encode(['ar' => 'المعهد التقني العالي للعلوم الطبية' . $i, 'en' => 'Transform your life through education' . $i]),
-                'slug'          => json_encode(['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)]),
-                'description'   => json_encode(['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways ']),
+        $slider1 = Slider::create([
+            'title'         => json_encode(['ar' => 'دورات عبر الإنترنت من كبار الخبراء', 'en' => 'Online Courses From Leading Experts']),
+            'subtitle'         => json_encode(['ar' => 'البدء في التعلم اليوم', 'en' => 'Start to learning today']),
+            'slug'          => json_encode(['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)]),
+            'description'   => json_encode(['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways ']),
 
-                'url'           =>  'https://' . $faker->slug(2) . '.com',
-                'target'        =>  Arr::random($target),
-                'published_on'  =>  $faker->dateTime(),
-                'created_by'    =>  $faker->realTextBetween(10, 12),
-                'updated_by'   =>  $faker->realTextBetween(10, 12),
-                'deleted_at'    =>  null,
-                'created_at'    =>  now(),
-                'updated_at'    =>  now(),
-            ];
-        }
+            'url'           =>  'https://' . $faker->slug(2) . '.com',
+            'target'        =>  Arr::random($target),
+            'published_on'  =>  $faker->dateTime(),
+            'created_by'    =>  $faker->realTextBetween(10, 12),
+            'updated_by'   =>  $faker->realTextBetween(10, 12),
+            'deleted_at'    =>  null,
+            'created_at'    =>  now(),
+            'updated_at'    =>  now(),
+        ]);
 
-        $chuncks = array_chunk($sliders, 100);
-        foreach ($chuncks as $chunck) {
-            Slider::insert($chunck);
-        }
+        $slider2 = Slider::create([
+            'title'         => json_encode(['ar' => 'استكشف الاهتمامات والوظائف من خلال الدورات التدريبية', 'en' => 'Explore Interests and Career With Courses']),
+            'subtitle'         => json_encode(['ar' => 'البدء في التعلم اليوم', 'en' => 'Start to learning today']),
+            'slug'          => json_encode(['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)]),
+            'description'   => json_encode(['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways ']),
+
+            'url'           =>  'https://' . $faker->slug(2) . '.com',
+            'target'        =>  Arr::random($target),
+            'published_on'  =>  $faker->dateTime(),
+            'created_by'    =>  $faker->realTextBetween(10, 12),
+            'updated_by'   =>  $faker->realTextBetween(10, 12),
+            'deleted_at'    =>  null,
+            'created_at'    =>  now(),
+            'updated_at'    =>  now(),
+        ]);
     }
 }
