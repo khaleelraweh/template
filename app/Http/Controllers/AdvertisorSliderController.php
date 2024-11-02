@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AdvertisorSliderRequest;
 use App\Models\Slider;
 use App\Models\Tag;
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -55,6 +56,7 @@ class AdvertisorSliderController extends Controller
 
         $input['icon']         =   $request->icon;
         $input['title']          =   $request->title;
+        $input['subtitle']          =   $request->subtitle;
         $input['description']        =   $request->description;
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
@@ -63,8 +65,9 @@ class AdvertisorSliderController extends Controller
         $input['showInfo']            =   $request->showInfo;
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
         $input['published_on'] = $published_on;
 
         $advertisorSlider = Slider::create($input);
@@ -118,6 +121,7 @@ class AdvertisorSliderController extends Controller
 
         $input['icon']         =   $request->icon;
         $input['title']          =   $request->title;
+        $input['subtitle']          =   $request->subtitle;
         $input['description']        =   $request->description;
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
@@ -127,9 +131,10 @@ class AdvertisorSliderController extends Controller
         $input['status']            =   $request->status;
         $input['updated_by']        =   auth()->user()->full_name;
 
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
         $input['published_on'] = $published_on;
+
         $advertisorSlider->update($input);
         $advertisorSlider->tags()->sync($request->tags);
 

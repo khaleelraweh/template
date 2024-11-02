@@ -206,7 +206,6 @@
                             <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">{{ __('panel.published_date') }}</label>
-
                                     <div class="input-group flatpickr" id="flatpickr-datetime">
                                         <input type="text" name="published_on" class="form-control"
                                             placeholder="Select date" data-input>
@@ -219,21 +218,6 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <div class="form-group">
-                                    <label for="published_on_time">{{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
-                                        class="form-control">
-                                    @error('published_on_time')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
                         </div>
 
                         {{-- status and featured field --}}
@@ -299,53 +283,6 @@
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false
-            });
-
-
-            // ======= start pickadate codeing ===========
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = $('#published_on').val();
-                if (selected_ci_date != null) {
-                    var cidate = new Date(selected_ci_date);
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() + 1);
-                    enddate.set('min', min_codate);
-                }
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
-            // ======= End pickadate codeing ===========
-
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 120,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
             });
 
 
