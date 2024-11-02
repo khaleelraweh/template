@@ -1,3 +1,5 @@
+<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
+<?php $dark = Cookie::get('theme') !== null ? (Cookie::get('theme') == 'dark' ? 'dark' : '') : 'dark'; ?>
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -24,7 +26,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/fav-orange.png') }}">
     <!-- Bootstrap v4.4.1 css -->
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ar/bootstrap-rtl.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ar/bootstrap' . $rtl . '.min.css') }}">
     <!-- font-awesome css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}">
     <!-- animate css -->
@@ -35,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/slick.css') }}">
     <!-- off canvas css -->
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/off-canvas.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/off-canvas-rtl.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/off-canvas' . $rtl . '.css') }}">
     <!-- linea-font css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/fonts/linea-fonts.css') }}">
     <!-- flaticon css  -->
@@ -44,13 +46,13 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/magnific-popup.css') }}">
     <!-- Main Menu css -->
     {{-- <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main.css') }}"> --}}
-    <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main-rtl.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/rsmenu-main' . $rtl . '.css') }}">
     <!-- spacing css -->
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing-rtl.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/rs-spacing' . $rtl . '.css') }}">
     <!-- style css -->
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style.css') }}"> --}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style-rtl.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style' . $rtl . '.css') }}">
     <!-- This stylesheet dynamically changed from style.less -->
     <!-- responsive css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
@@ -66,7 +68,7 @@
 
 </head>
 
-<body class="theme-frist" dir="rtl">
+<body class="theme-frist" dir="{{ $rtl == '-rtl' ? 'rtl' : 'ltr' }}">
 
     <!--Preloader area start here-->
     <div id="loader" class="loader orange-color">
