@@ -21,10 +21,10 @@ class MainSliderSeeder extends Seeder
         $target = ['_self', '_blank'];
 
         $slider1 = Slider::create([
-            'title'         => json_encode(['ar' => 'دورات عبر الإنترنت من كبار الخبراء', 'en' => 'Online Courses From Leading Experts']),
-            'subtitle'         => json_encode(['ar' => 'البدء في التعلم اليوم', 'en' => 'Start to learning today']),
-            'slug'          => json_encode(['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)]),
-            'description'   => json_encode(['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways ']),
+            'title'         => ['ar' => 'دورات عبر الإنترنت من كبار الخبراء', 'en' => 'Online Courses From Leading Experts'],
+            'subtitle'         => ['ar' => 'البدء في التعلم اليوم', 'en' => 'Start to learning today'],
+            'slug'          => ['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)],
+            'description'   => ['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways '],
 
             'url'           =>  'https://' . $faker->slug(2) . '.com',
             'target'        =>  Arr::random($target),
@@ -37,10 +37,10 @@ class MainSliderSeeder extends Seeder
         ]);
 
         $slider2 = Slider::create([
-            'title'         => json_encode(['ar' => 'استكشف الاهتمامات والوظائف من خلال الدورات التدريبية', 'en' => 'Explore Interests and Career With Courses']),
-            'subtitle'         => json_encode(['ar' => 'البدء في التعلم اليوم', 'en' => 'Start to learning today']),
-            'slug'          => json_encode(['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)]),
-            'description'   => json_encode(['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways ']),
+            'title'         => ['ar' => 'استكشف الاهتمامات والوظائف من خلال الدورات التدريبية', 'en' => 'Explore Interests and Career With Courses'],
+            'subtitle'         => ['ar' => 'البدء في التعلم اليوم', 'en' => 'Start to learning today'],
+            'slug'          => ['ar' => $faker->unique()->slug(3), 'en' => $faker->unique()->slug(3)],
+            'description'   => ['ar' => ' التكنولوجيا تجلب موجة ناجحة من التعلم في العديد من المناحي المختلفة ', 'en' => ' Technology Is Brining A Missave Wave Of Education On Learning Thinks On Different Ways '],
 
             'url'           =>  'https://' . $faker->slug(2) . '.com',
             'target'        =>  Arr::random($target),
