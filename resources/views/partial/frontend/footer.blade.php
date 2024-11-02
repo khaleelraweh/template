@@ -1,4 +1,28 @@
  <!-- Footer Start -->
+ <style>
+     .rs-menu.footer {
+         float: none;
+     }
+
+     .menu-item-has-children.footer {
+         padding: 0 !important;
+     }
+
+     .item-link.footer {
+         padding: 0 !important;
+         display: inline-block;
+         text-decoration: none !important;
+         outline: none !important;
+     }
+
+     .sub-menu.footer {
+         top: -200%;
+     }
+
+     .rs-footer.home9-style.main-home .footer-bottom .copy-right-menu li.lang-item:before {
+         display: none !important;
+     }
+ </style>
  <footer id="rs-footer" class="rs-footer home9-style main-home">
      <div class="footer-top">
          <div class="container">
@@ -111,6 +135,66 @@
                          <li><a href="#">Event</a></li>
                          <li><a href="#">Blog</a></li>
                          <li><a href="#">Contact</a></li>
+
+                         <li>
+                             <div class="rs-menu-area">
+                                 <div class="main-menu">
+                                     <nav class="rs-menu footer">
+                                         <ul class="nav-menu">
+                                             <li class="menu-item-has-children footer">
+                                                 <a href="#"
+                                                     class="item-link footer">{{ __('transf.lang_' . config('locales.languages')[app()->getLocale()]['lang']) }}</a>
+                                                 <ul class="sub-menu footer">
+                                                     @foreach (config('locales.languages') as $key => $val)
+                                                         @if ($key != app()->getLocale())
+                                                             <li class="lang-item">
+                                                                 <a href="{{ route('change.language', $key) }}">
+                                                                     {{ __('transf.lang_' . $val['lang']) }}
+                                                                 </a>
+                                                             </li>
+                                                         @endif
+                                                     @endforeach
+                                                 </ul>
+                                             </li>
+                                         </ul> <!-- //.nav-menu -->
+                                     </nav>
+                                 </div>
+                             </div>
+
+                         </li>
+
+                         {{-- <li>
+                             <div class="dropdown me-2">
+                                 <button type="button"
+                                     class=" form-select form-select-sm font-size-sm-alone shadow min-width-140  p-2 mb-4 mb-md-0"
+                                     data-bs-toggle="dropdown">
+                                     <img class=""
+                                         src="{{ asset('frontend/assets/img/flags/' . app()->getLocale() . '.webp') }}"
+                                         alt="{{ __('transf.lang_' . config('locales.languages')[app()->getLocale()]['lang']) }}"
+                                         height="16"
+                                         title="{{ __('transf.lang_' . config('locales.languages')[app()->getLocale()]['lang']) }}">
+                                     <span>{{ __('transf.lang_' . config('locales.languages')[app()->getLocale()]['lang']) }}</span>
+                                 </button>
+
+                                 <ul class="dropdown-menu">
+                                     @foreach (config('locales.languages') as $key => $val)
+                                         @if ($key != app()->getLocale())
+                                             <li>
+                                                 <a class="dropdown-item" href="{{ route('change.language', $key) }}">
+                                                     <img src="{{ asset('frontend/assets/img/flags/' . $key . '.webp') }}"
+                                                         alt="{{ __('transf.lang_' . config('locales.languages')[app()->getLocale()]['lang']) }}"
+                                                         class="me-1 " height="12">
+                                                     <span class="align-middle">
+                                                         {{ __('transf.lang_' . $val['lang']) }}
+                                                     </span>
+                                                 </a>
+                                             </li>
+                                         @endif
+                                     @endforeach
+
+                                 </ul>
+                             </div>
+                         </li> --}}
                      </ul>
                  </div>
              </div>
