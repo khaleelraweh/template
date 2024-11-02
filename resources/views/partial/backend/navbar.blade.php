@@ -25,8 +25,8 @@
 
                     @foreach (config('locales.languages') as $key => $val)
                         @if ($key != app()->getLocale())
-                            <a href="{{ route('change.language', $key) }}" class="dropdown-item py-2"><i
-                                    class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }}"
+                            <a href="{{ route('change.language', $key) }}" class="dropdown-item py-2">
+                                <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }}"
                                     title="{{ $key == 'ar' ? 'ye' : 'us' }}" id="{{ $key == 'ar' ? 'ye' : 'us' }}"></i>
                                 <span class="ms-1">
                                     {{ __('panel.' . $val['lang']) }} </span></a>

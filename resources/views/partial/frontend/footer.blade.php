@@ -142,13 +142,24 @@
                                      <nav class="rs-menu footer">
                                          <ul class="nav-menu">
                                              <li class="menu-item-has-children footer">
-                                                 <a href="#"
-                                                     class="item-link footer">{{ __('transf.lang_' . config('locales.languages')[app()->getLocale()]['lang']) }}</a>
+
+                                                 <i class="flag-icon flag-icon-{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }} mt-1"
+                                                     title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+
+                                                 <a href="#" class="item-link footer">
+                                                     {{ __('transf.lang_' . config('locales.languages')[app()->getLocale()]['lang']) }}
+                                                 </a>
                                                  <ul class="sub-menu footer">
                                                      @foreach (config('locales.languages') as $key => $val)
                                                          @if ($key != app()->getLocale())
                                                              <li class="lang-item">
+
                                                                  <a href="{{ route('change.language', $key) }}">
+                                                                     <span>
+                                                                         <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }}"
+                                                                             title="{{ $key == 'ar' ? 'ye' : 'us' }}"
+                                                                             id="{{ $key == 'ar' ? 'ye' : 'us' }}"></i>
+                                                                     </span>
                                                                      {{ __('transf.lang_' . $val['lang']) }}
                                                                  </a>
                                                              </li>
