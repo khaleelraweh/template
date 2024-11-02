@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\MainSliderRequest;
 use App\Models\Slider;
 use App\Models\Tag;
+use Carbon\Carbon;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -56,6 +57,7 @@ class MainSliderController extends Controller
         }
 
         $input['title']          =   $request->title;
+        $input['subtitle']      = $request->subtitle;
         $input['description']        =   $request->description;
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
@@ -64,8 +66,9 @@ class MainSliderController extends Controller
         $input['showInfo']            =   $request->showInfo;
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
         $input['published_on'] = $published_on;
 
         $mainSlider = Slider::create($input);
@@ -151,16 +154,15 @@ class MainSliderController extends Controller
         $input['url']            =   $request->url;
         $input['target']         =   $request->target;
         $input['section']        =   1;
-        //  $input['start_date']        =   $request->start_date;
-        //  $input['expire_date']       =   $request->expire_date;
 
         $input['showInfo']            =   $request->showInfo;
         $input['status']            =   $request->status;
         $input['updated_by']        =   auth()->user()->full_name;
 
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
         $input['published_on'] = $published_on;
+
         $mainSlider->update($input);
         $mainSlider->tags()->sync($request->tags);
 

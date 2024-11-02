@@ -103,6 +103,24 @@
                                         </div>
                                     </div>
 
+                                    {{-- Slider Subtitle --}}
+                                    <div class="row ">
+                                        <div class="col-sm-12 pt-3">
+                                            <div class="form-group">
+                                                <label for="subtitle[{{ $key }}]">
+                                                    {{ __('panel.subtitle') }}
+                                                    {{ __('panel.in') }} {{ __('panel.' . $key) }}
+                                                </label>
+                                                <input type="text" name="subtitle[{{ $key }}]"
+                                                    id="subtitle[{{ $key }}]"
+                                                    value="{{ old('subtitle.' . $key) }}" class="form-control">
+                                                @error('subtitle.' . $key)
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     {{--  description field --}}
                                     <div class="row">
                                         <div class="col-sm-12 col-md-12 pt-4">
@@ -110,7 +128,7 @@
                                                 {{ __('panel.description') }}
                                                 {{ __('panel.in') }} {{ __('panel.' . $key) }}
                                             </label>
-                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control summernote">{!! old('description.' . $key) !!}</textarea>
+                                            <textarea name="description[{{ $key }}]" rows="10" class="form-control" id="tinymceExample">{!! old('description.' . $key) !!}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +171,7 @@
                             <div class="col-md-12 col-sm-12 pt-4">
                                 <label for="url">{{ __('panel.url_link') }}</label>
                                 <input type="text" name="url" id="url" value="{{ old('url') }}"
-                                    class="form-control" placeholder="http://youtlinks.com ">
+                                    class="form-control" placeholder="">
                                 @error('url')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -188,8 +206,14 @@
                             <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
                                     <label for="published_on">{{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
+
+                                    <div class="input-group flatpickr" id="flatpickr-datetime">
+                                        <input type="text" name="published_on" class="form-control"
+                                            placeholder="Select date" data-input>
+                                        <span class="input-group-text input-group-addon" data-toggle>
+                                            <i data-feather="calendar"></i>
+                                        </span>
+                                    </div>
                                     @error('published_on')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
