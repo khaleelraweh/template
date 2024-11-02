@@ -169,10 +169,10 @@
                         {{-- url browse button link --}}
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-4">
-                                <label for="btn_link">{{ __('panel.browse_button_title') }}</label>
-                                <input type="text" name="btn_link" id="btn_link" value="{{ old('btn_link') }}"
+                                <label for="btn_title">{{ __('panel.browse_button_title') }}</label>
+                                <input type="text" name="btn_title" id="btn_title" value="{{ old('btn_title') }}"
                                     class="form-control" placeholder="">
-                                @error('btn_link')
+                                @error('btn_title')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

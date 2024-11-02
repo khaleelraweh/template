@@ -31,7 +31,7 @@ class AdvertisorSliderRequest extends FormRequest
                         'subtitle.*'        =>  'nullable',
                         'description.*'       =>  'nullable',
                         'url'           =>  'nullable',
-                        'btn_title'         => ['ar' => 'العثور على الدورات', 'en' => 'Find Courses'],
+                        'btn_title'         => 'required',
                         'show_btn_title'    =>  'required',
                         'target'        =>  'required',
                         'icon'        =>  'nullable',
@@ -57,7 +57,7 @@ class AdvertisorSliderRequest extends FormRequest
 
                         'description'       =>  'nullable',
                         'url'               =>  'nullable',
-                        'btn_title'         => ['ar' => 'العثور على الدورات', 'en' => 'Find Courses'],
+                        'btn_title'         => 'required',
                         'show_btn_title'    =>  'required',
 
                         'target'            =>  'required',
