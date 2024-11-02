@@ -19,7 +19,7 @@ class Slider extends Model
     use HasFactory, HasTranslations, HasTranslatableSlug, SearchableTrait;
 
     protected $guarded = [];
-    public $translatable = ['title', 'slug', 'description', 'subtitle'];
+    public $translatable = ['title', 'slug', 'description', 'subtitle', 'btn_title'];
 
 
     protected $casts = [

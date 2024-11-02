@@ -86,6 +86,8 @@ return [
     'url_target'                        => 'مكان العرض',
     'in_the_same_tab'                   => 'عرض في نفس الصفحة',
     'in_new_tab'                        => 'عرض في تبويب جديد',
+    'browse_button_title'               =>  'عنوان زر التصفح',
+    'show_browsing_button'               =>  'عرض زر التصفح',
 
 
     ################################ Manage Categories  #########################

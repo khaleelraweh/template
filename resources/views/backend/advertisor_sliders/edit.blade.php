@@ -253,18 +253,18 @@
                         {{-- show info field --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="showInfo">{{ __('panel.show_slider_info') }}</label>
-                                <select name="showInfo" class="form-control">
+                                <label for="show_info">{{ __('panel.show_slider_info') }}</label>
+                                <select name="show_info" class="form-control">
                                     <option value="1"
-                                        {{ old('showInfo', $advertisorSlider->showInfo) == '1' ? 'selected' : null }}>
+                                        {{ old('show_info', $advertisorSlider->show_info) == '1' ? 'selected' : null }}>
                                         {{ __('panel.yes') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('showInfo', $advertisorSlider->showInfo) == '0' ? 'selected' : null }}>
+                                        {{ old('show_info', $advertisorSlider->show_info) == '0' ? 'selected' : null }}>
                                         {{ __('panel.no') }}
                                     </option>
                                 </select>
-                                @error('showInfo')
+                                @error('show_info')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

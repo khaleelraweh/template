@@ -173,9 +173,21 @@
                     {{-- url Tab --}}
                     <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
 
+                        {{-- url browse button link --}}
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 pt-4">
+                                <label for="btn_link">{{ __('panel.browse_button_title') }}</label>
+                                <input type="text" name="btn_link" id="btn_link"
+                                    value="{{ old('btn_link', $mainSlider->btn_link) }}" class="form-control"
+                                    placeholder="">
+                                @error('btn_link')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
                         {{-- url fields --}}
                         <div class="row">
-                            {{-- url field --}}
                             <div class="col-md-12 col-sm-12 pt-4">
                                 <label for="url">{{ __('panel.url_link') }}</label>
                                 <input type="text" name="url" id="url"
@@ -202,6 +214,26 @@
                                     </option>
                                 </select>
                                 @error('target')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- show info field --}}
+                        <div class="row">
+                            <div class="col-sm-12 col-md-12 pt-4">
+                                <label for="show_btn_title">{{ __('panel.show_browsing_button') }}</label>
+                                <select name="show_btn_title" class="form-control">
+                                    <option value="1"
+                                        {{ old('show_btn_title', $mainSlider->show_btn_title) == '1' ? 'selected' : null }}>
+                                        {{ __('panel.yes') }}
+                                    </option>
+                                    <option value="0"
+                                        {{ old('show_btn_title', $mainSlider->show_btn_title) == '0' ? 'selected' : null }}>
+                                        {{ __('panel.no') }}
+                                    </option>
+                                </select>
+                                @error('show_btn_title')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -257,18 +289,18 @@
                         {{-- show info field --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="showInfo">{{ __('panel.show_slider_info') }}</label>
-                                <select name="showInfo" class="form-control">
+                                <label for="show_info">{{ __('panel.show_slider_info') }}</label>
+                                <select name="show_info" class="form-control">
                                     <option value="1"
-                                        {{ old('showInfo', $mainSlider->showInfo) == '1' ? 'selected' : null }}>
+                                        {{ old('show_info', $mainSlider->show_info) == '1' ? 'selected' : null }}>
                                         {{ __('panel.yes') }}
                                     </option>
                                     <option value="0"
-                                        {{ old('showInfo', $mainSlider->showInfo) == '0' ? 'selected' : null }}>
+                                        {{ old('show_info', $mainSlider->show_info) == '0' ? 'selected' : null }}>
                                         {{ __('panel.no') }}
                                     </option>
                                 </select>
-                                @error('showInfo')
+                                @error('show_info')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>

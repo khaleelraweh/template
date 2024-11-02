@@ -59,10 +59,12 @@ class AdvertisorSliderController extends Controller
         $input['subtitle']          =   $request->subtitle;
         $input['description']        =   $request->description;
         $input['url']            =   $request->url;
+        $input['btn_title']            =   $request->btn_title;
+        $input['show_btn_title']            =   $request->show_btn_title;
         $input['target']         =   $request->target;
         $input['section']        =   2;
 
-        $input['showInfo']            =   $request->showInfo;
+        $input['show_info']            =   $request->show_info;
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
 
@@ -124,10 +126,12 @@ class AdvertisorSliderController extends Controller
         $input['subtitle']          =   $request->subtitle;
         $input['description']        =   $request->description;
         $input['url']            =   $request->url;
+        $input['btn_title']            =   $request->btn_title;
+        $input['show_btn_title']            =   $request->show_btn_title;
         $input['target']         =   $request->target;
         $input['section']        =   2;
 
-        $input['showInfo']            =   $request->showInfo;
+        $input['show_info']            =   $request->show_info;
         $input['status']            =   $request->status;
         $input['updated_by']        =   auth()->user()->full_name;
 

@@ -20,11 +20,17 @@ return new class extends Migration
             $table->json('slug');
             $table->json('subtitle');
             $table->json('description');
+
             $table->string('icon')->nullable();
+
+            $table->json('btn_title');
             $table->string('url')->nullable();
+            $table->boolean('show_btn_title')->default(true); // عرض العنوان والتصفاصيل 
+
             $table->string('target')->default('_self');
             $table->unsignedBigInteger('section')->default(1);
-            $table->boolean('showInfo')->default(true); // عرض العنوان والتصفاصيل 
+
+            $table->boolean('show_info')->default(true); // عرض العنوان والتصفاصيل 
 
             // will be use always
             $table->boolean('status')->default(true);

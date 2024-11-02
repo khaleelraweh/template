@@ -81,6 +81,8 @@ return [
     'url_target'                    => 'Url Target',
     'in_the_same_tab'               => 'In The Same Tab',
     'in_new_tab'                    =>  'In New Tab',
+    'browse_button_title'           =>  'Browse button title',
+    'show_browsing_button'          =>  'Show browse button',
 
 
     ########################### Manage Categories  ##################################
