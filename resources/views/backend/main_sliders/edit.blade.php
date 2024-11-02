@@ -212,7 +212,7 @@
                     {{-- Published Tab --}}
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
 
-                        {{-- published_on a  --}}
+                        {{-- published_on   --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-12 pt-4">
                                 <div class="form-group">
