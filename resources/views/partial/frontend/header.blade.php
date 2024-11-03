@@ -36,7 +36,7 @@
                                                      <ul class="sub-menu">
                                                          @foreach ($menu->appearedChildren as $sub_menu)
                                                              <li
-                                                                 class="menu-item-has-children {{ count($sub_menu->appearedChildren) > 0 ? 'has-children' : '' }}">
+                                                                 class=" {{ count($sub_menu->appearedChildren) > 0 ? 'menu-item-has-children has-children' : '' }}">
                                                                  <a
                                                                      href="{{ $sub_menu->link }}">{{ $sub_menu->title }}</a>
                                                                  @if (count($sub_menu->appearedChildren) > 0)
