@@ -57,6 +57,7 @@
     <!-- responsive css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/custom' . $rtl . '.css') }}">
 
     <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
