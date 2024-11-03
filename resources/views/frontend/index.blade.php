@@ -77,7 +77,7 @@
                             <div class="features-wrap ">
 
                                 <div class="icon-part">
-                                    <i class="{{ $adv_slider->icon }}" style="font-size: 50px;margin:0 35px 8px 0"></i>
+                                    <i class="{{ $adv_slider->icon }}"></i>
                                     {{-- <img src="{{ asset('frontend/images/features/icon/3.png') }}" alt=""> --}}
                                 </div>
                                 <div class="content-part">

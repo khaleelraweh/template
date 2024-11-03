@@ -1,3 +1,7 @@
 .full-width-header .rs-header .topbar-area .topbar-right li{
     margin-right: 14px;
 }
+.features-wrap .icon-part i{
+    font-size: 50px;
+    margin:0 20px 8px 0
+}
