@@ -52,7 +52,7 @@
             @endforelse
 
 
-            <div class="slider-content slide2">
+            {{-- <div class="slider-content slide2">
                 <div class="container">
                     <div class="content-part">
                         <div class="sl-sub-title wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">
@@ -64,29 +64,36 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Features Section start -->
         <div id="rs-features" class="rs-features main-home">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-4 col-md-12 md-mb-30">
-                        <div class="features-wrap">
-                            <div class="icon-part">
-                                <img src="{{ asset('frontend/images/features/icon/3.png') }}" alt="">
-                            </div>
-                            <div class="content-part">
-                                <h4 class="title">
-                                    <span class="watermark">5,320 online courses</span>
-                                </h4>
-                                <p class="dese">
-                                    Enjoy a variety of fresh topics
-                                </p>
+
+                    @foreach ($main_sliders->where('section', 2)->take(3) as $adv_slider)
+                        <div class="col-lg-4 col-md-12 md-mb-30 ">
+                            <div class="features-wrap ">
+
+                                <div class="icon-part">
+                                    <i class="{{ $adv_slider->icon }}" style="font-size: 50px;margin:0 35px 8px 0"></i>
+                                    {{-- <img src="{{ asset('frontend/images/features/icon/3.png') }}" alt=""> --}}
+                                </div>
+                                <div class="content-part">
+                                    <h4 class="title">
+                                        <span class="watermark">{{ $adv_slider->title }}</span>
+                                    </h4>
+                                    <p class="dese">
+                                        {{ $adv_slider->subtitle }}
+                                    </p>
+                                </div>
+
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 md-mb-30">
+                    @endforeach
+
+                    {{-- <div class="col-lg-4 col-md-12 md-mb-30">
                         <div class="features-wrap">
                             <div class="icon-part">
                                 <img src="{{ asset('frontend/images/features/icon/2.png') }}" alt="">
@@ -115,7 +122,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

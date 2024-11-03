@@ -28,7 +28,7 @@
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ar/bootstrap' . $rtl . '.min.css') }}">
     <!-- font-awesome css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/fontawesome/fontawesome.css') }}">
     <!-- animate css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/animate.css') }}">
     <!-- owl.carousel css -->
