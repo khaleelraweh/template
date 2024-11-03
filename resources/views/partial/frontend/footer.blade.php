@@ -40,7 +40,7 @@
                          @if ($siteSettings['site_facebook']->value)
                              <li>
                                  <a href="{{ $siteSettings['site_facebook']->value }}" target="_blank">
-                                     <span><i class="fab fa-facebook-f"></i></span>
+                                     <span><i class="fa fa-facebook-f"></i></span>
                                  </a>
                              </li>
                          @endif
@@ -48,7 +48,7 @@
                          @if ($siteSettings['site_youtube']->value)
                              <li>
                                  <a href="{{ $siteSettings['site_youtube']->value }}" target="_blank">
-                                     <span><i class="fab fa-youtube"></i></span>
+                                     <span><i class="fa fa-youtube"></i></span>
                                  </a>
                              </li>
                          @endif
@@ -56,7 +56,7 @@
                          @if ($siteSettings['site_twitter']->value)
                              <li>
                                  <a href="{{ $siteSettings['site_twitter']->value }}" target="_blank">
-                                     <span><i class="fab fa-twitter"></i></span>
+                                     <span><i class="fa fa-twitter"></i></span>
                                  </a>
                              </li>
                          @endif
@@ -64,7 +64,7 @@
                          @if ($siteSettings['site_instagram']->value)
                              <li>
                                  <a href="{{ $siteSettings['site_instagram']->value }}" target="_blank">
-                                     <span><i class="fab fa-instagram"></i></span>
+                                     <span><i class="fa fa-instagram"></i></span>
                                  </a>
                              </li>
                          @endif
