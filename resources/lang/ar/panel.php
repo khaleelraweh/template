@@ -1406,6 +1406,9 @@ return [
     'activities_update'                                 =>  'تحديث الفعاليات',
     'university_activities'                             =>  'فعاليات الجامعة',
 
+    'calendar_gregorian'                                =>  'م',
+    'calendar_hijri'                                    =>  'هـ',
+
 
 
 

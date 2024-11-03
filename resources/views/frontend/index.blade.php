@@ -114,7 +114,9 @@
                                 <div class="blog-content">
                                     <ul class="blog-meta">
                                         <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li>
-                                        <li><i class="fa fa-calendar"></i>{{ $news->created_at->format('Y/m/d') }}</li>
+                                        <li><i
+                                                class="fa fa-calendar"></i>{{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+                                        </li>
                                     </ul>
                                     <h3 class="title"><a href="blog-single.html">Education is The Process of Facilitating
                                             Learning</a></h3>

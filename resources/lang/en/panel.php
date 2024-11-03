@@ -1443,5 +1443,7 @@ return [
     'university_news'                                   =>  'University News',
     'activities_update'                                 =>  'Activities Update',
     'university_activities'                             =>  'University Activities',
+    'calendar_gregorian'                                =>  'AD',
+    'calendar_hijri'                                    =>  'AH',
 
 ];
