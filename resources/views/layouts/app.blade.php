@@ -71,11 +71,12 @@
 
 <body class="home-style2" dir="{{ $rtl == '-rtl' ? 'rtl' : 'ltr' }}">
 
+
     <!--Preloader area start here-->
-    <div id="loader" class="loader orange-color">
+    <div id="loader" class="loader">
         <div class="loader-container">
             <div class='loader-icon'>
-                <img src="{{ asset('frontend/images/pre-logo1.png') }}" alt="">
+                <img src="{{ asset('frontend/images/pre-logo-ibb.png') }}" alt="">
             </div>
         </div>
     </div>
