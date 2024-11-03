@@ -25,19 +25,28 @@
                     }
                 @endphp
                 <div class="slider-content slide1" style="background-image: url({{ $main_slider_img }})">
-                    <div class="container">
-                        <div class="content-part">
-                            <div class="sl-sub-title wow bounceInLeft" data-wow-delay="300ms" data-wow-duration="2000ms">
-                                {{ $main_slider->subtitle }}
+                    <div class="container" style="height: 100vh;">
+                        @if ($main_slider->show_info)
+                            <div class="content-part">
+                                <div class="sl-sub-title wow bounceInLeft" data-wow-delay="300ms"
+                                    data-wow-duration="2000ms">
+                                    {{ $main_slider->subtitle }}
+                                </div>
+                                <h1 class="sl-title wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">
+                                    {{ $main_slider->title }}
+                                </h1>
+                                @if ($main_slider->show_btn_title)
+                                    <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
+                                        <a class="readon orange-btn main-home"
+                                            href="{{ url($main_slider->btn_title) }}">{{ $main_slider->btn_title }}
+                                        </a>
+                                    </div>
+                                @endif
+
                             </div>
-                            <h1 class="sl-title wow fadeInRight" data-wow-delay="600ms" data-wow-duration="2000ms">
-                                {{ $main_slider->title }}
-                            </h1>
-                            <div class="sl-btn wow fadeInUp" data-wow-delay="900ms" data-wow-duration="2000ms">
-                                <a class="readon orange-btn main-home" href="#">Find Courses</a>
-                            </div>
-                        </div>
+                        @endif
                     </div>
+
                 </div>
             @empty
             @endforelse
