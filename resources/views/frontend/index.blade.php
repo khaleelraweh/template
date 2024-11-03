@@ -85,15 +85,21 @@
     <!-- Slider Section End -->
 
     <!-- Blog Section Start -->
-    {{-- <div id="rs-blog" class="rs-blog main-home pb-100 pt-100 md-pt-70 md-pb-70"> --}}
+    {{-- <div class="container"> --}}
     <div class="row">
         <div class="col-lg-7 col-md-12 ">
             <div id="rs-blog" class="rs-blog main-home pb-100 pt-100 md-pt-70 md-pb-70">
                 <div class="container">
-                    <div class="sec-title3 text-center mb-50">
-                        <div class="sub-title"> News Update</div>
-                        <h2 class="title"> Latest News & events</h2>
+                    {{-- <div class="sec-title3 text-center mb-50">
+                            <div class="sub-title"> News Update</div>
+                            <h2 class="title"> Latest News & events</h2>
+                        </div> --}}
+
+                    <div class="sec-title mb-60 md-mb-30 text-center">
+                        <div class="sub-title primary">News Update </div>
+                        <h2 class="title mb-0">Latest News & Events</h2>
                     </div>
+
                     <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
                         data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
                         data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false"
@@ -136,7 +142,8 @@
                                     <li><i class="fa fa-user-o"></i> Admin</li>
                                     <li><i class="fa fa-calendar"></i>October 15, 2020</li>
                                 </ul>
-                                <h3 class="title"><a href="blog-single.html">High school program starting soon 2021 </a>
+                                <h3 class="title"><a href="blog-single.html">High school program starting soon 2021
+                                    </a>
                                 </h3>
                                 <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
                                     Educational
@@ -162,7 +169,8 @@
                                     <li><i class="fa fa-user-o"></i> Admin</li>
                                     <li><i class="fa fa-calendar"></i>April 25, 2020</li>
                                 </ul>
-                                <h3 class="title"><a href="blog-single.html">Shutdown of schools extended to Aug 31 </a>
+                                <h3 class="title"><a href="blog-single.html">Shutdown of schools extended to Aug 31
+                                    </a>
                                 </h3>
                                 <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
                                     Educational
@@ -290,7 +298,8 @@
                                                 <li><i class="fa fa-user-o"></i> Admin</li>
                                                 <li><i class="fa fa-calendar"></i>June 15, 2019</li>
                                             </ul>
-                                            <h3 class="title"><a href="#">University while the lovely valley team
+                                            <h3 class="title"><a href="#">University while the lovely valley
+                                                    team
                                                     work </a></h3>
                                             <div class="btn-part">
                                                 <a class="readon-arrow" href="#">Read More</a>
@@ -399,8 +408,8 @@
         </div>
 
     </div>
-
     {{-- </div> --}}
+
     <!-- Blog Section End -->
 
     <!-- Categories Section Start -->
