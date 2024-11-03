@@ -31,7 +31,8 @@
                                          @foreach ($web_menus->where('section', 1) as $menu)
                                              <li
                                                  class=" {{ count($menu->appearedChildren) > 0 ? 'menu-item-has-children has-children' : '' }}">
-                                                 <a href="{{ $menu->link }}">{{ $menu->title }}</a>
+                                                 <a
+                                                     href="{{ count($menu->appearedChildren) > 0 ? 'javascript:void(0)' : $menu->link }}">{{ $menu->title }}</a>
                                                  @if (count($menu->appearedChildren) > 0)
                                                      <ul class="sub-menu">
                                                          @foreach ($menu->appearedChildren as $sub_menu)
