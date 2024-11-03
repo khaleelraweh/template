@@ -23,7 +23,8 @@
 
     <!-- favicon -->
     <link rel="apple-touch-icon" href="apple-touch-icon.html">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/fav-orange.png') }}">
+    {{-- <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/fav-orange.png') }}"> --}}
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/images/pre-logo-ibb.png') }}">
     <!-- Bootstrap v4.4.1 css -->
     {{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/ar/bootstrap' . $rtl . '.min.css') }}">
