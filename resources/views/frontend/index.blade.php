@@ -87,8 +87,7 @@
     <!-- Blog Section Start -->
     {{-- <div id="rs-blog" class="rs-blog main-home pb-100 pt-100 md-pt-70 md-pb-70"> --}}
     <div class="row">
-        <div class="col-sm-12 col-md-5"></div>
-        <div class="col-sm-12 col-md-7">
+        <div class="col-lg-7 col-md-12 ">
             <div id="rs-blog" class="rs-blog main-home pb-100 pt-100 md-pt-70 md-pb-70">
                 <div class="container">
                     <div class="sec-title3 text-center mb-50">
@@ -264,6 +263,140 @@
                 </div>
             </div>
         </div>
+        <div class="col-lg-5 col-md-12 ">
+
+            <!-- Section bg Wrap 2 start -->
+            <div class="bg2">
+                <!-- Blog Section Start -->
+                <div id="rs-blog" class="rs-blog style1 pt-94 pb-100 md-pt-64 md-pb-70">
+                    <div class="container">
+                        <div class="sec-title mb-60 md-mb-30 text-center">
+                            <div class="sub-title primary">News Update </div>
+                            <h2 class="title mb-0">Latest News & Events</h2>
+                        </div>
+                        <div class="row">
+                            {{-- <div class="col-lg-12 col-md-12 pr-75 md-pr-15 md-mb-50">
+                                <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
+                                    data-wow-delay="300ms" data-wow-duration="2000ms">
+                                    <div class="col-md-6">
+                                        <div class="image-part">
+                                            <a href="#"><img src="{{ asset('frontend/images/blog/1.jpg') }}"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="blog-content">
+                                            <ul class="blog-meta">
+                                                <li><i class="fa fa-user-o"></i> Admin</li>
+                                                <li><i class="fa fa-calendar"></i>June 15, 2019</li>
+                                            </ul>
+                                            <h3 class="title"><a href="#">University while the lovely valley team
+                                                    work </a></h3>
+                                            <div class="btn-part">
+                                                <a class="readon-arrow" href="#">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
+                                    data-wow-delay="400ms" data-wow-duration="2000ms">
+                                    <div class="col-md-6">
+                                        <div class="image-part">
+                                            <a href="#"><img src="{{ asset('frontend/images/blog/2.jpg') }}"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="blog-content">
+                                            <ul class="blog-meta">
+                                                <li><i class="fa fa-user-o"></i> Admin</li>
+                                                <li><i class="fa fa-calendar"></i>June 15, 2019</li>
+                                            </ul>
+                                            <h3 class="title"><a href="#">While The Lovely Valley Team Work</a>
+                                            </h3>
+                                            <div class="btn-part">
+                                                <a class="readon-arrow" href="#">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center no-gutter white-bg blog-item wow fadeInUp"
+                                    data-wow-delay="500ms" data-wow-duration="2000ms">
+                                    <div class="col-md-6">
+                                        <div class="image-part">
+                                            <a href="#"><img src="{{ asset('frontend/images/blog/3.jpg') }}"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="blog-content">
+                                            <ul class="blog-meta">
+                                                <li><i class="fa fa-user-o"></i> Admin</li>
+                                                <li><i class="fa fa-calendar"></i>June 15, 2019</li>
+                                            </ul>
+                                            <h3 class="title"><a href="#">Modern School The Lovely Valley Team
+                                                    Work</a></h3>
+                                            <div class="btn-part">
+                                                <a class="readon-arrow" href="#">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> --}}
+                            <div class="col-lg-12 ">
+                                <div class="events-short mb-30 wow fadeInUp" data-wow-delay="300ms"
+                                    data-wow-duration="2000ms">
+                                    <div class="date-part">
+                                        <span class="month">June</span>
+                                        <div class="date">20</div>
+                                    </div>
+                                    <div class="content-part">
+                                        <div class="categorie">
+                                            <a href="#">Math</a> & <a href="#">English</a>
+                                        </div>
+                                        <h4 class="title mb-0"><a href="#">Educational Technology and Mobile
+                                                Learning</a></h4>
+                                    </div>
+                                </div>
+                                <div class="events-short mb-30 wow fadeInUp" data-wow-delay="400ms"
+                                    data-wow-duration="2000ms">
+                                    <div class="date-part">
+                                        <span class="month">June</span>
+                                        <div class="date">21</div>
+                                    </div>
+                                    <div class="content-part">
+                                        <div class="categorie">
+                                            <a href="#">Math</a> & <a href="#">English</a>
+                                        </div>
+                                        <h4 class="title mb-0"><a href="#">Educational Technology and Mobile
+                                                Learning</a></h4>
+                                    </div>
+                                </div>
+                                <div class="events-short  wow fadeInUp" data-wow-delay="500ms"
+                                    data-wow-duration="2000ms">
+                                    <div class="date-part">
+                                        <span class="month">June</span>
+                                        <div class="date">22</div>
+                                    </div>
+                                    <div class="content-part">
+                                        <div class="categorie">
+                                            <a href="#">Math</a> & <a href="#">English</a>
+                                        </div>
+                                        <h4 class="title mb-0"><a href="#">Educational Technology and Mobile
+                                                Learning</a></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Section End -->
+
+
+            </div>
+            <!-- Section bg Wrap 2 End -->
+        </div>
+
     </div>
 
     {{-- </div> --}}
