@@ -22,7 +22,7 @@
                             <ul class="topbar-right">
                                 <li class="login-register">
                                     <i class="fa fa-sign-in"></i>
-                                    <a href="login.html">Login</a>/<a href="register.html">Register</a>
+                                    <a href="{{ route('admin.login') }}">{{ __('panel.f_login') }}</a>
                                 </li>
                                 <li class="btn-part">
                                     <a class="apply-btn" href="#">Apply Now</a>
