@@ -1400,6 +1400,11 @@ return [
 
 
 
+    // new work in in university 
+    'news_update'                                       =>  'تحديث الأخبار',
+    'university_news'                                   =>  'أخبار الجامعة',
+    'activities_update'                                 =>  'تحديث الفعاليات',
+    'university_activities'                             =>  'فعاليات الجامعة',
 
 
 

@@ -96,8 +96,8 @@
                         </div> --}}
 
                     <div class="sec-title mb-60 md-mb-30 text-center">
-                        <div class="sub-title primary">News Update </div>
-                        <h2 class="title mb-0">Latest News & Events</h2>
+                        <div class="sub-title primary">{{ __('panel.news_update') }}</div>
+                        <h2 class="title mb-0">{{ __('panel.university_news') }}</h2>
                     </div>
 
                     <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
@@ -279,8 +279,8 @@
                 <div id="rs-blog" class="rs-blog style1 pt-94 pb-100 md-pt-64 md-pb-70">
                     <div class="container">
                         <div class="sec-title mb-60 md-mb-30 text-center">
-                            <div class="sub-title primary">News Update </div>
-                            <h2 class="title mb-0">Latest News & Events</h2>
+                            <div class="sub-title primary">{{ __('panel.activities_update') }} </div>
+                            <h2 class="title mb-0">{{ __('panel.university_activities') }}</h2>
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 pr-75 md-pr-15 md-mb-50">

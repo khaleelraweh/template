@@ -1436,4 +1436,12 @@ return [
     'Image_show_in_blog_single'                     =>  'Image Show in blog single',
 
 
+
+
+    // new work in in university 
+    'news_update'                                       =>  'News Update',
+    'university_news'                                   =>  'University News',
+    'activities_update'                                 =>  'Activities Update',
+    'university_activities'                             =>  'University Activities',
+
 ];
