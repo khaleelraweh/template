@@ -38,20 +38,21 @@
                      </div>
                      <ul class="footer_social">
                          <li>
-                             <a href="#" target="_blank"><span><i class="fa fa-facebook"></i></span></a>
+                             <a href="#" target="_blank"><span><i class="fab fa-facebook-f"></i></span></a>
                          </li>
                          <li>
-                             <a href="# " target="_blank"><span><i class="fa fa-twitter"></i></span></a>
+                             <a href="# " target="_blank"><span><i class="fab fa-twitter"></i></span></a>
                          </li>
 
                          <li>
-                             <a href="# " target="_blank"><span><i class="fa fa-pinterest-p"></i></span></a>
+                             <a href="# " target="_blank"><span><i class="fab fa-pinterest-p"></i></span></a>
                          </li>
                          <li>
-                             <a href="# " target="_blank"><span><i class="fa fa-google-plus-square"></i></span></a>
+                             <a href="# " target="_blank"><span><i
+                                         class="fab fa-google-plus-square"></i></span></a>
                          </li>
                          <li>
-                             <a href="# " target="_blank"><span><i class="fa fa-instagram"></i></span></a>
+                             <a href="# " target="_blank"><span><i class="fab fa-instagram"></i></span></a>
                          </li>
 
                      </ul>
