@@ -26,7 +26,7 @@ return new class extends Migration
             $table->json('metadata_keywords');
             // end SEO
 
-            $table->unsignedBigInteger('section')->default(1); // 1 post 2 news
+            $table->unsignedBigInteger('section')->default(1); // 1 post 2 news 3 advertisment
             $table->unsignedBigInteger('views')->default(0); // counting views
 
 
