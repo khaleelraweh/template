@@ -37,23 +37,37 @@
                              those who fail weakness.</p>
                      </div>
                      <ul class="footer_social">
-                         <li>
-                             <a href="#" target="_blank"><span><i class="fab fa-facebook-f"></i></span></a>
-                         </li>
-                         <li>
-                             <a href="# " target="_blank"><span><i class="fab fa-twitter"></i></span></a>
-                         </li>
+                         @if ($siteSettings['site_facebook']->value)
+                             <li>
+                                 <a href="{{ $siteSettings['site_facebook']->value }}" target="_blank">
+                                     <span><i class="fab fa-facebook-f"></i></span>
+                                 </a>
+                             </li>
+                         @endif
 
-                         <li>
-                             <a href="# " target="_blank"><span><i class="fab fa-pinterest-p"></i></span></a>
-                         </li>
-                         <li>
-                             <a href="# " target="_blank"><span><i
-                                         class="fab fa-google-plus-square"></i></span></a>
-                         </li>
-                         <li>
-                             <a href="# " target="_blank"><span><i class="fab fa-instagram"></i></span></a>
-                         </li>
+                         @if ($siteSettings['site_youtube']->value)
+                             <li>
+                                 <a href="{{ $siteSettings['site_youtube']->value }}" target="_blank">
+                                     <span><i class="fab fa-youtube"></i></span>
+                                 </a>
+                             </li>
+                         @endif
+
+                         @if ($siteSettings['site_twitter']->value)
+                             <li>
+                                 <a href="{{ $siteSettings['site_twitter']->value }}" target="_blank">
+                                     <span><i class="fab fa-twitter"></i></span>
+                                 </a>
+                             </li>
+                         @endif
+
+                         @if ($siteSettings['site_instagram']->value)
+                             <li>
+                                 <a href="{{ $siteSettings['site_instagram']->value }}" target="_blank">
+                                     <span><i class="fab fa-instagram"></i></span>
+                                 </a>
+                             </li>
+                         @endif
 
                      </ul>
                  </div>
