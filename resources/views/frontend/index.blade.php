@@ -112,21 +112,34 @@
                                     <img src="{{ asset('frontend/images/blog/style2/1.jpg') }}" alt="">
                                 </div>
                                 <div class="blog-content">
+
                                     <ul class="blog-meta">
-                                        <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li>
-                                        <li><i
-                                                class="fa fa-calendar"></i>{{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+                                        {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
+                                        <li>
+                                            <?php
+                                            $date = $news->created_at;
+                                            $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                            ?>
+                                            <i class="fa fa-calendar"></i>
+                                            {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+                                            <span>الموافق </span>
+                                            {{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
                                         </li>
+
                                     </ul>
+
                                     <h3 class="title"><a href="blog-single.html">Education is The Process of Facilitating
                                             Learning</a></h3>
+
                                     <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
                                         Educational
                                         methods include teach ing, training, storytelling</div>
                                     <div class="btn-btm">
                                         <div class="cat-list">
                                             <ul class="post-categories">
-                                                <li><a href="#">College</a></li>
+                                                {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
+                                                <li><a href="#">{{ $news->created_by }}</a></li>
                                             </ul>
                                         </div>
                                         <div class="rs-view-btn">

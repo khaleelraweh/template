@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "alkoumi/laravel-hijri-date": "^1.0",
         "barryvdh/laravel-debugbar": "^3.9",
         "codezero/laravel-unique-translation": "^4.3",
         "cviebrock/eloquent-sluggable": "^9.0",

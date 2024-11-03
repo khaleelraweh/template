@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'ar',//en
+    'locale' => 'ar', //en
 
     /*
     |--------------------------------------------------------------------------
@@ -108,7 +108,7 @@ return [
     |
     */
 
-    'faker_locale' => 'ar_SA',//en_US
+    'faker_locale' => 'ar_SA', //en_US
 
     /*
     |--------------------------------------------------------------------------
@@ -168,7 +168,9 @@ return [
          * Package Service Providers...
          */
 
-         Mindscms\Entrust\EntrustServiceProvider::class,
+        Mindscms\Entrust\EntrustServiceProvider::class,
+        Alkoumi\LaravelHijriDate\LaravelHijriDateServiceProvider::class,
+
 
         /*
          * Application Service Providers...
@@ -181,7 +183,7 @@ return [
 
         //This provider is related to my redis to upload data to cache using redis cache
         App\Providers\ViewServiceProvider::class,
-        
+
 
     ],
 

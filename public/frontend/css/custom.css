@@ -27,3 +27,7 @@
 .rs-blog.style1 .blog-item .image-part{
     padding-left: 14px;
 }
+
+.rs-blog.main-home .blog-item .blog-content .btn-btm .cat-list .post-categories:before{
+    content: "\f007";
+}
