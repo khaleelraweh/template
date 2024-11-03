@@ -25,7 +25,7 @@
                     }
                 @endphp
                 <div class="slider-content slide1" style="background-image: url({{ $main_slider_img }})">
-                    <div class="container" style="height: 100vh;">
+                    <div class="container" style="height: 150vh;">
                         @if ($main_slider->show_info)
                             <div class="content-part">
                                 <div class="sl-sub-title wow bounceInLeft" data-wow-delay="300ms"
