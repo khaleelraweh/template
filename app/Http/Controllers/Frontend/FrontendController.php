@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutInstatute;
+use App\Models\Event;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Slider;
@@ -13,19 +14,16 @@ class FrontendController extends Controller
 {
     public function index()
     {
-
-        $main_sliders = Slider::with('firstMedia')
-            ->orderBy('published_on', 'desc')
-            ->Active()
-            ->take(
-                8
-            )
-            ->get();
+        $main_sliders = Slider::with('firstMedia')->orderBy('published_on', 'desc')->Active()->take(8)->get();
 
         $posts = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->get();
+        $news = Post::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->get();
+        $Advertisements = Post::with('photos')->where('section', 3)->orderBy('created_at', 'ASC')->get();
+
+        $events = Event::with('photos')->orderBy('created_at', 'ASC')->get();
 
 
-        return view('frontend.index', compact('main_sliders',  'posts'));
+        return view('frontend.index', compact('main_sliders',  'posts', 'news', 'Advertisements', 'events'));
     }
 
 

@@ -94,7 +94,6 @@
                             <div class="sub-title"> News Update</div>
                             <h2 class="title"> Latest News & events</h2>
                         </div> --}}
-
                     <div class="sec-title mb-60 md-mb-30 text-center">
                         <div class="sub-title primary">{{ __('panel.news_update') }}</div>
                         <h2 class="title mb-0">{{ __('panel.university_news') }}</h2>
@@ -107,33 +106,36 @@
                         data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
                         data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
                         data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
-                        <div class="blog-item">
-                            <div class="image-part">
-                                <img src="{{ asset('frontend/images/blog/style2/1.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user-o"></i> Admin</li>
-                                    <li><i class="fa fa-calendar"></i>December 15, 2020</li>
-                                </ul>
-                                <h3 class="title"><a href="blog-single.html">Education is The Process of Facilitating
-                                        Learning</a></h3>
-                                <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
-                                    Educational
-                                    methods include teach ing, training, storytelling</div>
-                                <div class="btn-btm">
-                                    <div class="cat-list">
-                                        <ul class="post-categories">
-                                            <li><a href="#">College</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="rs-view-btn">
-                                        <a href="#">Read More</a>
+                        @foreach ($news as $news)
+                            <div class="blog-item">
+                                <div class="image-part">
+                                    <img src="{{ asset('frontend/images/blog/style2/1.jpg') }}" alt="">
+                                </div>
+                                <div class="blog-content">
+                                    <ul class="blog-meta">
+                                        <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li>
+                                        <li><i class="fa fa-calendar"></i>{{ $news->created_at->format('Y/m/d') }}</li>
+                                    </ul>
+                                    <h3 class="title"><a href="blog-single.html">Education is The Process of Facilitating
+                                            Learning</a></h3>
+                                    <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
+                                        Educational
+                                        methods include teach ing, training, storytelling</div>
+                                    <div class="btn-btm">
+                                        <div class="cat-list">
+                                            <ul class="post-categories">
+                                                <li><a href="#">College</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="rs-view-btn">
+                                            <a href="#">Read More</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="blog-item">
+                        @endforeach
+
+                        {{-- <div class="blog-item">
                             <div class="image-part">
                                 <img src="{{ asset('frontend/images/blog/style2/2.jpg') }}" alt="">
                             </div>
@@ -266,13 +268,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 col-md-12 ">
 
+        <div class="col-lg-5 col-md-12 ">
             <!-- Section bg Wrap 2 start -->
             <div class="bg2">
                 <!-- Blog Section Start -->
@@ -352,51 +354,6 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="col-lg-12 ">
-                                <div class="events-short mb-30 wow fadeInUp" data-wow-delay="300ms"
-                                    data-wow-duration="2000ms">
-                                    <div class="date-part">
-                                        <span class="month">June</span>
-                                        <div class="date">20</div>
-                                    </div>
-
-                                    <div class="content-part">
-                                        <div class="categorie">
-                                            <a href="#">Math</a> & <a href="#">English</a>
-                                        </div>
-                                        <h4 class="title mb-0"><a href="#">Educational Technology and Mobile
-                                                Learning</a></h4>
-                                    </div>
-                                </div>
-                                <div class="events-short mb-30 wow fadeInUp" data-wow-delay="400ms"
-                                    data-wow-duration="2000ms">
-                                    <div class="date-part">
-                                        <span class="month">June</span>
-                                        <div class="date">21</div>
-                                    </div>
-                                    <div class="content-part">
-                                        <div class="categorie">
-                                            <a href="#">Math</a> & <a href="#">English</a>
-                                        </div>
-                                        <h4 class="title mb-0"><a href="#">Educational Technology and Mobile
-                                                Learning</a></h4>
-                                    </div>
-                                </div>
-                                <div class="events-short  wow fadeInUp" data-wow-delay="500ms"
-                                    data-wow-duration="2000ms">
-                                    <div class="date-part">
-                                        <span class="month">June</span>
-                                        <div class="date">22</div>
-                                    </div>
-                                    <div class="content-part">
-                                        <div class="categorie">
-                                            <a href="#">Math</a> & <a href="#">English</a>
-                                        </div>
-                                        <h4 class="title mb-0"><a href="#">Educational Technology and Mobile
-                                                Learning</a></h4>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>

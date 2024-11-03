@@ -78,7 +78,9 @@
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $new->created_at->format('Y/m/d') }}
+                                    {{-- {{ $new->created_at->format('Y/m/d') }} --}}
+                                    {{ \Carbon\Carbon::parse($new->created_at)->diffForHumans() }}
+
                                 </td>
 
                                 <td>
