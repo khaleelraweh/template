@@ -133,8 +133,8 @@ return [
     'btn_recover_password'                          =>  'RECOVER PASSWORD',
     'txt_remember_your_password'                    =>  'Remember your password?',
 
-    'lang_en'                                       =>  'English',
-    'lang_ar'                                       =>  'Arabic',
+    'lang_en'                                       =>  'الإنجليزية',
+    'lang_ar'                                       =>  'العربية',
     'lang_ca'                                       =>  'Spain',
 
     'txt_all_courses'                                   =>  'All Courses',

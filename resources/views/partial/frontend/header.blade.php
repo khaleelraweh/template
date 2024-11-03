@@ -141,6 +141,22 @@
                                             </a>
                                         </li>
 
+                                        @foreach (config('locales.languages') as $key => $val)
+                                            @if ($key != app()->getLocale())
+                                                <li class="lang-item">
+
+                                                    <a href="{{ route('change.language', $key) }}">
+                                                        {{-- <span>
+                                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }}"
+                                                                title="{{ $key == 'ar' ? 'ye' : 'us' }}"
+                                                                id="{{ $key == 'ar' ? 'ye' : 'us' }}"></i>
+                                                        </span> --}}
+                                                        {{ __('transf.lang_' . $val['lang']) }}
+                                                    </a>
+                                                </li>
+                                            @endif
+                                        @endforeach
+
                                     </ul>
                                     <a id="nav-expander" class="nav-expander style3">
                                         <span class="dot1"></span>

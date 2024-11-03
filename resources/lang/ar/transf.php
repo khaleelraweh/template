@@ -133,8 +133,8 @@ return [
     'btn_recover_password'                          =>  'إستعادة كلمة المرور',
     'txt_remember_your_password'                    =>  'تذكرت كلمة المرور الخاصة بك؟',
 
-    'lang_en'                                       =>  'الإنجليزية',
-    'lang_ar'                                       =>  'العربية',
+    'lang_en'                                       =>  'English',
+    'lang_ar'                                       =>  'Arabic',
     'lang_ca'                                       =>  'الاسبانية',
 
     'txt_all_courses'                                   =>  'كل الدورات',
