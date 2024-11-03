@@ -1409,6 +1409,10 @@ return [
     'calendar_gregorian'                                =>  'م',
     'calendar_hijri'                                    =>  'هـ',
 
+    'read_more'                                         =>  'إقراء اكثر',
+    'read_less'                                         =>  'إقراء اقل',
+    'corresponding_to'                                  =>  'الموافق',
+
 
 
 

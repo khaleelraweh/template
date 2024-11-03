@@ -109,7 +109,25 @@
                         @foreach ($news as $news)
                             <div class="blog-item">
                                 <div class="image-part">
-                                    <img src="{{ asset('frontend/images/blog/style2/1.jpg') }}" alt="">
+                                    @php
+                                        if (
+                                            $news->photos->first() != null &&
+                                            $news->photos->first()->file_name != null
+                                        ) {
+                                            $news_img = asset('assets/news/' . $news->photos->first()->file_name);
+
+                                            if (
+                                                !file_exists(
+                                                    public_path('assets/news/' . $news->photos->first()->file_name),
+                                                )
+                                            ) {
+                                                $news_img = asset('image/not_found/item_image_not_found.webp');
+                                            }
+                                        } else {
+                                            $news_img = asset('image/not_found/item_image_not_found.webp');
+                                        }
+                                    @endphp
+                                    <img src="{{ $news_img }}" alt="">
                                 </div>
                                 <div class="blog-content">
 
@@ -122,19 +140,22 @@
                                             ?>
                                             <i class="fa fa-calendar"></i>
                                             {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
-                                            <span>الموافق </span>
+                                            <span>{{ __('panel.corresponding_to') }} </span>
                                             {{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
 
                                         </li>
 
                                     </ul>
 
-                                    <h3 class="title"><a href="blog-single.html">Education is The Process of Facilitating
-                                            Learning</a></h3>
+                                    <h3 class="title">
+                                        <a href="blog-single.html">
+                                            {!! $news->title !!}
+                                        </a>
+                                    </h3>
 
-                                    <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
-                                        Educational
-                                        methods include teach ing, training, storytelling</div>
+                                    <div class="desc">
+                                        {!! $news->content !!}
+                                    </div>
                                     <div class="btn-btm">
                                         <div class="cat-list">
                                             <ul class="post-categories">
@@ -143,147 +164,12 @@
                                             </ul>
                                         </div>
                                         <div class="rs-view-btn">
-                                            <a href="#">Read More</a>
+                                            <a href="#">{{ __('panel.read_more') }}</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
-
-                        {{-- <div class="blog-item">
-                            <div class="image-part">
-                                <img src="{{ asset('frontend/images/blog/style2/2.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user-o"></i> Admin</li>
-                                    <li><i class="fa fa-calendar"></i>October 15, 2020</li>
-                                </ul>
-                                <h3 class="title"><a href="blog-single.html">High school program starting soon 2021
-                                    </a>
-                                </h3>
-                                <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
-                                    Educational
-                                    methods include teach ing, training, storytelling</div>
-                                <div class="btn-btm">
-                                    <div class="cat-list">
-                                        <ul class="post-categories">
-                                            <li><a href="#">College</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="rs-view-btn">
-                                        <a href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-item">
-                            <div class="image-part">
-                                <img src="{{ asset('frontend/images/blog/style2/3.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user-o"></i> Admin</li>
-                                    <li><i class="fa fa-calendar"></i>April 25, 2020</li>
-                                </ul>
-                                <h3 class="title"><a href="blog-single.html">Shutdown of schools extended to Aug 31
-                                    </a>
-                                </h3>
-                                <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
-                                    Educational
-                                    methods include teach ing, training, storytelling</div>
-                                <div class="btn-btm">
-                                    <div class="cat-list">
-                                        <ul class="post-categories">
-                                            <li><a href="#">College</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="rs-view-btn">
-                                        <a href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-item">
-                            <div class="image-part">
-                                <img src="{{ asset('frontend/images/blog/style2/4.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user-o"></i> Admin</li>
-                                    <li><i class="fa fa-calendar"></i>June 20, 2010</li>
-                                </ul>
-                                <h3 class="title"><a href="blog-single.html">This is a great source of content for
-                                        anyone…
-                                    </a></h3>
-                                <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
-                                    Educational
-                                    methods include teach ing, training, storytelling</div>
-                                <div class="btn-btm">
-                                    <div class="cat-list">
-                                        <ul class="post-categories">
-                                            <li><a href="#">College</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="rs-view-btn">
-                                        <a href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-item">
-                            <div class="image-part">
-                                <img src="{{ asset('frontend/images/blog/style2/5.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user-o"></i> Admin</li>
-                                    <li><i class="fa fa-calendar"></i>August 30, 2020</li>
-                                </ul>
-                                <h3 class="title"><a href="blog-single.html">Pandemic drives millions from Latin
-                                        America’s</a></h3>
-                                <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
-                                    Educational
-                                    methods include teach ing, training, storytelling</div>
-                                <div class="btn-btm">
-                                    <div class="cat-list">
-                                        <ul class="post-categories">
-                                            <li><a href="#">College</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="rs-view-btn">
-                                        <a href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-item">
-                            <div class="image-part">
-                                <img src="{{ asset('frontend/images/blog/style2/6.jpg') }}" alt="">
-                            </div>
-                            <div class="blog-content">
-                                <ul class="blog-meta">
-                                    <li><i class="fa fa-user-o"></i> Admin</li>
-                                    <li><i class="fa fa-calendar"></i>May 10, 2020</li>
-                                </ul>
-                                <h3 class="title"><a href="blog-single.html">Modern School the lovely valley team
-                                        work</a>
-                                </h3>
-                                <div class="desc">the acquisition of knowledge, skills, values befs, and habits.
-                                    Educational
-                                    methods include teach ing, training, storytelling</div>
-                                <div class="btn-btm">
-                                    <div class="cat-list">
-                                        <ul class="post-categories">
-                                            <li><a href="#">College</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="rs-view-btn">
-                                        <a href="#">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -301,30 +187,73 @@
                         </div>
                         <div class="row">
                             <div class="col-lg-12 col-md-12 pr-75 md-pr-15 md-mb-50">
-                                <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
-                                    data-wow-delay="300ms" data-wow-duration="2000ms">
-                                    <div class="col-md-4">
-                                        <div class="image-part">
-                                            <a href="#"><img src="{{ asset('frontend/images/blog/1.jpg') }}"
-                                                    alt=""></a>
+                                @foreach ($events as $index => $event)
+                                    <div class="row align-items-center no-gutter white-bg blog-item {{ $loop->last ? '' : 'mb-30' }} wow fadeInUp"
+                                        data-wow-delay="{{ ($index + 1) * 100 }}ms" data-wow-duration="2000ms">
+                                        <div class="col-md-4">
+                                            <div class="image-part">
+                                                @php
+                                                    if (
+                                                        $event->photos->first() != null &&
+                                                        $event->photos->first()->file_name != null
+                                                    ) {
+                                                        $event_img = asset(
+                                                            'assets/events/' . $event->photos->first()->file_name,
+                                                        );
+
+                                                        if (
+                                                            !file_exists(
+                                                                public_path(
+                                                                    'assets/events/' .
+                                                                        $event->photos->first()->file_name,
+                                                                ),
+                                                            )
+                                                        ) {
+                                                            $event_img = asset(
+                                                                'image/not_found/item_image_not_found.webp',
+                                                            );
+                                                        }
+                                                    } else {
+                                                        $event_img = asset('image/not_found/item_image_not_found.webp');
+                                                    }
+                                                @endphp
+                                                <a href="#">
+                                                    <img src="{{ $event_img }}" alt="">
+                                                </a>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="blog-content">
-                                            <ul class="blog-meta">
-                                                <li><i class="fa fa-user-o"></i> Admin</li>
-                                                <li><i class="fa fa-calendar"></i>June 15, 2019</li>
-                                            </ul>
-                                            <h3 class="title"><a href="#">University while the lovely valley
-                                                    team
-                                                    work </a></h3>
-                                            <div class="btn-part">
-                                                <a class="readon-arrow" href="#">Read More</a>
+                                        <div class="col-md-8">
+                                            <div class="blog-content">
+                                                <ul class="blog-meta">
+                                                    <li><i class="fa fa-user-o"></i> {{ $event->created_by }}</li>
+
+                                                    <li>
+                                                        <?php
+                                                        $date = $event->created_at;
+                                                        $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                        ?>
+                                                        <i class="fa fa-calendar"></i>
+                                                        {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+                                                        <span>{{ __('panel.corresponding_to') }} </span>
+                                                        {{ $event->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+                                                    </li>
+                                                </ul>
+                                                <h3 class="title">
+                                                    <a href="#">
+                                                        {{ $event->title }}
+                                                    </a>
+                                                </h3>
+                                                <div class="btn-part">
+                                                    <a class="readon-arrow"
+                                                        href="#">{{ __('panel.read_more') }}</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
+                                @endforeach
+
+                                {{-- <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
                                     data-wow-delay="400ms" data-wow-duration="2000ms">
                                     <div class="col-md-4">
                                         <div class="image-part">
@@ -346,6 +275,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="row align-items-center no-gutter white-bg blog-item wow fadeInUp"
                                     data-wow-delay="500ms" data-wow-duration="2000ms">
                                     <div class="col-md-4">
@@ -367,7 +297,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

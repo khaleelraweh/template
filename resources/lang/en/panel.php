@@ -1445,5 +1445,8 @@ return [
     'university_activities'                             =>  'University Activities',
     'calendar_gregorian'                                =>  'AD',
     'calendar_hijri'                                    =>  'AH',
+    'read_more'                                         =>  'Read More',
+    'read_less'                                         =>  'Read Less',
+    'corresponding_to'                                  =>  'cor. to',
 
 ];
