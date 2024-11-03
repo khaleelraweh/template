@@ -69,7 +69,7 @@
 
 </head>
 
-<body class="theme-frist" dir="{{ $rtl == '-rtl' ? 'rtl' : 'ltr' }}">
+<body class="home-style2" dir="{{ $rtl == '-rtl' ? 'rtl' : 'ltr' }}">
 
     <!--Preloader area start here-->
     <div id="loader" class="loader orange-color">
