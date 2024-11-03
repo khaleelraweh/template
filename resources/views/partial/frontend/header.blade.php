@@ -49,11 +49,12 @@
                                     </a>
                                 </div>
 
+
                             </div>
                         </div>
                         <div class="col-lg-9 text-center">
                             <div class="rs-menu-area">
-                                <div class="main-menu">
+                                <div class="main-menu ">
                                     <div class="mobile-menu">
                                         <a class="rs-menu-toggle">
                                             <i class="fa fa-bars"></i>
@@ -92,7 +93,7 @@
                                         </ul> <!-- //.nav-menu -->
                                     </nav>
                                 </div> <!-- //.main-menu -->
-                                <div class="expand-btn-inner">
+                                <div class="expand-btn-inner pl-90">
                                     <ul>
                                         <li>
                                             <a class="hidden-xs rs-search short-border" data-target=".search-modal"
@@ -100,56 +101,7 @@
                                                 <i class="flaticon-search"></i>
                                             </a>
                                         </li>
-                                        <li class="icon-bar cart-inner no-border mini-cart-active">
-                                            <a class="cart-icon">
-                                                <!-- <span class="cart-count">2</span> -->
-                                                <i class="flaticon-bag"></i>
-                                            </a>
-                                            <div class="woocommerce-mini-cart text-left">
-                                                <div class="cart-bottom-part">
-                                                    <ul class="cart-icon-product-list">
-                                                        <li class="display-flex">
-                                                            <div class="icon-cart">
-                                                                <a href="#"><i class="fa fa-times"></i></a>
-                                                            </div>
-                                                            <div class="product-info">
-                                                                <a href="cart.html">Law Book</a><br>
-                                                                <span class="quantity">1 × $30.00</span>
-                                                            </div>
-                                                            <div class="product-image">
-                                                                <a href="cart.html"><img
-                                                                        src="{{ asset('frontend/images/shop/1.jpg') }}"
-                                                                        alt="Product Image"></a>
-                                                            </div>
-                                                        </li>
-                                                        <li class="display-flex">
-                                                            <div class="icon-cart">
-                                                                <a href="#"><i class="fa fa-times"></i></a>
-                                                            </div>
-                                                            <div class="product-info">
-                                                                <a href="cart.html">Spirit Level</a><br>
-                                                                <span class="quantity">1 × $30.00</span>
-                                                            </div>
-                                                            <div class="product-image">
-                                                                <a href="cart.html"><img
-                                                                        src="{{ asset('frontend/images/shop/2.jpg') }}"
-                                                                        alt="Product Image"></a>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
 
-                                                    <div class="total-price text-center">
-                                                        <span class="subtotal">Subtotal:</span>
-                                                        <span class="current-price">$85.00</span>
-                                                    </div>
-
-                                                    <div class="cart-btn text-center">
-                                                        <a class="crt-btn btn1" href="cart.html">View Cart</a>
-                                                        <a class="crt-btn btn2" href="checkout.html">Check Out</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
                                     </ul>
                                     <a id="nav-expander" class="nav-expander style3">
                                         <span class="dot1"></span>

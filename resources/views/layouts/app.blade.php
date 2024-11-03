@@ -55,7 +55,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style' . $rtl . '.css') }}">
     <!-- This stylesheet dynamically changed from style.less -->
     <!-- responsive css -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/responsive' . $rtl . '.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/vendors/flag-icon-css/css/flag-icon.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/custom' . $rtl . '.css') }}">
 
