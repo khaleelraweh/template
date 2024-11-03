@@ -10,11 +10,15 @@
                             <ul class="topbar-contact">
                                 <li>
                                     <i class="flaticon-email"></i>
-                                    <a href="mailto:support@rstheme.com">support@rstheme.com</a>
+                                    <a
+                                        href="mailto:{{ $siteSettings['site_email1']->value ?? '' }}">{{ $siteSettings['site_email1']->value ?? '' }}</a>
                                 </li>
                                 <li>
                                     <i class="flaticon-call"></i>
-                                    <a href="tel:+088589-8745">(+088) 589-8745</a>
+                                    <a href="tel:+088589-8745">{{ $siteSettings['site_mobile']->value ?? '' }}</a>
+
+                                    <i class="flaticon-phone"></i>
+                                    <a href="tel:+088589-8745">{{ $siteSettings['site_phone']->value ?? '' }}</a>
                                 </li>
                             </ul>
                         </div>
@@ -24,9 +28,44 @@
                                     <i class="fa fa-sign-in"></i>
                                     <a href="{{ route('admin.login') }}">{{ __('panel.f_login') }}</a>
                                 </li>
-                                <li class="btn-part">
+
+                                @if ($siteSettings['site_facebook']->value)
+                                    <li>
+                                        <a href="{{ $siteSettings['site_facebook']->value }}" target="_blank">
+                                            <span><i class="fab fa-facebook-f"></i></span>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if ($siteSettings['site_youtube']->value)
+                                    <li>
+                                        <a href="{{ $siteSettings['site_youtube']->value }}" target="_blank">
+                                            <span><i class="fab fa-youtube"></i></span>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if ($siteSettings['site_twitter']->value)
+                                    <li>
+                                        <a href="{{ $siteSettings['site_twitter']->value }}" target="_blank">
+                                            <span><i class="fab fa-twitter"></i></span>
+                                        </a>
+                                    </li>
+                                @endif
+
+                                @if ($siteSettings['site_instagram']->value)
+                                    <li>
+                                        <a href="{{ $siteSettings['site_instagram']->value }}" target="_blank">
+                                            <span><i class="fab fa-instagram"></i></span>
+                                        </a>
+                                    </li>
+                                @endif
+
+
+
+                                {{-- <li class="btn-part">
                                     <a class="apply-btn" href="#">Apply Now</a>
-                                </li>
+                                </li> --}}
                             </ul>
                         </div>
                     </div>
