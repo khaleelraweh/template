@@ -5,3 +5,8 @@
     font-size: 50px;
     margin:0 20px 8px 0
 }
+
+.owl-carousel .owl-item img{
+    width: 100%;
+}
+
