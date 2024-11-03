@@ -275,16 +275,16 @@
                             <h2 class="title mb-0">Latest News & Events</h2>
                         </div>
                         <div class="row">
-                            {{-- <div class="col-lg-12 col-md-12 pr-75 md-pr-15 md-mb-50">
+                            <div class="col-lg-12 col-md-12 pr-75 md-pr-15 md-mb-50">
                                 <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
                                     data-wow-delay="300ms" data-wow-duration="2000ms">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="image-part">
                                             <a href="#"><img src="{{ asset('frontend/images/blog/1.jpg') }}"
                                                     alt=""></a>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="blog-content">
                                             <ul class="blog-meta">
                                                 <li><i class="fa fa-user-o"></i> Admin</li>
@@ -300,13 +300,13 @@
                                 </div>
                                 <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
                                     data-wow-delay="400ms" data-wow-duration="2000ms">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="image-part">
                                             <a href="#"><img src="{{ asset('frontend/images/blog/2.jpg') }}"
                                                     alt=""></a>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="blog-content">
                                             <ul class="blog-meta">
                                                 <li><i class="fa fa-user-o"></i> Admin</li>
@@ -322,13 +322,13 @@
                                 </div>
                                 <div class="row align-items-center no-gutter white-bg blog-item wow fadeInUp"
                                     data-wow-delay="500ms" data-wow-duration="2000ms">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="image-part">
                                             <a href="#"><img src="{{ asset('frontend/images/blog/3.jpg') }}"
                                                     alt=""></a>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <div class="blog-content">
                                             <ul class="blog-meta">
                                                 <li><i class="fa fa-user-o"></i> Admin</li>
@@ -342,14 +342,15 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div> --}}
-                            <div class="col-lg-12 ">
+                            </div>
+                            {{-- <div class="col-lg-12 ">
                                 <div class="events-short mb-30 wow fadeInUp" data-wow-delay="300ms"
                                     data-wow-duration="2000ms">
                                     <div class="date-part">
                                         <span class="month">June</span>
                                         <div class="date">20</div>
                                     </div>
+
                                     <div class="content-part">
                                         <div class="categorie">
                                             <a href="#">Math</a> & <a href="#">English</a>
@@ -386,7 +387,7 @@
                                                 Learning</a></h4>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

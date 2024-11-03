@@ -10,3 +10,23 @@
 .owl-carousel .owl-item img{
     width: 100%;
 }
+
+
+
+/*  latest news  */
+
+.rs-blog.style1 .blog-item .blog-content{
+    padding: 14px 14px 14px;
+}
+
+
+.rs-blog.style1 .blog-item .blog-content .title a{
+    font-size: 18px;
+}
+
+.rs-blog.style1 .blog-item .blog-content .readon-arrow{
+    font-size: 14px;
+}
+.rs-blog.style1 .blog-item .image-part{
+    padding-right: 14px;
+}
