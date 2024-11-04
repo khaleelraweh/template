@@ -27,6 +27,13 @@ return new class extends Migration
 
             $table->unsignedBigInteger('section')->default(1); // 1: main menu   2 : our_company  3 : topics    4 : tacks   5 : support 
 
+
+            // SEO
+            $table->json('metadata_title')->nullable();
+            $table->json('metadata_description')->nullable();
+            $table->json('metadata_keywords')->nullable();
+            // end SEO
+
             // will be use always
             $table->boolean('status')->default(true);
             $table->dateTime('published_on')->nullable();
