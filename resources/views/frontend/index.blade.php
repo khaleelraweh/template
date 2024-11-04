@@ -365,90 +365,107 @@
     <div class="rs-degree style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
         <div class="container">
             <div class="row y-middle">
-                <div class="col-lg-4 col-md-6 mb-30">
+                <div class="col-lg-4 col-md-12 mb-30">
                     <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
                         <div class="sub-title primary">Degree categoris</div>
                         <h2 class="title mb-0">Successfully Complete A Degree at Educavo University</h2>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="degree-wrap">
-                        <img src="{{ asset('frontend/images/degrees/1.jpg') }}" alt="">
-                        <div class="title-part">
-                            <h4 class="title">Undergraduate</h4>
-                        </div>
-                        <div class="content-part">
-                            <h4 class="title"><a href="#">Undergraduate</a></h4>
-                            <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                                quo minus id quod </p>
-                            <div class="btn-part">
-                                <a href="#">Read More</a>
+
+                <div class="col-lg-8 col-md-12 mb-30">
+                    <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30"
+                        data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
+                        data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false"
+                        data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false"
+                        data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
+                        data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
+                        data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
+                        <div class="blog-item">
+                            <div class="degree-wrap">
+                                <img src="{{ asset('frontend/images/degrees/1.jpg') }}" alt="">
+                                <div class="title-part">
+                                    <h4 class="title">Undergraduate</h4>
+                                </div>
+                                <div class="content-part">
+                                    <h4 class="title"><a href="#">Undergraduate</a></h4>
+                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                                        impedit
+                                        quo minus id quod </p>
+                                    <div class="btn-part">
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="degree-wrap">
-                        <img src="{{ asset('frontend/images/degrees/2.jpg') }}" alt="">
-                        <div class="title-part">
-                            <h4 class="title">Postgraduate</h4>
-                        </div>
-                        <div class="content-part">
-                            <h4 class="title"><a href="#">Postgraduate</a></h4>
-                            <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                                quo minus id quod </p>
-                            <div class="btn-part">
-                                <a href="#">Read More</a>
+                        <div class="blog-item">
+                            <div class="degree-wrap">
+                                <img src="{{ asset('frontend/images/degrees/2.jpg') }}" alt="">
+                                <div class="title-part">
+                                    <h4 class="title">Postgraduate</h4>
+                                </div>
+                                <div class="content-part">
+                                    <h4 class="title"><a href="#">Postgraduate</a></h4>
+                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                                        impedit
+                                        quo minus id quod </p>
+                                    <div class="btn-part">
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="degree-wrap">
-                        <img src="{{ asset('frontend/images/degrees/3.jpg') }}" alt="">
-                        <div class="title-part">
-                            <h4 class="title">PHD Scholarships</h4>
-                        </div>
-                        <div class="content-part">
-                            <h4 class="title"><a href="#">PHD Scholarships</a></h4>
-                            <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                                quo minus id quod </p>
-                            <div class="btn-part">
-                                <a href="#">Read More</a>
+                        <div class="blog-item">
+                            <div class="degree-wrap">
+                                <img src="{{ asset('frontend/images/degrees/3.jpg') }}" alt="">
+                                <div class="title-part">
+                                    <h4 class="title">PHD Scholarships</h4>
+                                </div>
+                                <div class="content-part">
+                                    <h4 class="title"><a href="#">PHD Scholarships</a></h4>
+                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                                        impedit
+                                        quo minus id quod </p>
+                                    <div class="btn-part">
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="degree-wrap">
-                        <img src="{{ asset('frontend/images/degrees/4.jpg') }}" alt="">
-                        <div class="title-part">
-                            <h4 class="title">International Hubs</h4>
-                        </div>
-                        <div class="content-part">
-                            <h4 class="title"><a href="#">International Hubs</a></h4>
-                            <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                                quo minus id quod </p>
-                            <div class="btn-part">
-                                <a href="#">Read More</a>
+                        <div class="blog-item">
+                            <div class="degree-wrap">
+                                <img src="{{ asset('frontend/images/degrees/4.jpg') }}" alt="">
+                                <div class="title-part">
+                                    <h4 class="title">International Hubs</h4>
+                                </div>
+                                <div class="content-part">
+                                    <h4 class="title"><a href="#">International Hubs</a></h4>
+                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                                        impedit
+                                        quo minus id quod </p>
+                                    <div class="btn-part">
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-30">
-                    <div class="degree-wrap">
-                        <img src="{{ asset('frontend/images/degrees/5.jpg') }}" alt="">
-                        <div class="title-part">
-                            <h4 class="title">PHD Scholarships</h4>
-                        </div>
-                        <div class="content-part">
-                            <h4 class="title"><a href="#">PHD Scholarships</a></h4>
-                            <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                                quo minus id quod </p>
-                            <div class="btn-part">
-                                <a href="#">Read More</a>
+                        <div class="blog-item">
+                            <div class="degree-wrap">
+                                <img src="{{ asset('frontend/images/degrees/5.jpg') }}" alt="">
+                                <div class="title-part">
+                                    <h4 class="title">PHD Scholarships</h4>
+                                </div>
+                                <div class="content-part">
+                                    <h4 class="title"><a href="#">PHD Scholarships</a></h4>
+                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                                        impedit
+                                        quo minus id quod </p>
+                                    <div class="btn-part">
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
