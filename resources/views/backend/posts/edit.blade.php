@@ -81,7 +81,6 @@
                             role="tab" aria-controls="SEO" aria-selected="false">{{ __('panel.SEO_tab') }}
                         </button>
                     </li>
-
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
