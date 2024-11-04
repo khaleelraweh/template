@@ -43,15 +43,17 @@
 }
 
 /* College and Institute */
-.rs-degree.style1 .degree-wrap .content-part{
+
+/* .rs-degree.style1 .degree-wrap .content-part{
     padding: 30px 30px 30px;
-}
+} */
 
 /* temperary in college and institute */
 
 @media (min-width: 768px) {
     .rs-degree.style1 .degree-wrap img{
-        height: 390px ;
+        /* height: 390px ; */
+        height: 450px ;
     }
 }
 
