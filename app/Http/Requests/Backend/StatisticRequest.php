@@ -13,7 +13,7 @@ class StatisticRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,63 @@ class StatisticRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+        switch ($this->method()) {
+            case 'POST': {
+                    return [
+                        'title.*'                       =>  'required|max:255',
+                        'icon'                          =>  'nullable',
+                        'statistic_number'              =>  'required',
+
+                        'metadata_title.*'              =>  'nullable',
+                        'metadata_description.*'        =>  'nullable',
+                        'metadata_keywords.*'           =>  'nullable',
+
+                        // used always 
+                        'status'                        =>  'required',
+                        'created_by'                    =>  'nullable',
+                        'updated_by'                    =>  'nullable',
+                        'deleted_by'                    =>  'nullable',
+                        // end of used always 
+
+                    ];
+                }
+            case 'PUT':
+            case 'PATCH': {
+                    return [
+                        'title.*'                           =>   'required|max:255',
+                        'icon'                              =>  'nullable',
+                        'statistic_number'                  =>  'required',
+
+                        'metadata_title.*'                  =>  'nullable',
+                        'metadata_description.*'            =>  'nullable',
+                        'metadata_keywords.*'               =>  'nullable',
+
+                        // used always 
+                        'status'                            =>  'required',
+                        'created_by'                        =>  'nullable',
+                        'updated_by'                        =>  'nullable',
+                        'deleted_by'                        =>  'nullable',
+                        // end of used always 
+                    ];
+                }
+
+            default:
+                break;
+        }
+    }
+
+    public function attributes(): array
+    {
+        $attr = [
+            'statistic_number'      => '( ' . __('panel.statistic_number') . ' )',
+            'status'    =>  '( ' . __('panel.status') . ' )',
         ];
+
+        foreach (config('locales.languages') as $key => $val) {
+            $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+        }
+
+
+        return $attr;
     }
 }
