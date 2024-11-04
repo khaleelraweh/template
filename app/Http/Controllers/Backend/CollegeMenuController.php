@@ -18,7 +18,7 @@ class CollegeMenuController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_web_menus , show_web_menus')) {
+        if (!auth()->user()->ability('admin', 'manage_college_menus , show_college_menus')) {
             return redirect('admin/index');
         }
 
@@ -39,7 +39,7 @@ class CollegeMenuController extends Controller
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_web_menus')) {
+        if (!auth()->user()->ability('admin', 'create_college_menus')) {
             return redirect('admin/index');
         }
 
@@ -50,7 +50,7 @@ class CollegeMenuController extends Controller
 
     public function store(WebMenuRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_web_menus')) {
+        if (!auth()->user()->ability('admin', 'create_college_menus')) {
             return redirect('admin/index');
         }
 
@@ -87,7 +87,7 @@ class CollegeMenuController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_web_menus')) {
+        if (!auth()->user()->ability('admin', 'display_college_menus')) {
             return redirect('admin/index');
         }
         return view('backend.web_menus.show');
@@ -95,7 +95,7 @@ class CollegeMenuController extends Controller
 
     public function edit($webMenu)
     {
-        if (!auth()->user()->ability('admin', 'update_web_menus')) {
+        if (!auth()->user()->ability('admin', 'update_college_menus')) {
             return redirect('admin/index');
         }
 
@@ -144,7 +144,7 @@ class CollegeMenuController extends Controller
 
     public function destroy($webMenu)
     {
-        if (!auth()->user()->ability('admin', 'delete_web_menus')) {
+        if (!auth()->user()->ability('admin', 'delete_college_menus')) {
             return redirect('admin/index');
         }
 

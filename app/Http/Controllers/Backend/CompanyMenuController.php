@@ -17,7 +17,7 @@ class CompanyMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $company_menus = WebMenu::query()->where('section', 2)
+        $company_menus = WebMenu::query()->where('section', 6)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -51,7 +51,7 @@ class CompanyMenuController extends Controller
 
         // $input['parent_id'] = $request->parent_id;
 
-        $input['section']    = $request->section; // company menu 
+        $input['section']    = 6; // company menu 
         $input['status']     =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
         $published_on = $request->published_on . ' ' . $request->published_on_time;
@@ -103,7 +103,7 @@ class CompanyMenuController extends Controller
 
         $companyMenu = WebMenu::where('id', $companyMenu)->first();
 
-        $input['section']    = $request->section;
+        $input['section']    = 6;
 
         $input['title']     = $request->title;
         $input['link']      = $request->link;
