@@ -9,7 +9,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_sliders') }}
+                    {{ __('panel.manage_statistics') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -21,18 +21,18 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        {{ __('panel.show_adv_slider') }}
+                        {{ __('panel.show_statistics') }}
                     </li>
                 </ul>
             </div>
 
             <div class="ml-auto">
-                @ability('admin', 'create_advertisor_sliders')
-                    <a href="{{ route('admin.advertisor_sliders.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_statistics')
+                    <a href="{{ route('admin.statistics.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
-                        <span class="text">{{ __('panel.add_new_slider') }}</span>
+                        <span class="text">{{ __('panel.add_new_statistic') }}</span>
                     </a>
                 @endability
             </div>
@@ -42,7 +42,7 @@
         <div class="card-body">
 
             {{-- filter form part  --}}
-            @include('backend.advertisor_sliders.filter.filter')
+            @include('backend.statistics.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -59,39 +59,33 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($advertisorSliders as $slider)
+                        @forelse ($statistics as $statistic)
                             <tr>
                                 <td>
-                                    {{-- @if ($slider->firstMedia)
-                                        <img src="{{ asset('assets/advertisor_sliders/' . $slider->firstMedia->file_name) }}"
-                                            width="60" height="60" alt="{{ $slider->title }}">
-                                    @else
-                                        <img src="{{ asset('image/not_found/item_image_not_found.png') }}" width="60" height="60"
-                                            alt="{{ $slider->title }}">
-                                    @endif --}}
 
-                                    <i class="{{ $slider->icon }}" style="font-size: 40px"></i>
+
+                                    <i class="{{ $statistic->icon }}" style="font-size: 40px"></i>
 
                                 </td>
-                                <td>{{ $slider->title }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $slider->created_by }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $slider->created_at }}</td>
-                                <td>{{ $slider->status() }}</td>
+                                <td>{{ $statistic->title }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $statistic->created_by }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $statistic->created_at }}</td>
+                                <td>{{ $statistic->status() }}</td>
                                 <td>
 
                                     <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.advertisor_sliders.edit', $slider->id) }}"
+                                        <a href="{{ route('admin.statistics.edit', $statistic->id) }}"
                                             class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $slider->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $statistic->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.advertisor_sliders.destroy', $slider->id) }}"
-                                        method="post" class="d-none" id="delete-product-{{ $slider->id }}">
+                                    <form action="{{ route('admin.statistics.destroy', $statistic->id) }}" method="post"
+                                        class="d-none" id="delete-product-{{ $statistic->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -107,7 +101,7 @@
                         <tr>
                             <td colspan="6">
                                 <div class="float-right">
-                                    {!! $advertisorSliders->appends(request()->all())->links() !!}
+                                    {!! $statistics->appends(request()->all())->links() !!}
                                 </div>
                             </td>
                         </tr>
