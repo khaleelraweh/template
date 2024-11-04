@@ -1466,5 +1466,7 @@ return [
     'read_more'                                         =>  'Read More',
     'read_less'                                         =>  'Read Less',
     'corresponding_to'                                  =>  'cor. to',
+    'colleges_and_institutes'                           =>  'Colleges and Institutes',
+    'introductory_tour'                                 =>  'Introductory tour',
 
 ];

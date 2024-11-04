@@ -321,21 +321,21 @@
     <div class="rs-degree style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
         <div class="container">
             <div class="row y-middle">
-                <div class="col-lg-4 col-md-12 mb-30">
+                <div class="col-lg-2 col-md-12 mb-30">
                     <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-                        <div class="sub-title primary">Degree categoris</div>
-                        <h2 class="title mb-0">Successfully Complete A Degree at Educavo University</h2>
+                        <div class="sub-title primary">{{ __('panel.colleges_and_institutes') }}</div>
+                        <h3 class="title mb-0">{{ __('panel.introductory_tour') }}</h3>
                     </div>
                 </div>
 
-                <div class="col-lg-8 col-md-12 mb-30">
+                <div class="col-lg-10 col-md-12 mb-30">
                     <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30"
                         data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
                         data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false"
                         data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false"
                         data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
                         data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
-                        data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
+                        data-md-device="3" data-md-device-nav="false" data-md-device-dots="false">
                         @foreach ($web_menus->where('section', 2) as $college_menu)
                             <div class="blog-item">
                                 <div class="degree-wrap">
