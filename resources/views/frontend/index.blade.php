@@ -62,8 +62,8 @@
                             <div class="features-wrap ">
 
                                 <div class="icon-part">
-                                    <i class="{{ $adv_slider->icon }}"></i>
-                                    {{-- <img src="{{ asset('frontend/images/features/icon/3.png') }}" alt=""> --}}
+                                    {{-- <i class="{{ $adv_slider->icon }}"></i> --}}
+                                    <img src="{{ asset('frontend/images/features/icon/3.png') }}" alt="">
                                 </div>
                                 <div class="content-part">
                                     <h4 class="title">
