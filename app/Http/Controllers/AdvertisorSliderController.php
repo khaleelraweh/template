@@ -128,7 +128,6 @@ class AdvertisorSliderController extends Controller
         return view('backend.advertisor_sliders.show');
     }
 
-
     public function edit($advertisorSlider)
     {
         if (!auth()->user()->ability('admin', 'update_advertisor_sliders')) {
@@ -209,8 +208,6 @@ class AdvertisorSliderController extends Controller
             'alert-type' => 'danger'
         ]);
     }
-
-
 
     public function destroy($advertisorSlider)
     {

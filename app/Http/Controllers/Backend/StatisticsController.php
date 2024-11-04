@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\StatisticRequest;
 use App\Models\Statistic;
+use App\Models\Tag;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class StatisticsController extends Controller
@@ -26,5 +29,128 @@ class StatisticsController extends Controller
 
 
         return view('backend.statistics.index', compact('statistics'));
+    }
+
+    public function create()
+    {
+        if (!auth()->user()->ability('admin', 'create_statistics')) {
+            return redirect('admin/index');
+        }
+
+        $tags = Tag::whereStatus(1)->get(['id', 'name']);
+
+        return view('backend.statistics.create', compact('tags'));
+    }
+
+    public function store(StatisticRequest $request)
+    {
+        if (!auth()->user()->ability('admin', 'create_statistics')) {
+            return redirect('admin/index');
+        }
+
+        $input['icon']                      =   $request->icon;
+        $input['title']                     =   $request->title;
+        $input['statistic_number']          =   $request->statistic_number;
+
+        $input['status']                    =   $request->status;
+        $input['created_by']                =   auth()->user()->full_name;
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on'] = $published_on;
+
+        $statistic = Statistic::create($input);
+        $statistic->tags()->attach($request->tags);
+
+        if ($statistic) {
+            return redirect()->route('admin.statistics.index')->with([
+                'message' => __('panel.created_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('admin.statistics.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
+    }
+
+    public function show($id)
+    {
+        if (!auth()->user()->ability('admin', 'display_statistics')) {
+            return redirect('admin/index');
+        }
+
+        return view('backend.statistics.show');
+    }
+
+    public function edit($statistic)
+    {
+        if (!auth()->user()->ability('admin', 'update_statistics')) {
+            return redirect('admin/index');
+        }
+
+        $statistic =  Statistic::where('id', $statistic)->first();
+        $tags = Tag::whereStatus(1)->get(['id', 'name']);
+        return view('backend.statistics.edit', compact('tags', 'statistic'));
+    }
+
+    public function update(StatisticRequest $request,  $statistic)
+    {
+        if (!auth()->user()->ability('admin', 'update_statistics')) {
+            return redirect('admin/index');
+        }
+
+        $statistic = Statistic::where('id', $statistic)->first();
+
+        $input['icon']                      =   $request->icon;
+        $input['title']                     =   $request->title;
+        $input['statistic_number']          =   $request->statistic_number;
+
+        $input['status']                    =   $request->status;
+        $input['created_by']                =   auth()->user()->full_name;
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on'] = $published_on;
+
+        $statistic->update($input);
+        $statistic->tags()->sync($request->tags);
+
+
+
+        if ($statistic) {
+            return redirect()->route('admin.statistics.index')->with([
+                'message' => __('panel.updated_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+        return redirect()->route('admin.statistics.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
+    }
+
+    public function destroy($statistic)
+    {
+        if (!auth()->user()->ability('admin', 'delete_statistics')) {
+            return redirect('admin/index');
+        }
+
+        $statistic = Statistic::where('id', $statistic)->first();
+
+        $statistic->delete();
+
+        if ($statistic) {
+            return redirect()->route('admin.statistics.index')->with([
+                'message' => __('panel.deleted_successfully'),
+                'alert-type' => 'success'
+            ]);
+        }
+
+        return redirect()->route('admin.statistics.index')->with([
+            'message' => __('panel.something_was_wrong'),
+            'alert-type' => 'danger'
+        ]);
     }
 }
