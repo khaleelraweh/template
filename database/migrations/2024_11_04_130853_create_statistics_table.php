@@ -20,10 +20,14 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->integer('statistic_number')->nullable();
 
+            // SEO
+            $table->json('metadata_title');
+            $table->json('metadata_description');
+            $table->json('metadata_keywords');
+            // end SEO
 
             // will be use always
             $table->boolean('status')->default(true);
-            $table->dateTime('published_on')->nullable();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();
