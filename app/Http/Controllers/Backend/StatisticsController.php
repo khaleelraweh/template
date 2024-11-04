@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\StatisticRequest;
 use App\Models\Statistic;
-use App\Models\Tag;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -37,9 +36,8 @@ class StatisticsController extends Controller
             return redirect('admin/index');
         }
 
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
 
-        return view('backend.statistics.create', compact('tags'));
+        return view('backend.statistics.create');
     }
 
     public function store(StatisticRequest $request)
@@ -52,15 +50,14 @@ class StatisticsController extends Controller
         $input['title']                     =   $request->title;
         $input['statistic_number']          =   $request->statistic_number;
 
+        $input['metadata_title']        = $request->metadata_title;
+        $input['metadata_description']  = $request->metadata_description;
+        $input['metadata_keywords']     = $request->metadata_keywords;
+
         $input['status']                    =   $request->status;
         $input['created_by']                =   auth()->user()->full_name;
 
-        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
-        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
-        $input['published_on'] = $published_on;
-
         $statistic = Statistic::create($input);
-        $statistic->tags()->attach($request->tags);
 
         if ($statistic) {
             return redirect()->route('admin.statistics.index')->with([
@@ -91,8 +88,7 @@ class StatisticsController extends Controller
         }
 
         $statistic =  Statistic::where('id', $statistic)->first();
-        $tags = Tag::whereStatus(1)->get(['id', 'name']);
-        return view('backend.statistics.edit', compact('tags', 'statistic'));
+        return view('backend.statistics.edit', compact('statistic'));
     }
 
     public function update(StatisticRequest $request,  $statistic)
@@ -107,6 +103,10 @@ class StatisticsController extends Controller
         $input['title']                     =   $request->title;
         $input['statistic_number']          =   $request->statistic_number;
 
+        $input['metadata_title']        = $request->metadata_title;
+        $input['metadata_description']  = $request->metadata_description;
+        $input['metadata_keywords']     = $request->metadata_keywords;
+
         $input['status']                    =   $request->status;
         $input['created_by']                =   auth()->user()->full_name;
 
@@ -115,7 +115,7 @@ class StatisticsController extends Controller
         $input['published_on'] = $published_on;
 
         $statistic->update($input);
-        $statistic->tags()->sync($request->tags);
+
 
 
 

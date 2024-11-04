@@ -9,7 +9,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_slider') }}
+                    {{ __('panel.add_new_statistic') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -21,8 +21,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.advertisor_sliders.index') }}">
-                            {{ __('panel.show_adv_slider') }}
+                        <a href="{{ route('admin.statistics.index') }}">
+                            {{ __('panel.show_statistics') }}
                         </a>
                     </li>
                 </ul>
@@ -43,7 +43,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.advertisor_sliders.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin.statistics.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 {{-- links of tabs --}}
@@ -243,23 +243,4 @@
 
     </div>
 
-@endsection
-
-@section('script')
-    <script>
-        $(function() {
-
-            $("#slider_images").fileinput({
-                theme: "fa5",
-                maxFileCount: 5,
-                allowedFileTypes: ['image'],
-                showCancel: true,
-                showRemove: false,
-                showUpload: false,
-                overwriteInitial: false
-            });
-
-
-        });
-    </script>
 @endsection
