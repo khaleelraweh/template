@@ -22,7 +22,7 @@ class CollegeMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $menus = WebMenu::query()->where('section', 2)
+        $college_menus = WebMenu::query()->where('section', 2)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -33,8 +33,7 @@ class CollegeMenuController extends Controller
             ->paginate(\request()->limit_by ?? 10);
 
 
-
-        return view('backend.web_menus.index', compact('menus'));
+        return view('backend.college_menus.index', compact('college_menus'));
     }
 
     public function create()
@@ -45,7 +44,7 @@ class CollegeMenuController extends Controller
 
         $main_menus = WebMenu::tree();
 
-        return view('backend.web_menus.create', compact('main_menus'));
+        return view('backend.college_menus.create', compact('main_menus'));
     }
 
     public function store(WebMenuRequest $request)
@@ -59,7 +58,7 @@ class CollegeMenuController extends Controller
         $input['icon'] = $request->icon;
         $input['parent_id'] = $request->parent_id;
 
-        $input['section'] = 1;
+        $input['section'] = 2;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
@@ -71,13 +70,13 @@ class CollegeMenuController extends Controller
 
 
         if ($webMenu) {
-            return redirect()->route('admin.web_menus.index')->with([
+            return redirect()->route('admin.college_menus.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.web_menus.index')->with([
+        return redirect()->route('admin.college_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -90,7 +89,7 @@ class CollegeMenuController extends Controller
         if (!auth()->user()->ability('admin', 'display_college_menus')) {
             return redirect('admin/index');
         }
-        return view('backend.web_menus.show');
+        return view('backend.college_menus.show');
     }
 
     public function edit($webMenu)
@@ -104,7 +103,7 @@ class CollegeMenuController extends Controller
 
         $webMenu = WebMenu::where('id', $webMenu)->first();
 
-        return view('backend.web_menus.edit', compact('main_menus', 'webMenu'));
+        return view('backend.college_menus.edit', compact('main_menus', 'webMenu'));
     }
 
     public function update(WebMenuRequest $request, $webMenu)
@@ -116,7 +115,7 @@ class CollegeMenuController extends Controller
         $input['link'] = $request->link;
         $input['icon'] = $request->icon;
         $input['parent_id'] = $request->parent_id;
-        $input['section'] = 1;
+        $input['section'] = 2;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
@@ -127,13 +126,13 @@ class CollegeMenuController extends Controller
         $webMenu->update($input);
 
         if ($webMenu) {
-            return redirect()->route('admin.web_menus.index')->with([
+            return redirect()->route('admin.college_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.web_menus.index')->with([
+        return redirect()->route('admin.college_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -151,13 +150,13 @@ class CollegeMenuController extends Controller
         $webMenu = WebMenu::where('id', $webMenu)->first()->delete();
 
         if ($webMenu) {
-            return redirect()->route('admin.web_menus.index')->with([
+            return redirect()->route('admin.college_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.web_menus.index')->with([
+        return redirect()->route('admin.college_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);

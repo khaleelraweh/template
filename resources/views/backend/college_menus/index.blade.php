@@ -20,13 +20,13 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        {{ __('panel.show_web_menus') }}
+                        {{ __('panel.show_college_menus') }}
                     </li>
                 </ul>
             </div>
             <div class="ml-auto">
-                @ability('admin', 'create_web_menus')
-                    <a href="{{ route('admin.web_menus.create') }}" class="btn btn-primary">
+                @ability('admin', 'create_college_menus')
+                    <a href="{{ route('admin.college_menus.create') }}" class="btn btn-primary">
                         <span class="icon text-white-50">
                             <i class="fa fa-plus-square"></i>
                         </span>
@@ -40,7 +40,7 @@
         <div class="card-body">
 
             {{-- filter form part  --}}
-            @include('backend.web_menus.filter.filter')
+            @include('backend.college_menus.filter.filter')
 
             {{-- table part --}}
             <div class="table-responsive">
@@ -56,39 +56,40 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($menus as $menu)
+                        @forelse ($college_menus as $college_menu)
                             <tr>
                                 <td>
-                                    {{ $menu->title }}
+                                    {{ $college_menu->title }}
                                     <br>
-                                    @if ($menu->parent != null)
+                                    @if ($college_menu->parent != null)
                                         <small
                                             style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
                                             {{-- تابع للقائمة: --}}
-                                            <span>{{ $menu->parent?->title }}</span> </small>
+                                            <span>{{ $college_menu->parent?->title }}</span> </small>
                                     @endif
 
                                 </td>
-                                <td class="d-none d-sm-table-cell">{{ $menu->created_by }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $college_menu->created_by }}</td>
                                 <td>
                                     <span
-                                        class="btn btn-round  rounded-pill btn-success btn-xs">{{ $menu->status() }}</span>
+                                        class="btn btn-round  rounded-pill btn-success btn-xs">{{ $college_menu->status() }}</span>
                                 </td>
-                                <td class="d-none d-sm-table-cell">{{ $menu->created_at }}</td>
+                                <td class="d-none d-sm-table-cell">{{ $college_menu->created_at }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
 
-                                        <a href="{{ route('admin.web_menus.edit', $menu->id) }}" class="btn btn-primary">
+                                        <a href="{{ route('admin.college_menus.edit', $college_menu->id) }}"
+                                            class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
                                         <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-category-{{ $menu->id }}').submit();}else{return false;}"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-category-{{ $college_menu->id }}').submit();}else{return false;}"
                                             class="btn btn-danger">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </div>
-                                    <form action="{{ route('admin.web_menus.destroy', $menu->id) }}" method="post"
-                                        class="d-none" id="delete-product-category-{{ $menu->id }}">
+                                    <form action="{{ route('admin.college_menus.destroy', $college_menu->id) }}"
+                                        method="post" class="d-none" id="delete-product-category-{{ $college_menu->id }}">
                                         @csrf
                                         @method('DELETE')
                                     </form>
@@ -106,7 +107,7 @@
                     <tr>
                         <td colspan="6">
                             <div class="float-right">
-                                {!! $menus->appends(request()->all())->links() !!}
+                                {!! $college_menus->appends(request()->all())->links() !!}
                             </div>
                         </td>
                     </tr>
