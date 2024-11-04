@@ -12,16 +12,16 @@
                     <i class="fa fa-edit"></i>
                     {{ __('panel.edit_existing_link') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         <a href="{{ route('admin.web_menus.index') }}">
                             {{ __('panel.show_web_menus') }}
                         </a>
@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.web_menus.update', $webMenu->id) }}" method="post">
+            <form action="{{ route('admin.web_menus.update', $college_menu->id) }}" method="post">
                 @csrf
                 @method('PATCH')
 
@@ -76,10 +76,10 @@
                                     <div class="input-group iconpicker-container ">
                                         <input data-placement="bottomRight"
                                             class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
-                                            value=" {{ old('icon', $webMenu->icon) ?? 'fas fa-archive' }}" type="text"
-                                            name="icon">
+                                            value=" {{ old('icon', $college_menu->icon) ?? 'fas fa-archive' }}"
+                                            type="text" name="icon">
                                         <span class="input-group-addon btn btn-primary">
-                                            <i class="{{ $webMenu->icon ?? 'fas fa-archive' }}"></i>
+                                            <i class="{{ $college_menu->icon ?? 'fas fa-archive' }}"></i>
                                         </span>
                                     </div>
 
@@ -100,13 +100,13 @@
                                         @if (count($main_menu->appearedChildren) == false)
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $college_menu->parent_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                         @else
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $college_menu->parent_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                             @if ($main_menu->appearedChildren !== null && count($main_menu->appearedChildren) > 0)
@@ -114,20 +114,20 @@
                                                     @if (count($sub_menu->appearedChildren) == false)
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $college_menu->parent_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                     @else
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $college_menu->parent_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                         @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
                                                             @foreach ($sub_menu->appearedChildren as $sub_menu_2)
                                                                 <option style="font-size: 14px;"
                                                                     value="{{ $sub_menu_2->id }}"
-                                                                    {{ old('parent_id', $webMenu->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
+                                                                    {{ old('parent_id', $college_menu->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
                                                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                                                     &nbsp;{{ $sub_menu_2->title }}
                                                                 </option>
@@ -155,13 +155,13 @@
                                         @if (count($main_menu->appearedChildren) == false)
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $college_menu->parent_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                         @else
                                             <option style="color: black;font-weight: bold;font-size:18px;"
                                                 value="{{ $main_menu->id }}"
-                                                {{ old('parent_id', $webMenu->parent_id) == $main_menu->id ? 'selected' : null }}>
+                                                {{ old('parent_id', $college_menu->parent_id) == $main_menu->id ? 'selected' : null }}>
                                                 {{ $main_menu->title }}
                                             </option>
                                             @if ($main_menu->appearedChildren !== null && count($main_menu->appearedChildren) > 0)
@@ -169,20 +169,20 @@
                                                     @if (count($sub_menu->appearedChildren) == false)
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $college_menu->parent_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                     @else
                                                         <option style="color:blue;font-weight:bold;font-size:15px;"
                                                             value="{{ $sub_menu->id }}"
-                                                            {{ old('parent_id', $webMenu->parent_id) == $sub_menu->id ? 'selected' : null }}>
+                                                            {{ old('parent_id', $college_menu->parent_id) == $sub_menu->id ? 'selected' : null }}>
                                                             &nbsp; &nbsp; &nbsp;{{ $sub_menu->title }}
                                                         </option>
                                                         @if ($sub_menu->appearedChildren !== null && count($sub_menu->appearedChildren) > 0)
                                                             @foreach ($sub_menu->appearedChildren as $sub_menu_2)
                                                                 <option style="font-size: 14px;"
                                                                     value="{{ $sub_menu_2->id }}"
-                                                                    {{ old('parent_id', $webMenu->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
+                                                                    {{ old('parent_id', $college_menu->parent_id) == $sub_menu_2->id ? 'selected' : null }}>
                                                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                                                     &nbsp;{{ $sub_menu_2->title }}
                                                                 </option>
@@ -209,7 +209,7 @@
                                         </label>
                                         <input type="text" name="title[{{ $key }}]"
                                             id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $webMenu->getTranslation('title', $key)) }}"
+                                            value="{{ old('title.' . $key, $college_menu->getTranslation('title', $key)) }}"
                                             class="form-control">
                                         @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -230,7 +230,7 @@
                                         </label>
                                         <input type="text" id="link[{{ $key }}]"
                                             name="link[{{ $key }}]"
-                                            value="{{ old('link.' . $key, $webMenu->getTranslation('link', $key)) }}"
+                                            value="{{ old('link.' . $key, $college_menu->getTranslation('link', $key)) }}"
                                             class="form-control">
                                         @error('link.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
