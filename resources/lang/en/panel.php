@@ -379,6 +379,17 @@ return [
     'document_archive_name'                                =>  'Document Archive Name',
 
 
+    // --------------- Document Statistics  --------------//
+    'manage_statistics'                                     =>  'Manage Statistics',
+    'show_statistics'                                       => 'Statistics',
+    'add_new_statistic'                                     => 'New Statistic',
+    'edit_existing_statistic'                               => 'Edit Existing Statistic ',
+
+
+    // ........... commons in Statistics   ....... //
+
+
+
 
     ##############################################################
 

@@ -381,6 +381,15 @@ return [
     'document_archive_data'                                =>  'بيانات ارشيف مستند',
     'document_archive_name'                                =>  'إسم ارشيف الوثيقة',
 
+    // --------------- Document Statistics  --------------//
+    'manage_statistics'                                     =>  'إدارة إحصائيات الجامعة',
+    'show_statistics'                                       => 'إحصائيات الجامعة',
+    'add_new_statistic'                                     => 'إضافة إحصاء جديد',
+    'edit_existing_statistic'                               => 'تعديل إحصاء موجود',
+
+    // ........... commons in Statistics   ....... //
+
+
 
 
     #################################### Manage Coupon ##########################
