@@ -22,6 +22,7 @@ return [
     'manage_topics_menus'       => 'Manage Topics Menus',
     'manage_tracks_menus'       => 'Manage Tracks Menus',
     'manage_support_menus'       => 'Manage Support Menus',
+    'manage_college_menus'       => 'Manage College Menus',
 
 
     // --------------- Main Menu --------------//
@@ -29,6 +30,12 @@ return [
     'add_new_link'              => 'Add New Link',
     'edit_existing_link'        => 'Edit Existing Link',
     'category_menu'             => 'Category Menu',
+
+    // --------------- college Menus --------------//
+    'show_college_menus'            => 'College Menus',
+    'add_new_college'              => 'Add New College or Institute',
+    'edit_existing_college'        => 'Edit Existing College or Institute',
+
 
     // --------------- Company Menu --------------//
     'show_company_menus'        => 'Company Menus',

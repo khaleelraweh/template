@@ -22,6 +22,7 @@ return [
     'manage_company_menus'              => 'إدارة قوائم المؤسسة',
     'manage_topics_menus'               => 'إدارة قوائم الموضوعات',
     'manage_tracks_menus'               => 'إدارة قوائم المسارات',
+    'manage_college_menus'              => 'إدارة قوائم الكليات والمعاهد',
 
 
 
@@ -31,6 +32,11 @@ return [
     'add_new_link'                      => 'إضافة رابط جديد',
     'edit_existing_link'                => 'تعديل بيانات الرابط',
     'category_menu'                     => 'تصنيفات القائمة الرئيسية',
+
+    // --------------- college Menus --------------//
+    'show_college_menus'            => 'قائمة الكليات والمعاهد',
+    'add_new_college'              => 'إضافة كلية او معهد',
+    'edit_existing_college'        => 'تعديل كلية او معهد',
 
 
     // --------------- قائمة المؤسسة --------------//
