@@ -22,7 +22,7 @@ class CollegeMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $menus = WebMenu::query()->where('section', 1)
+        $menus = WebMenu::query()->where('section', 2)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
