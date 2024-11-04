@@ -113,7 +113,6 @@
                             </div>
                         @endforeach
 
-                        {{-- url browse button link --}}
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="statistic_number">{{ __('panel.statistic_number') }}</label>

@@ -110,10 +110,6 @@ class StatisticsController extends Controller
         $input['status']                    =   $request->status;
         $input['created_by']                =   auth()->user()->full_name;
 
-        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
-        $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
-        $input['published_on'] = $published_on;
-
         $statistic->update($input);
 
 
