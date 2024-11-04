@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Icon;
+use App\Http\Requests\Backend\CollegeMenuRequest;
 use App\Http\Requests\Backend\CollegeRequest;
 use App\Http\Requests\Backend\WebMenuRequest;
 use Illuminate\Http\Request;
@@ -50,22 +51,22 @@ class CollegeMenuController extends Controller
         return view('backend.college_menus.create', compact('main_menus'));
     }
 
-    public function store(CollegeRequest $request)
+    public function store(CollegeMenuRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_college_menus')) {
             return redirect('admin/index');
         }
 
-        $input['title'] = $request->title;
-        $input['description'] = $request->description;
-        $input['link'] = $request->link;
-        $input['icon'] = $request->icon;
-        $input['parent_id'] = $request->parent_id;
+        $input['title']         = $request->title;
+        $input['description']   = $request->description;
+        $input['link']          = $request->link;
+        $input['icon']          = $request->icon;
+        $input['parent_id']     = $request->parent_id;
 
-        $input['section'] = 2;
+        $input['section']       = 2;
 
-        $input['status']            =   $request->status;
-        $input['created_by'] = auth()->user()->full_name;
+        $input['status']        =   $request->status;
+        $input['created_by']    = auth()->user()->full_name;
 
         $webMenu = WebMenu::create($input);
 
@@ -120,18 +121,16 @@ class CollegeMenuController extends Controller
         return view('backend.college_menus.show');
     }
 
-    public function edit($webMenu)
+    public function edit($college_menu)
     {
         if (!auth()->user()->ability('admin', 'update_college_menus')) {
             return redirect('admin/index');
         }
 
-
         $main_menus = WebMenu::tree();
+        $college_menu = WebMenu::where('id', $college_menu)->first();
 
-        $webMenu = WebMenu::where('id', $webMenu)->first();
-
-        return view('backend.college_menus.edit', compact('main_menus', 'webMenu'));
+        return view('backend.college_menus.edit', compact('main_menus', 'college_menu'));
     }
 
     public function update(WebMenuRequest $request, $webMenu)
