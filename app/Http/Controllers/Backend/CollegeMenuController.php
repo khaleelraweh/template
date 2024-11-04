@@ -6,11 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CollegeMenuRequest;
 use App\Http\Requests\Backend\WebMenuRequest;
 use App\Models\WebMenu;
-use Intervention\Image\Facades\Image;
-use DateTimeImmutable;
-
+use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Illuminate\Support\Facades\File;
+
 
 class CollegeMenuController extends Controller
 {
@@ -28,7 +28,7 @@ class CollegeMenuController extends Controller
             ->when(\request()->status != null, function ($query) {
                 $query->where('status', \request()->status);
             })
-            ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
+            ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
         return view('backend.college_menus.index', compact('college_menus'));
@@ -59,6 +59,11 @@ class CollegeMenuController extends Controller
 
         $input['section']       = 2;
 
+        $input['metadata_title']        = $request->metadata_title;
+        $input['metadata_description']  = $request->metadata_description;
+        $input['metadata_keywords']     = $request->metadata_keywords;
+
+
         $input['status']        =   $request->status;
         $input['created_by']    = auth()->user()->full_name;
 
@@ -77,7 +82,7 @@ class CollegeMenuController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/web_menus/' . $file_name));
+                $img->save(base_path('public/assets/college_menus/' . $file_name));
 
                 $webMenu->photos()->create([
                     'file_name' => $file_name,
@@ -126,26 +131,54 @@ class CollegeMenuController extends Controller
         return view('backend.college_menus.edit', compact('main_menus', 'college_menu'));
     }
 
-    public function update(WebMenuRequest $request, $webMenu)
+    public function update(CollegeMenuRequest $request, $college_menu)
     {
 
-        $webMenu = WebMenu::where('id', $webMenu)->first();
+        $college_menu = WebMenu::where('id', $college_menu)->first();
 
-        $input['title'] = $request->title;
-        $input['link'] = $request->link;
-        $input['icon'] = $request->icon;
-        $input['parent_id'] = $request->parent_id;
-        $input['section'] = 2;
+        $input['title']         = $request->title;
+        $input['description']   = $request->description;
+        $input['link']          = $request->link;
+        $input['icon']          = $request->icon;
+        $input['parent_id']     = $request->parent_id;
 
-        $input['status']            =   $request->status;
-        $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
+        $input['section']       = 2;
 
-        $webMenu->update($input);
+        $input['metadata_title']        = $request->metadata_title;
+        $input['metadata_description']  = $request->metadata_description;
+        $input['metadata_keywords']     = $request->metadata_keywords;
 
-        if ($webMenu) {
+
+        $input['status']        =   $request->status;
+        $input['created_by']    = auth()->user()->full_name;
+
+        $college_menu->update($input);
+
+        if ($request->hasFile('images') && count($request->images) > 0) {
+            $i = $college_menu->photos->count() + 1;
+            $images = $request->file('images');
+            foreach ($images as $image) {
+                $manager = new ImageManager(new Driver());
+
+                $file_name = $college_menu->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_size = $image->getSize();
+                $file_type = $image->getMimeType();
+
+                $img = $manager->read($image);
+                $img->save(base_path('public/assets/college_menus/' . $file_name));
+
+                $college_menu->photos()->create([
+                    'file_name' => $file_name,
+                    'file_size' => $file_size,
+                    'file_type' => $file_type,
+                    'file_status' => 'true',
+                    'file_sort' => $i,
+                ]);
+                $i++;
+            }
+        }
+
+        if ($college_menu) {
             return redirect()->route('admin.college_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -159,26 +192,46 @@ class CollegeMenuController extends Controller
     }
 
 
-
-
-    public function destroy($webMenu)
+    public function destroy($college_menu)
     {
         if (!auth()->user()->ability('admin', 'delete_college_menus')) {
             return redirect('admin/index');
         }
 
-        $webMenu = WebMenu::where('id', $webMenu)->first()->delete();
+        $college_menu = WebMenu::where('id', $college_menu)->first();
+        if ($college_menu->photos->count() > 0) {
+            foreach ($college_menu->photos as $photo) {
+                if (File::exists('assets/college_menus/' . $photo->file_name)) {
+                    unlink('assets/college_menus/' . $photo->file_name);
+                }
+                $photo->delete();
+            }
+        }
+        $college_menu->delete();
 
-        if ($webMenu) {
+        if ($college_menu) {
             return redirect()->route('admin.college_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
-
         return redirect()->route('admin.college_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function remove_image(Request $request)
+    {
+        if (!auth()->user()->ability('admin', 'delete_college_menus')) {
+            return redirect('admin/index');
+        }
+        $college_menu = WebMenu::findOrFail($request->college_menu_id);
+        $image = $college_menu->photos()->where('id', $request->image_id)->first();
+        if (File::exists('assets/college_menus/' . $image->file_name)) {
+            unlink('assets/college_menus/' . $image->file_name);
+        }
+        $image->delete();
+        return true;
     }
 }

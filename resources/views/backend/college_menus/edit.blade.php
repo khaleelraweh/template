@@ -217,6 +217,28 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="images">
+                                    {{ __('panel.image') }} / {{ __('panel.images') }}
+                                    <span>
+                                        <br>
+                                        <small> {{ __('panel.best_size') }}</small>
+                                        <small> 350 * 250</small>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="images[]" id="course_images" class="file-input-overview"
+                                        multiple="multiple">
+                                    @error('images')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
@@ -352,9 +374,6 @@
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false,
-                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
                     @if ($college_menu->photos()->count() > 0)
                         @foreach ($college_menu->photos as $media)
@@ -371,7 +390,6 @@
                                 caption: "{{ $media->file_name }}",
                                 size: '{{ $media->file_size }}',
                                 width: "120px",
-                                // url : الراوت المستخدم لحذف الصورة
                                 url: "{{ route('admin.college_menus.remove_image', ['image_id' => $media->id, 'college_menu_id' => $college_menu->id, '_token' => csrf_token()]) }}",
                                 key: {{ $media->id }}
                             },

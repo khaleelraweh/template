@@ -108,6 +108,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Menus Tab   ==============  //
         Route::resource('web_menus', WebMenuController::class);
+        Route::post('college-menus/remove-image', [CollegeMenuController::class, 'remove_image'])->name('college_menus.remove_image');
         Route::resource('college_menus', CollegeMenuController::class);
         Route::resource('company_menus', CompanyMenuController::class);
         Route::resource('topics_menus', TopicsMenuController::class);
