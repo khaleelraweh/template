@@ -44,7 +44,8 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.college_menus.update', $college_menu->id) }}" method="post">
+            <form action="{{ route('admin.college_menus.update', $college_menu->id) }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
 
@@ -343,28 +344,43 @@
     <script>
         $(function() {
 
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
+            $("#course_images").fileinput({
+                theme: "fa5",
+                maxFileCount: 5,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
+                // delete images from photos and assets/products 
+                // because there are maybe more than one image we will go for each image and show them in the edit page 
+                initialPreview: [
+                    @if ($college_menu->photos()->count() > 0)
+                        @foreach ($college_menu->photos as $media)
+                            "{{ asset('assets/college_menus/' . $media->file_name) }}",
+                        @endforeach
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($college_menu->photos()->count() > 0)
+                        @foreach ($college_menu->photos as $media)
+                            {
+                                caption: "{{ $media->file_name }}",
+                                size: '{{ $media->file_size }}',
+                                width: "120px",
+                                // url : الراوت المستخدم لحذف الصورة
+                                url: "{{ route('admin.college_menus.remove_image', ['image_id' => $media->id, 'college_menu_id' => $college_menu->id, '_token' => csrf_token()]) }}",
+                                key: {{ $media->id }}
+                            },
+                        @endforeach
+                    @endif
 
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
+                ]
+            }).on('filesorted', function(event, params) {
+                console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
 
         });
