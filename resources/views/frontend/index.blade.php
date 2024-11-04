@@ -361,7 +361,7 @@
     </div>
     <!-- end statistics -->
 
-    <!-- Degree Section Start -->
+    <!-- College and Institutes Start  -->
     <div class="rs-degree style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
         <div class="container">
             <div class="row y-middle">
@@ -380,24 +380,27 @@
                         data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
                         data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
                         data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
-                        <div class="blog-item">
-                            <div class="degree-wrap">
-                                <img src="{{ asset('frontend/images/degrees/1.jpg') }}" alt="">
-                                <div class="title-part">
-                                    <h4 class="title">Undergraduate</h4>
-                                </div>
-                                <div class="content-part">
-                                    <h4 class="title"><a href="#">Undergraduate</a></h4>
-                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-                                        impedit
-                                        quo minus id quod </p>
-                                    <div class="btn-part">
-                                        <a href="#">Read More</a>
+                        @foreach ($web_menus->where('section', 2) as $college_menu)
+                            <div class="blog-item">
+                                <div class="degree-wrap">
+                                    <img src="{{ asset('frontend/images/degrees/1.jpg') }}" alt="">
+                                    <div class="title-part">
+                                        <h4 class="title">{{ $college_menu->title }}</h4>
+                                    </div>
+                                    <div class="content-part">
+                                        <h4 class="title"><a href="#">{{ $college_menu->title }}</a></h4>
+                                        <p class="desc">
+                                            {!! $college_menu->description !!}
+                                        </p>
+                                        <div class="btn-part">
+                                            <a href="#">{{ __('panel.read_more') }}</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="blog-item">
+                        @endforeach
+
+                        {{-- <div class="blog-item">
                             <div class="degree-wrap">
                                 <img src="{{ asset('frontend/images/degrees/2.jpg') }}" alt="">
                                 <div class="title-part">
@@ -464,14 +467,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Degree Section End -->
+    <!-- College and Institutes End -->
 
     <!-- Categories Section Start -->
     <div id="rs-categories" class="rs-categories main-home pt-90 pb-100 md-pt-60 md-pb-40">
