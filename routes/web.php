@@ -4,6 +4,7 @@ use App\Http\Controllers\AdvertisorSliderController;
 use App\Http\Controllers\Backend\AdvsController;
 use App\Http\Controllers\Backend\AlbumsController;
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Controllers\Backend\CollegeMenuController;
 use App\Http\Controllers\Backend\CompanyMenuController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DocumentArchivesController;
@@ -107,6 +108,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Menus Tab   ==============  //
         Route::resource('web_menus', WebMenuController::class);
+        Route::resource('college_menus', CollegeMenuController::class);
         Route::resource('company_menus', CompanyMenuController::class);
         Route::resource('topics_menus', TopicsMenuController::class);
         Route::resource('tracks_menus', TracksMenuController::class);
