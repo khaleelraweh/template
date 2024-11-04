@@ -24,6 +24,9 @@ class StatisticSeeder extends Seeder
             'statistic_number'  => rand(50, 200),
             'icon'              => 'fas fa-code',
 
+            'metadata_title'        => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
 
             'created_by'    =>  $faker->realTextBetween(10, 12),
             'updated_by'    =>  $faker->realTextBetween(10, 12),
@@ -38,6 +41,10 @@ class StatisticSeeder extends Seeder
             'statistic_number'  => rand(50, 200),
             'icon'              => 'fas fa-code',
 
+            'metadata_title'        => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+
             'created_by'    =>  $faker->realTextBetween(10, 12),
             'updated_by'    =>  $faker->realTextBetween(10, 12),
             'deleted_at'    =>  null,
@@ -51,6 +58,9 @@ class StatisticSeeder extends Seeder
             'statistic_number'  => rand(50, 200),
             'icon'              => 'fas fa-code',
 
+            'metadata_title'        => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
 
             'created_by'    =>  $faker->realTextBetween(10, 12),
             'updated_by'    =>  $faker->realTextBetween(10, 12),
@@ -65,6 +75,9 @@ class StatisticSeeder extends Seeder
             'statistic_number'  => rand(50, 200),
             'icon'              => 'fas fa-code',
 
+            'metadata_title'        => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_description'  => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
+            'metadata_keywords'     => ['ar' => $faker->realText(50), 'en' => $faker->realText(50)],
 
             'created_by'    =>  $faker->realTextBetween(10, 12),
             'updated_by'    =>  $faker->realTextBetween(10, 12),
