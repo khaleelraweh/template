@@ -3,17 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Icon;
 use App\Http\Requests\Backend\CollegeMenuRequest;
-use App\Http\Requests\Backend\CollegeRequest;
 use App\Http\Requests\Backend\WebMenuRequest;
-use Illuminate\Http\Request;
 use App\Models\WebMenu;
-use illuminate\support\Str;
 use Intervention\Image\Facades\Image;
 use DateTimeImmutable;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
 
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
@@ -74,9 +68,7 @@ class CollegeMenuController extends Controller
         if ($request->hasFile('images') && count($request->images) > 0) {
 
             $i = $webMenu->photos->count() + 1;
-
             $images = $request->file('images');
-
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
@@ -97,6 +89,7 @@ class CollegeMenuController extends Controller
                 $i++;
             }
         }
+
 
         if ($webMenu) {
             return redirect()->route('admin.college_menus.index')->with([

@@ -132,4 +132,17 @@ class WebMenu extends Model
             ->orderBy('id', 'asc')
             ->get();
     }
+
+    public function photos(): MorphMany
+    {
+        return $this->morphMany(Photo::class, 'imageable');
+    }
+    public function firstMedia(): MorphOne
+    {
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'asc');
+    }
+    public function lastMedia(): MorphOne
+    {
+        return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
+    }
 }

@@ -94,7 +94,7 @@
             @endif
 
 
-            <form action="{{ route('admin.college_menus.store') }}" method="post">
+            <form action="{{ route('admin.college_menus.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -261,7 +261,7 @@
                             </div>
                         @endforeach
 
-                        <div class="row">
+                        <div class="row ">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
                                     {{ __('panel.image') }} / {{ __('panel.images') }}
@@ -269,7 +269,9 @@
                                         <br>
                                         <small> {{ __('panel.best_size') }}</small>
                                         <small> 350 * 250</small>
+
                                     </span>
+
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
