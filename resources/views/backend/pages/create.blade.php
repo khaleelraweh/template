@@ -213,6 +213,7 @@
                                 @enderror
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status" class="control-label">
@@ -233,6 +234,7 @@
                                 @enderror
                             </div>
                         </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
