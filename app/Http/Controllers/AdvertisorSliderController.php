@@ -8,9 +8,10 @@ use App\Http\Requests\Backend\AdvertisorSliderRequest;
 use App\Models\Slider;
 use App\Models\Tag;
 use Carbon\Carbon;
-use DateTimeImmutable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class AdvertisorSliderController extends Controller
 {
@@ -29,7 +30,7 @@ class AdvertisorSliderController extends Controller
             ->when(\request()->status != null, function ($query) {
                 $query->where('status', \request()->status);
             })
-            ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
+            ->orderBy(\request()->sort_by ?? 'created_at', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
 
@@ -76,6 +77,33 @@ class AdvertisorSliderController extends Controller
 
         $advertisorSlider->tags()->attach($request->tags);
 
+
+        if ($request->hasFile('images') && count($request->images) > 0) {
+
+            $i = $advertisorSlider->photos->count() + 1;
+
+            $images = $request->file('images');
+
+            foreach ($images as $image) {
+                $manager = new ImageManager(new Driver());
+
+                $file_name = $advertisorSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_size = $image->getSize();
+                $file_type = $image->getMimeType();
+
+                $img = $manager->read($image);
+                $img->save(base_path('public/assets/advertisor_sliders/' . $file_name));
+
+                $advertisorSlider->photos()->create([
+                    'file_name' => $file_name,
+                    'file_size' => $file_size,
+                    'file_type' => $file_type,
+                    'file_status' => 'true',
+                    'file_sort' => $i,
+                ]);
+                $i++;
+            }
+        }
 
 
         if ($advertisorSlider) {
@@ -142,6 +170,32 @@ class AdvertisorSliderController extends Controller
         $advertisorSlider->update($input);
         $advertisorSlider->tags()->sync($request->tags);
 
+        if ($request->hasFile('images') && count($request->images) > 0) {
+
+            $i = $advertisorSlider->photos->count() + 1;
+
+            $images = $request->file('images');
+
+            foreach ($images as $image) {
+                $manager = new ImageManager(new Driver());
+
+                $file_name = $advertisorSlider->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_size = $image->getSize();
+                $file_type = $image->getMimeType();
+
+                $img = $manager->read($image);
+                $img->save(base_path('public/assets/advertisor_sliders/' . $file_name));
+
+                $advertisorSlider->photos()->create([
+                    'file_name' => $file_name,
+                    'file_size' => $file_size,
+                    'file_type' => $file_type,
+                    'file_status' => 'true',
+                    'file_sort' => $i,
+                ]);
+                $i++;
+            }
+        }
 
 
         if ($advertisorSlider) {

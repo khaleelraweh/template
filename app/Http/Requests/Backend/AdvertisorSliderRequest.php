@@ -38,6 +38,10 @@ class AdvertisorSliderRequest extends FormRequest
                         'section'       =>  'nullable',
                         'show_info'      => 'required',
 
+                        'images'                =>  'required',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+
+
                         // used always 
                         'status'             =>  'required',
                         'published_on'       =>  'nullable',
@@ -52,7 +56,7 @@ class AdvertisorSliderRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'icon'              =>  'nullable',
-                        'title.*'           =>  'required|max:255|unique_translation:sliders,title,' . $this->route()->advertisor_slider,
+                        'title.*'           =>  'required|max:255',
                         'subtitle.*'        =>  'nullable',
 
                         'description'       =>  'nullable',
@@ -63,6 +67,10 @@ class AdvertisorSliderRequest extends FormRequest
                         'target'            =>  'required',
                         'section'           =>  'nullable',
                         'show_info'          => 'required',
+
+                        'images'                =>  'nullable',
+                        'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+
 
                         // used always 
                         'status'             =>  'required',

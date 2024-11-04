@@ -62,8 +62,35 @@
                             <div class="features-wrap ">
 
                                 <div class="icon-part">
+
+                                    @php
+                                        if (
+                                            $adv_slider->firstMedia != null &&
+                                            $adv_slider->firstMedia->file_name != null
+                                        ) {
+                                            $advertisor_slider_img = asset(
+                                                'assets/advertisor_sliders/' . $adv_slider->firstMedia->file_name,
+                                            );
+
+                                            if (
+                                                !file_exists(
+                                                    public_path(
+                                                        'assets/advertisor_sliders/' .
+                                                            $adv_slider->firstMedia->file_name,
+                                                    ),
+                                                )
+                                            ) {
+                                                // $advertisor_slider_img = asset('image/not_found/item_image_not_found.webp');
+                                                $advertisor_slider_img = asset('frontend/images/features/icon/3.png');
+                                            }
+                                        } else {
+                                            // $advertisor_slider_img = asset('image/not_found/item_image_not_found.webp');
+                                            $advertisor_slider_img = asset('frontend/images/features/icon/3.png');
+                                        }
+                                    @endphp
+
                                     {{-- <i class="{{ $adv_slider->icon }}"></i> --}}
-                                    <img src="{{ asset('frontend/images/features/icon/3.png') }}" alt="">
+                                    <img src="{{ $advertisor_slider_img }}" alt="">
                                 </div>
                                 <div class="content-part">
                                     <h4 class="title">
