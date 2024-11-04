@@ -23,8 +23,6 @@ class FrontendController extends Controller
 
         $events = Event::with('photos')->orderBy('created_at', 'ASC')->get();
         $statistics = Statistic::Active()->orderBy('created_at', 'ASC')->get();
-
-
         return view('frontend.index', compact('main_sliders',  'posts', 'news', 'Advertisements', 'events', 'statistics'));
     }
 
