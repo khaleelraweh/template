@@ -32,7 +32,6 @@ class CollegeMenuController extends Controller
             ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
             ->paginate(\request()->limit_by ?? 10);
 
-
         return view('backend.college_menus.index', compact('college_menus'));
     }
 
