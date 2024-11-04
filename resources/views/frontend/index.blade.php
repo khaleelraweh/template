@@ -338,8 +338,43 @@
 
     </div>
     {{-- </div> --}}
-
     <!-- Blog Section End -->
+
+    <!-- start statistics -->
+    <div class=" main-home event-bg pt-100 pb-100 md-pt-70 md-pb-70">
+
+        <div class="rs-counter style2-about">
+            <div class="container">
+                <div class="row couter-area">
+                    <div class="col-lg-3 col-md-6 md-mb-30">
+                        <div class="counter-item text-center">
+                            <h2 class="rs-count">2958</h2>
+                            <h4 class="title mb-0">Finished Sessions</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 md-mb-30">
+                        <div class="counter-item text-center">
+                            <h2 class="rs-count plus">4523</h2>
+                            <h4 class="title mb-0">Enrolled Learners</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 sm-mb-30">
+                        <div class="counter-item text-center">
+                            <h2 class="rs-count plus">120</h2>
+                            <h4 class="title mb-0">Online Instructors</h4>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="counter-item text-center">
+                            <h2 class="rs-count percent">100</h2>
+                            <h4 class="title mb-0">Satisfaction Rate</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end statistics -->
 
     <!-- Categories Section Start -->
     <div id="rs-categories" class="rs-categories main-home pt-90 pb-100 md-pt-60 md-pb-40">
