@@ -18,6 +18,7 @@ use App\Http\Controllers\Backend\PlaylistsController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SiteSettingsController;
 use App\Http\Controllers\Backend\SpecializationController;
+use App\Http\Controllers\Backend\StatisticsController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\SupportMenuController;
 use App\Http\Controllers\Backend\TagController;
@@ -153,10 +154,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   Document Archive Tab   ==============  //
-
         Route::resource('document_archives', DocumentArchivesController::class);
 
-
+        // ==============   Statistics Tab   ==============  //
+        Route::resource('statistics', StatisticsController::class);
 
         // ==============   Site Setting  Tab   ==============  //
         Route::get('site_setting/site_infos', [SiteSettingsController::class, 'show_main_informations'])->name('settings.site_main_infos.show');

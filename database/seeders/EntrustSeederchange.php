@@ -6,7 +6,7 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Faker\Factory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Console\Seeds\WithoutModelstatistics;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -26,16 +26,14 @@ class EntrustSeeder extends Seeder
      */
     public function run()
     {
-
-
-        // Events
-        $manageEvents = Permission::create(['name' => 'manage_events', 'display_name' => ['ar'  =>  'إدارة الاحداث القادمة',    'en'    =>  'Manage ُEvents'], 'route' => 'events', 'module' => 'events', 'as' => 'events.index', 'icon' => 'far fa-calendar-alt', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
-        $manageEvents->parent_show = $manageEvents->id;
-        $manageEvents->save();
-        $showEvents   =  Permission::create(['name'  => 'show_events', 'display_name'       =>  ['ar'   =>  'الاحداث القادمة',   'en'    =>  'ُEvents'], 'route' => 'events', 'module' => 'events', 'as' => 'events.index', 'icon' => 'far fa-calendar-alt', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $createEvents =  Permission::create(['name'  => 'create_events', 'display_name'     =>  ['ar'   =>  'إنشاء حدث',   'en'    =>  'Create Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $displayEvents =  Permission::create(['name' => 'display_events', 'display_name'    =>  ['ar'   =>  'عرض حدث',   'en'    =>  'Display Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $updateEvents  =  Permission::create(['name' => 'update_events', 'display_name'     =>  ['ar'   =>  'تعديل حدث',   'en'    =>  'Edit Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
-        $deleteEvents =  Permission::create(['name'  => 'delete_events', 'display_name'     =>  ['ar'   =>  'حذف حدث',   'en'    =>  'Delete Event'], 'route' => 'events', 'module' => 'events', 'as' => 'events.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        // Statistics
+        $manageStatistics = Permission::create(['name' => 'manage_Statistics', 'display_name' => ['ar'  =>  'إدارة إحصائيات الجامعة',    'en'    =>  'Manage Statistics'], 'route' => 'statistics', 'module' => 'statistics', 'as' => 'statistics.index', 'icon' => 'far fa-calendar-alt', 'parent' => '0', 'parent_original' => '0', 'sidebar_link' => '1', 'appear' => '1', 'ordering' => '70',]);
+        $manageStatistics->parent_show = $manageStatistics->id;
+        $manageStatistics->save();
+        $showStatistics   =  Permission::create(['name'  => 'show_Statistics', 'display_name'       =>  ['ar'   =>  'إحصائيات الجامعة',   'en'    =>  'Statistics'], 'route' => 'statistics', 'module' => 'statistics', 'as' => 'statistics.index', 'icon' => 'far fa-calendar-alt', 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $createStatistics =  Permission::create(['name'  => 'create_Statistics', 'display_name'     =>  ['ar'   =>  'إنشاء إحصاء جديد',   'en'    =>  'Create Statistic'], 'route' => 'statistics', 'module' => 'statistics', 'as' => 'statistics.create', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $displayStatistics =  Permission::create(['name' => 'display_Statistics', 'display_name'    =>  ['ar'   =>  'عرض إحصاء',   'en'    =>  'Display Statistic'], 'route' => 'statistics', 'module' => 'statistics', 'as' => 'statistics.show', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $updateStatistics  =  Permission::create(['name' => 'update_Statistics', 'display_name'     =>  ['ar'   =>  'تعديل إحصاء',   'en'    =>  'Edit Statistic'], 'route' => 'statistics', 'module' => 'statistics', 'as' => 'statistics.edit', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
+        $deleteStatistics =  Permission::create(['name'  => 'delete_Statistics', 'display_name'     =>  ['ar'   =>  'حذف إحصاء',   'en'    =>  'Delete Statistic'], 'route' => 'statistics', 'module' => 'statistics', 'as' => 'statistics.destroy', 'icon' => null, 'parent' => '0', 'parent_original' => '0', 'parent_show' => '0', 'sidebar_link' => '0', 'appear' => '0']);
     }
 }

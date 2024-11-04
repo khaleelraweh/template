@@ -15,8 +15,6 @@ class DocumentArchivesController extends Controller
             return redirect('admin/index');
         }
 
-        // $documentArchives = DocumentArchive::all();
-
 
         $documentArchives = DocumentArchive::query()
             ->when(\request()->keyword != null, function ($query) {
