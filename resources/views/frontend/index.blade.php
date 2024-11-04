@@ -280,51 +280,7 @@
                                     </div>
                                 @endforeach
 
-                                {{-- <div class="row align-items-center no-gutter white-bg blog-item mb-30 wow fadeInUp"
-                                    data-wow-delay="400ms" data-wow-duration="2000ms">
-                                    <div class="col-md-4">
-                                        <div class="image-part">
-                                            <a href="#"><img src="{{ asset('frontend/images/blog/2.jpg') }}"
-                                                    alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="blog-content">
-                                            <ul class="blog-meta">
-                                                <li><i class="fa fa-user-o"></i> Admin</li>
-                                                <li><i class="fa fa-calendar"></i>June 15, 2019</li>
-                                            </ul>
-                                            <h3 class="title"><a href="#">While The Lovely Valley Team Work</a>
-                                            </h3>
-                                            <div class="btn-part">
-                                                <a class="readon-arrow" href="#">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row align-items-center no-gutter white-bg blog-item wow fadeInUp"
-                                    data-wow-delay="500ms" data-wow-duration="2000ms">
-                                    <div class="col-md-4">
-                                        <div class="image-part">
-                                            <a href="#"><img src="{{ asset('frontend/images/blog/3.jpg') }}"
-                                                    alt=""></a>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="blog-content">
-                                            <ul class="blog-meta">
-                                                <li><i class="fa fa-user-o"></i> Admin</li>
-                                                <li><i class="fa fa-calendar"></i>June 15, 2019</li>
-                                            </ul>
-                                            <h3 class="title"><a href="#">Modern School The Lovely Valley Team
-                                                    Work</a></h3>
-                                            <div class="btn-part">
-                                                <a class="readon-arrow" href="#">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -383,7 +339,31 @@
                         @foreach ($web_menus->where('section', 2) as $college_menu)
                             <div class="blog-item">
                                 <div class="degree-wrap">
-                                    <img src="{{ asset('frontend/images/degrees/1.jpg') }}" alt="">
+                                    @php
+                                        if (
+                                            $college_menu->photos->first() != null &&
+                                            $college_menu->photos->first()->file_name != null
+                                        ) {
+                                            $college_menu_img = asset(
+                                                'assets/college_menus/' . $college_menu->photos->first()->file_name,
+                                            );
+
+                                            if (
+                                                !file_exists(
+                                                    public_path(
+                                                        'assets/college_menus/' .
+                                                            $college_menu->photos->first()->file_name,
+                                                    ),
+                                                )
+                                            ) {
+                                                $college_menu_img = asset('frontend/images/degrees/1.jpg');
+                                            }
+                                        } else {
+                                            $college_menu_img = asset('frontend/images/degrees/1.jpg');
+                                        }
+                                    @endphp
+
+                                    <img src="{{ $college_menu_img }}" alt="">
                                     <div class="title-part">
                                         <h4 class="title">{{ $college_menu->title }}</h4>
                                     </div>

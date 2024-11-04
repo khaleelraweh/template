@@ -48,3 +48,17 @@
 .rs-degree.style1 .degree-wrap .content-part{
     padding: 30px 30px 30px;
 }
+
+/* temperary in college and institute */
+
+@media (min-width: 768px) {
+    .rs-degree.style1 .degree-wrap img{
+        height: 390px ;
+    }
+}
+
+@media only screen and (max-width: 575px){
+    .rs-degree.style1 .degree-wrap img{
+        height: 325px ;
+    }
+}
