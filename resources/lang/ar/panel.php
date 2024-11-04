@@ -388,7 +388,7 @@ return [
     'edit_existing_statistic'                               => 'تعديل إحصاء موجود',
 
     // ........... commons in Statistics   ....... //
-
+    'statistic_number'                                      =>  'رقم إحصائي',
 
 
 

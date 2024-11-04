@@ -387,7 +387,7 @@ return [
 
 
     // ........... commons in Statistics   ....... //
-
+    'statistic_number'                                  =>  'Statistic Number',
 
 
 
