@@ -115,7 +115,6 @@
                             role="tab" aria-controls="SEO" aria-selected="false">{{ __('panel.SEO_tab') }}
                         </button>
                     </li>
-
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
@@ -172,8 +171,8 @@
                             </div>
                         @endforeach
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
                                     <label for="content[{{ $key }}]">
                                         {{ __('panel.f_content') }}
@@ -190,8 +189,9 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
+
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
