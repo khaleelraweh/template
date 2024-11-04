@@ -343,16 +343,22 @@
     <!-- start statistics -->
     <div class=" main-home event-bg pt-100 pb-100 md-pt-70 md-pb-70">
 
+
         <div class="rs-counter style2-about">
             <div class="container">
                 <div class="row couter-area">
-                    <div class="col-lg-3 col-md-6 md-mb-30">
-                        <div class="counter-item text-center">
-                            <h2 class="rs-count">2958</h2>
-                            <h4 class="title mb-0">Finished Sessions</h4>
+                    @foreach ($statistics as $statistic)
+                        <div
+                            class="col-lg-3 col-md-6 {{ $loop->last ? '' : 'md-mb-30' }}  {{ !$loop->last && count($statistics) > 4 ? 'lg-mb-70' : ' ' }} ">
+                            <div class="counter-item text-center">
+                                <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
+                                <h4 class="title mb-0">{{ $statistic->title }}</h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 md-mb-30">
+                    @endforeach
+
+
+                    {{-- <div class="col-lg-3 col-md-6 md-mb-30 ">
                         <div class="counter-item text-center">
                             <h2 class="rs-count plus">4523</h2>
                             <h4 class="title mb-0">Enrolled Learners</h4>
@@ -369,7 +375,7 @@
                             <h2 class="rs-count percent">100</h2>
                             <h4 class="title mb-0">Satisfaction Rate</h4>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

@@ -32,3 +32,12 @@
 .rs-blog.main-home .blog-item .blog-content .btn-btm .cat-list .post-categories:before{
     content: "\f007";
 }
+
+/* Statistics  */
+.rs-counter .counter-item .rs-count{
+    padding-right: 0;
+    padding-left: 0;
+}
+.lg-mb-70{
+    margin-bottom: 70px;
+}

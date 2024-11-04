@@ -8,6 +8,7 @@ use App\Models\Event;
 use App\Models\Page;
 use App\Models\Post;
 use App\Models\Slider;
+use App\Models\Statistic;
 use Illuminate\Http\Request;
 
 class FrontendController extends Controller
@@ -21,9 +22,10 @@ class FrontendController extends Controller
         $Advertisements = Post::with('photos')->where('section', 3)->orderBy('created_at', 'ASC')->get();
 
         $events = Event::with('photos')->orderBy('created_at', 'ASC')->get();
+        $statistics = Statistic::Active()->orderBy('created_at', 'ASC')->get();
 
 
-        return view('frontend.index', compact('main_sliders',  'posts', 'news', 'Advertisements', 'events'));
+        return view('frontend.index', compact('main_sliders',  'posts', 'news', 'Advertisements', 'events', 'statistics'));
     }
 
 
