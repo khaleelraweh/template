@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Icon;
+use App\Http\Requests\Backend\CollegeRequest;
 use App\Http\Requests\Backend\WebMenuRequest;
 use Illuminate\Http\Request;
 use App\Models\WebMenu;
@@ -12,6 +13,9 @@ use Intervention\Image\Facades\Image;
 use DateTimeImmutable;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 class CollegeMenuController extends Controller
 {
@@ -46,13 +50,14 @@ class CollegeMenuController extends Controller
         return view('backend.college_menus.create', compact('main_menus'));
     }
 
-    public function store(WebMenuRequest $request)
+    public function store(CollegeRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_college_menus')) {
             return redirect('admin/index');
         }
 
         $input['title'] = $request->title;
+        $input['description'] = $request->description;
         $input['link'] = $request->link;
         $input['icon'] = $request->icon;
         $input['parent_id'] = $request->parent_id;
@@ -61,12 +66,36 @@ class CollegeMenuController extends Controller
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
 
         $webMenu = WebMenu::create($input);
 
+
+        if ($request->hasFile('images') && count($request->images) > 0) {
+
+            $i = $webMenu->photos->count() + 1;
+
+            $images = $request->file('images');
+
+            foreach ($images as $image) {
+                $manager = new ImageManager(new Driver());
+
+                $file_name = $webMenu->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_size = $image->getSize();
+                $file_type = $image->getMimeType();
+
+                $img = $manager->read($image);
+                $img->save(base_path('public/assets/web_menus/' . $file_name));
+
+                $webMenu->photos()->create([
+                    'file_name' => $file_name,
+                    'file_size' => $file_size,
+                    'file_type' => $file_type,
+                    'file_status' => 'true',
+                    'file_sort' => $i,
+                ]);
+                $i++;
+            }
+        }
 
         if ($webMenu) {
             return redirect()->route('admin.college_menus.index')->with([
