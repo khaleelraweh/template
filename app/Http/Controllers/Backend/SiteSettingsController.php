@@ -13,18 +13,20 @@ use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 
+
 class SiteSettingsController extends Controller
 {
 
     // =============== start info site ===============//
     public function show_main_informations()
     {
-        return view('backend.site_infos.index');
+        $site_album = SiteSetting::where('key', 'site_name')->get()->first();
+        return view('backend.site_infos.index', compact('site_album'));
     }
 
     public function update_main_informations(Request $request, $id)
     {
-        $data = $request->except('_token', 'submit');
+        $data = $request->except('_token', 'submit', 'images');
 
         foreach ($data as $key => $value) {
             $site = SiteSetting::where('key', $key)
@@ -35,6 +37,36 @@ class SiteSettingsController extends Controller
                     'value' => $value
                 ]);
         }
+
+
+        //------------------ for site image albums start  ---------------//
+
+        // Handle multiple images for 'photos' relation
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $manager = new ImageManager(new Driver());
+
+                $file_name = uniqid() . '.' . $image->getClientOriginalExtension();
+                $file_size = $image->getSize();
+                $file_type = $image->getMimeType();
+
+                $img = $manager->read($image);
+                $img->save(base_path('public/assets/site_settings/' . $file_name));
+
+                // Create and associate the Photo instance
+                $siteAlbum = SiteSetting::find($id); // Assuming the ID relates to the SiteSetting instance
+
+                $siteAlbum->photos()->create([
+                    'file_name' => $file_name,
+                    'file_size' => $file_size,
+                    'file_type' => $file_type,
+                    'file_status' => 'true',
+                    'file_sort' => $siteAlbum->photos()->count() + 1,
+                ]);
+            }
+        }
+
+        //------------------ for site image albums end-----------//
 
         //------------------- For Site Image Start --------------//
         $site_image = SiteSetting::where('key', 'site_img')
@@ -185,6 +217,20 @@ class SiteSettingsController extends Controller
 
         self::updateCache();
 
+        return true;
+    }
+
+
+
+    public function remove_site_settings_albums(Request $request)
+    {
+
+        $site_album = SiteSetting::findOrFail($request->site_album_id);
+        $image = $site_album->photos()->where('id', $request->image_id)->first();
+        if (File::exists('assets/site_settings/' . $image->file_name)) {
+            unlink('assets/site_settings/' . $image->file_name);
+        }
+        $image->delete();
         return true;
     }
 
