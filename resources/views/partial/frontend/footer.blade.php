@@ -76,22 +76,24 @@
                      </ul>
                  </div>
                  <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
-                     <h3 class="widget-title">Address</h3>
+                     <h3 class="widget-title">{{ __('panel.f_address') }}</h3>
                      <ul class="address-widget">
                          <li>
                              <i class="flaticon-location"></i>
-                             <div class="desc">374 William S Canning Blvd, River MA 2721, USA</div>
+                             <div class="desc">{{ $siteSettings['site_address']->value ?? '' }}</div>
                          </li>
                          <li>
                              <i class="flaticon-call"></i>
                              <div class="desc">
-                                 <a href="tel:(+880)155-69569">(+880)155-69569</a>
+                                 <a
+                                     href="tel:(+04){{ $siteSettings['site_mobile']->value ?? '' }}">(+04){{ $siteSettings['site_mobile']->value ?? '' }}</a>
                              </div>
                          </li>
                          <li>
                              <i class="flaticon-email"></i>
                              <div class="desc">
-                                 <a href="mailto:support@rstheme.com">support@rstheme.com</a>
+                                 <a
+                                     href="mailto:{{ $siteSettings['site_email1']->value ?? '' }}">{{ $siteSettings['site_email1']->value ?? '' }}</a>
                              </div>
                          </li>
                      </ul>
