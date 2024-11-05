@@ -112,9 +112,10 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
         <div class="menu-area menu-sticky">
             <div class="container">
                 <div class="row y-middle">
-                    <div class="col-lg-3">
+                    <div class="col-lg-2">
                         <div class="logo-cat-wrap">
-                            <div class="logo-part pr-90">
+                            {{-- <div class="logo-part pr-90"> --}}
+                            <div class="logo-part ">
                                 <a class="dark-logo" href="index.html">
                                     {{-- <img src="{{ asset('frontend/images/logo-dark.png') }}" alt=""> --}}
                                     <img src="{{ $siteSettings['site_logo_large_dark']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_dark']->value) : asset('frontend/images/logo-dark.png') }}"
@@ -130,7 +131,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
 
                         </div>
                     </div>
-                    <div class="col-lg-9 text-center">
+                    <div class="col-lg-10 text-center">
                         <div class="rs-menu-area">
                             <div class="main-menu ">
                                 <div class="mobile-menu">
@@ -172,38 +173,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                                 </nav>
                             </div> <!-- //.main-menu -->
 
-                            {{-- <div class="expand-btn-inner pl-90">
-                                <ul>
-                                    <li>
-                                        <a class="hidden-xs rs-search short-border" data-target=".search-modal"
-                                            data-toggle="modal" href="#">
-                                            <i class="flaticon-search"></i>
-                                        </a>
-                                    </li>
 
-                                    @foreach (config('locales.languages') as $key => $val)
-                                        @if ($key != app()->getLocale())
-                                            <li class="lang-item">
-
-                                                <a href="{{ route('change.language', $key) }}">
-                                                    <span>
-                                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }}"
-                                                                title="{{ $key == 'ar' ? 'ye' : 'us' }}"
-                                                                id="{{ $key == 'ar' ? 'ye' : 'us' }}"></i>
-                                                        </span>
-                                                    {{ __('transf.lang_' . $val['lang']) }}
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-
-                                </ul>
-                                <a id="nav-expander" class="nav-expander style3">
-                                    <span class="dot1"></span>
-                                    <span class="dot2"></span>
-                                    <span class="dot3"></span>
-                                </a>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
