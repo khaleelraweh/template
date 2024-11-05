@@ -187,7 +187,7 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="images">
-                                    {{ __('panel.image') }} / {{ __('panel.images') }}
+                                    {{ __('panel.site_album') }}
                                     <span>
                                         <br>
                                         <small> {{ __('panel.best_size') }}</small>
@@ -205,11 +205,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
                     </div>
 
                     <div class="tab-pane fade" id="logo" role="tabpanel" aria-labelledby="logo-tab">
@@ -356,9 +351,6 @@
                 showRemove: false,
                 showUpload: false,
                 overwriteInitial: false,
-                // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
-                // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
                 initialPreview: [
                     @if ($site_album->photos()->count() > 0)
                         @foreach ($site_album->photos as $media)

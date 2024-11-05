@@ -803,6 +803,11 @@ return [
     'site_description'              => 'وصف الموقع ',
     'site_link'                     => 'رابط الموقع',
     'site_img'                      => 'الصورة الافتراضية للموقع',
+    'site_album'                    =>  'صور البوم الموقع',
+    'site_logo_large_light'     =>  'شعار الموقع(مشرق ، كبير)',
+    'site_logo_small_light'     =>  'شعار الموقع(مشرق ، صغير)',
+    'site_logo_large_dark'      =>  'شعار الموقع(داكن ، كبير)',
+    'site_logo_small_dark'      =>  'شعار الموقع(داكن ، صغير)',
 
     // --------------- Site contact    --------------//
     'show_site_contact'             => 'معلومات الإتصال باملوقع ',

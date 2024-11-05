@@ -836,6 +836,12 @@ return [
     'site_link'                 => 'Site Link',
     'site_img'                  => 'Site Image',
 
+    'site_album'                =>  'Site Album',
+    'site_logo_large_light'     =>  'Site Logo (Large , Light)',
+    'site_logo_small_light'     =>  'Site Logo (Small , Light)',
+    'site_logo_large_dark'      =>  'Site Logo (Large , Dark)',
+    'site_logo_small_dark'      =>  'Site Logo (Small , Dark)',
+
 
     // --------------- Site contact    --------------//
     'show_site_contact'                        => ' Site Contact Info ',
