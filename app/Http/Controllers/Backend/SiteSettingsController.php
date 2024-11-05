@@ -110,6 +110,32 @@ class SiteSettingsController extends Controller
         }
         //------------------- For site_logo_small_light end  --------------//
 
+        //----------------------------------------------------------------------------//
+        //------------------- For site_logo_large_dark Start  --------------//
+        $site_logo_large_dark = SiteSetting::where('key', 'site_logo_large_dark')
+            ->where('section', $id)
+            ->get()
+            ->first();
+        if ($image = $request->file('site_logo_large_dark')) {
+
+            if ($site_logo_large_dark->value != null && File::exists('assets/site_settings/' . $site_logo_large_dark->value)) {
+                unlink('assets/site_settings/' . $site_logo_large_dark->value);
+            }
+
+            $manager = new ImageManager(new Driver());
+            $file_name = "site_logo_large_dark" . "." . $image->getClientOriginalExtension();
+
+            $img = $manager->read($request->file('site_logo_large_dark'));
+
+            $img->save(base_path('public/assets/site_settings/' . $file_name));
+
+            $site_logo_large_dark->update([
+                'value' => $file_name
+            ]);
+        }
+        //------------------- For site_logo_large_dark end  --------------//
+
+
 
         self::updateCache();
 
@@ -175,9 +201,27 @@ class SiteSettingsController extends Controller
 
         return true;
     }
-
     // =============== end info site ===============//
 
+    //-----------------------------------------------------------------------//
+    public function remove_site_logo_large_dark(Request $request)
+    {
+
+        $site_image = SiteSetting::findOrFail($request->site_info_id);
+        if (File::exists('assets/site_settings/' . $site_image->value)) {
+            unlink('assets/site_settings/' . $site_image->value);
+            $site_image->value = null;
+            $site_image->save();
+        }
+        if ($site_image->value != null) {
+            $site_image->value = null;
+            $site_image->save();
+        }
+
+        self::updateCache();
+
+        return true;
+    }
 
     // =============== start contact site ===============//
     public function show_contact_informations()
