@@ -401,48 +401,30 @@
                 data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="1"
                 data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="4"
                 data-md-device-nav="false" data-md-device-dots="false">
-                <div class="blog-item">
-                    <div class="img-part media-icon orange-color">
-                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
-                            <i class="fa fa-play"></i>
-                        </a>
+                @foreach ($playlists as $playlist)
+                    <div class="blog-item">
+                        @php
+                            if ($playlist->photos->first() != null && $playlist->photos->first()->file_name != null) {
+                                $playlist_img = asset('assets/playlists/' . $playlist->photos->first()->file_name);
+
+                                if (
+                                    !file_exists(
+                                        public_path('assets/playlists/' . $playlist->photos->first()->file_name),
+                                    )
+                                ) {
+                                    $playlist_img = asset('frontend/images/faq/1.jpg');
+                                }
+                            } else {
+                                $playlist_img = asset('frontend/images/faq/1.jpg');
+                            }
+                        @endphp
+                        <div class="img-part media-icon orange-color" style="background-image: url({{ $playlist_img }})">
+                            <a class="popup-videos" href="{{ $playlist->videoLinks()->first()->link }}">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-item">
-                    <div class="img-part media-icon orange-color">
-                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
-                            <i class="fa fa-play"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="blog-item">
-                    <div class="img-part media-icon orange-color">
-                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
-                            <i class="fa fa-play"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="blog-item">
-                    <div class="img-part media-icon orange-color">
-                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
-                            <i class="fa fa-play"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="blog-item">
-                    <div class="img-part media-icon orange-color">
-                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
-                            <i class="fa fa-play"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="blog-item">
-                    <div class="img-part media-icon orange-color">
-                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
-                            <i class="fa fa-play"></i>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

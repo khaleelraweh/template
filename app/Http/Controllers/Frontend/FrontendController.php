@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\AboutInstatute;
 use App\Models\Event;
 use App\Models\Page;
+use App\Models\Playlist;
 use App\Models\Post;
 use App\Models\Slider;
 use App\Models\Statistic;
@@ -23,7 +24,10 @@ class FrontendController extends Controller
 
         $events = Event::with('photos')->orderBy('created_at', 'ASC')->get();
         $statistics = Statistic::Active()->orderBy('created_at', 'ASC')->get();
-        return view('frontend.index', compact('main_sliders',  'posts', 'news', 'Advertisements', 'events', 'statistics'));
+        $playlists = Playlist::Active()->orderBy('created_at', 'ASC')->get();
+
+        // $statistics = Statistic::Active()->orderBy('created_at', 'ASC')->get();
+        return view('frontend.index', compact('main_sliders',  'posts', 'news', 'Advertisements', 'events', 'statistics', 'playlists'));
     }
 
 

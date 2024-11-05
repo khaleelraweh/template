@@ -87,4 +87,9 @@ class Playlist extends Model
     {
         return $this->morphMany(VideoLink::class, 'video_linkable');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(true);
+    }
 }
