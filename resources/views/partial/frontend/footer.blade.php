@@ -116,7 +116,7 @@
                      </ul>
                  </div>
                  <div class="col-lg-3 col-md-12 col-sm-12 footer-widget">
-                     <h3 class="widget-title">Recent Posts</h3>
+                     <h3 class="widget-title">{{ __('panel.recent_posts') }}</h3>
                      @foreach ($posts->take(2) as $post)
                          <div class="recent-post mb-20 {{ $loop->last ? 'md-pb-0' : '' }}">
                              <div class="post-img">

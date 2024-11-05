@@ -1440,6 +1440,7 @@ return [
     'photo_album'                                       =>  'البوم الصور',
     'browse_albums'                                     =>  'تصفح الالبومات',
     'links_that_interest_you'                           =>   'روابط تهمك',
+    'recent_posts'                                      =>  'المقالات الحديثة',
 
 
 

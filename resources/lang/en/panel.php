@@ -1481,5 +1481,6 @@ return [
     'browse_albums'                                     =>  'Browse albums',
 
     'links_that_interest_you'                           =>   'Interested Link',
+    'recent_posts'                                      =>  'Recent Posts',
 
 ];
