@@ -113,29 +113,44 @@
                              <li><a href="{{ $support_menu->link }}">{{ $support_menu->title }}</a></li>
                          @endforeach
 
-                         {{-- <li><a href="#">Course Two</a></li>
-                         <li><a href="#">Single Course</a></li>
-                         <li><a href="#">Profile</a></li>
-                         <li><a href="#">Login/Register</a></li> --}}
                      </ul>
                  </div>
                  <div class="col-lg-3 col-md-12 col-sm-12 footer-widget">
                      <h3 class="widget-title">Recent Posts</h3>
-                     <div class="recent-post mb-20">
-                         <div class="post-img">
-                             <img src="{{ asset('frontend/images/footer/1.jpg') }}" alt="">
-                         </div>
-                         <div class="post-item">
-                             <div class="post-desc">
-                                 <a href="#">University while the lovely valley team work</a>
+                     @foreach ($posts->take(2) as $post)
+                         <div class="recent-post mb-20 {{ $loop->last ? 'md-pb-0' : '' }}">
+                             <div class="post-img">
+                                 @php
+                                     if ($post->photos->first() != null && $post->photos->first()->file_name != null) {
+                                         $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
+
+                                         if (
+                                             !file_exists(
+                                                 public_path('assets/posts/' . $post->photos->first()->file_name),
+                                             )
+                                         ) {
+                                             $post_img = asset('image/not_found/item_image_not_found.webp');
+                                         }
+                                     } else {
+                                         $post_img = asset('image/not_found/item_image_not_found.webp');
+                                     }
+                                 @endphp
+                                 <img src="{{ $post_img }}" alt="" style="height: 75px;width:65px;">
                              </div>
-                             <span class="post-date">
-                                 <i class="fa fa-calendar"></i>
-                                 September 20, 2020
-                             </span>
+                             <div class="post-item">
+                                 <div class="post-desc">
+                                     <a href="#">{{ $post->title }}</a>
+                                 </div>
+                                 <span class="post-date">
+                                     <i class="fa fa-calendar"></i>
+                                     {{ $post->created_at->isoFormat('YYYY/MM/DD') }}
+                                 </span>
+                             </div>
                          </div>
-                     </div>
-                     <div class="recent-post mb-20 md-pb-0">
+                     @endforeach
+
+
+                     {{-- <div class="recent-post mb-20 md-pb-0">
                          <div class="post-img">
                              <img src="{{ asset('frontend/images/footer/2.jpg') }}" alt="">
                          </div>
@@ -148,7 +163,7 @@
                                  September 14, 2020
                              </span>
                          </div>
-                     </div>
+                     </div> --}}
                  </div>
              </div>
          </div>
