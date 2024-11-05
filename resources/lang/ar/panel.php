@@ -1441,6 +1441,8 @@ return [
     'browse_albums'                                     =>  'تصفح الالبومات',
     'links_that_interest_you'                           =>   'روابط تهمك',
     'recent_posts'                                      =>  'المقالات الحديثة',
+    'all_rights_reserved'                               =>  'جميع الحقوق محفوظة',
+
 
 
 

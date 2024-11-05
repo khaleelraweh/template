@@ -173,7 +173,8 @@
              <div class="row y-middle">
                  <div class="col-lg-6 md-mb-20">
                      <div class="copyright">
-                         <p>&copy; 2020 All Rights Reserved. Developed By <a href="http://rstheme.com/">RSTheme</a>
+                         <p> {{ $siteSettings['site_name']->value }} , &copy; {{ date('Y') }}
+                             {{ __('panel.all_rights_reserved') }}.
                          </p>
                      </div>
                  </div>

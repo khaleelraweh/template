@@ -1482,5 +1482,6 @@ return [
 
     'links_that_interest_you'                           =>   'Interested Link',
     'recent_posts'                                      =>  'Recent Posts',
+    'all_rights_reserved'                               =>  'All Rights Reserved',
 
 ];
