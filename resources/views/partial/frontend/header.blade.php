@@ -9,9 +9,16 @@
                         <div class="col-md-7">
                             <ul class="topbar-contact">
                                 <li>
+                                    <?php
+                                    $parsedUrl = parse_url($siteSettings['site_email1']->value, PHP_URL_HOST);
+                                    
+                                    // Remove 'www.' if it exists
+                                    $domain = preg_replace('/^www\./', '', $parsedUrl);
+                                    
+                                    ?>
                                     <i class="flaticon-email"></i>
                                     <a
-                                        href="mailto:{{ $siteSettings['site_email1']->value ?? '' }}">{{ $siteSettings['site_email1']->value ?? '' }}</a>
+                                        href="mailto:{{ $siteSettings['site_email1']->value ?? '' }}">contact&#64;{{ $domain ?? '' }}</a>
                                 </li>
                                 <li>
                                     <i class="flaticon-call"></i>
