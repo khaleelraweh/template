@@ -19,8 +19,8 @@ class SiteSettingSeeder extends Seeder
         $faker = Factory::create();
 
         // site infos
-        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'المعهد التقني العالي للعلوم الطبية', 'en' => 'Higher Technical Institute'],       'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'المعهد التقني', 'en' => 'Technical Institute'],           'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name',          'value' =>  ['ar' => 'جامة إب', 'en' => 'Ibb University'],       'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_short_name',    'value' =>  ['ar' => 'جامعة إب', 'en' => 'Ibb University'],           'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_description',   'value' =>  ['ar' => 'التعليم كما تحلم به', 'en' => 'Education as your dreams'],   'status'    =>  true,   'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://jats-edu.com',                     'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_img',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
