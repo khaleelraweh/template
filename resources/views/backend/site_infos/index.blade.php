@@ -118,6 +118,34 @@
                             </div>
                         @endforeach
 
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="site_address_{{ $key }}">
+                                        {{ __('panel.site_address') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" id="site_address_{{ $key }}"
+                                        name="site_address[{{ $key }}]"
+                                        value="{{ old('site_address.' . $key, $siteSettings['site_address']->getTranslation('value', $key)) }}"
+                                        class="form-control" placeholder="{{ $siteSettings['site_address']->key }}">
+                                    @error('site_address.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
                                 <div class="col-sm-12 col-md-2 pt-3">
@@ -139,6 +167,7 @@
                             </div>
                         @endforeach
 
+                        <hr>
 
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row">
@@ -165,6 +194,33 @@
                             </div>
                         @endforeach
 
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-2 pt-3">
+                                    <label for="site_workTime_{{ $key }}">
+                                        {{ __('panel.site_workTime') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-10 pt-3">
+                                    <input type="text" id="site_workTime_{{ $key }}"
+                                        name="site_workTime[{{ $key }}]"
+                                        value="{{ old('site_workTime.' . $key, $siteSettings['site_workTime']->getTranslation('value', $key)) }}"
+                                        class="form-control" placeholder="{{ $siteSettings['site_workTime']->key }}">
+                                    @error('site_workTime.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                        <hr>
+
                         <div class="row ">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="{{ $siteSettings['site_img']->key }}">
@@ -182,6 +238,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        <hr>
 
                         {{-- Site album  --}}
                         <div class="row">
