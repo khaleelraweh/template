@@ -38,15 +38,11 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                     </div>
                     <div class="col-md-5 text-right">
                         <ul class="topbar-right">
-                            <li class="login-register">
-                                <i class="fa fa-sign-in text-white"></i>
-                                <a href="{{ route('admin.login') }}">{{ __('panel.f_login') }}</a>
-                            </li>
 
                             @if ($siteSettings['site_facebook']->value)
                                 <li>
                                     <a href="{{ $siteSettings['site_facebook']->value }}" target="_blank">
-                                        <span><i class="fa fa-facebook-f text-white"></i></span>
+                                        <span><i class="fa fa-facebook-f topbar-link-color"></i></span>
                                     </a>
                                 </li>
                             @endif
@@ -54,7 +50,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                             @if ($siteSettings['site_youtube']->value)
                                 <li>
                                     <a href="{{ $siteSettings['site_youtube']->value }}" target="_blank">
-                                        <span><i class="fa fa-youtube text-white"></i></span>
+                                        <span><i class="fa fa-youtube topbar-link-color"></i></span>
                                     </a>
                                 </li>
                             @endif
@@ -62,7 +58,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                             @if ($siteSettings['site_twitter']->value)
                                 <li>
                                     <a href="{{ $siteSettings['site_twitter']->value }}" target="_blank">
-                                        <span><i class="fa fa-twitter text-white"></i></span>
+                                        <span><i class="fa fa-twitter topbar-link-color"></i></span>
                                     </a>
                                 </li>
                             @endif
@@ -70,14 +66,40 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                             @if ($siteSettings['site_instagram']->value)
                                 <li>
                                     <a href="{{ $siteSettings['site_instagram']->value }}" target="_blank">
-                                        <span><i class="fa fa-instagram text-white"></i></span>
+                                        <span><i class="fa fa-instagram topbar-link-color"></i></span>
                                     </a>
                                 </li>
                             @endif
 
-                            {{-- <li class="btn-part">
-                                    <a class="apply-btn" href="#">Apply Now</a>
-                                </li> --}}
+                            <li>
+                                <a class=" rs-search short-border" data-target=".search-modal" data-toggle="modal"
+                                    href="#">
+                                    <i class="fa fa-search topbar-link-color"></i>
+                                </a>
+                            </li>
+
+                            @foreach (config('locales.languages') as $key => $val)
+                                @if ($key != app()->getLocale())
+                                    <li class="lang-item">
+
+                                        <a href="{{ route('change.language', $key) }}" class="topbar-link-color">
+                                            <span>
+                                                <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }}"
+                                                    title="{{ $key == 'ar' ? 'ye' : 'us' }}"
+                                                    id="{{ $key == 'ar' ? 'ye' : 'us' }}"></i>
+                                            </span>
+                                            {{-- {{ __('transf.lang_' . $val['lang']) }} --}}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+
+                            <div class="text-white divider d-none d-inline-block">|</div>
+
+                            <li class="login-register">
+                                <i class="fa fa-sign-in text-white"></i>
+                                <a href="{{ route('admin.login') }}">{{ __('panel.f_login') }}</a>
+                            </li>
                         </ul>
                     </div>
                 </div>

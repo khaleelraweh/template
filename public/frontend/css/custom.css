@@ -1,8 +1,17 @@
 /* for topbar header  */
-.full-width-header .rs-header .topbar-area .topbar-contact li,
-.full-width-header .rs-header .topbar-area .topbar-contact li a{
-    color: #D0D6DD;
+.full-width-header .rs-header .topbar-area .topbar-contact li{
+    border-right: 0;
+    margin-right:5px;
+    padding-right:5px;
 }
+.full-width-header .rs-header .topbar-area .topbar-contact li,
+.full-width-header .rs-header .topbar-area .topbar-contact li a , 
+.topbar-link-color{
+    color: #D0D6DD;
+   
+}
+
+
 
 .full-width-header .rs-header .topbar-area .topbar-contact li i:before{
     color: #E9EBEB;
@@ -10,6 +19,16 @@
 
 .full-width-header .rs-header .topbar-area .topbar-right li{
     margin-right: 10px;
+}
+
+.divider{
+    font-size: 20px;
+    line-height: 20px;
+    padding: 0 10px;
+}
+
+.full-width-header .rs-header .topbar-area .topbar-right li.login-register i{
+    margin-right: 5px;
 }
 
 /* main slider  */
