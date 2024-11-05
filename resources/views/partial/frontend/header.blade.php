@@ -71,6 +71,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                                 </li>
                             @endif
 
+
                             <li>
                                 <a class=" rs-search short-border" data-target=".search-modal" data-toggle="modal"
                                     href="#">
@@ -170,7 +171,8 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                                     </ul> <!-- //.nav-menu -->
                                 </nav>
                             </div> <!-- //.main-menu -->
-                            <div class="expand-btn-inner pl-90">
+
+                            {{-- <div class="expand-btn-inner pl-90">
                                 <ul>
                                     <li>
                                         <a class="hidden-xs rs-search short-border" data-target=".search-modal"
@@ -184,11 +186,11 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                                             <li class="lang-item">
 
                                                 <a href="{{ route('change.language', $key) }}">
-                                                    {{-- <span>
+                                                    <span>
                                                             <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }}"
                                                                 title="{{ $key == 'ar' ? 'ye' : 'us' }}"
                                                                 id="{{ $key == 'ar' ? 'ye' : 'us' }}"></i>
-                                                        </span> --}}
+                                                        </span>
                                                     {{ __('transf.lang_' . $val['lang']) }}
                                                 </a>
                                             </li>
@@ -201,7 +203,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                                     <span class="dot2"></span>
                                     <span class="dot3"></span>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
