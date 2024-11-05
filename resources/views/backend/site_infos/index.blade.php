@@ -15,16 +15,16 @@
                     {{ __('panel.manage_site_settings') }}
 
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         {{ __('panel.show_site_information') }}
                     </li>
                 </ul>
@@ -63,109 +63,104 @@
 
                         <div class="row">
 
-                            <div class="col-md-7 col-sm-12 ">
 
-                                @foreach (config('locales.languages') as $key => $val)
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="site_name_{{ $key }}">
-                                                    {{ __('panel.site_name') }}
-                                                </label>
-                                                <input type="text" id="site_name_{{ $key }}"
-                                                    name=" site_name[{{ $key }}]"
-                                                    value="{{ old('site_name.' . $key, $siteSettings['site_name']->getTranslation('value', $key)) }}"
-                                                    class="form-control">
-                                                @error('site_name.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                                @foreach (config('locales.languages') as $key => $val)
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="site_short_name_{{ $key }}">
-                                                    {{ __('panel.site_short_name') }} </label>
-                                                <input type="text" id="site_short_name_{{ $key }}"
-                                                    name="site_short_name[{{ $key }}]"
-                                                    value="{{ old('site_short_name.' . $key, $siteSettings['site_short_name']->getTranslation('value', $key)) }}"
-                                                    class="form-control"
-                                                    placeholder="{{ $siteSettings['site_short_name']->key }}">
-                                                @error('site_short_name.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                                @foreach (config('locales.languages') as $key => $val)
-                                    <div class="row ">
-                                        <div class="col-sm-12 col-md-2 pt-3">
-                                            <label for="site_description_{{ $key }}">
-                                                {{ __('panel.f_content') }}
-                                                <span class="language-type">
-                                                    <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
-                                                        title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
-                                                    {{ __('panel.' . $key) }}
-                                                </span>
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="site_name_{{ $key }}">
+                                                {{ __('panel.site_name') }}
                                             </label>
-                                        </div>
-                                        <div class="col-sm-12 col-md-10 pt-3">
-                                            <textarea id="tinymceExample" name="site_description[{{ $key }}]" rows="10" class="form-control ">{!! old('site_description.' . $key, $siteSettings['site_description']->getTranslation('value', $key)) !!}</textarea>
-                                            @error('site_description.' . $key)
+                                            <input type="text" id="site_name_{{ $key }}"
+                                                name=" site_name[{{ $key }}]"
+                                                value="{{ old('site_name.' . $key, $siteSettings['site_name']->getTranslation('value', $key)) }}"
+                                                class="form-control">
+                                            @error('site_name.' . $key)
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+
                                     </div>
-                                @endforeach
+                                </div>
+                            @endforeach
 
-
-                                @foreach (config('locales.languages') as $key => $val)
-                                    <div class="row">
-                                        <div class="col-md-12 col-sm-12 pt-3">
-                                            <div class="form-group">
-                                                <label for="site_link_{{ $key }}">
-                                                    {{ __('panel.site_link') }} </label>
-                                                <input type="text" id="site_link_{{ $key }}"
-                                                    name="site_link[{{ $key }}]"
-                                                    value="{{ old('site_link.' . $key, $siteSettings['site_link']->getTranslation('value', $key)) }}"
-                                                    class="form-control">
-                                                @error('site_link.' . $key)
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
-
-                            </div>
-
-                            <div class="col-md-5 col-sm-12">
-
-                                <div class="row pt-4">
-                                    <div class="col-12">
-                                        <label for="{{ $siteSettings['site_img']->key }}"> {{ __('panel.site_img') }}
-                                        </label>
-                                        <br>
-                                        <div class="file-loading">
-                                            <input type="file" name="{{ $siteSettings['site_img']->key }}"
-                                                id="customer_image" class="file-input-overview ">
-                                            <span class="form-text text-muted">Image width should be 500px x 500px </span>
-                                            @error($siteSettings['site_img']->key)
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="site_short_name_{{ $key }}">
+                                                {{ __('panel.site_short_name') }} </label>
+                                            <input type="text" id="site_short_name_{{ $key }}"
+                                                name="site_short_name[{{ $key }}]"
+                                                value="{{ old('site_short_name.' . $key, $siteSettings['site_short_name']->getTranslation('value', $key)) }}"
+                                                class="form-control"
+                                                placeholder="{{ $siteSettings['site_short_name']->key }}">
+                                            @error('site_short_name.' . $key)
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
                                 </div>
+                            @endforeach
+
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-2 pt-3">
+                                        <label for="site_description_{{ $key }}">
+                                            {{ __('panel.f_content') }}
+                                            <span class="language-type">
+                                                <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                    title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                {{ __('panel.' . $key) }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-10 pt-3">
+                                        <textarea id="tinymceExample" name="site_description[{{ $key }}]" rows="10" class="form-control ">{!! old('site_description.' . $key, $siteSettings['site_description']->getTranslation('value', $key)) !!}</textarea>
+                                        @error('site_description.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endforeach
 
 
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 pt-3">
+                                        <div class="form-group">
+                                            <label for="site_link_{{ $key }}">
+                                                {{ __('panel.site_link') }} </label>
+                                            <input type="text" id="site_link_{{ $key }}"
+                                                name="site_link[{{ $key }}]"
+                                                value="{{ old('site_link.' . $key, $siteSettings['site_link']->getTranslation('value', $key)) }}"
+                                                class="form-control">
+                                            @error('site_link.' . $key)
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            <div class="row pt-4">
+                                <div class="col-12">
+                                    <label for="{{ $siteSettings['site_img']->key }}"> {{ __('panel.site_img') }}
+                                    </label>
+                                    <br>
+                                    <div class="file-loading">
+                                        <input type="file" name="{{ $siteSettings['site_img']->key }}"
+                                            id="customer_image" class="file-input-overview ">
+                                        <span class="form-text text-muted">Image width should be 500px x 500px </span>
+                                        @error($siteSettings['site_img']->key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
                             </div>
+
+
+
                         </div>
 
                     </div>
