@@ -32,9 +32,9 @@
                          <a href="index.html"><img src="{{ asset('frontend/images/lite-logo.png') }}" alt=""></a>
                      </div>
                      <div class="textwidget pr-60 md-pr-15">
-                         <p class="white-color">We denounce with righteous indi gnation and dislike men who are so
-                             beguiled and demoralized by the charms of pleasure of your moment, so blinded by desire
-                             those who fail weakness.</p>
+                         <p class="white-color">
+                             {!! $siteSettings['site_description']->value !!}
+                         </p>
                      </div>
                      <ul class="footer_social">
                          @if ($siteSettings['site_facebook']->value)
