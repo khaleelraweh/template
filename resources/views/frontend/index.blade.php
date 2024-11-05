@@ -115,7 +115,7 @@
     {{-- <div class="container"> --}}
     <div class="row">
         <div class="col-lg-7 col-md-12 ">
-            <div id="rs-blog" class="rs-blog main-home pb-100 pt-100 md-pt-70 md-pb-70">
+            <div id="rs-blog" class="rs-blog rs-news-events main-home pb-100 pt-100 md-pt-70 md-pb-70">
                 <div class="container">
                     {{-- <div class="sec-title3 text-center mb-50">
                             <div class="sub-title"> News Update</div>
@@ -318,7 +318,7 @@
     <!-- end statistics -->
 
     <!-- College and Institutes Start  -->
-    <div class="rs-degree style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
+    <div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
         <div class="container">
             <div class="row y-middle">
                 <div class="col-lg-2 col-md-12 mb-30">
@@ -449,7 +449,7 @@
     <!-- Videos Section End -->
 
     <!-- College and Institutes Start  -->
-    <div class="rs-degree style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
+    <div class="rs-degree rs-college-album style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
         <div class="container">
             <div class="row y-middle">
                 <div class="col-lg-10 col-md-12 mb-30">
