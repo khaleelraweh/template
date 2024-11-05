@@ -58,10 +58,10 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['key'    =>  'site_git_scm',      'value' =>  'https://git-scm.com',     'status'    =>  true,   'section'   =>  3,   'published_on'  =>  $faker->dateTime()]);
 
         // site seo
-        SiteSetting::create(['key'    =>  'site_name_meta',         'value' =>  ['ar' => 'اكاديمية جاتس', 'en' => 'Jats-edu'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_description_meta',  'value' =>  ['ar' => 'موقع يوفر اقوي كورسات رائعة في مختلف المجالات', 'en' => 'A site that provides multi courses in various fields '],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_link_meta',         'value' =>  'jats-edu.com',   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
-        SiteSetting::create(['key'    =>  'site_keywords_meta',     'value' =>  ['ar' => 'ورش عمل , دروس , دورات', 'en' => 'Courses , Lessons'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_name_meta',         'value' =>  ['ar' => 'جامعة إب', 'en' => 'Ibb University'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_description_meta',  'value' =>  ['ar' => 'واحدة من اعرق الجامعات في اليمن', 'en' => 'One of the most prestigious universities in Yemen'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_link_meta',         'value' =>  'https://www.ibbuniv.edu.ye/',   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_keywords_meta',     'value' =>  ['ar' => ' ماجستير , بكلوريوس , جامعة', 'en' => 'University , Bachelor , Master'],   'status'    =>  true,   'section'   =>  4,   'published_on'  =>  $faker->dateTime()]);
 
 
         //site pay method 

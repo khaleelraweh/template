@@ -32,16 +32,16 @@
                     <i class="fa fa-folder"></i>
                     {{ __('panel.manage_site_settings') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         {{ __('panel.show_site_meta_tag') }}
                     </li>
                 </ul>
@@ -78,91 +78,85 @@
                     <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
 
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_name_meta')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        {{ __('panel.site_name_meta') }}
-                                    </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            @php
+                                $site = SiteSetting::where('key', 'site_name_meta')->get()->first();
+                            @endphp
+                            <div class="col-sm-12 col-md-2 pt-3">
 
+                                <label for="{{ $site->key }}">
+                                    {{ __('panel.site_name_meta') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                    value="{{ old($site->key, $site->value) }}" class="form-control"
+                                    placeholder="{{ $site->key }}">
+                                @error('{{ $site->key }}')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
 
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_description_meta')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        {{ __('panel.site_description_meta') }}
-                                    </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
+                            @php
+                                $site = SiteSetting::where('key', 'site_description_meta')->get()->first();
+                            @endphp
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="{{ $site->key }}">
+                                    {{ __('panel.site_description_meta') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                    value="{{ old($site->key, $site->value) }}" class="form-control"
+                                    placeholder="{{ $site->key }}">
+                                @error('{{ $site->key }}')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
 
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_link_meta')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="{{ $site->key }}">
-                                        {{ __('panel.site_link_meta') }}
-                                    </label>
-                                    <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}">
-                                    @error('{{ $site->key }}')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                            @php
+                                $site = SiteSetting::where('key', 'site_link_meta')->get()->first();
+                            @endphp
+                            <div class="col-sm-12 col-md-2 pt-3">
 
+                                <label for="{{ $site->key }}">
+                                    {{ __('panel.site_link_meta') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
+                                    value="{{ old($site->key, $site->value) }}" class="form-control"
+                                    placeholder="{{ $site->key }}">
+                                @error('{{ $site->key }}')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
 
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                @php
-                                    $site = SiteSetting::where('key', 'site_keywords_meta')->get()->first();
-                                @endphp
-                                <div class="form-group">
-                                    <label for="exist-values">
-                                        {{ __('panel.site_keywords_meta') }}
-                                    </label>
-                                    {{-- <input type="text" id="{{ $site->key }}" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}" class="form-control"
-                                        placeholder="{{ $site->key }}"> --}}
+                            @php
+                                $site = SiteSetting::where('key', 'site_keywords_meta')->get()->first();
+                            @endphp
+                            <div class="col-sm-12 col-md-2 pt-3">
 
-                                    <input type="text" id="exist-values" class="tagged form-control"
-                                        data-removeBtn="true" name="{{ $site->key }}"
-                                        value="{{ old($site->key, $site->value) }}"
-                                        placeholder="{{ __('panel.site_keywords_meta_message_input') }}" />
+                                <label for="exist-values">
+                                    {{ __('panel.site_keywords_meta') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <input type="text" id="exist-values" class="tagged form-control" data-removeBtn="true"
+                                    name="{{ $site->key }}" value="{{ old($site->key, $site->value) }}"
+                                    placeholder="{{ __('panel.site_keywords_meta_message_input') }}" />
 
-                                    @error('exist-values')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
+                                @error('exist-values')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
