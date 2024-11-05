@@ -67,3 +67,13 @@
 .rs-faq-part.rs-college-videos.style1 .img-part{
     min-height: 250px;
 }
+
+
+/* albums */
+.rs-degree.rs-college-album.style1 .degree-wrap img{
+        height: 325px;
+}
+.rs-degree.rs-college-album.style1 .degree-wrap:hover .title-part{
+    bottom: unset;
+    opacity: 1;
+}

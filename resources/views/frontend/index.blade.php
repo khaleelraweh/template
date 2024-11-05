@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('style')
+@endsection
+
 @section('content')
     <!-- Slider Section Start -->
     <div class="rs-slider main-home">
@@ -442,46 +445,29 @@
                         data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
                         data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
                         data-md-device="3" data-md-device-nav="false" data-md-device-dots="false">
-                        @foreach ($albums as $college_menu)
-                            <div class="blog-item">
-                                <div class="degree-wrap">
-                                    @php
+                        @foreach ($albums as $album)
+                            <div class="blog-item degree-wrap">
+                                @php
+                                    if ($album->photos->first() != null && $album->photos->first()->file_name != null) {
+                                        $album_img = asset('assets/albums/' . $album->photos->first()->file_name);
+
                                         if (
-                                            $college_menu->photos->first() != null &&
-                                            $college_menu->photos->first()->file_name != null
+                                            !file_exists(
+                                                public_path('assets/albums/' . $album->photos->first()->file_name),
+                                            )
                                         ) {
-                                            $college_menu_img = asset(
-                                                'assets/college_menus/' . $college_menu->photos->first()->file_name,
-                                            );
-
-                                            if (
-                                                !file_exists(
-                                                    public_path(
-                                                        'assets/college_menus/' .
-                                                            $college_menu->photos->first()->file_name,
-                                                    ),
-                                                )
-                                            ) {
-                                                $college_menu_img = asset('frontend/images/degrees/1.jpg');
-                                            }
-                                        } else {
-                                            $college_menu_img = asset('frontend/images/degrees/1.jpg');
+                                            $album_img = asset('image/not_found/item_image_not_found.webp');
                                         }
-                                    @endphp
+                                    } else {
+                                        $album_img = asset('image/not_found/item_image_not_found.webp');
+                                    }
+                                @endphp
+                                <img src="{{ $album_img }}" alt="">
+                                <div class="title-part">
+                                    <a href="#">
+                                        <h4 class="title">{{ $album->title }}</h4>
+                                    </a>
 
-                                    <img src="{{ $college_menu_img }}" alt="">
-                                    <div class="title-part">
-                                        <h4 class="title">{{ $college_menu->title }}</h4>
-                                    </div>
-                                    <div class="content-part">
-                                        <h4 class="title"><a href="#">{{ $college_menu->title }}</a></h4>
-                                        <p class="desc">
-                                            {!! $college_menu->description !!}
-                                        </p>
-                                        <div class="btn-part">
-                                            <a href="#">{{ __('panel.read_more') }}</a>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         @endforeach
