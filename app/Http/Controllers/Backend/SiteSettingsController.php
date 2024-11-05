@@ -36,6 +36,7 @@ class SiteSettingsController extends Controller
                 ]);
         }
 
+        //------------------- For Site Image Start --------------//
         $site_image = SiteSetting::where('key', 'site_img')
             ->where('section', $id)
             ->get()
@@ -58,6 +59,32 @@ class SiteSettingsController extends Controller
                 'value' => $file_name
             ]);
         }
+        //------------------- For Site Image end --------------//
+
+        //------------------- For site_logo_large_light Start  --------------//
+        $site_logo_large_light = SiteSetting::where('key', 'site_logo_large_light')
+            ->where('section', $id)
+            ->get()
+            ->first();
+        if ($image = $request->file('site_logo_large_light')) {
+
+            if ($site_logo_large_light->value != null && File::exists('assets/site_settings/' . $site_logo_large_light->value)) {
+                unlink('assets/site_settings/' . $site_logo_large_light->value);
+            }
+
+            $manager = new ImageManager(new Driver());
+            $file_name = "site_logo_large_light" . "." . $image->getClientOriginalExtension();
+
+            $img = $manager->read($request->file('site_logo_large_light'));
+
+            $img->save(base_path('public/assets/site_settings/' . $file_name));
+
+            $site_logo_large_light->update([
+                'value' => $file_name
+            ]);
+        }
+        //------------------- For site_logo_large_light end  --------------//
+
 
         self::updateCache();
 

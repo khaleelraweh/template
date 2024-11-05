@@ -193,16 +193,16 @@
 
                         <div class="row ">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="{{ $siteSettings['site_img']->key }}">
-                                    {{ __('panel.site_img') }}
+                                <label for="{{ $siteSettings['site_logo_large_light']->key }}">
+                                    {{ __('panel.site_logo_large_light') }}
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">
-                                    <input type="file" name="{{ $siteSettings['site_img']->key }}"
+                                    <input type="file" name="{{ $siteSettings['site_logo_large_light']->key }}"
                                         id="site_logo_large_light" class="file-input-overview ">
                                     <span class="form-text text-muted">Image width should be 500px x 500px </span>
-                                    @error($siteSettings['site_img']->key)
+                                    @error($siteSettings['site_logo_large_light']->key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
