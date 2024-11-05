@@ -482,7 +482,7 @@
     <!-- College album End -->
 
     <!-- CTA Section Start -->
-    <div class="rs-cta main-home">
+    {{-- <div class="rs-cta main-home">
         <div class="partition-bg-wrap">
             <div class="container">
                 <div class="row">
@@ -503,11 +503,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- CTA Section End -->
 
     <!-- Faq Section Start -->
-    <div class="rs-faq-part style1 orange-color pt-100 pb-100 md-pt-70 md-pb-70">
+    {{-- <div class="rs-faq-part style1 orange-color pt-100 pb-100 md-pt-70 md-pb-70">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 padding-0">
@@ -584,12 +584,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- faq Section Start -->
 
 
     <!-- Testimonial Section Start -->
-    <div class="rs-testimonial main-home pt-100 pb-100 md-pt-70 md-pb-70">
+    {{-- <div class="rs-testimonial main-home pt-100 pb-100 md-pt-70 md-pb-70">
         <div class="container">
             <div class="sec-title3 mb-50 md-mb-30 text-center">
                 <div class="sub-title primary">Testimonial</div>
@@ -712,7 +712,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Testimonial Section End -->
 
 
