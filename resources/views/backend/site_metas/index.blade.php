@@ -5,7 +5,7 @@
 
 
 @section('style')
-    <link rel="stylesheet" href="{{ asset('backend/vendor/tag_meta/tag_meta.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/vendors/tag_meta/tag_meta.css') }}">
     <style>
         .tags-container {
             display: block;
@@ -185,5 +185,5 @@
 
 
 @section('script')
-    <script src="{{ asset('backend/vendor/tag_meta/tag_meta.js') }}"></script>
+    <script src="{{ asset('backend/vendors/tag_meta/tag_meta.js') }}"></script>
 @endsection
