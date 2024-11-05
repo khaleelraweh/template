@@ -1,5 +1,15 @@
+/* for topbar header  */
+.full-width-header .rs-header .topbar-area .topbar-contact li,
+.full-width-header .rs-header .topbar-area .topbar-contact li a{
+    color: #D0D6DD;
+}
+
+.full-width-header .rs-header .topbar-area .topbar-contact li i:before{
+    color: #E9EBEB;
+}
+
 .full-width-header .rs-header .topbar-area .topbar-right li{
-    margin-left: 14px;
+    margin-left: 10px;
 }
 
 .features-wrap .icon-part i{
