@@ -442,7 +442,7 @@
                         data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
                         data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
                         data-md-device="3" data-md-device-nav="false" data-md-device-dots="false">
-                        @foreach ($web_menus->where('section', 2) as $college_menu)
+                        @foreach ($albums as $college_menu)
                             <div class="blog-item">
                                 <div class="degree-wrap">
                                     @php

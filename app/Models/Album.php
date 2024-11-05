@@ -82,4 +82,9 @@ class Album extends Model
     {
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->whereStatus(true);
+    }
 }
