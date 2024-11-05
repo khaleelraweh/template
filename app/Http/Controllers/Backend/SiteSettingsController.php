@@ -86,6 +86,31 @@ class SiteSettingsController extends Controller
         //------------------- For site_logo_large_light end  --------------//
 
 
+        //------------------- For site_logo_small_light Start  --------------//
+        $site_logo_small_light = SiteSetting::where('key', 'site_logo_small_light')
+            ->where('section', $id)
+            ->get()
+            ->first();
+        if ($image = $request->file('site_logo_small_light')) {
+
+            if ($site_logo_small_light->value != null && File::exists('assets/site_settings/' . $site_logo_small_light->value)) {
+                unlink('assets/site_settings/' . $site_logo_small_light->value);
+            }
+
+            $manager = new ImageManager(new Driver());
+            $file_name = "site_logo_small_light" . "." . $image->getClientOriginalExtension();
+
+            $img = $manager->read($request->file('site_logo_small_light'));
+
+            $img->save(base_path('public/assets/site_settings/' . $file_name));
+
+            $site_logo_small_light->update([
+                'value' => $file_name
+            ]);
+        }
+        //------------------- For site_logo_small_light end  --------------//
+
+
         self::updateCache();
 
         return redirect()->route('admin.settings.site_main_infos.show')->with([
@@ -131,6 +156,26 @@ class SiteSettingsController extends Controller
 
         return true;
     }
+
+    public function remove_site_logo_small_light(Request $request)
+    {
+
+        $site_image = SiteSetting::findOrFail($request->site_info_id);
+        if (File::exists('assets/site_settings/' . $site_image->value)) {
+            unlink('assets/site_settings/' . $site_image->value);
+            $site_image->value = null;
+            $site_image->save();
+        }
+        if ($site_image->value != null) {
+            $site_image->value = null;
+            $site_image->save();
+        }
+
+        self::updateCache();
+
+        return true;
+    }
+
     // =============== end info site ===============//
 
 

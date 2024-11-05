@@ -209,6 +209,24 @@
                             </div>
                         </div>
 
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="{{ $siteSettings['site_logo_small_light']->key }}">
+                                    {{ __('panel.site_logo_small_light') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="{{ $siteSettings['site_logo_small_light']->key }}"
+                                        id="site_logo_small_light" class="file-input-overview ">
+                                    <span class="form-text text-muted">Image width should be 500px x 500px </span>
+                                    @error($siteSettings['site_logo_small_light']->key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
                         <hr>
 
 
@@ -292,6 +310,36 @@
                             width: "120px",
                             url: "{{ route('admin.site_infos.remove_site_logo_large_light', ['site_info_id' => $siteSettings['site_logo_large_light']->id, '_token' => csrf_token()]) }}",
                             key: {{ $siteSettings['site_logo_large_light']->id }}
+                        }
+                    @endif
+                ]
+            });
+
+            // for small light 
+
+            $("#site_logo_small_light").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($siteSettings['site_logo_small_light']->value != null)
+                        "{{ asset('assets/site_settings/' . $siteSettings['site_logo_small_light']->value) }}",
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($siteSettings['site_logo_small_light']->value != null)
+                        {
+                            caption: "{{ $siteSettings['site_logo_small_light']->value }}",
+                            size: '1111',
+                            width: "120px",
+                            url: "{{ route('admin.site_infos.remove_site_logo_small_light', ['site_info_id' => $siteSettings['site_logo_small_light']->id, '_token' => csrf_token()]) }}",
+                            key: {{ $siteSettings['site_logo_small_light']->id }}
                         }
                     @endif
                 ]
