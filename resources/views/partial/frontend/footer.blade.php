@@ -106,13 +106,17 @@
                      </ul>
                  </div>
                  <div class="col-lg-3 col-md-12 col-sm-12 pl-50 md-pl-15 footer-widget md-mb-50">
-                     <h3 class="widget-title">Courses</h3>
+                     <h3 class="widget-title">{{ __('panel.links_that_interest_you') }}</h3>
                      <ul class="site-map">
-                         <li><a href="#">Courses</a></li>
-                         <li><a href="#">Course Two</a></li>
+
+                         @foreach ($web_menus->where('section', 5) as $support_menu)
+                             <li><a href="{{ $support_menu->link }}">{{ $support_menu->title }}</a></li>
+                         @endforeach
+
+                         {{-- <li><a href="#">Course Two</a></li>
                          <li><a href="#">Single Course</a></li>
                          <li><a href="#">Profile</a></li>
-                         <li><a href="#">Login/Register</a></li>
+                         <li><a href="#">Login/Register</a></li> --}}
                      </ul>
                  </div>
                  <div class="col-lg-3 col-md-12 col-sm-12 footer-widget">
