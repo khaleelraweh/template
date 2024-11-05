@@ -795,6 +795,7 @@ return [
     'show_site_information'         => 'بيانات الموقع الاساسية',
     'add_new_site_information'      => 'إضافة بيانات للموقع',
     'edit_existing_site_information' => 'تعديل بيانات الموقع ',
+    'logo_tab'                                      =>  'شعارات الموقع',
 
     // ........... commons in Site Information    ....... //
     'site_name'                     =>  'إسم الموقع',

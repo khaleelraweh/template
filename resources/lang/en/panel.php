@@ -827,6 +827,7 @@ return [
     'show_site_information'                        => 'Basic Site Information ',
     'add_new_site_information'                      => 'Add New Site Information',
     'edit_existing_site_information'                => 'Edit Existing Site Information ',
+    'logo_tab'                                      =>  'Site Logos',
 
     // ........... commons in Site Information    ....... //
     'site_name'                 =>  'Site Name',

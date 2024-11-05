@@ -52,8 +52,15 @@
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="content-tab" data-toggle="tab" href="#content" role="tab"
-                            aria-controls="content" aria-selected="true"> {{ __('panel.content_tab') }} </a>
+                        <button class="nav-link active" id="content-tab" data-bs-toggle="tab" data-bs-target="#content"
+                            type="button" role="tab" aria-controls="content"
+                            aria-selected="true">{{ __('panel.content_tab') }}
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="logo-tab" data-bs-toggle="tab" data-bs-target="#logo" type="button"
+                            role="tab" aria-controls="logo" aria-selected="false">{{ __('panel.logo_tab') }}
+                        </button>
                     </li>
                 </ul>
 
@@ -166,8 +173,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">
-                                    <input type="file" name="{{ $siteSettings['site_img']->key }}" id="customer_image"
-                                        class="file-input-overview ">
+                                    <input type="file" name="{{ $siteSettings['site_img']->key }}"
+                                        id="customer_image" class="file-input-overview ">
                                     <span class="form-text text-muted">Image width should be 500px x 500px </span>
                                     @error($siteSettings['site_img']->key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -178,6 +185,31 @@
 
 
 
+
+
+                    </div>
+
+                    <div class="tab-pane fade" id="logo" role="tabpanel" aria-labelledby="logo-tab">
+
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="{{ $siteSettings['site_img']->key }}">
+                                    {{ __('panel.site_img') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="{{ $siteSettings['site_img']->key }}"
+                                        id="site_logo_large_light" class="file-input-overview ">
+                                    <span class="form-text text-muted">Image width should be 500px x 500px </span>
+                                    @error($siteSettings['site_img']->key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr>
 
 
                     </div>
@@ -231,6 +263,35 @@
                             width: "120px",
                             url: "{{ route('admin.site_infos.remove_image', ['site_info_id' => $siteSettings['site_img']->id, '_token' => csrf_token()]) }}",
                             key: {{ $siteSettings['site_img']->id }}
+                        }
+                    @endif
+                ]
+            });
+
+            // for logos large light 
+            $("#site_logo_large_light").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($siteSettings['site_logo_large_light']->value != null)
+                        "{{ asset('assets/site_settings/' . $siteSettings['site_logo_large_light']->value) }}",
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($siteSettings['site_logo_large_light']->value != null)
+                        {
+                            caption: "{{ $siteSettings['site_logo_large_light']->value }}",
+                            size: '1111',
+                            width: "120px",
+                            url: "{{ route('admin.site_infos.remove_site_logo_large_light', ['site_info_id' => $siteSettings['site_logo_large_light']->id, '_token' => csrf_token()]) }}",
+                            key: {{ $siteSettings['site_logo_large_light']->id }}
                         }
                     @endif
                 ]

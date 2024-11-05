@@ -422,7 +422,7 @@
                             }
                         @endphp
                         <div class="img-part media-icon orange-color" style="background-image: url({{ $playlist_img }})">
-                            <a class="popup-videos" href="{{ $playlist->videoLinks()->first()->link }}">
+                            <a class="popup-videos" href="{{ $playlist->videoLinks()->first()->link ?? '' }}">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>

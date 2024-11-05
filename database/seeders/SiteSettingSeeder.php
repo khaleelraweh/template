@@ -25,6 +25,12 @@ class SiteSettingSeeder extends Seeder
         SiteSetting::create(['key'    =>  'site_link',          'value' =>  'https://jats-edu.com',                     'status'    =>  true,       'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_img',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
 
+        SiteSetting::create(['key'    =>  'site_logo_large_light',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_logo_small_light',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+
+        SiteSetting::create(['key'    =>  'site_logo_large_dark',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+        SiteSetting::create(['key'    =>  'site_logo_small_dark',           'value' =>  '1.jpg',   'status'    =>  true,            'section'   =>  1,   'published_on'  =>  $faker->dateTime()]);
+
         // site contacts
         SiteSetting::create(['key'    =>  'site_address',   'value' =>  ['ar' => 'الجمهورية اليمنية', 'en' => 'Republic of Yemen'],   'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);
         SiteSetting::create(['key'    =>  'site_phone',     'value' =>  '772036131',                    'status'    =>  true,   'section'   =>  2,   'published_on'  =>  $faker->dateTime()]);

@@ -9,12 +9,17 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\View;
 use illuminate\support\Str;
-use Intervention\Image\Facades\Image;
+
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
+use Spatie\Translatable\HasTranslations;
 
 class SiteSettingsController extends Controller
 {
+    use HasTranslations;
+
+    public $translatable = ['value'];
+
 
     // =============== start info site ===============//
     public function show_main_informations()
@@ -41,18 +46,23 @@ class SiteSettingsController extends Controller
             ->get()
             ->first();
 
-        if ($image = $request->file('site_img')) {
 
+
+
+        if ($image = $request->file('site_img')) {
             if ($site_image->value != null && File::exists('assets/site_settings/' . $site_image->value)) {
                 unlink('assets/site_settings/' . $site_image->value);
             }
 
             $manager = new ImageManager(new Driver());
+            // $file_name = Str::slug($request->site_name) . "." . $image->getClientOriginalExtension();
             $file_name = Str::slug($request->input('site_name.' . app()->getLocale())) . "." . $image->getClientOriginalExtension();
 
-            $img = $manager->read($request->file('site_img'));
 
-            $img->save(base_path('public/assets/site_settings/' . $file_name));
+            $img = $manager->read($request->file('site_img'));
+            // $img = $img->resize(370, 246);
+
+            $img->toJpeg(80)->save(base_path('public/assets/site_settings/' . $file_name));
 
             $site_image->update([
                 'value' => $file_name
@@ -65,31 +75,7 @@ class SiteSettingsController extends Controller
             'message' => __('panel.updated_successfully'),
             'alert-type' => 'success'
         ]);
-    }
-
-    public function remove_image(Request $request)
-    {
-
-        $site_image = SiteSetting::findOrFail($request->site_info_id);
-        if (File::exists('assets/site_settings/' . $site_image->value)) {
-            unlink('assets/site_settings/' . $site_image->value);
-            $site_image->value = null;
-            $site_image->save();
-        }
-        if ($site_image->value != null) {
-            $site_image->value = null;
-            $site_image->save();
-        }
-
-        self::updateCache();
-
-        return true;
-    }
-
-    public function remove_site_logo_large_light(Request $request)
-    {
-
-        $site_image = SiteSetting::findOrFail($request->site_info_id);
+        SiteSetting::findOrFail($request->site_info_id);
         if (File::exists('assets/site_settings/' . $site_image->value)) {
             unlink('assets/site_settings/' . $site_image->value);
             $site_image->value = null;
