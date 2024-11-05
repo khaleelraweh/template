@@ -1429,6 +1429,8 @@ return [
     'corresponding_to'                                  =>  'الموافق',
     'colleges_and_institutes'                           =>  'الكليات والمعاهد',
     'introductory_tour'                                 =>  'جولة تعريفية',
+    'activities_videos'                                 =>  'تحديث الفيديوهات',
+    'newest_video'                                      =>  'احدث الفيديوهات',
 
 
 

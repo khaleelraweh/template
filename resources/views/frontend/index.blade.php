@@ -389,11 +389,11 @@
 
     <!-- Videos Section Start -->
 
-    <div id="rs-blog" class=" rs-faq-part rs-college style1 main-home pb-100 pt-100 md-pt-70 md-pb-70">
+    <div id="rs-blog" class=" rs-faq-part rs-college-videos style1 main-home pb-100 pt-100 md-pt-70 md-pb-70">
         <div class="container">
-            <div class="sec-title3 text-center mb-50">
-                <div class="sub-title"> Newest Videos</div>
-                <h2 class="title"> Latest News & events</h2>
+            <div class="sec-title mb-60 md-mb-30 text-center">
+                <div class="sub-title primary">{{ __('panel.activities_videos') }} </div>
+                <h2 class="title mb-0">{{ __('panel.newest_video') }}</h2>
             </div>
             <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="true"
                 data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false"

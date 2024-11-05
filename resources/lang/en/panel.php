@@ -1468,5 +1468,7 @@ return [
     'corresponding_to'                                  =>  'cor. to',
     'colleges_and_institutes'                           =>  'Colleges and Institutes',
     'introductory_tour'                                 =>  'Introductory tour',
+    'activities_videos'                                 =>  'Activities Videos',
+    'newest_video'                                      =>  'Newest Videos',
 
 ];
