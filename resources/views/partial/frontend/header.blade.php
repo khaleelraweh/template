@@ -81,10 +81,14 @@
                             <div class="logo-cat-wrap">
                                 <div class="logo-part pr-90">
                                     <a class="dark-logo" href="index.html">
-                                        <img src="{{ asset('frontend/images/logo-dark.png') }}" alt="">
+                                        {{-- <img src="{{ asset('frontend/images/logo-dark.png') }}" alt=""> --}}
+                                        <img src="{{ $siteSettings['site_logo_large_dark']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_dark']->value) : asset('frontend/images/logo-dark.png') }}"
+                                            alt="{{ $siteSettings['site_name']->value }}">
                                     </a>
                                     <a class="light-logo" href="index.html">
-                                        <img src="{{ asset('frontend/images/logo.png') }}" alt="">
+                                        {{-- <img src="{{ asset('frontend/images/logo.png') }}" alt=""> --}}
+                                        <img src="{{ $siteSettings['site_logo_large_light']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_light']->value) : asset('frontend/images/logo.png') }}"
+                                            alt="{{ $siteSettings['site_name']->value }}">
                                     </a>
                                 </div>
 

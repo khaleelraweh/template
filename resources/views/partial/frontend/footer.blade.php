@@ -29,7 +29,11 @@
              <div class="row">
                  <div class="col-lg-3 col-md-12 col-sm-12 footer-widget md-mb-50">
                      <div class="footer-logo mb-30">
-                         <a href="index.html"><img src="{{ asset('frontend/images/lite-logo.png') }}" alt=""></a>
+                         {{-- <a href="index.html"><img src="{{ asset('frontend/images/lite-logo.png') }}" alt=""></a> --}}
+                         <a href="index.html">
+                             <img src="{{ $siteSettings['site_logo_large_light']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_light']->value) : asset('frontend/images/lite-logo.png') }}"
+                                 alt="{{ $siteSettings['site_name']->value }}">
+                         </a>
                      </div>
                      <div class="textwidget pr-60 md-pr-15">
                          <p class="white-color">
