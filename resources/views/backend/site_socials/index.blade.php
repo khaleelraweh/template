@@ -15,16 +15,16 @@
                     <i class="fa fa-folder"></i>
                     {{ __('panel.manage_site_settings') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         {{ __('panel.show_site_socail') }}
                     </li>
                 </ul>
@@ -63,22 +63,23 @@
                         @foreach ($siteSettings as $item)
                             @if ($item->section == 3)
                                 <div class="row">
-                                    <div class="col-md-12 col-sm-12 pt-3">
-                                        <div class="form-group">
-                                            <label for="{{ $item->key }}">
-                                                {{ explode('_', $item->key)[1] }} <i
-                                                    class="fab fa-{{ explode('_', $item->key)[1] }}"></i> :
-                                            </label>
+                                    <div class="col-sm-12 col-md-2 pt-3">
+                                        <label for="{{ $item->key }}">
+                                            {{ explode('_', $item->key)[1] }} <i
+                                                class="fab fa-{{ explode('_', $item->key)[1] }}"></i> :
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-10 pt-3">
 
-                                            <input type="text" id="{{ $item->key }}" name="{{ $item->key }}"
-                                                value="{{ old($item->key, $item->value) }}" class="form-control"
-                                                placeholder="{{ $item->key }}">
+                                        <input type="text" id="{{ $item->key }}" name="{{ $item->key }}"
+                                            value="{{ old($item->key, $item->value) }}" class="form-control"
+                                            placeholder="{{ $item->key }}">
 
-                                            @error($item->key)
-                                                <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                        @error($item->key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
 
-                                        </div>
+
 
                                     </div>
                                 </div>
