@@ -64,3 +64,9 @@
         height: 325px ;
     }
 }
+
+
+/* New Videos */
+.rs-faq-part.rs-college.style1 .img-part{
+    min-height: 250px;
+}

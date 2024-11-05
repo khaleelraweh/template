@@ -387,6 +387,68 @@
     </div>
     <!-- College and Institutes End -->
 
+    <!-- Videos Section Start -->
+
+    <div id="rs-blog" class=" rs-faq-part rs-college style1 main-home pb-100 pt-100 md-pt-70 md-pb-70">
+        <div class="container">
+            <div class="sec-title3 text-center mb-50">
+                <div class="sub-title"> Newest Videos</div>
+                <h2 class="title"> Latest News & events</h2>
+            </div>
+            <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="true"
+                data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false"
+                data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1"
+                data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="2"
+                data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="1"
+                data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="4"
+                data-md-device-nav="false" data-md-device-dots="false">
+                <div class="blog-item">
+                    <div class="img-part media-icon orange-color">
+                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="img-part media-icon orange-color">
+                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="img-part media-icon orange-color">
+                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="img-part media-icon orange-color">
+                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="img-part media-icon orange-color">
+                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="blog-item">
+                    <div class="img-part media-icon orange-color">
+                        <a class="popup-videos" href="https://www.youtube.com/watch?v=atMUy_bPoQI">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Videos Section End -->
+
     <!-- Categories Section Start -->
     <div id="rs-categories" class="rs-categories main-home pt-90 pb-100 md-pt-60 md-pb-40">
         <div class="container">
