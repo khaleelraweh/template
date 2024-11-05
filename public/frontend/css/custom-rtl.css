@@ -12,6 +12,11 @@
     margin-left: 10px;
 }
 
+/* main slider  */
+.rs-slider.main-home .slider-content .content-part .sl-title{
+    font-size: 40px;
+}
+
 .features-wrap .icon-part i{
     font-size: 50px;
     margin:0 0 8px 20px;
