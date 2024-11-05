@@ -448,14 +448,10 @@
                         @foreach ($albums as $album)
                             <div class="blog-item degree-wrap">
                                 @php
-                                    if ($album->photos->first() != null && $album->photos->first()->file_name != null) {
-                                        $album_img = asset('assets/albums/' . $album->photos->first()->file_name);
+                                    if ($album->album_profile != null) {
+                                        $album_img = asset('assets/albums/' . $album->album_profile);
 
-                                        if (
-                                            !file_exists(
-                                                public_path('assets/albums/' . $album->photos->first()->file_name),
-                                            )
-                                        ) {
+                                        if (!file_exists(public_path('assets/albums/' . $album->album_profile))) {
                                             $album_img = asset('image/not_found/item_image_not_found.webp');
                                         }
                                     } else {
