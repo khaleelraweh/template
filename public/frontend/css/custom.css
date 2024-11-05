@@ -59,6 +59,10 @@
     margin:0 20px 8px 0
 }
 
+.rs-features .features-wrap .icon-part img{
+    margin: 0 10px 8px 0;
+}
+
 
 .owl-carousel .owl-item img{
     width: 100%;
