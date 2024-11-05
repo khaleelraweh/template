@@ -448,7 +448,7 @@
     </div>
     <!-- Videos Section End -->
 
-    <!-- College and Institutes Start  -->
+    <!-- college album Start  -->
     <div class="rs-degree rs-college-album style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
         <div class="container">
             <div class="row y-middle">
@@ -508,14 +508,14 @@
                 </div>
                 <div class="col-lg-2 col-md-12 mb-30">
                     <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-                        <div class="sub-title primary">{{ __('panel.colleges_and_institutes') }}</div>
-                        <h3 class="title mb-0">{{ __('panel.introductory_tour') }}</h3>
+                        <div class="sub-title primary">{{ __('panel.photo_album') }}</div>
+                        <h3 class="title mb-0">{{ __('panel.browse_albums') }}</h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- College and Institutes End -->
+    <!-- College album End -->
 
     <!-- CTA Section Start -->
     <div class="rs-cta main-home">

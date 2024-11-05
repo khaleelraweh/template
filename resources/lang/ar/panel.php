@@ -1431,6 +1431,8 @@ return [
     'introductory_tour'                                 =>  'جولة تعريفية',
     'activities_videos'                                 =>  'تحديث الفيديوهات',
     'newest_video'                                      =>  'احدث الفيديوهات',
+    'photo_album'                                       =>  'البوم الصور',
+    'browse_albums'                                     =>  'تصفح الالبومات',
 
 
 

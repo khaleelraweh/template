@@ -1470,5 +1470,7 @@ return [
     'introductory_tour'                                 =>  'Introductory tour',
     'activities_videos'                                 =>  'Activities Videos',
     'newest_video'                                      =>  'Newest Videos',
+    'photo_album'                                       =>  'Photo album',
+    'browse_albums'                                     =>  'Browse albums',
 
 ];
