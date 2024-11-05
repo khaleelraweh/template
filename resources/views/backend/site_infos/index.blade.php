@@ -247,6 +247,24 @@
                             </div>
                         </div>
 
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="{{ $siteSettings['site_logo_small_dark']->key }}">
+                                    {{ __('panel.site_logo_small_dark') }}
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="{{ $siteSettings['site_logo_small_dark']->key }}"
+                                        id="site_logo_small_dark" class="file-input-overview ">
+                                    <span class="form-text text-muted">Image width should be 500px x 500px </span>
+                                    @error($siteSettings['site_logo_small_dark']->key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
 
@@ -390,6 +408,35 @@
                             width: "120px",
                             url: "{{ route('admin.site_infos.remove_site_logo_large_dark', ['site_info_id' => $siteSettings['site_logo_large_dark']->id, '_token' => csrf_token()]) }}",
                             key: {{ $siteSettings['site_logo_large_dark']->id }}
+                        }
+                    @endif
+                ]
+            });
+
+            // for small light 
+            $("#site_logo_small_dark").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false,
+                initialPreview: [
+                    @if ($siteSettings['site_logo_small_dark']->value != null)
+                        "{{ asset('assets/site_settings/' . $siteSettings['site_logo_small_dark']->value) }}",
+                    @endif
+                ],
+                initialPreviewAsData: true,
+                initialPreviewFileType: 'image',
+                initialPreviewConfig: [
+                    @if ($siteSettings['site_logo_small_dark']->value != null)
+                        {
+                            caption: "{{ $siteSettings['site_logo_small_dark']->value }}",
+                            size: '1111',
+                            width: "120px",
+                            url: "{{ route('admin.site_infos.remove_site_logo_small_dark', ['site_info_id' => $siteSettings['site_logo_small_dark']->id, '_token' => csrf_token()]) }}",
+                            key: {{ $siteSettings['site_logo_small_dark']->id }}
                         }
                     @endif
                 ]
