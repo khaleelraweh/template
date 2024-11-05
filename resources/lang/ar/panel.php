@@ -810,7 +810,7 @@ return [
     'site_logo_small_dark'      =>  'شعار الموقع(داكن ، صغير)',
 
     // --------------- Site contact    --------------//
-    'show_site_contact'             => 'معلومات الإتصال باملوقع ',
+    'show_site_contact'             => 'معلومات الإتصال بالموقع ',
     'add_new_site_contact'          => 'إضافة طريقة اتصال بالموقع',
     'edit_existing_site_contact'    => 'تعديل بيانات طريقة اتصال ',
 
