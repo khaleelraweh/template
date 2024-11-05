@@ -148,22 +148,6 @@
                              </div>
                          </div>
                      @endforeach
-
-
-                     {{-- <div class="recent-post mb-20 md-pb-0">
-                         <div class="post-img">
-                             <img src="{{ asset('frontend/images/footer/2.jpg') }}" alt="">
-                         </div>
-                         <div class="post-item">
-                             <div class="post-desc">
-                                 <a href="#">High school program starting soon 2021</a>
-                             </div>
-                             <span class="post-date">
-                                 <i class="fa fa-calendar-check-o"></i>
-                                 September 14, 2020
-                             </span>
-                         </div>
-                     </div> --}}
                  </div>
              </div>
          </div>
@@ -180,9 +164,12 @@
                  </div>
                  <div class="col-lg-6 text-right md-text-left">
                      <ul class="copy-right-menu">
-                         <li><a href="#">Event</a></li>
-                         <li><a href="#">Blog</a></li>
-                         <li><a href="#">Contact</a></li>
+                         @foreach ($web_menus->where('section', 3) as $topic_menu)
+                             <li><a href="{{ $topic_menu->link }}">{{ $topic_menu->title }}</a></li>
+                         @endforeach
+
+                         {{-- <li><a href="#">Blog</a></li>
+                         <li><a href="#">Contact</a></li> --}}
                      </ul>
                  </div>
              </div>
