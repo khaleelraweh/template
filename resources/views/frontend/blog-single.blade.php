@@ -30,18 +30,32 @@
                     <div class="blog-full">
                         <ul class="single-post-meta">
                             <li>
-                                <span class="p-date"> <i class="fa fa-calendar-check-o"></i> April 6, 2020 </span>
+
+                                <?php
+                                $date = $post->created_at;
+                                $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                ?>
+
+                                <span class="p-date">
+                                    <i class="fa fa-calendar-check-o"></i>
+                                    {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+
+                                    <span>{{ __('panel.corresponding_to') }} </span>
+                                    {{ $post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+                                </span>
                             </li>
                             <li>
-                                <span class="p-date"> <i class="fa fa-user-o"></i> admin </span>
+                                <span class="p-date"> <i class="fa fa-user-o"></i>
+                                    {{ $post->users->first()->full_name ?? __('panel.admin') }}
+                                </span>
                             </li>
-                            <li class="Post-cate">
+                            {{-- <li class="Post-cate">
                                 <div class="tag-line">
                                     <i class="fa fa-book"></i>
                                     <a href="#">Strategy</a>
                                 </div>
-                            </li>
-                            <li class="post-comment"> <i class="fa fa-comments-o"></i> 0</li>
+                            </li> --}}
+                            {{-- <li class="post-comment"> <i class="fa fa-comments-o"></i> 0</li> --}}
                         </ul>
                         <div class="blog-desc">
                             <p>

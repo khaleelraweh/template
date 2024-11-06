@@ -1443,6 +1443,7 @@ return [
     'recent_posts'                                      =>  'المقالات الحديثة',
     'all_rights_reserved'                               =>  'جميع الحقوق محفوظة',
     'statistics_and_numbers'                            =>  'احصائيات وارقام',
+    'admin'                                             =>  'الادارة',
 
 
 

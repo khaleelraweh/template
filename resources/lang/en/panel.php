@@ -1484,5 +1484,6 @@ return [
     'recent_posts'                                      =>  'Recent Posts',
     'all_rights_reserved'                               =>  'All Rights Reserved',
     'statistics_and_numbers'                            =>  'Statistics and Numbers',
+    'admin'                                             =>  'Admin',
 
 ];
