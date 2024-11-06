@@ -114,16 +114,14 @@
     </div>
     <!-- Slider Section End -->
 
-    <!-- Blog Section Start -->
-
-
+    <!-- news and events Section Start -->
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-7 pt-94 pb-70 md-pt-64 md-pb-70">
                 <div id="rs-blog" class="rs-blog rs-news-events main-home ">
                     <div class="container">
                         <div class="sec-title mb-40 md-mb-20 text-left">
-                            <h2 class="title mb-0 header-news main-color">{{ __('panel.university_news') }}</h2>
+                            <h2 class="title mb-0 header-news">{{ __('panel.university_news') }}</h2>
                         </div>
 
                         <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
@@ -242,9 +240,7 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Blog Section End -->
+    <!-- news and events Section End -->
 
 
 
@@ -323,6 +319,9 @@
         {{-- <div class=" main-home event-bg rs-statistics pt-100 pb-100 md-pt-70 md-pb-70 bg2"> --}}
         <div class="rs-counter style2-about">
             <div class="container">
+                <div class="sec-title mb-40 md-mb-20 text-left">
+                    <h2 class="title mb-0 header-statistics">{{ __('panel.statistics_and_numbers') }}</h2>
+                </div>
                 <div class="row couter-area">
                     @foreach ($statistics as $statistic)
                         <div
