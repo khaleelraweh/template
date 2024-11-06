@@ -286,3 +286,15 @@
     /* padding: 80px 0 80px; */
     padding: 80px 0 80px;
 }
+
+
+
+.rs-blog.main-home .blog-item .blog-content .title a{
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.rs-blog.style1 .events-short .content-part .title a{
+    font-size: 16px;
+    line-height: 24px;
+}
