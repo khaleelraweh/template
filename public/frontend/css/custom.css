@@ -18,6 +18,9 @@
     color: #D0D6DD;
    
 }
+.full-width-header .rs-header .topbar-area .topbar-right li.login-register a:hover{
+    color: #A2A2B2;
+}
 
 
 .full-width-header .rs-header .topbar-area .topbar-contact li i:before{
