@@ -12,6 +12,7 @@ use App\Models\Post;
 use App\Models\Slider;
 use App\Models\Statistic;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class FrontendController extends Controller
 {
@@ -61,20 +62,39 @@ class FrontendController extends Controller
 
     public function blog_single($slug)
     {
-        $post = Post::with('photos', 'tags')
-            ->where('slug->' . app()->getLocale(), $slug)
-            ->firstOrFail();
+        // Determine the current route name
+        $currentRoute = Route::currentRouteName();
 
+        if ($currentRoute === 'frontend.blog_single' || $currentRoute === 'frontend.news_single') {
+            $post = Post::with('photos', 'tags')
+                ->where('slug->' . app()->getLocale(), $slug)
+                ->firstOrFail();
 
-        $latest_posts = Post::with('photos')
-            ->where('section', $post->section)
-            ->where('id', '!=', $post->id)
-            ->orderBy('created_at', 'ASC')
-            ->take(3)
-            ->get();
+            $latest_posts = Post::with('photos')
+                ->where('section', $post->section)
+                ->where('id', '!=', $post->id)
+                ->orderBy('created_at', 'ASC')
+                ->take(3)
+                ->get();
+        } elseif ($currentRoute === 'frontend.event_single') {
+            $post = Event::with('photos', 'tags')
+                ->where('slug->' . app()->getLocale(), $slug)
+                ->firstOrFail();
 
-        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route('frontend.blog_single', $post->slug));
+            $latest_posts = Event::with('photos')
+                ->where('section', $post->section)
+                ->where('id', '!=', $post->id)
+                ->orderBy('created_at', 'ASC')
+                ->take(3)
+                ->get();
+        } else {
+            abort(404); // Handle unsupported routes
+        }
 
-        return view('frontend.blog-single', compact('post', 'latest_posts',  'whatsappShareUrl'));
+        // Set the correct share URL based on the route
+        $shareRoute = $currentRoute === 'frontend.blog_single' ? 'frontend.blog_single' : ($currentRoute === 'frontend.news_single' ? 'frontend.news_single' : 'frontend.event_single');
+        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route($shareRoute, $post->slug));
+
+        return view('frontend.blog-single', compact('post', 'latest_posts', 'whatsappShareUrl'));
     }
 }

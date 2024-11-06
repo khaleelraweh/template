@@ -19,6 +19,10 @@
                             {{ __('panel.news_single') }}
                         @break
 
+                        @case(Route::is('frontend.event_single'))
+                            {{ __('panel.event_single') }}
+                        @break
+
                         @case(Route::is('frontend.blog_index'))
                             Blog Index
                         @break
@@ -43,6 +47,10 @@
 
                             @case(Route::is('frontend.news_single'))
                                 {{ __('panel.news_single') }}
+                            @break
+
+                            @case(Route::is('frontend.event_single'))
+                                {{ __('panel.event_single') }}
                             @break
 
                             @case(Route::is('frontend.blog_index'))

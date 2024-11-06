@@ -216,11 +216,8 @@
                                                     <div class="date">{{ $event->created_at->format('d') }}</div>
                                                 </div>
                                                 <div class="content-part">
-                                                    {{-- <div class="categorie">
-                                                        <a href="#">Math</a> & <a href="#">English</a>
-                                                    </div> --}}
                                                     <h4 class="title mb-0">
-                                                        <a href="#">
+                                                        <a href="{{ route('frontend.event_single', $event->slug) }}">
                                                             {{ $event->title }}
                                                         </a>
                                                     </h4>

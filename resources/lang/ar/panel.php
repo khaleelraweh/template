@@ -1446,6 +1446,8 @@ return [
     'admin'                                             =>  'الادارة',
     'blog_single'                                       =>  'عرض المدونة',
     'news_single'                                       =>  'اسعراض الخبر',
+    'event_single'                                      =>  'استعراض الحدث',
+
 
 
 

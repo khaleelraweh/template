@@ -1487,5 +1487,6 @@ return [
     'admin'                                             =>  'Admin',
     'blog_single'                                       =>  'Blog Single',
     'news_single'                                       =>  'News Single',
+    'event_single'                                      =>  'Event Single',
 
 ];
