@@ -319,7 +319,8 @@
     <!-- College and Institutes End -->
 
     <!-- start statistics -->
-    <div class=" main-home event-bg rs-statistics pt-100 pb-100 md-pt-70 md-pb-70 bg2">
+    <div class=" main-home event-bg rs-statistics pt-100 pb-100 md-pt-70 md-pb-70 bg12">
+        {{-- <div class=" main-home event-bg rs-statistics pt-100 pb-100 md-pt-70 md-pb-70 bg2"> --}}
         <div class="rs-counter style2-about">
             <div class="container">
                 <div class="row couter-area">
