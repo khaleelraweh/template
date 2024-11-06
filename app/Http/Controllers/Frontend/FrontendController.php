@@ -67,12 +67,11 @@ class FrontendController extends Controller
 
 
         $latest_posts = Post::with('photos')
-            ->where('section', 1)
+            ->where('section', $post->section)
             ->where('id', '!=', $post->id)
             ->orderBy('created_at', 'ASC')
             ->take(3)
             ->get();
-
 
         $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route('frontend.blog_single', $post->slug));
 
