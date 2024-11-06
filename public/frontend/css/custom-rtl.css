@@ -170,6 +170,21 @@
     color: #248874;
 }
 
+/* playlist */
+.header_playlist{
+    position: relative;
+}
+
+.header_playlist::after{
+    content: '';
+    width: 280px;
+    height: 5px;
+    background-color: #A2A2B2;
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+}
+
 /* College and Institute */
 
 .rs-degree.style1 .degree-wrap .content-part{
