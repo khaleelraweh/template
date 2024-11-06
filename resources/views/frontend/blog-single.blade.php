@@ -25,7 +25,19 @@
             <div class="container">
                 <div class="blog-deatails">
                     <div class="bs-img">
-                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/1.jpg') }}" alt=""></a>
+                        @php
+                            if ($post->photos->last() != null && $post->photos->last()->file_name != null) {
+                                $post_img = asset('assets/news/' . $post->photos->last()->file_name);
+
+                                if (!file_exists(public_path('assets/news/' . $post->photos->last()->file_name))) {
+                                    $post_img = asset('image/not_found/item_image_not_found.webp');
+                                }
+                            } else {
+                                $post_img = asset('image/not_found/item_image_not_found.webp');
+                            }
+                        @endphp
+
+                        <a href="#"><img src="{{ $post_img }}" alt=""></a>
                     </div>
                     <div class="blog-full">
                         <ul class="single-post-meta">
@@ -59,13 +71,7 @@
                         </ul>
                         <div class="blog-desc">
                             <p>
-                                We denounce with righteous indige nation and dislike men who are so beguiled and demo
-                                realized by the charms of pleasure of the moment, so blinded by desire, that they cannot
-                                foresee the pain and trouble that are bound to ensue; and equal blame belongs to those who
-                                fail in their duty through weakness of will, which is the same as saying through shrinking
-                                from toil and pain. These cases are perfectly simple and easy to distinguish. In a free
-                                hour, when our power of choice is untrammelled and when nothing prevents our being able to
-                                do what we like best, every pleasure is to be welcomed and every pain avoided.
+                                {!! $post->content !!}
                             </p>
                         </div>
                         <blockquote>
