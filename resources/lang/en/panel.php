@@ -1473,7 +1473,7 @@ return [
     'read_more'                                         =>  'Read More',
     'read_less'                                         =>  'Read Less',
     'corresponding_to'                                  =>  'cor. to',
-    'colleges_and_institutes'                           =>  'Colleges and Institutes',
+    'colleges_and_institutes'                           =>  'Colleges and Centers',
     'introductory_tour'                                 =>  'Introductory tour',
     'activities_videos'                                 =>  'Activities Videos',
     'newest_video'                                      =>  'Newest Videos',

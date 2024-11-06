@@ -1433,7 +1433,7 @@ return [
     'read_more'                                         =>  'إقراء اكثر',
     'read_less'                                         =>  'إقراء اقل',
     'corresponding_to'                                  =>  'الموافق',
-    'colleges_and_institutes'                           =>  'الكليات والمعاهد',
+    'colleges_and_institutes'                           =>  'الكليات والمراكز',
     'introductory_tour'                                 =>  'جولة تعريفية',
     'activities_videos'                                 =>  'تحديث الفيديوهات',
     'newest_video'                                      =>  'احدث الفيديوهات',

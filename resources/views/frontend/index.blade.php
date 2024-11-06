@@ -246,29 +246,10 @@
 
     <!-- Blog Section End -->
 
-    <!-- start statistics -->
-    <div class=" main-home event-bg pt-100 pb-100 md-pt-70 md-pb-70">
-        <div class="rs-counter style2-about">
-            <div class="container">
-                <div class="row couter-area">
-                    @foreach ($statistics as $statistic)
-                        <div
-                            class="col-lg-3 col-md-6 {{ $loop->last ? '' : 'md-mb-30' }}  {{ !$loop->last && count($statistics) > 4 ? 'lg-mb-70' : ' ' }} ">
-                            <div class="counter-item text-center">
-                                <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
-                                <h4 class="title mb-0">{{ $statistic->title }}</h4>
-                            </div>
-                        </div>
-                    @endforeach
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end statistics -->
 
     <!-- College and Institutes Start  -->
-    <div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
+    <div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40 bg2">
         <div class="container">
             <div class="row y-middle">
                 <div class="col-lg-2 col-md-12 mb-30">
@@ -336,6 +317,27 @@
         </div>
     </div>
     <!-- College and Institutes End -->
+
+    <!-- start statistics -->
+    <div class=" main-home event-bg pt-100 pb-100 md-pt-70 md-pb-70 bg2">
+        <div class="rs-counter style2-about">
+            <div class="container">
+                <div class="row couter-area">
+                    @foreach ($statistics as $statistic)
+                        <div
+                            class="col-lg-3 col-md-6 {{ $loop->last ? '' : 'md-mb-30' }}  {{ !$loop->last && count($statistics) > 4 ? 'lg-mb-70' : ' ' }} ">
+                            <div class="counter-item text-center">
+                                <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
+                                <h4 class="title mb-0">{{ $statistic->title }}</h4>
+                            </div>
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end statistics -->
 
     <!-- Videos Section Start -->
     <div id="rs-blog" class=" rs-faq-part rs-college-videos style1 main-home pb-100 pt-100 md-pt-70 md-pb-70">
