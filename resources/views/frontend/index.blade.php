@@ -171,7 +171,7 @@
                                         </ul>
 
                                         <h3 class="title">
-                                            <a href="blog-single.html">
+                                            <a href="{{ route('frontend.blog_single', $news->slug) }}">
                                                 {!! $news->title !!}
                                             </a>
                                         </h3>
@@ -182,12 +182,12 @@
                                         <div class="btn-btm">
                                             <div class="cat-list">
                                                 <ul class="post-categories">
-                                                    {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
                                                     <li><a href="#">{{ $news->created_by }}</a></li>
                                                 </ul>
                                             </div>
                                             <div class="rs-view-btn">
-                                                <a href="#">{{ __('panel.read_more') }}</a>
+                                                <a
+                                                    href="{{ route('frontend.blog_single', $news->slug) }}">{{ __('panel.read_more') }}</a>
                                             </div>
                                         </div>
                                     </div>

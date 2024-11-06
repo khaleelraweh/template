@@ -6,7 +6,7 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                <img src="assets/images/breadcrumbs/2.jpg" alt="Breadcrumbs Image">
+                <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image">
             </div>
             <div class="breadcrumbs-text white-color">
                 <h1 class="page-title">Blog Single</h1>
@@ -25,7 +25,7 @@
             <div class="container">
                 <div class="blog-deatails">
                     <div class="bs-img">
-                        <a href="#"><img src="assets/images/blog/inner/1.jpg" alt=""></a>
+                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/1.jpg') }}" alt=""></a>
                     </div>
                     <div class="blog-full">
                         <ul class="single-post-meta">
@@ -79,7 +79,7 @@
                             </p>
                         </div>
                         <div class="blog-img mb-40">
-                            <img src="assets/images/blog/inner/2.jpg" alt="">
+                            <img src="{{ asset('frontend/images/blog/inner/2.jpg') }}" alt="">
                         </div>
                         <div class="blog-desc mb-40">
                             <p>
