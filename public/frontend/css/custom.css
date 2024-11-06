@@ -83,7 +83,7 @@
 
 .header-news::after{
     content: '';
-    width: 200px;
+    width: 280px;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
@@ -104,7 +104,7 @@ padding-bottom: 15px;
 
 .header-events::after{
     content: '';
-    width: 200px;
+    width: 340px;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
@@ -180,4 +180,10 @@ padding-bottom: 15px;
 .rs-degree.rs-college-album.style1 .degree-wrap:hover .title-part{
     bottom: unset;
     opacity: 1;
+}
+
+
+/* Footer  */
+.rs-footer.home9-style .footer-top{
+    padding: 80px 0 80px;
 }

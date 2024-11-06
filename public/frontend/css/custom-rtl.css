@@ -181,3 +181,8 @@
     bottom: 0;
     opacity: 1;
 }
+
+/* Footer  */
+.rs-footer.home9-style .footer-top{
+    padding: 80px 0 80px;
+}
