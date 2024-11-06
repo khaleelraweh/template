@@ -68,19 +68,47 @@
                 <div class="blog-deatails">
                     <div class="bs-img">
                         @php
-                            if ($post->photos->last() != null && $post->photos->last()->file_name != null) {
-                                $post_img = asset('assets/news/' . $post->photos->last()->file_name);
+                            $defaultImg = asset('image/not_found/item_image_not_found.webp');
+                            $post_img = $defaultImg; // Set a default image
 
-                                if (!file_exists(public_path('assets/news/' . $post->photos->last()->file_name))) {
-                                    $post_img = asset('image/not_found/item_image_not_found.webp');
-                                }
-                            } else {
-                                $post_img = asset('image/not_found/item_image_not_found.webp');
+                            switch (true) {
+                                case Route::is('frontend.blog_single'):
+                                    $post_img =
+                                        $post->photos->first() && $post->photos->first()->file_name
+                                            ? asset('assets/posts/' . $post->photos->first()->file_name)
+                                            : $defaultImg;
+                                    break;
+
+                                case Route::is('frontend.news_single'):
+                                    $post_img =
+                                        $post->photos->first() && $post->photos->first()->file_name
+                                            ? asset('assets/news/' . $post->photos->first()->file_name)
+                                            : $defaultImg;
+                                    break;
+
+                                case Route::is('frontend.events'):
+                                    $post_img =
+                                        $post->photos->first() && $post->photos->first()->file_name
+                                            ? asset('assets/events/' . $post->photos->first()->file_name)
+                                            : $defaultImg;
+                                    break;
+
+                                // Add more cases as needed for other routes
+
+                                default:
+                                    $post_img = $defaultImg;
+                                    break;
+                            }
+
+                            // Check if the file exists in public directory
+                            if (!file_exists(public_path(parse_url($post_img, PHP_URL_PATH)))) {
+                                $post_img = $defaultImg;
                             }
                         @endphp
 
                         <a href="#"><img src="{{ $post_img }}" alt=""></a>
                     </div>
+
                     <div class="blog-full">
                         <ul class="single-post-meta">
                             <li>
