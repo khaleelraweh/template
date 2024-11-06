@@ -235,6 +235,25 @@
     height: 325px;
 }
 
+.header-album{
+    position: relative;
+    font-size: 33px;
+}
+
+.header-album::after{
+    content: '';
+    width: 8px;
+    height: 32px;
+    background-color: #248874;
+    position: absolute;
+    top: 3px;
+    right: -10px;
+}
+.header-album-subtitle{
+    font-size: 22px;
+    margin-top: 45px;
+}
+
 .rs-degree.rs-college-album.style1 .degree-wrap:hover .title-part{
     bottom: 0;
     opacity: 1;
