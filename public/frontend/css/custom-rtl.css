@@ -245,8 +245,13 @@
     }
     .album-title{
         background-color: #248874;
+        padding: 50px;
+        
     }
+ 
 }
+
+
 
 .rs-degree.rs-college-album.style1 .degree-wrap img{
     height: 325px;
@@ -261,7 +266,8 @@
     content: '';
     width: 8px;
     height: 90%;
-    background-color: #248874;
+    /* background-color: #248874; */
+    background-color: #A2A2B2;
     position: absolute;
     top: 2px;
     right: -12px;

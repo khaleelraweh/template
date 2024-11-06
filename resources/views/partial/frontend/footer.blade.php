@@ -79,7 +79,7 @@
                      <h3 class="widget-title">{{ __('panel.f_address') }}</h3>
                      <ul class="address-widget">
                          <li>
-                             <i class="flaticon-location"></i>
+                             <i class="flaticon-location text-white"></i>
                              <div class="desc">{{ $siteSettings['site_address']->value ?? '' }}</div>
                          </li>
                          <li>

@@ -14521,7 +14521,7 @@ body .modal-backdrop {
   background: #248874;
 }
 .rs-footer.home9-style.main-home .footer-top .address-widget li i:before {
-  color: #248874;
+  color: #E9EBEB;
 }
 .rs-footer.home9-style.main-home .footer-top .address-widget li .desc a:hover {
   color: #248874;
@@ -14537,8 +14537,9 @@ body .modal-backdrop {
 }
 .rs-footer.home9-style.main-home .footer-top .recent-post .post-item .post-date i {
   font-size: 13px;
-  color: #248874;
+  color: #E9EBEB;
   padding-left: 5px;
+
 }
 .rs-footer.home9-style.main-home .footer-bottom {
   padding: 40px 0;
