@@ -39,7 +39,6 @@ class FrontendController extends Controller
         $page = Page::where('slug->' . app()->getLocale(), $slug)
             ->firstOrFail();
 
-
         // Retrieve the latest 3 posts from section 1, excluding the current post
         $latest_posts = Post::with('photos')
             ->where('section', 1)
