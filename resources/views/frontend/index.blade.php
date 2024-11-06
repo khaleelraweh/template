@@ -115,168 +115,118 @@
     <!-- Slider Section End -->
 
     <!-- Blog Section Start -->
-    {{-- <div class="container"> --}}
-    <div class="row">
-        <div class="col-lg-7 col-md-12 ">
-            <div id="rs-blog" class="rs-blog rs-news-events main-home pb-100 pt-100 md-pt-70 md-pb-70">
-                <div class="container">
-                    {{-- <div class="sec-title3 text-center mb-50">
-                            <div class="sub-title"> News Update</div>
-                            <h2 class="title"> Latest News & events</h2>
-                        </div> --}}
-                    <div class="sec-title mb-60 md-mb-30 text-center">
-                        <div class="sub-title primary">{{ __('panel.news_update') }}</div>
-                        <h2 class="title mb-0">{{ __('panel.university_news') }}</h2>
-                    </div>
 
-                    <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
-                        data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
-                        data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false"
-                        data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false"
-                        data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
-                        data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
-                        data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
-                        @foreach ($news as $news)
-                            <div class="blog-item">
-                                <div class="image-part">
-                                    @php
-                                        if (
-                                            $news->photos->first() != null &&
-                                            $news->photos->first()->file_name != null
-                                        ) {
-                                            $news_img = asset('assets/news/' . $news->photos->first()->file_name);
 
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-7 pt-94 pb-70 md-pt-64 md-pb-70">
+                <div id="rs-blog" class="rs-blog rs-news-events main-home ">
+                    <div class="container">
+                        <div class="sec-title mb-60 md-mb-30 text-center">
+                            <div class="sub-title primary">{{ __('panel.news_update') }}</div>
+                            <h2 class="title mb-0">{{ __('panel.university_news') }}</h2>
+                        </div>
+
+                        <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
+                            data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
+                            data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false"
+                            data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false"
+                            data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false"
+                            data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
+                            data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
+                            @foreach ($news as $news)
+                                <div class="blog-item">
+                                    <div class="image-part">
+                                        @php
                                             if (
-                                                !file_exists(
-                                                    public_path('assets/news/' . $news->photos->first()->file_name),
-                                                )
+                                                $news->photos->first() != null &&
+                                                $news->photos->first()->file_name != null
                                             ) {
+                                                $news_img = asset('assets/news/' . $news->photos->first()->file_name);
+
+                                                if (
+                                                    !file_exists(
+                                                        public_path('assets/news/' . $news->photos->first()->file_name),
+                                                    )
+                                                ) {
+                                                    $news_img = asset('image/not_found/item_image_not_found.webp');
+                                                }
+                                            } else {
                                                 $news_img = asset('image/not_found/item_image_not_found.webp');
                                             }
-                                        } else {
-                                            $news_img = asset('image/not_found/item_image_not_found.webp');
-                                        }
-                                    @endphp
-                                    <img src="{{ $news_img }}" alt="">
-                                </div>
-                                <div class="blog-content">
-
-                                    <ul class="blog-meta">
-                                        {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
-                                        <li>
-                                            <?php
-                                            $date = $news->created_at;
-                                            $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
-                                            ?>
-                                            <i class="fa fa-calendar"></i>
-                                            {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
-                                            <span>{{ __('panel.corresponding_to') }} </span>
-                                            {{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
-
-                                        </li>
-
-                                    </ul>
-
-                                    <h3 class="title">
-                                        <a href="blog-single.html">
-                                            {!! $news->title !!}
-                                        </a>
-                                    </h3>
-
-                                    <div class="desc">
-                                        {!! $news->content !!}
+                                        @endphp
+                                        <img src="{{ $news_img }}" alt="">
                                     </div>
-                                    <div class="btn-btm">
-                                        <div class="cat-list">
-                                            <ul class="post-categories">
-                                                {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
-                                                <li><a href="#">{{ $news->created_by }}</a></li>
-                                            </ul>
+                                    <div class="blog-content">
+
+                                        <ul class="blog-meta">
+                                            {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
+                                            <li>
+                                                <?php
+                                                $date = $news->created_at;
+                                                $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                ?>
+                                                <i class="fa fa-calendar"></i>
+                                                {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+                                                <span>{{ __('panel.corresponding_to') }} </span>
+                                                {{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+                                            </li>
+
+                                        </ul>
+
+                                        <h3 class="title">
+                                            <a href="blog-single.html">
+                                                {!! $news->title !!}
+                                            </a>
+                                        </h3>
+
+                                        <div class="desc">
+                                            {!! $news->content !!}
                                         </div>
-                                        <div class="rs-view-btn">
-                                            <a href="#">{{ __('panel.read_more') }}</a>
+                                        <div class="btn-btm">
+                                            <div class="cat-list">
+                                                <ul class="post-categories">
+                                                    {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
+                                                    <li><a href="#">{{ $news->created_by }}</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="rs-view-btn">
+                                                <a href="#">{{ __('panel.read_more') }}</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col-lg-5 col-md-12 ">
-            <!-- Section bg Wrap 2 start -->
-            <div class="bg2">
-                <!-- Blog Section Start -->
-                <div id="rs-blog" class="rs-blog style1 pt-94 pb-100 md-pt-64 md-pb-70">
+            <div class="col-sm-12 col-md-5  pt-94 pb-70 md-pt-64 md-pb-70">
+                <div id="rs-blog" class="rs-blog style1 ">
                     <div class="container">
                         <div class="sec-title mb-60 md-mb-30 text-center">
                             <div class="sub-title primary">{{ __('panel.activities_update') }} </div>
                             <h2 class="title mb-0">{{ __('panel.university_activities') }}</h2>
                         </div>
                         <div class="row">
-                            <div class="col-lg-12 col-md-12 pr-75 md-pr-15 md-mb-50">
+                            <div class="col-lg-12 col-md-12">
                                 @foreach ($events as $index => $event)
-                                    <div class="row align-items-center no-gutter white-bg blog-item {{ $loop->last ? '' : 'mb-30' }} wow fadeInUp"
-                                        data-wow-delay="{{ ($index + 1) * 100 }}ms" data-wow-duration="2000ms">
-                                        <div class="col-md-4">
-                                            <div class="image-part">
-                                                @php
-                                                    if (
-                                                        $event->photos->first() != null &&
-                                                        $event->photos->first()->file_name != null
-                                                    ) {
-                                                        $event_img = asset(
-                                                            'assets/events/' . $event->photos->first()->file_name,
-                                                        );
-
-                                                        if (
-                                                            !file_exists(
-                                                                public_path(
-                                                                    'assets/events/' .
-                                                                        $event->photos->first()->file_name,
-                                                                ),
-                                                            )
-                                                        ) {
-                                                            $event_img = asset(
-                                                                'image/not_found/item_image_not_found.webp',
-                                                            );
-                                                        }
-                                                    } else {
-                                                        $event_img = asset('image/not_found/item_image_not_found.webp');
-                                                    }
-                                                @endphp
-                                                <a href="#">
-                                                    <img src="{{ $event_img }}" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <div class="blog-content">
-                                                <ul class="blog-meta">
-                                                    <li><i class="fa fa-user-o"></i> {{ $event->created_by }}</li>
-
-                                                    <li>
-                                                        <?php
-                                                        $date = $event->created_at;
-                                                        $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
-                                                        ?>
-                                                        <i class="fa fa-calendar"></i>
-                                                        {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
-                                                        <span>{{ __('panel.corresponding_to') }} </span>
-                                                        {{ $event->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
-
-                                                    </li>
-                                                </ul>
-                                                <h3 class="title">
-                                                    <a href="#">
-                                                        {{ $event->title }}
-                                                    </a>
-                                                </h3>
-                                                <div class="btn-part">
-                                                    <a class="readon-arrow"
-                                                        href="#">{{ __('panel.read_more') }}</a>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="events-short mb-30 wow fadeInUp"
+                                                data-wow-delay="{{ ($index + 1) * 100 }}ms" data-wow-duration="2000ms">
+                                                <div class="date-part">
+                                                    <span
+                                                        class="month">{{ $event->created_at->translatedFormat('F Y') }}</span>
+                                                    <div class="date">{{ $event->created_at->format('d') }}</div>
+                                                </div>
+                                                <div class="content-part">
+                                                    <div class="categorie">
+                                                        <a href="#">Math</a> & <a href="#">English</a>
+                                                    </div>
+                                                    <h4 class="title mb-0"><a href="#">Educational Technology and
+                                                            Mobile Learning</a></h4>
                                                 </div>
                                             </div>
                                         </div>
@@ -288,15 +238,194 @@
                         </div>
                     </div>
                 </div>
-                <!-- Blog Section End -->
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-7 col-md-12 ">
+                {{-- <div id="rs-blog" class="rs-blog rs-news-events main-home pb-100 pt-100 md-pt-70 md-pb-70">
+                        <div class="container">
+                            <div class="sec-title mb-60 md-mb-30 text-center">
+                                <div class="sub-title primary">{{ __('panel.news_update') }}</div>
+                                <h2 class="title mb-0">{{ __('panel.university_news') }}</h2>
+                            </div>
+
+                            <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
+                                data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000"
+                                data-smart-speed="800" data-dots="false" data-nav="false" data-nav-speed="false"
+                                data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false"
+                                data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="false"
+                                data-ipad-device-dots="false" data-ipad-device2="1" data-ipad-device-nav2="false"
+                                data-ipad-device-dots2="false" data-md-device="2" data-md-device-nav="false"
+                                data-md-device-dots="false">
+                                @foreach ($news as $news)
+                                    <div class="blog-item">
+                                        <div class="image-part">
+                                            @php
+                                                if (
+                                                    $news->photos->first() != null &&
+                                                    $news->photos->first()->file_name != null
+                                                ) {
+                                                    $news_img = asset(
+                                                        'assets/news/' . $news->photos->first()->file_name,
+                                                    );
+
+                                                    if (
+                                                        !file_exists(
+                                                            public_path(
+                                                                'assets/news/' . $news->photos->first()->file_name,
+                                                            ),
+                                                        )
+                                                    ) {
+                                                        $news_img = asset('image/not_found/item_image_not_found.webp');
+                                                    }
+                                                } else {
+                                                    $news_img = asset('image/not_found/item_image_not_found.webp');
+                                                }
+                                            @endphp
+                                            <img src="{{ $news_img }}" alt="">
+                                        </div>
+                                        <div class="blog-content">
+
+                                            <ul class="blog-meta">
+                                                <li>
+                                                    <?php
+                                                    $date = $news->created_at;
+                                                    $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                    ?>
+                                                    <i class="fa fa-calendar"></i>
+                                                    {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+                                                    <span>{{ __('panel.corresponding_to') }} </span>
+                                                    {{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+                                                </li>
+
+                                            </ul>
+
+                                            <h3 class="title">
+                                                <a href="blog-single.html">
+                                                    {!! $news->title !!}
+                                                </a>
+                                            </h3>
+
+                                            <div class="desc">
+                                                {!! $news->content !!}
+                                            </div>
+                                            <div class="btn-btm">
+                                                <div class="cat-list">
+                                                    <ul class="post-categories">
+                                                        <li><a href="#">{{ $news->created_by }}</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="rs-view-btn">
+                                                    <a href="#">{{ __('panel.read_more') }}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div> --}}
 
             </div>
-            <!-- Section bg Wrap 2 End -->
-        </div>
 
+            <div class="col-lg-5 col-md-12 ">
+                <!-- Section bg Wrap 2 start -->
+                <div class="bg2">
+                    <!-- Blog Section Start -->
+                    <div id="rs-blog" class="rs-blog style1 pt-94 pb-100 md-pt-64 md-pb-70">
+                        <div class="container">
+                            <div class="sec-title mb-60 md-mb-30 text-center">
+                                <div class="sub-title primary">{{ __('panel.activities_update') }} </div>
+                                <h2 class="title mb-0">{{ __('panel.university_activities') }}</h2>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 pr-75 md-pr-15 md-mb-50">
+                                    @foreach ($events as $index => $event)
+                                        <div class="row align-items-center no-gutter white-bg blog-item {{ $loop->last ? '' : 'mb-30' }} wow fadeInUp"
+                                            data-wow-delay="{{ ($index + 1) * 100 }}ms" data-wow-duration="2000ms">
+                                            <div class="col-md-4">
+                                                <div class="image-part">
+                                                    @php
+                                                        if (
+                                                            $event->photos->first() != null &&
+                                                            $event->photos->first()->file_name != null
+                                                        ) {
+                                                            $event_img = asset(
+                                                                'assets/events/' . $event->photos->first()->file_name,
+                                                            );
+
+                                                            if (
+                                                                !file_exists(
+                                                                    public_path(
+                                                                        'assets/events/' .
+                                                                            $event->photos->first()->file_name,
+                                                                    ),
+                                                                )
+                                                            ) {
+                                                                $event_img = asset(
+                                                                    'image/not_found/item_image_not_found.webp',
+                                                                );
+                                                            }
+                                                        } else {
+                                                            $event_img = asset(
+                                                                'image/not_found/item_image_not_found.webp',
+                                                            );
+                                                        }
+                                                    @endphp
+                                                    <a href="#">
+                                                        <img src="{{ $event_img }}" alt="">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="blog-content">
+                                                    <ul class="blog-meta">
+                                                        <li><i class="fa fa-user-o"></i> {{ $event->created_by }}</li>
+
+                                                        <li>
+                                                            <?php
+                                                            $date = $event->created_at;
+                                                            $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                            ?>
+                                                            <i class="fa fa-calendar"></i>
+                                                            {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+                                                            <span>{{ __('panel.corresponding_to') }} </span>
+                                                            {{ $event->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+                                                        </li>
+                                                    </ul>
+                                                    <h3 class="title">
+                                                        <a href="#">
+                                                            {{ $event->title }}
+                                                        </a>
+                                                    </h3>
+                                                    <div class="btn-part">
+                                                        <a class="readon-arrow"
+                                                            href="#">{{ __('panel.read_more') }}</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Blog Section End -->
+
+
+                </div>
+                <!-- Section bg Wrap 2 End -->
+            </div>
+
+        </div>
     </div>
-    {{-- </div> --}}
     <!-- Blog Section End -->
 
     <!-- start statistics -->
