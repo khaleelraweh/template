@@ -248,13 +248,6 @@
     <div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40 bg2">
         <div class="container">
             <div class="row y-middle">
-                <div class="col-lg-2 col-md-12 mb-30">
-                    <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-                        <div class="sub-title primary">{{ __('panel.colleges_and_institutes') }}</div>
-                        <h3 class="title mb-0">{{ __('panel.introductory_tour') }}</h3>
-                    </div>
-                </div>
-
                 <div class="col-lg-10 col-md-12 mb-30">
                     <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30"
                         data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
@@ -307,6 +300,14 @@
                             </div>
                         @endforeach
 
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-12 mb-30">
+                    <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
+                        {{-- <h3 class="title mb-0">{{ __('panel.introductory_tour') }}</h3> --}}
+                        <h3 class="title mb-0">{{ __('panel.colleges_and_institutes') }}</h3>
+                        {{-- <div class="sub-title primary">{{ __('panel.colleges_and_institutes') }}</div> --}}
+                        <div class="sub-title primary">{{ __('panel.introductory_tour') }}</div>
                     </div>
                 </div>
             </div>
