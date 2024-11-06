@@ -40,10 +40,10 @@
                 </h1>
                 <ul>
                     <li>
-                        <a class="active" href="index.html">Home</a>
+                        <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
                     </li>
                     <li>
-                        @switch(true)
+                        {{-- @switch(true)
                             @case(Route::is('frontend.blog_single'))
                                 {{ __('panel.blog_single') }}
                             @break
@@ -66,7 +66,9 @@
 
                             @default
                                 Default Title
-                        @endswitch
+                        @endswitch --}}
+
+                        {{ $post->title }}
                     </li>
                 </ul>
             </div>

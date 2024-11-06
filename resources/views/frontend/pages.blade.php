@@ -14,14 +14,14 @@
             </div>
             <div class="breadcrumbs-text white-color">
                 <h1 class="page-title">
-                    Page Title
+                    {{ $page->title }}
                 </h1>
                 <ul>
                     <li>
-                        <a class="active" href="index.html">Home</a>
+                        <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
                     </li>
                     <li>
-                        Page Title
+                        {{ $page->title }}
                     </li>
                 </ul>
             </div>
