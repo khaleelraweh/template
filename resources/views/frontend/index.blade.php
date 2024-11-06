@@ -117,7 +117,7 @@
     <!-- news and events Section Start -->
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-7 pt-94 pb-70 md-pt-64 md-pb-70">
+            <div class="col-sm-12 col-md-6 col-lg-7 pt-94 pb-70 md-pt-64 md-pb-70">
                 <div id="rs-blog" class="rs-blog rs-news-events main-home ">
                     <div class="container">
                         <div class="sec-title mb-40 md-mb-20 text-left">
@@ -199,7 +199,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-5  pt-94 pb-70 md-pt-64 md-pb-70">
+            <div class="col-sm-12 col-md-6 col-lg-5  pt-94 pb-70 md-pt-64 md-pb-70">
                 <div id="rs-blog" class="rs-blog style1 ">
                     <div class="container">
                         <div class="sec-title mb-40 md-mb-20 text-left">
