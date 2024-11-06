@@ -171,7 +171,7 @@
                                         </ul>
 
                                         <h3 class="title">
-                                            <a href="{{ route('frontend.blog_single', $news->slug) }}">
+                                            <a href="{{ route('frontend.news_single', $news->slug) }}">
                                                 {!! $news->title !!}
                                             </a>
                                         </h3>
@@ -187,7 +187,7 @@
                                             </div>
                                             <div class="rs-view-btn">
                                                 <a
-                                                    href="{{ route('frontend.blog_single', $news->slug) }}">{{ __('panel.read_more') }}</a>
+                                                    href="{{ route('frontend.news_single', $news->slug) }}">{{ __('panel.read_more') }}</a>
                                             </div>
                                         </div>
                                     </div>

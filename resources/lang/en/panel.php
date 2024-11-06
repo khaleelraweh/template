@@ -1485,5 +1485,7 @@ return [
     'all_rights_reserved'                               =>  'All Rights Reserved',
     'statistics_and_numbers'                            =>  'Statistics and Numbers',
     'admin'                                             =>  'Admin',
+    'blog_single'                                       =>  'Blog Single',
+    'news_single'                                       =>  'News Single',
 
 ];

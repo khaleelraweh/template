@@ -1444,6 +1444,8 @@ return [
     'all_rights_reserved'                               =>  'جميع الحقوق محفوظة',
     'statistics_and_numbers'                            =>  'احصائيات وارقام',
     'admin'                                             =>  'الادارة',
+    'blog_single'                                       =>  'عرض المدونة',
+    'news_single'                                       =>  'اسعراض الخبر',
 
 
 

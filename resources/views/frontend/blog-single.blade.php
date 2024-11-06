@@ -9,12 +9,54 @@
                 <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image">
             </div>
             <div class="breadcrumbs-text white-color">
-                <h1 class="page-title">Blog Single</h1>
+                <h1 class="page-title">
+                    @switch(true)
+                        @case(Route::is('frontend.blog_single'))
+                            {{ __('panel.blog_single') }}
+                        @break
+
+                        @case(Route::is('frontend.news_single'))
+                            {{ __('panel.news_single') }}
+                        @break
+
+                        @case(Route::is('frontend.blog_index'))
+                            Blog Index
+                        @break
+
+                        @case(Route::is('frontend.contact'))
+                            Contact Us
+                        @break
+
+                        @default
+                            Default Title
+                    @endswitch
+                </h1>
                 <ul>
                     <li>
                         <a class="active" href="index.html">Home</a>
                     </li>
-                    <li>Blog Single</li>
+                    <li>
+                        @switch(true)
+                            @case(Route::is('frontend.blog_single'))
+                                {{ __('panel.blog_single') }}
+                            @break
+
+                            @case(Route::is('frontend.news_single'))
+                                {{ __('panel.news_single') }}
+                            @break
+
+                            @case(Route::is('frontend.blog_index'))
+                                Blog Index
+                            @break
+
+                            @case(Route::is('frontend.contact'))
+                                Contact Us
+                            @break
+
+                            @default
+                                Default Title
+                        @endswitch
+                    </li>
                 </ul>
             </div>
         </div>
