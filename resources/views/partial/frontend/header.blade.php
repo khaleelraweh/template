@@ -116,12 +116,12 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                         <div class="logo-cat-wrap">
                             {{-- <div class="logo-part pr-90"> --}}
                             <div class="logo-part ">
-                                <a class="dark-logo" href="index.html">
+                                <a class="dark-logo" href="{{ route('frontend.index') }}">
                                     {{-- <img src="{{ asset('frontend/images/logo-dark.png') }}" alt=""> --}}
                                     <img src="{{ $siteSettings['site_logo_large_dark']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_dark']->value) : asset('frontend/images/logo-dark.png') }}"
                                         alt="{{ $siteSettings['site_name']->value }}">
                                 </a>
-                                <a class="light-logo" href="index.html">
+                                <a class="light-logo" href="{{ route('frontend.index') }}">
                                     {{-- <img src="{{ asset('frontend/images/logo.png') }}" alt=""> --}}
                                     <img src="{{ $siteSettings['site_logo_large_light']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_light']->value) : asset('frontend/images/logo.png') }}"
                                         alt="{{ $siteSettings['site_name']->value }}">
@@ -191,7 +191,8 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                 </div>
             </div>
             <div class="canvas-logo">
-                <a href="index.html"><img src="{{ asset('frontend/images/logo-dark.png') }}" alt="logo"></a>
+                <a href="{{ route('frontend.index') }}"><img src="{{ asset('frontend/images/logo-dark.png') }}"
+                        alt="logo"></a>
             </div>
             <div class="offcanvas-text">
                 <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo by the
