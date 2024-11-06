@@ -150,7 +150,7 @@
 
 .header-statistics::after{
     content: '';
-    width: 270px;
+    width: 7.5em;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
@@ -177,7 +177,7 @@
 
 .header_playlist::after{
     content: '';
-    width: 280px;
+    width: 7.8em;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
