@@ -1,8 +1,5 @@
 @extends('layouts.app')
 
-@section('style')
-@endsection
-
 @section('content')
     <!-- Slider Section Start -->
     <div class="rs-slider main-home">

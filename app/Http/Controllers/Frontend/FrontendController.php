@@ -61,23 +61,23 @@ class FrontendController extends Controller
 
     public function blog_single($slug)
     {
-        $post = Post::with('photos', 'tags')
-            ->where('slug->' . app()->getLocale(), $slug)
-            ->firstOrFail();
+        // $post = Post::with('photos', 'tags')
+        //     ->where('slug->' . app()->getLocale(), $slug)
+        //     ->firstOrFail();
 
 
-        // Retrieve the latest 3 posts from section 1, excluding the current post
-        $latest_posts = Post::with('photos')
-            ->where('section', 1)
-            ->where('id', '!=', $post->id) // Exclude the current post
-            ->orderBy('created_at', 'ASC')
-            ->take(3)
-            ->get();
+        // $latest_posts = Post::with('photos')
+        //     ->where('section', 1)
+        //     ->where('id', '!=', $post->id) 
+        //     ->orderBy('created_at', 'ASC')
+        //     ->take(3)
+        //     ->get();
 
 
-        // Generate WhatsApp share URL
-        $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route('frontend.blog_single', $post->slug));
+        // $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route('frontend.blog_single', $post->slug));
 
-        return view('frontend.blog-single', compact('post', 'latest_posts',  'whatsappShareUrl'));
+        // return view('frontend.blog-single', compact('post', 'latest_posts',  'whatsappShareUrl'));
+
+        return view('frontend.blog-single');
     }
 }

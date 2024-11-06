@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Post;
 use App\Models\SiteSetting;
 use App\Models\WebMenu;
 use Illuminate\Support\ServiceProvider;
@@ -58,7 +59,11 @@ class AppServiceProvider extends ServiceProvider
         Lang::setLocale($locale);
         Session::put('locale', $locale);
         Carbon::setLocale($locale);
-
         // End check locale language 
+
+        //newest posts 
+        View::composer('partial.frontend.footer', function ($view) {
+            $view->with('posts', Post::Active()->latest()->take(2)->get());
+        });
     }
 }
