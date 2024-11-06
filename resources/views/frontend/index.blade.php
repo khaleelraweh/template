@@ -303,11 +303,11 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-12 mb-30">
-                    <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
+                    <div class="sec-title wow fadeInUp text-center " data-wow-delay="300ms" data-wow-duration="2000ms">
                         {{-- <h3 class="title mb-0">{{ __('panel.introductory_tour') }}</h3> --}}
-                        <h3 class="title mb-0">{{ __('panel.colleges_and_institutes') }}</h3>
+                        <h3 class="title mb-0 header-colleges">{{ __('panel.colleges_and_institutes') }}</h3>
                         {{-- <div class="sub-title primary">{{ __('panel.colleges_and_institutes') }}</div> --}}
-                        <div class="sub-title primary">{{ __('panel.introductory_tour') }}</div>
+                        <div class=" primary header-college-subtitle">{{ __('panel.introductory_tour') }}</div>
                     </div>
                 </div>
             </div>
