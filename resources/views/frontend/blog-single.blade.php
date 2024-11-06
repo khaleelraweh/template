@@ -135,8 +135,9 @@
                                 </span>
                             </li>
                             <li>
-                                <span class="p-date"> <i class="fa fa-user-o"></i>
-                                    {{ $post->users->first()->full_name ?? __('panel.admin') }}
+                                <span class="p-date">
+                                    <i class="fa fa-user-o"></i>
+                                    {{ $post->users && $post->users->isNotEmpty() ? $post->users->first()->full_name : __('panel.admin') }}
                                 </span>
                             </li>
 
