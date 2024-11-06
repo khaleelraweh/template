@@ -28,7 +28,8 @@
                     }
                 @endphp
                 <div class="slider-content slide1" style="background-image: url({{ $main_slider_img }})">
-                    <div class="container" style="height: 150vh;">
+                    {{-- <div class="container" style="height: 150vh;"> --}}
+                    <div class="container">
                         @if ($main_slider->show_info)
                             <div class="content-part">
                                 <div class="sl-sub-title wow bounceInLeft" data-wow-delay="300ms"
@@ -245,7 +246,7 @@
 
 
     <!-- College and Institutes Start  -->
-    <div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40 bg2">
+    <div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-100 md-pt-70 md-pb-70 bg2">
         <div class="container">
             <div class="row y-middle">
                 <div class="col-lg-10 col-md-12 mb-30">
@@ -383,19 +384,19 @@
     <!-- Videos Section End -->
 
     <!-- college album Start  -->
-    <div class="rs-degree rs-college-album style1 modify gray-bg pt-100 pb-70 md-pt-70 md-pb-40">
+    <div class="rs-degree rs-college-album style1 modify gray-bg pt-100 pb-100 md-pt-70 md-pb-70">
         <div class="container">
-            <div class="row y-middle">
-                <div class="col-lg-2 col-md-12 mb-30">
+            <div class="row  album-container">
+                <div class="col-lg-3 col-md-12  album-title  md-mb-30">
                     <div class="sec-title wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
                         {{-- <div class="sub-title primary">{{ __('panel.photo_album') }}</div> --}}
-                        <h3 class="title mb-0 header-album">{{ __('panel.photo_album') }}</h3>
-                        <div class="primary header-album-subtitle">{{ __('panel.browse_albums') }}</div>
+                        <h3 class="title mb-0 header-album text-white">{{ __('panel.photo_album') }}</h3>
+                        <div class="primary header-album-subtitle text-white">{{ __('panel.browse_albums') }}</div>
                         {{-- <h3 class="title mb-0">{{ __('panel.browse_albums') }}</h3> --}}
                     </div>
                 </div>
 
-                <div class="col-lg-10 col-md-12 mb-30">
+                <div class="col-lg-9 col-md-12 mt-10 mb-10">
                     <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30"
                         data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
                         data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false"

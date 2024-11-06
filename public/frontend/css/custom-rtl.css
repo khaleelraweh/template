@@ -234,6 +234,20 @@
 
 
 /* albums */
+.rs-degree.rs-college-album.style1{
+    background-color: #BCC5D6;
+
+}
+@media (min-width: 768px){
+    .rs-degree.rs-college-album.style1 .album-container
+    {
+        box-shadow:0 0 12px -1px #000;
+    }
+    .album-title{
+        background-color: #248874;
+    }
+}
+
 .rs-degree.rs-college-album.style1 .degree-wrap img{
     height: 325px;
 }
@@ -254,7 +268,7 @@
 }
 .header-album-subtitle{
     font-size: 22px;
-    margin-top: 45px;
+    margin-top: 1.5em;
 }
 
 .rs-degree.rs-college-album.style1 .degree-wrap:hover .title-part{
