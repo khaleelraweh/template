@@ -5,23 +5,22 @@
     background-color: #248874;
 }
 
-
 /* for topbar header  */
 .full-width-header .rs-header .topbar-area .topbar-contact li{
     border-right: 0;
     margin-right:5px;
     padding-right:5px;
 }
+
 .full-width-header .rs-header .topbar-area .topbar-contact li,
-.full-width-header .rs-header .topbar-area .topbar-contact li a , 
+.full-width-header .rs-header .topbar-area .topbar-contact li a,
 .topbar-link-color{
     color: #D0D6DD;
-   
+ 
 }
 .full-width-header .rs-header .topbar-area .topbar-right li.login-register a:hover{
     color: #A2A2B2;
 }
-
 
 .full-width-header .rs-header .topbar-area .topbar-contact li i:before{
     color: #E9EBEB;
@@ -44,9 +43,9 @@
 /* sticky menu  */
 .full-width-header .rs-header .logo-part img{
     max-height: 60px;
+    height: 60px;
     width: 182px;
 }
-
 .full-width-header .rs-header .menu-area .logo-cat-wrap{
     height: 90px;
     line-height: 90px;
@@ -67,7 +66,7 @@
 
 .features-wrap .icon-part i{
     font-size: 50px;
-    margin:0 20px 8px 0
+    margin:0 20px 8px 0;
 }
 
 .rs-features .features-wrap .icon-part img{
@@ -86,7 +85,7 @@
 
 .header-news::after{
     content: '';
-    width: 280px;
+    width: 8em;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
@@ -96,10 +95,9 @@
 
 /* event part  */
 .event-row{
-padding-top: 15px;
-padding-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
-
 
 .header-events{
     position: relative;
@@ -107,23 +105,23 @@ padding-bottom: 15px;
 
 .header-events::after{
     content: '';
-    width: 340px;
+    width: 9.7em;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
     bottom: -12px;
     left: 0;
 }
-.rs-blog.style1 .events-short .content-part .title a{
-    font-size: 20px;
-}
 
+
+    
 
 /*  latest news  */
 
 .rs-blog.style1 .blog-item .blog-content{
     padding: 14px 14px 14px;
 }
+
 
 .rs-blog.style1 .blog-item .blog-content .title a{
     font-size: 18px;
@@ -152,12 +150,12 @@ padding-bottom: 15px;
 
 .header-statistics::after{
     content: '';
-    width: 270px;
+    width: 11em;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
     bottom: -12px;
-    right: 0;
+    left: 0;
 }
 
 .rs-counter .counter-item .rs-count{
@@ -167,7 +165,6 @@ padding-bottom: 15px;
 .lg-mb-70{
     margin-bottom: 70px;
 }
-
 .rs-counter .counter-item .title ,
 .rs-counter.style2-about .counter-item .title{
     color: #248874;
@@ -180,34 +177,40 @@ padding-bottom: 15px;
 
 .header_playlist::after{
     content: '';
-    width: 280px;
+    width: 7.2em;
     height: 5px;
     background-color: #A2A2B2;
     position: absolute;
     bottom: -12px;
-    right: 0;
+    left: 0;
 }
-
 
 /* College and Institute */
-.header-colleges{
-    position: relative;
-    font-size: 33px;
-}
-.header-colleges::after{
-    content: '';
-    width: 8px;
-    height: 72px;
-    background-color: #248874;
-    position: absolute;
-    top: 3px;
-    right: 22px;
-}
 
 .rs-degree.style1 .degree-wrap .content-part{
     padding: 30px 30px 30px;
 }
 
+.header-colleges{
+    position: relative;
+    font-size: 33px;
+    text-align: left;
+    padding: 0 0.5em;
+}
+.header-colleges::after{
+    content: '';
+    width: 0.3em;
+    height: 90%;
+    background-color: #248874;
+    position: absolute;
+    top: 0.2em;
+    left: 0px;
+}
+.header-college-subtitle{
+    font-size: 22px;
+    margin-top: 1.5em;
+    text-align: left;
+}
 /* temperary in college and institute */
 
 @media (min-width: 768px) {
@@ -223,6 +226,7 @@ padding-bottom: 15px;
     }
 }
 
+
 /* New Videos */
 .rs-faq-part.rs-college-videos.style1 .img-part{
     min-height: 250px;
@@ -230,16 +234,55 @@ padding-bottom: 15px;
 
 
 /* albums */
-.rs-degree.rs-college-album.style1 .degree-wrap img{
-        height: 325px;
+.rs-degree.rs-college-album.style1{
+    background-color: #BCC5D6;
+
 }
+@media (min-width: 768px){
+    .rs-degree.rs-college-album.style1 .album-container
+    {
+        box-shadow:0 0 12px -1px #000;
+    }
+    .album-title{
+        background-color: #248874;
+        padding: 50px;
+        
+    }
+ 
+}
+
+
+.rs-degree.rs-college-album.style1 .degree-wrap img{
+    height: 325px;
+}
+
+.header-album{
+    position: relative;
+    font-size: 33px;
+}
+
+.header-album::after{
+    content: '';
+    width: 8px;
+    height: 70%;
+    /* background-color: #248874; */
+    background-color: #A2A2B2;
+    position: absolute;
+    top: 6px;
+    left: -12px;
+}
+.header-album-subtitle{
+    font-size: 22px;
+    margin-top: 1.5em;
+}
+
 .rs-degree.rs-college-album.style1 .degree-wrap:hover .title-part{
-    bottom: unset;
+    bottom: 0;
     opacity: 1;
 }
 
-
 /* Footer  */
 .rs-footer.home9-style .footer-top{
+    /* padding: 80px 0 80px; */
     padding: 80px 0 80px;
 }
