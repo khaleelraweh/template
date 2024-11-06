@@ -319,7 +319,7 @@
     <!-- College and Institutes End -->
 
     <!-- start statistics -->
-    <div class=" main-home event-bg pt-100 pb-100 md-pt-70 md-pb-70 bg2">
+    <div class=" main-home event-bg rs-statistics pt-100 pb-100 md-pt-70 md-pb-70 bg2">
         <div class="rs-counter style2-about">
             <div class="container">
                 <div class="row couter-area">
@@ -328,7 +328,7 @@
                             class="col-lg-3 col-md-6 {{ $loop->last ? '' : 'md-mb-30' }}  {{ !$loop->last && count($statistics) > 4 ? 'lg-mb-70' : ' ' }} ">
                             <div class="counter-item text-center">
                                 <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
-                                <h4 class="title mb-0">{{ $statistic->title }}</h4>
+                                <h4 class="title mb-0 ">{{ $statistic->title }}</h4>
                             </div>
                         </div>
                     @endforeach

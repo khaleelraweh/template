@@ -141,6 +141,10 @@ padding-bottom: 15px;
 }
 
 /* Statistics  */
+.rs-statistics{
+    box-shadow: 0px 0px 13px -3px #248874;
+    box-shadow: 0px 0px 13px -3px ;
+}
 .rs-counter .counter-item .rs-count{
     padding-right: 0;
     padding-left: 0;
@@ -148,6 +152,12 @@ padding-bottom: 15px;
 .lg-mb-70{
     margin-bottom: 70px;
 }
+
+.rs-counter .counter-item .title ,
+.rs-counter.style2-about .counter-item .title{
+    color: #248874;
+}
+
 
 /* College and Institute */
 
