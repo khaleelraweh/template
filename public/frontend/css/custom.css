@@ -1,3 +1,11 @@
+.main-color{
+    color: #248874;
+}
+.main-bg{
+    background-color: #248874;
+}
+
+
 /* for topbar header  */
 .full-width-header .rs-header .topbar-area .topbar-contact li{
     border-right: 0;
@@ -66,6 +74,45 @@
 
 .owl-carousel .owl-item img{
     width: 100%;
+}
+
+/* news part  */
+.header-news{
+    position: relative;
+}
+
+.header-news::after{
+    content: '';
+    width: 200px;
+    height: 5px;
+    background-color: #A2A2B2;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+}
+
+/* event part  */
+.event-row{
+padding-top: 15px;
+padding-bottom: 15px;
+}
+
+
+.header-events{
+    position: relative;
+}
+
+.header-events::after{
+    content: '';
+    width: 200px;
+    height: 5px;
+    background-color: #A2A2B2;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+}
+.rs-blog.style1 .events-short .content-part .title a{
+    font-size: 20px;
 }
 
 
