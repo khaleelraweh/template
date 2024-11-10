@@ -78,6 +78,10 @@
     width: 100%;
 }
 
+.rs-breadcrumbs .breadcrumbs-text ul li a:before, .rs-breadcrumbs .breadcrumbs-text ul li a:after{
+    top: 9px;
+}
+
 /* news part  */
 .header-news{
     position: relative;
