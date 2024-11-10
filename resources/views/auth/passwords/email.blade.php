@@ -3,7 +3,7 @@
 @section('content')
     <section class="py-5 bg-light">
         <div class="container">
-            <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
+            <div class="row px-4 px-lg-4 py-lg-4 align-items-center">
                 <div class="col-lg-6">
                     <h1 class="h2 text-uppercase mb-0">{{ __('panel.f_reset_password') }}</h1>
                 </div>
