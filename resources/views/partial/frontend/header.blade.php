@@ -99,7 +99,12 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
 
                             <li class="login-register">
                                 <i class="fa fa-sign-in text-white"></i>
-                                <a href="{{ route('admin.login') }}">{{ __('panel.f_login') }}</a>
+                                @if (auth()->check() && (auth()->user()->hasRole('admin') or auth()->user()->hasRole('supervisor')))
+                                    <a href="{{ route('admin.index') }}">{{ __('panel.dashboard') }}</a>
+                                @else
+                                    <a href="{{ route('admin.login') }}">{{ __('panel.f_login') }}</a>
+                                @endif
+
                             </li>
                         </ul>
                     </div>
