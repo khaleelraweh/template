@@ -1490,5 +1490,7 @@ return [
     'event_single'                                      =>  'Event Single',
     'ibb'                                               =>  'Ibb',
     'university'                                        =>  'University',
+    'welcome_back_login_to_your_account'                =>  'Welcome back! Log in to your account.',
+    'remember_me'                                       =>  'Remember me',
 
 ];

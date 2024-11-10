@@ -17,32 +17,32 @@
                                     <div class="auth-form-wrapper px-4 py-5">
                                         <a href="#"
                                             class="noble-ui-logo d-block mb-2">{{ __('panel.university') }}<span>{{ __('panel.ibb') }}</span></a>
-                                        <h5 class="text-muted fw-normal mb-4">Welcome back! Log in to your account.</h5>
-                                        <form class="forms-sample">
+                                        <h5 class="text-muted fw-normal mb-4">
+                                            {{ __('panel.welcome_back_login_to_your_account') }}</h5>
+                                        <form class="forms-sample" action="{{ route('login') }}" method="POST">
                                             <div class="mb-3">
-                                                <label for="userEmail" class="form-label">Email address</label>
+                                                <label for="userEmail" class="form-label">{{ __('panel.user_name') }}
+                                                    {{ __('panel.or') }} {{ __('panel.f_email') }}</label>
                                                 <input type="email" class="form-control" id="userEmail"
-                                                    placeholder="Email">
+                                                    placeholder="{{ __('panel.f_user_email') }}">
                                             </div>
                                             <div class="mb-3">
-                                                <label for="userPassword" class="form-label">Password</label>
+                                                <label for="userPassword"
+                                                    class="form-label">{{ __('panel.f_password') }}</label>
                                                 <input type="password" class="form-control" id="userPassword"
-                                                    autocomplete="current-password" placeholder="Password">
+                                                    autocomplete="current-password"
+                                                    placeholder="{{ __('panel.f_password') }}">
                                             </div>
                                             <div class="form-check mb-3">
                                                 <input type="checkbox" class="form-check-input" id="authCheck">
                                                 <label class="form-check-label" for="authCheck">
-                                                    Remember me
+                                                    {{ __('panel.remember_me') }}
                                                 </label>
                                             </div>
                                             <div>
                                                 <a href="../../dashboard.html"
-                                                    class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</a>
-                                                <button type="button"
-                                                    class="btn btn-outline-primary btn-icon-text mb-2 mb-md-0">
-                                                    <i class="btn-icon-prepend" data-feather="twitter"></i>
-                                                    Login with twitter
-                                                </button>
+                                                    class="btn w-100 btn-primary me-2 mb-2 mb-md-0 text-white">{{ __('panel.f_login') }}</a>
+
                                             </div>
                                             <a href="register.html" class="d-block mt-3 text-muted">Not a user? Sign up</a>
                                         </form>

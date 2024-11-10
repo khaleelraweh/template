@@ -1449,6 +1449,8 @@ return [
     'event_single'                                      =>  'استعراض الحدث',
     'ibb'                                               =>  'إب',
     'university'                                        =>  'جامعة',
+    'welcome_back_login_to_your_account'                =>  'مرحبًا بعودتك! قم بتسجيل الدخول إلى حسابك.',
+    'remember_me'                                       =>  'تذكرني',
 
 
 
