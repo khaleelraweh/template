@@ -1492,5 +1492,7 @@ return [
     'university'                                        =>  'University',
     'welcome_back_login_to_your_account'                =>  'Welcome back! Log in to your account.',
     'remember_me'                                       =>  'Remember me',
+    'enter_your'                                        =>  'Enter Your ',
+    'and_instructions_will_be_sent_to_you'              =>  'and instructions will be sent to you!',
 
 ];
