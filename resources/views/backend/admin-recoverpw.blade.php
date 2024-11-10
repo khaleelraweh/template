@@ -30,24 +30,31 @@
                                                     aria-label="Close"></button>
                                             </div>
 
-                                            <div class="form-group mb-3">
-                                                <div class="col-xs-12">
-                                                    <input class="form-control" type="email" name="email"
-                                                        value="{{ old('email') }}" placeholder="{{ __('panel.f_email') }}">
-                                                    @error('email')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">
+                                                    {{ __('panel.f_email') }}
+                                                </label>
+
+                                                <input class="form-control" type="email" name="email" id="email"
+                                                    value="{{ old('email') }}" placeholder="{{ __('panel.f_email') }}">
+                                                @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+
                                             </div>
 
-                                            <div class="form-group pb-2 text-center row mt-3">
-                                                <div class="col-12">
-                                                    <button class="btn btn-info w-100 waves-effect waves-light"
-                                                        type="submit" name="submit">
-                                                        {{ __('panel.send_email') }}
-                                                    </button>
-                                                </div>
+                                            <div>
+                                                <button class="btn w-100 btn-primary me-2 mb-2 mb-md-0 text-white"
+                                                    type="submit" name="submit">
+                                                    {{ __('panel.send_email') }}
+                                                </button>
                                             </div>
+
+                                            <a href="{{ route('admin.login') }}"
+                                                class="d-block mt-3 text-muted">{{ __('panel.already_have_an_account') }}</a>
+
+
+
                                         </form>
                                     </div>
                                 </div>
@@ -55,8 +62,7 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('admin.login') }}" class="text-muted"><i class="mdi mdi-lock-open"></i> Already
-                    have an account !</a>
+
 
             </div>
         </div>

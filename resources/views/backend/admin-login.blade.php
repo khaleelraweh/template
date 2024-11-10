@@ -52,7 +52,8 @@
                                             </div>
                                             <div>
                                                 <button class="btn w-100 btn-primary me-2 mb-2 mb-md-0 text-white"
-                                                    type="submit">{{ __('panel.f_login') }}</button>
+                                                    type="submit">{{ __('panel.f_login') }}
+                                                </button>
                                             </div>
                                             <a href="{{ route('admin.recover-password') }}"
                                                 class="d-block mt-3 text-muted">{{ __('panel.f_forgot_password') }}</a>

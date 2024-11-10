@@ -1495,5 +1495,6 @@ return [
     'enter_your'                                        =>  'Enter Your ',
     'and_instructions_will_be_sent_to_you'              =>  'and instructions will be sent to you!',
     'send_email'                                        =>  'Send Email',
+    'already_have_an_account'                           =>  'Already have an accont!',
 
 ];
