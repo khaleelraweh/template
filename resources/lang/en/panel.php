@@ -1494,5 +1494,6 @@ return [
     'remember_me'                                       =>  'Remember me',
     'enter_your'                                        =>  'Enter Your ',
     'and_instructions_will_be_sent_to_you'              =>  'and instructions will be sent to you!',
+    'send_email'                                        =>  'Send Email',
 
 ];

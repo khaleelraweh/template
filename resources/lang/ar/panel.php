@@ -1453,6 +1453,7 @@ return [
     'remember_me'                                       =>  'تذكرني',
     'enter_your'                                        =>  'ادخل',
     'and_instructions_will_be_sent_to_you'              =>  ' وسيتم إرسال التعليمات لك!',
+    'send_email'                                        =>  'إرسال البريد الإلكتروني',
 
 
 
