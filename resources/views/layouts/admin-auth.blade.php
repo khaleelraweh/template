@@ -17,8 +17,6 @@
 
     <title> Login | {{ config('app.name', 'Laravel') }} - Admin & Dashboard Template </title>
 
-    <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
