@@ -21,7 +21,7 @@
                                         <h5 class="text-muted fw-normal mb-4">
                                             {{ __('panel.f_reset_password') }}</h5>
                                         <form class="form-horizontal mt-3" action="{{ route('password.email') }}"
-                                            class="user">
+                                            method="POST" class="user">
                                             @csrf
                                             <div class="alert alert-info alert-dismissible fade show" role="alert">
                                                 {{ __('panel.enter_your') }} <strong>{{ __('panel.email') }}</strong>
@@ -52,8 +52,6 @@
 
                                             <a href="{{ route('admin.login') }}"
                                                 class="d-block mt-3 text-muted">{{ __('panel.already_have_an_account') }}</a>
-
-
 
                                         </form>
                                     </div>
