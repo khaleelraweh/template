@@ -1488,5 +1488,7 @@ return [
     'blog_single'                                       =>  'Blog Single',
     'news_single'                                       =>  'News Single',
     'event_single'                                      =>  'Event Single',
+    'ibb'                                               =>  'Ibb',
+    'university'                                        =>  'University',
 
 ];
