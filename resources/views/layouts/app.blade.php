@@ -70,6 +70,7 @@
     @yield('style')
 
 </head>
+{{-- <body class="defult-home"> --}}
 
 <body class="home-style2" dir="{{ $rtl == '-rtl' ? 'rtl' : 'ltr' }}">
 
