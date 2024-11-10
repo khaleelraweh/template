@@ -1,12 +1,17 @@
+<?php $rtl = config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl' ? '-rtl' : ''; ?>
+{{-- if there is no cookie yet then make it dark else check the cookie value --}}
+<?php $dark = Cookie::get('theme') !== null ? (Cookie::get('theme') == 'dark' ? '-dark' : '') : ''; ?>
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Premium Multipurpose Admin & Dashboard Template"  />
+    <meta name="description" content="Premium Multipurpose Admin & Dashboard Template" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="all,follow">
-    <meta name="author" content="khaleelRaweh"  />
+    <meta name="author" content="khaleelRaweh" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -14,49 +19,58 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    
-    <!-- Google fonts-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;700&amp;display=swap">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martel+Sans:wght@300;400;800&amp;display=swap">
-    
-    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
- 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{asset('backend/images/favicon.ico')}}">
 
-    <!-- Bootstrap Css -->
-    <link href="{{asset('backend/css/bootstrap-rtl.min.css')}}" id="bootstrap-style" rel="stylesheet" type="text/css" />
-    <!-- Icons Css -->
-    <link href="{{asset('backend/css/icons-rtl.min.css')}}" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
-    <link href="{{asset('backend/css/app-rtl.min.css')}}" id="app-style" rel="stylesheet" type="text/css" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- End fonts -->
+
+    <!-- core:css -->
+    <link rel="stylesheet" href="{{ asset('backend/vendors/core/core.css') }}">
+    <!-- endinject -->
+
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('backend/fonts/feather-font/css/iconfont.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/vendors/flag-icon-css/css/flag-icon.min.css') }}">
+    <!-- endinject -->
+
+    <!-- Layout styles -->
+    <link href="<?php echo asset('backend/css/style' . $dark . $rtl . '.css'); ?>" id="app-style" rel="stylesheet" type="text/css">
+    <!-- End layout styles -->
+
+    <link rel="shortcut icon" href="{{ asset('backend/images/favicon.png') }}" />
+
     @yield('style')
 </head>
+
 <body class="auth-body-bg">
 
-  <div class="bg-overlay"></div>
+    <div class="bg-overlay"></div>
 
-  <div id="app" class="wrapper-page">
-      
-      <div class="container-fluid p-0">
+    <div id="app" class="wrapper-page">
+
+        <div class="container-fluid p-0">
             @yield('content')
-      </div>
-      
-  </div>
+        </div>
 
-  <!-- JAVASCRIPT -->
-  <script src="{{asset('backend/libs/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('backend/libs/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <script src="{{asset('backend/libs/metismenu/metisMenu.min.js')}}"></script>
-  <script src="{{asset('backend/libs/simplebar/simplebar.min.js')}}"></script>
-  <script src="{{asset('backend/libs/node-waves/waves.min.js')}}"></script>
+    </div>
 
-  <script src="{{asset('backend/js/app.js')}}"></script>
-  @yield('script')
+    <!-- core:js -->
+    <script src="{{ asset('backend/vendors/core/core.js') }}"></script>
+    <!-- endinject -->
+
+    <!-- inject:js -->
+    <script src="{{ asset('backend/vendors/feather-icons/feather.min.js') }}"></script>
+    <script src="{{ asset('backend/js/template.js') }}"></script>
+    <!-- endinject -->
+
+    @yield('script')
 </body>
+
 </html>
