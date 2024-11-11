@@ -79,12 +79,6 @@
                                 @endphp
 
                                 <h3 class="widget-title recent_post_title">{{ $widgetTitle }}</h3>
-
-
-
-
-
-
                                 @foreach ($recent_posts as $recent_post)
                                     @php
                                         $recentImage =
@@ -115,44 +109,25 @@
                                         </div>
                                     </div>
                                 @endforeach
-
                             </div>
 
                             <div class="recent-posts mb-50">
                                 <h3 class="widget-title tags_title">{{ __('panel.tags') }}</h3>
                                 <ul>
                                     @foreach ($tags as $tag)
+                                        @php
+                                            $tagRouteMap = [
+                                                'frontend.blog_tag_list' => 'frontend.blog_tag_list',
+                                                'frontend.news_tag_list' => 'frontend.news_tag_list',
+                                                'frontend.events_tag_list' => 'frontend.events_tag_list',
+                                            ];
+                                            $tagRoute = $tagRouteMap[$currentRoute] ?? 'frontend.blog_tag_list';
+                                        @endphp
+
                                         <li>
-                                            @switch(true)
-                                                @case($currentRoute === 'frontend.blog_tag_list')
-                                                    <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">
-                                                        {{ $tag->name }}
-                                                    </a>
-                                                @break
-
-                                                @case($currentRoute === 'frontend.news_tag_list')
-                                                    <a href="{{ route('frontend.news_tag_list', $tag->slug) }}">
-                                                        {{ $tag->name }}
-                                                    </a>
-                                                @break
-
-                                                @case($currentRoute === 'frontend.events_tag_list')
-                                                    <a href="{{ route('frontend.events_tag_list', $tag->slug) }}">
-                                                        {{ $tag->name }}
-                                                    </a>
-                                                @break
-
-                                                @default
-                                                    <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">
-                                                        {{ $tag->name }}
-                                                    </a>
-                                            @endswitch
-
-
+                                            <a href="{{ route($tagRoute, $tag->slug) }}">{{ $tag->name }}</a>
                                         </li>
                                     @endforeach
-
-
                                 </ul>
                             </div>
                         </div>
@@ -163,7 +138,6 @@
                                 <div class="col-lg-12 mb-70">
                                     <div class="blog-item">
                                         <div class="blog-img">
-
                                             @php
                                                 $linkRoute = match ($currentRoute) {
                                                     'frontend.blog_tag_list' => 'frontend.blog_single',
@@ -172,9 +146,7 @@
                                                     default => 'frontend.blog_single',
                                                 };
                                             @endphp
-
                                             <x-post-link :route="$linkRoute" :slug="$post->slug">
-
                                                 @php
                                                     $post_img = getPostTagImage(
                                                         $post,
@@ -183,57 +155,21 @@
                                                     );
                                                 @endphp
                                                 <img src="{{ $post_img }}" alt="">
-
                                             </x-post-link>
-
-
                                         </div>
                                         <div class="blog-content">
                                             <h3 class="blog-title">
-                                                @switch(true)
-                                                    @case($currentRoute === 'frontend.blog_tag_list')
-                                                        <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                    @break
-
-                                                    @case($currentRoute === 'frontend.news_tag_list')
-                                                        <a href="{{ route('frontend.news_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                    @break
-
-                                                    @case($currentRoute === 'frontend.events_tag_list')
-                                                        <a href="{{ route('frontend.event_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                    @break
-
-                                                    @default
-                                                        <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                @endswitch
-
+                                                <x-post-link :route="$linkRoute" :slug="$post->slug">
+                                                    {{ $post->title }}
+                                                </x-post-link>
                                             </h3>
                                             <div class="blog-meta">
                                                 <ul class="btm-cate">
                                                     <li>
-                                                        <?php
-                                                        $date = $post->created_at;
-                                                        $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
-                                                        ?>
 
                                                         <div class="blog-date">
                                                             <i class="fa fa-calendar-check-o"></i>
-
-                                                            {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
-
-                                                            <span>{{ __('panel.corresponding_to') }} </span>
-
-                                                            {{ $post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
-
-
+                                                            {{ formatPostDate($post->created_at) }}
                                                         </div>
                                                     </li>
                                                     <li>
@@ -250,37 +186,9 @@
                                                 {!! \Illuminate\Support\Str::words($post->content, 30, '...') !!}
                                             </div>
                                             <div class="blog-button">
-
-                                                @switch(true)
-                                                    @case($currentRoute === 'frontend.blog_tag_list')
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                    @break
-
-                                                    @case($currentRoute === 'frontend.news_tag_list')
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.news_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                    @break
-
-                                                    @case($currentRoute === 'frontend.events_tag_list')
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.event_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                    @break
-
-                                                    @default
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                @endswitch
-
-
+                                                <x-post-link :route="$linkRoute" :slug="$post->slug" class="blog-btn">
+                                                    {{ __('panel.continue_reading') }}
+                                                </x-post-link>
                                             </div>
                                         </div>
                                     </div>
