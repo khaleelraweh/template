@@ -147,34 +147,6 @@
                                                 }
                                             @endphp
 
-                                            {{-- @php
-                                                if (
-                                                    $recent_post->photos->first() != null &&
-                                                    $recent_post->photos->first()->file_name != null
-                                                ) {
-                                                    $recent_post_img = asset(
-                                                        'assets/posts/' . $recent_post->photos->first()->file_name,
-                                                    );
-
-                                                    if (
-                                                        !file_exists(
-                                                            public_path(
-                                                                'assets/posts/' .
-                                                                    $recent_post->photos->first()->file_name,
-                                                            ),
-                                                        )
-                                                    ) {
-                                                        $recent_post_img = asset(
-                                                            'image/not_found/item_image_not_found.webp',
-                                                        );
-                                                    }
-                                                } else {
-                                                    $recent_post_img = asset(
-                                                        'image/not_found/item_image_not_found.webp',
-                                                    );
-                                                }
-                                            @endphp --}}
-
 
                                             <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"><img
                                                     src="{{ $recent_post_img }}" alt=""></a>
@@ -278,7 +250,7 @@
                                     <div class="blog-item">
                                         <div class="blog-img">
                                             <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                @php
+                                                {{-- @php
                                                     if (
                                                         $post->photos->first() != null &&
                                                         $post->photos->first()->file_name != null
@@ -301,7 +273,61 @@
                                                     } else {
                                                         $post_img = asset('image/not_found/item_image_not_found.webp');
                                                     }
+                                                @endphp --}}
+
+                                                @php
+                                                    $postDefaultImg = asset(
+                                                        'image/not_found/item_image_not_found.webp',
+                                                    );
+                                                    $post_img = $postDefaultImg; // Set a default image
+
+                                                    switch (true) {
+                                                        case $currentRoute === 'frontend.blog_list':
+                                                            $post_img =
+                                                                $post->photos->first() &&
+                                                                $post->photos->first()->file_name
+                                                                    ? asset(
+                                                                        'assets/posts/' .
+                                                                            $post->photos->first()->file_name,
+                                                                    )
+                                                                    : $postDefaultImg;
+                                                            break;
+
+                                                        case $currentRoute === 'frontend.news_list':
+                                                            $post_img =
+                                                                $post->photos->first() &&
+                                                                $post->photos->first()->file_name
+                                                                    ? asset(
+                                                                        'assets/news/' .
+                                                                            $post->photos->first()->file_name,
+                                                                    )
+                                                                    : $postDefaultImg;
+                                                            break;
+
+                                                        case $currentRoute === 'frontend.events_list':
+                                                            $post_img =
+                                                                $post->photos->first() &&
+                                                                $post->photos->first()->file_name
+                                                                    ? asset(
+                                                                        'assets/events/' .
+                                                                            $post->photos->first()->file_name,
+                                                                    )
+                                                                    : $postDefaultImg;
+                                                            break;
+
+                                                        // Add more cases as needed for other routes
+
+                                                        default:
+                                                            $post_img = $postDefaultImg;
+                                                            break;
+                                                    }
+
+                                                    // Check if the file exists in public directory
+                                                    if (!file_exists(public_path(parse_url($post_img, PHP_URL_PATH)))) {
+                                                        $post_img = $postDefaultImg;
+                                                    }
                                                 @endphp
+
                                                 <img src="{{ $post_img }}" alt="">
                                             </a>
                                         </div>
