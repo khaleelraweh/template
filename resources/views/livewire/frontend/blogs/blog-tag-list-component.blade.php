@@ -1,258 +1,390 @@
 <div>
-    <!-- banner section start -->
-    <div class="main-banner-blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="banner-content">
-                        <h1>Blog List pages</h1>
-                        <p>Home - Blog List Page</p>
-                    </div>
-                </div>
+    <!-- Main content Start -->
+    <div class="main-content">
+        <!-- Breadcrumbs Start -->
+        <div class="rs-breadcrumbs breadcrumbs-overlay">
+            <div class="breadcrumbs-img">
+                {{-- <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image"> --}}
+                <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/breadcrumbs/2.jpg') }}"
+                    alt="{{ $siteSettings['site_name']->value }}">
+            </div>
+            <div class="breadcrumbs-text white-color">
+                <h1 class="page-title">
+                    @switch(true)
+                        @case($currentRoute === 'frontend.blog_list')
+                            {{ __('panel.blog_list') }}
+                        @break
+
+                        @case($currentRoute === 'frontend.news_list')
+                            {{ __('panel.news_list') }}
+                        @break
+
+                        @case($currentRoute === 'frontend.events_list')
+                            {{ __('panel.events_list') }}
+                        @break
+
+                        @case(Route::is('frontend.blog_index'))
+                            Blog Index
+                        @break
+
+                        @case(Route::is('frontend.contact'))
+                            Contact Us
+                        @break
+
+                        @default
+                            Default Title
+                    @endswitch
+                </h1>
+                <ul>
+                    <li>
+                        <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
+
+                    </li>
+                    <li>
+                        @switch(true)
+                            @case($currentRoute === 'frontend.blog_list')
+                                {{ __('panel.blog_list') }}
+                            @break
+
+                            @case($currentRoute === 'frontend.news_list')
+                                {{ __('panel.news_list') }}
+                            @break
+
+                            @case($currentRoute === 'frontend.events_list')
+                                {{ __('panel.events_list') }}
+                            @break
+
+                            @case(Route::is('frontend.blog_index'))
+                                Blog Index
+                            @break
+
+                            @case(Route::is('frontend.contact'))
+                                Contact Us
+                            @break
+
+                            @default
+                                Default Title
+                        @endswitch
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-    <!-- banner section end -->
+        <!-- Breadcrumbs End -->
 
-    <!-- blog-list page start -->
-    <div class="blog-list-main-sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-md-8 col-sm-12">
-                    <div class="blog-list-main-content">
 
-                        @foreach ($posts as $post)
-                            <!-- Blog List Block Start -->
-                            <div class="blog-list-block">
-                                <div class="image clearfix">
-                                    @php
-                                        if (
-                                            $post->photos->first() != null &&
-                                            $post->photos->first()->file_name != null
-                                        ) {
-                                            $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
+        <!-- Blog Section Start -->
+        <div class="rs-inner-blog orange-color pt-100 pb-100 md-pt-70 md-pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 order-last">
+                        <div class="widget-area">
+                            <div class="search-widget mb-50">
+                                <div class="search-wrap">
+                                    <input type="search" wire:model="searchQuery"
+                                        placeholder="{{ __('transf.search') }}..." name="s" class="search-input"
+                                        value="">
 
-                                            if (
-                                                !file_exists(
-                                                    public_path('assets/posts/' . $post->photos->first()->file_name),
-                                                )
-                                            ) {
-                                                $post_img = asset('image/not_found/item_image_not_found.webp');
-                                            }
-                                        } else {
-                                            $post_img = asset('image/not_found/item_image_not_found.webp');
-                                        }
-                                    @endphp
-                                    <img src="{{ $post_img }}" class="img-responsive" alt="blog-list-img-1">
-                                </div>
-                                <div class="content-detail-blog clearfix">
-                                    <p class="heading-main">{{ $post->title }}</p>
-                                    <div class="sub-heading-main">
-                                        <ul>
-                                            <li>{{ $post->tags->first()->name ?? 'Global' }}</li>
-                                            <li> {{ $post->created_at ? \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y') : null }}
-                                            </li>
-                                            <li>{{ __('transf.posted_by') }}:
-                                                <a href="#">{{ $post->users->first()->full_name ?? '' }}</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="desc">
-                                        <p>
-                                            {{ $post->description }}
-                                        </p>
-                                        <div class="read-more">
-                                            <ul>
-                                                <li>
-                                                    <a class="btn btn-default"
-                                                        href="{{ route('frontend.blog_single', $post->slug) }}"
-                                                        role="button">Read
-                                                        More</a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                    </div>
+                                    {{-- <button type="submit" value="Search"><i class=" flaticon-search"></i></button> --}}
                                 </div>
                             </div>
-                            <!-- Blog List Block End -->
-                        @endforeach
+                            <div class="recent-posts-widget mb-50">
+                                <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
 
+                                @foreach ($recent_posts as $recent_post)
+                                    <div class="show-featured ">
+                                        <div class="post-img">
 
-                        <!-- Pagination Start -->
-                        <div class="pagination-main visible-xs visible-sm">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    {!! $posts->appends(request()->all())->onEachSide(3)->links() !!}
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- Pagination End -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <div class="blog-list-widget clearfix">
-                        <!-- Search Widget Start -->
-                        <div class="widget-block search-widget clearfix">
-                            <h3 class="widget-title">search</h3>
-                            <div class="search-box">
+                                            @php
+                                                $recentDefaultImg = asset('image/not_found/item_image_not_found.webp');
+                                                $recent_post_img = $recentDefaultImg; // Set a default image
 
-                                <input wire:model="searchQuery" class="form-control" type="search"
-                                    placeholder="{{ __('transf.search') }}" aria-label="Search">
-
-                                <a href="javascript::void()" class="search">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </a>
-
-                                {{-- <input type="text" class="form-control" placeholder="Search here">
-                                <a href="#" class="search">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </a> --}}
-                            </div>
-                        </div>
-                        <!-- Search Widget End -->
-                        <!-- News Post Widget Start -->
-                        <div class="widget-block news-post-widget clearfix">
-                            <div class="news-post-tab">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#recent" aria-controls="recent" role="tab" data-toggle="tab">Recent
-                                            Post</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#popular" aria-controls="popular" role="tab"
-                                            data-toggle="tab">Popular
-                                            Post</a>
-                                    </li>
-                                </ul>
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="recent">
-
-                                        @foreach ($recent_posts->take(5) as $latest_post)
-                                            <!-- News Block Start -->
-                                            <div class="news-block">
-                                                <div class="desc">
-                                                    <div class="image">
-                                                        @php
-                                                            if (
-                                                                $latest_post->photos->last() != null &&
-                                                                $latest_post->photos->last()->file_name != null
-                                                            ) {
-                                                                $latest_post_img = asset(
+                                                switch (true) {
+                                                    case $currentRoute === 'frontend.blog_list':
+                                                        $recent_post_img =
+                                                            $recent_post->photos->first() &&
+                                                            $recent_post->photos->first()->file_name
+                                                                ? asset(
                                                                     'assets/posts/' .
-                                                                        $latest_post->photos->last()->file_name,
-                                                                );
+                                                                        $recent_post->photos->first()->file_name,
+                                                                )
+                                                                : $recentDefaultImg;
+                                                        break;
 
-                                                                if (
-                                                                    !file_exists(
-                                                                        public_path(
-                                                                            'assets/posts/' .
-                                                                                $latest_post->photos->last()->file_name,
-                                                                        ),
+                                                    case $currentRoute === 'frontend.news_list':
+                                                        $recent_post_img =
+                                                            $recent_post->photos->first() &&
+                                                            $recent_post->photos->first()->file_name
+                                                                ? asset(
+                                                                    'assets/news/' .
+                                                                        $recent_post->photos->first()->file_name,
+                                                                )
+                                                                : $recentDefaultImg;
+                                                        break;
+
+                                                    case $currentRoute === 'frontend.events_list':
+                                                        $recent_post_img =
+                                                            $recent_post->photos->first() &&
+                                                            $recent_post->photos->first()->file_name
+                                                                ? asset(
+                                                                    'assets/events/' .
+                                                                        $recent_post->photos->first()->file_name,
+                                                                )
+                                                                : $recentDefaultImg;
+                                                        break;
+
+                                                    // Add more cases as needed for other routes
+
+                                                    default:
+                                                        $recent_post_img = $recentDefaultImg;
+                                                        break;
+                                                }
+
+                                                // Check if the file exists in public directory
+                                                if (
+                                                    !file_exists(public_path(parse_url($recent_post_img, PHP_URL_PATH)))
+                                                ) {
+                                                    $recent_post_img = $recentDefaultImg;
+                                                }
+                                            @endphp
+
+
+                                            <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"><img
+                                                    src="{{ $recent_post_img }}" alt=""></a>
+                                        </div>
+                                        <div class="post-desc">
+                                            <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
+                                                {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
+                                            </a>
+                                            <span class="date">
+                                                <?php
+                                                $date = $recent_post->created_at;
+                                                $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                ?>
+                                                <i class="fa fa-calendar"></i>
+                                                {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+
+                                                <span> | </span>
+
+                                                {{ $recent_post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+
+                                            </span>
+                                        </div>
+                                    </div>
+                                @endforeach
+
+
+
+                                {{-- <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/2.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Soundtrack filma Lady Exclusive Music</a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            November 19, 2018
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/3.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Soundtrack filma Lady Exclusive Music </a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            September 6, 2020
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/4.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Given void great you’re good appear have i also fifth </a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            September 6, 2020
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/5.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Lights winged seasons fish abundantly evening.</a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            September 6, 2020
+                                        </span>
+                                    </div>
+                                </div> --}}
+                            </div>
+
+                            <div class="recent-posts mb-50">
+                                <h3 class="widget-title tags_title">{{ __('panel.tags') }}</h3>
+                                <ul>
+                                    @foreach ($tags as $tag)
+                                        <li><a
+                                                href="{{ route('frontend.blog_tag_list', $tag->slug) }}">{{ $tag->name }}</a>
+                                        </li>
+                                    @endforeach
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 pr-50 md-pr-15">
+                        <div class="row">
+                            @foreach ($posts as $post)
+                                <div class="col-lg-12 mb-70">
+                                    <div class="blog-item">
+                                        <div class="blog-img">
+                                            <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                {{-- @php
+                                                    if (
+                                                        $post->photos->first() != null &&
+                                                        $post->photos->first()->file_name != null
+                                                    ) {
+                                                        $post_img = asset(
+                                                            'assets/posts/' . $post->photos->first()->file_name,
+                                                        );
+
+                                                        if (
+                                                            !file_exists(
+                                                                public_path(
+                                                                    'assets/posts/' . $post->photos->first()->file_name,
+                                                                ),
+                                                            )
+                                                        ) {
+                                                            $post_img = asset(
+                                                                'image/not_found/item_image_not_found.webp',
+                                                            );
+                                                        }
+                                                    } else {
+                                                        $post_img = asset('image/not_found/item_image_not_found.webp');
+                                                    }
+                                                @endphp --}}
+
+                                                @php
+                                                    $postDefaultImg = asset(
+                                                        'image/not_found/item_image_not_found.webp',
+                                                    );
+                                                    $post_img = $postDefaultImg; // Set a default image
+
+                                                    switch (true) {
+                                                        case $currentRoute === 'frontend.blog_list':
+                                                            $post_img =
+                                                                $post->photos->first() &&
+                                                                $post->photos->first()->file_name
+                                                                    ? asset(
+                                                                        'assets/posts/' .
+                                                                            $post->photos->first()->file_name,
                                                                     )
-                                                                ) {
-                                                                    $latest_post_img = asset(
-                                                                        'image/not_found/item_image_not_found.webp',
-                                                                    );
-                                                                }
-                                                            } else {
-                                                                $latest_post_img = asset(
-                                                                    'image/not_found/item_image_not_found.webp',
-                                                                );
-                                                            }
-                                                        @endphp
-                                                        <img class="img-responsive" src="{{ $latest_post_img }}"
-                                                            alt="news-post">
-                                                    </div>
-                                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>
-                                                        {{ $latest_post->created_at ? \Carbon\Carbon::parse($latest_post->created_at)->translatedFormat('d F Y') : null }}
-                                                    </span>
-                                                    <a href="{{ route('frontend.blog_single', $latest_post->slug) }}"
-                                                        class="news-title">{{ $latest_post->title }}</a>
-                                                </div>
+                                                                    : $postDefaultImg;
+                                                            break;
+
+                                                        case $currentRoute === 'frontend.news_list':
+                                                            $post_img =
+                                                                $post->photos->first() &&
+                                                                $post->photos->first()->file_name
+                                                                    ? asset(
+                                                                        'assets/news/' .
+                                                                            $post->photos->first()->file_name,
+                                                                    )
+                                                                    : $postDefaultImg;
+                                                            break;
+
+                                                        case $currentRoute === 'frontend.events_list':
+                                                            $post_img =
+                                                                $post->photos->first() &&
+                                                                $post->photos->first()->file_name
+                                                                    ? asset(
+                                                                        'assets/events/' .
+                                                                            $post->photos->first()->file_name,
+                                                                    )
+                                                                    : $postDefaultImg;
+                                                            break;
+
+                                                        // Add more cases as needed for other routes
+
+                                                        default:
+                                                            $post_img = $postDefaultImg;
+                                                            break;
+                                                    }
+
+                                                    // Check if the file exists in public directory
+                                                    if (!file_exists(public_path(parse_url($post_img, PHP_URL_PATH)))) {
+                                                        $post_img = $postDefaultImg;
+                                                    }
+                                                @endphp
+
+                                                <img src="{{ $post_img }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="blog-content">
+                                            <h3 class="blog-title">
+                                                <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                    {{ $post->title }}
+                                                </a>
+                                            </h3>
+                                            <div class="blog-meta">
+                                                <ul class="btm-cate">
+                                                    <li>
+                                                        <?php
+                                                        $date = $post->created_at;
+                                                        $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                        ?>
+
+                                                        <div class="blog-date">
+                                                            <i class="fa fa-calendar-check-o"></i>
+
+                                                            {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+
+                                                            <span>{{ __('panel.corresponding_to') }} </span>
+
+                                                            {{ $post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="author">
+                                                            <i class="fa fa-user-o"></i>
+                                                            {{ $post->users && $post->users->isNotEmpty() ? $post->users->first()->full_name : __('panel.admin') }}
+
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
                                             </div>
-                                            <!-- News Block End -->
-                                        @endforeach
-
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="popular">...</div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- News Post Widget End -->
-
-                        <!-- Advertisement Widget Start -->
-                        <div class="widget-block advertisement-widget clearfix" style="display: none;">
-                            <h3 class="widget-title">
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i> advertisement
-                            </h3>
-                            <div class="row">
-                                <!-- Col Start -->
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="advertisement-block full-block">
-                                        <div class="image">
-                                            <img class="img-responsive" src="assets/images/blog/advertisement-1.jpg"
-                                                alt="advertisement">
+                                            <div class="blog-desc">
+                                                {!! \Illuminate\Support\Str::words($post->content, 30, '...') !!}
+                                            </div>
+                                            <div class="blog-button">
+                                                <a class="blog-btn"
+                                                    href="#">{{ __('panel.continue_reading') }}</a>
+                                            </div>
                                         </div>
-                                        <span class="title">video hive Deal 23off</span>
                                     </div>
                                 </div>
-                                <!-- Col End -->
-                                <!-- Col Start -->
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-                                    <div class="advertisement-block">
-                                        <div class="image">
-                                            <img class="img-responsive" src="assets/images/blog/advertisement-2.jpg"
-                                                alt="advertisement">
-                                        </div>
-                                        <span class="title">WordPress Deals</span>
-                                    </div>
-                                </div>
-                                <!-- Col End -->
-                                <!-- Col Start -->
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-                                    <div class="advertisement-block">
-                                        <div class="image">
-                                            <img class="img-responsive" src="assets/images/blog/advertisement-2.jpg"
-                                                alt="advertisement">
-                                        </div>
-                                        <span class="title">WordPress Deals</span>
-                                    </div>
-                                </div>
-                                <!-- Col End -->
-                            </div>
-                        </div>
-                        <!-- Advertisement Widget End -->
-                        <!-- Tags Widget Start -->
-                        <div class="widget-block tags-widget clearfix">
-                            <h3 class="widget-title">
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i> {{ __('transf.tags') }}
-                            </h3>
-
-                            @foreach ($tags as $tag)
-                                <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">{{ $tag->name }}</a>
                             @endforeach
-
                         </div>
-                        <!-- Tags Widget End -->
-
-
                     </div>
                 </div>
             </div>
-            <!-- Pagination Start -->
-
-            <div>
-                <!-- PAGINATION -->
-                <nav class="mb-11" aria-label="Page navigationa">
-                    {!! $posts->appends(request()->all())->onEachSide(3)->links('vendor.pagination.bootstrap-4') !!}
-                </nav>
-            </div>
-
-            <!-- Pagination End -->
         </div>
+        <!-- Blog Section End -->
+
     </div>
-    <!-- blog-list page start -->
+    <!-- Main content End -->
 </div>

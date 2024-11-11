@@ -45,6 +45,8 @@ Route::get('/news-list/{blog?}', [FrontendController::class, 'blog_list'])->name
 Route::get('/events-list/{blog?}', [FrontendController::class, 'blog_list'])->name('frontend.events_list');
 
 Route::get('/blog-tag-list/{slug?}', [FrontendController::class, 'blog_tag_list'])->name('frontend.blog_tag_list');
+Route::get('/news-tag-list/{slug?}', [FrontendController::class, 'blog_tag_list'])->name('frontend.news_tag_list');
+Route::get('/events-tag-list/{slug?}', [FrontendController::class, 'blog_tag_list'])->name('frontend.events_tag_list');
 
 Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single'); //section 1
 Route::get('/news-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.news_single'); //section 2
