@@ -152,10 +152,13 @@
                             <div class="recent-posts mb-50">
                                 <h3 class="widget-title">Meta</h3>
                                 <ul>
-                                    <li><a href="#">Log in</a></li>
-                                    <li><a href="#">Entries feed</a></li>
-                                    <li><a href="#">Comments feed</a></li>
-                                    <li><a href="#">WordPress.org</a></li>
+                                    @foreach ($tags as $tag)
+                                        <li><a
+                                                href="{{ route('frontend.blog_tag_list', $tag->slug) }}">{{ $tag->name }}</a>
+                                        </li>
+                                    @endforeach
+
+
                                 </ul>
                             </div>
                         </div>
