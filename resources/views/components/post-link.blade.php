@@ -1,5 +1,6 @@
-@props(['route', 'slug'])
+@props(['route', 'slug', 'class' => ''])
 
-<a href="{{ route($route, $slug) }}">
+
+<a href="{{ route($route, $slug) }}" class="{{ $class }}">
     {{ $slot }}
 </a>

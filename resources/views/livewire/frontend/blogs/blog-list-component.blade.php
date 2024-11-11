@@ -200,31 +200,9 @@
                                         </div>
                                         <div class="blog-content">
                                             <h3 class="blog-title">
-                                                @switch(true)
-                                                    @case($currentRoute === 'frontend.blog_list')
-                                                        <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                    @break
-
-                                                    @case($currentRoute === 'frontend.news_list')
-                                                        <a href="{{ route('frontend.news_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                    @break
-
-                                                    @case($currentRoute === 'frontend.events_list')
-                                                        <a href="{{ route('frontend.event_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                    @break
-
-                                                    @default
-                                                        <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ $post->title }}
-                                                        </a>
-                                                @endswitch
-
+                                                <x-post-link :route="$linkRoute" :slug="$post->slug">
+                                                    {{ $post->title }}
+                                                </x-post-link>
                                             </h3>
                                             <div class="blog-meta">
                                                 <ul class="btm-cate">
@@ -249,35 +227,13 @@
                                             </div>
                                             <div class="blog-button">
 
-                                                @switch(true)
-                                                    @case($currentRoute === 'frontend.blog_list')
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                    @break
 
-                                                    @case($currentRoute === 'frontend.news_list')
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.news_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                    @break
-
-                                                    @case($currentRoute === 'frontend.events_list')
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.event_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                    @break
-
-                                                    @default
-                                                        <a class="blog-btn"
-                                                            href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                            {{ __('panel.continue_reading') }}
-                                                        </a>
-                                                @endswitch
-
+                                                {{-- Button --}}
+                                                <div class="blog-button">
+                                                    <x-post-link :route="$linkRoute" :slug="$post->slug" class="blog-btn">
+                                                        {{ __('panel.continue_reading') }}
+                                                    </x-post-link>
+                                                </div>
 
                                             </div>
                                         </div>
