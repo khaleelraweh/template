@@ -242,69 +242,117 @@
                                 <div class="col-lg-12 mb-70">
                                     <div class="blog-item">
                                         <div class="blog-img">
-                                            <a href="{{ route('frontend.blog_single', $post->slug) }}">
 
-                                                @php
-                                                    $postDefaultImg = asset(
-                                                        'image/not_found/item_image_not_found.webp',
-                                                    );
-                                                    $post_img = $postDefaultImg; // Set a default image
+                                            @switch(true)
+                                                @case($currentRoute === 'frontend.blog_list')
+                                                    <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                    @break
 
-                                                    switch (true) {
-                                                        case $currentRoute === 'frontend.blog_list':
-                                                            $post_img =
-                                                                $post->photos->first() &&
-                                                                $post->photos->first()->file_name
-                                                                    ? asset(
-                                                                        'assets/posts/' .
-                                                                            $post->photos->first()->file_name,
+                                                    @case($currentRoute === 'frontend.news_list')
+                                                        <a href="{{ route('frontend.news_single', $post->slug) }}">
+                                                        @break
+
+                                                        @case($currentRoute === 'frontend.events_list')
+                                                            <a href="{{ route('frontend.event_single', $post->slug) }}">
+                                                            @break
+
+                                                            @default
+                                                                <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                                @break
+                                                            @endswitch
+
+
+
+                                                            @php
+                                                                $postDefaultImg = asset(
+                                                                    'image/not_found/item_image_not_found.webp',
+                                                                );
+                                                                $post_img = $postDefaultImg; // Set a default image
+
+                                                                switch (true) {
+                                                                    case $currentRoute === 'frontend.blog_list':
+                                                                        $post_img =
+                                                                            $post->photos->first() &&
+                                                                            $post->photos->first()->file_name
+                                                                                ? asset(
+                                                                                    'assets/posts/' .
+                                                                                        $post->photos->first()
+                                                                                            ->file_name,
+                                                                                )
+                                                                                : $postDefaultImg;
+                                                                        break;
+
+                                                                    case $currentRoute === 'frontend.news_list':
+                                                                        $post_img =
+                                                                            $post->photos->first() &&
+                                                                            $post->photos->first()->file_name
+                                                                                ? asset(
+                                                                                    'assets/news/' .
+                                                                                        $post->photos->first()
+                                                                                            ->file_name,
+                                                                                )
+                                                                                : $postDefaultImg;
+                                                                        break;
+
+                                                                    case $currentRoute === 'frontend.events_list':
+                                                                        $post_img =
+                                                                            $post->photos->first() &&
+                                                                            $post->photos->first()->file_name
+                                                                                ? asset(
+                                                                                    'assets/events/' .
+                                                                                        $post->photos->first()
+                                                                                            ->file_name,
+                                                                                )
+                                                                                : $postDefaultImg;
+                                                                        break;
+
+                                                                    // Add more cases as needed for other routes
+
+                                                                    default:
+                                                                        $post_img = $postDefaultImg;
+                                                                        break;
+                                                                }
+
+                                                                // Check if the file exists in public directory
+                                                                if (
+                                                                    !file_exists(
+                                                                        public_path(parse_url($post_img, PHP_URL_PATH)),
                                                                     )
-                                                                    : $postDefaultImg;
-                                                            break;
+                                                                ) {
+                                                                    $post_img = $postDefaultImg;
+                                                                }
+                                                            @endphp
 
-                                                        case $currentRoute === 'frontend.news_list':
-                                                            $post_img =
-                                                                $post->photos->first() &&
-                                                                $post->photos->first()->file_name
-                                                                    ? asset(
-                                                                        'assets/news/' .
-                                                                            $post->photos->first()->file_name,
-                                                                    )
-                                                                    : $postDefaultImg;
-                                                            break;
-
-                                                        case $currentRoute === 'frontend.events_list':
-                                                            $post_img =
-                                                                $post->photos->first() &&
-                                                                $post->photos->first()->file_name
-                                                                    ? asset(
-                                                                        'assets/events/' .
-                                                                            $post->photos->first()->file_name,
-                                                                    )
-                                                                    : $postDefaultImg;
-                                                            break;
-
-                                                        // Add more cases as needed for other routes
-
-                                                        default:
-                                                            $post_img = $postDefaultImg;
-                                                            break;
-                                                    }
-
-                                                    // Check if the file exists in public directory
-                                                    if (!file_exists(public_path(parse_url($post_img, PHP_URL_PATH)))) {
-                                                        $post_img = $postDefaultImg;
-                                                    }
-                                                @endphp
-
-                                                <img src="{{ $post_img }}" alt="">
-                                            </a>
+                                                            <img src="{{ $post_img }}" alt="">
+                                                        </a>
                                         </div>
                                         <div class="blog-content">
                                             <h3 class="blog-title">
-                                                <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                    {{ $post->title }}
-                                                </a>
+                                                @switch(true)
+                                                    @case($currentRoute === 'frontend.blog_list')
+                                                        <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                            {{ $post->title }}
+                                                        </a>
+                                                    @break
+
+                                                    @case($currentRoute === 'frontend.news_list')
+                                                        <a href="{{ route('frontend.news_single', $post->slug) }}">
+                                                            {{ $post->title }}
+                                                        </a>
+                                                    @break
+
+                                                    @case($currentRoute === 'frontend.events_list')
+                                                        <a href="{{ route('frontend.event_single', $post->slug) }}">
+                                                            {{ $post->title }}
+                                                        </a>
+                                                    @break
+
+                                                    @default
+                                                        <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                            {{ $post->title }}
+                                                        </a>
+                                                @endswitch
+
                                             </h3>
                                             <div class="blog-meta">
                                                 <ul class="btm-cate">
@@ -340,8 +388,37 @@
                                                 {!! \Illuminate\Support\Str::words($post->content, 30, '...') !!}
                                             </div>
                                             <div class="blog-button">
-                                                <a class="blog-btn"
-                                                    href="#">{{ __('panel.continue_reading') }}</a>
+
+                                                @switch(true)
+                                                    @case($currentRoute === 'frontend.blog_list')
+                                                        <a class="blog-btn"
+                                                            href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                            {{ __('panel.continue_reading') }}
+                                                        </a>
+                                                    @break
+
+                                                    @case($currentRoute === 'frontend.news_list')
+                                                        <a class="blog-btn"
+                                                            href="{{ route('frontend.news_single', $post->slug) }}">
+                                                            {{ __('panel.continue_reading') }}
+                                                        </a>
+                                                    @break
+
+                                                    @case($currentRoute === 'frontend.events_list')
+                                                        <a class="blog-btn"
+                                                            href="{{ route('frontend.event_single', $post->slug) }}">
+                                                            {{ __('panel.continue_reading') }}
+                                                        </a>
+                                                    @break
+
+                                                    @default
+                                                        <a class="blog-btn"
+                                                            href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                            {{ __('panel.continue_reading') }}
+                                                        </a>
+                                                @endswitch
+
+
                                             </div>
                                         </div>
                                     </div>
