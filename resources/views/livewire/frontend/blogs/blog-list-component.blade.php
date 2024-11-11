@@ -95,6 +95,59 @@
                                         <div class="post-img">
 
                                             @php
+                                                $recentDefaultImg = asset('image/not_found/item_image_not_found.webp');
+                                                $recent_post_img = $recentDefaultImg; // Set a default image
+
+                                                switch (true) {
+                                                    case $currentRoute === 'frontend.blog_list':
+                                                        $recent_post_img =
+                                                            $recent_post->photos->first() &&
+                                                            $recent_post->photos->first()->file_name
+                                                                ? asset(
+                                                                    'assets/posts/' .
+                                                                        $recent_post->photos->first()->file_name,
+                                                                )
+                                                                : $recentDefaultImg;
+                                                        break;
+
+                                                    case $currentRoute === 'frontend.news_list':
+                                                        $recent_post_img =
+                                                            $recent_post->photos->first() &&
+                                                            $recent_post->photos->first()->file_name
+                                                                ? asset(
+                                                                    'assets/news/' .
+                                                                        $recent_post->photos->first()->file_name,
+                                                                )
+                                                                : $recentDefaultImg;
+                                                        break;
+
+                                                    case $currentRoute === 'frontend.events_list':
+                                                        $recent_post_img =
+                                                            $recent_post->photos->first() &&
+                                                            $recent_post->photos->first()->file_name
+                                                                ? asset(
+                                                                    'assets/events/' .
+                                                                        $recent_post->photos->first()->file_name,
+                                                                )
+                                                                : $recentDefaultImg;
+                                                        break;
+
+                                                    // Add more cases as needed for other routes
+
+                                                    default:
+                                                        $recent_post_img = $recentDefaultImg;
+                                                        break;
+                                                }
+
+                                                // Check if the file exists in public directory
+                                                if (
+                                                    !file_exists(public_path(parse_url($recent_post_img, PHP_URL_PATH)))
+                                                ) {
+                                                    $recent_post_img = $recentDefaultImg;
+                                                }
+                                            @endphp
+
+                                            {{-- @php
                                                 if (
                                                     $recent_post->photos->first() != null &&
                                                     $recent_post->photos->first()->file_name != null
@@ -120,7 +173,7 @@
                                                         'image/not_found/item_image_not_found.webp',
                                                     );
                                                 }
-                                            @endphp
+                                            @endphp --}}
 
 
                                             <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"><img
