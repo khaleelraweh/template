@@ -86,130 +86,31 @@
 
 
                                 @foreach ($recent_posts as $recent_post)
-                                    <div class="show-featured ">
+                                    @php
+                                        $recentImage =
+                                            $recent_post->photos->first()->file_name ??
+                                            'image/not_found/item_image_not_found.webp';
+                                        $recentImgUrl = asset($assetPath . $recentImage);
+
+                                        // Check if the image exists, otherwise fallback to default
+                                        if (!file_exists(public_path(parse_url($recentImgUrl, PHP_URL_PATH)))) {
+                                            $recentImgUrl = asset('image/not_found/item_image_not_found.webp');
+                                        }
+                                    @endphp
+
+                                    <div class="show-featured">
                                         <div class="post-img">
-
-                                            @php
-                                                $recentDefaultImg = asset('image/not_found/item_image_not_found.webp');
-                                                $recent_post_img = $recentDefaultImg; // Set a default image
-
-                                                switch (true) {
-                                                    case $currentRoute === 'frontend.blog_tag_list':
-                                                        $recent_post_img =
-                                                            $recent_post->photos->first() &&
-                                                            $recent_post->photos->first()->file_name
-                                                                ? asset(
-                                                                    'assets/posts/' .
-                                                                        $recent_post->photos->first()->file_name,
-                                                                )
-                                                                : $recentDefaultImg;
-                                                        break;
-
-                                                    case $currentRoute === 'frontend.news_tag_list':
-                                                        $recent_post_img =
-                                                            $recent_post->photos->first() &&
-                                                            $recent_post->photos->first()->file_name
-                                                                ? asset(
-                                                                    'assets/news/' .
-                                                                        $recent_post->photos->first()->file_name,
-                                                                )
-                                                                : $recentDefaultImg;
-                                                        break;
-
-                                                    case $currentRoute === 'frontend.events_tag_list':
-                                                        $recent_post_img =
-                                                            $recent_post->photos->first() &&
-                                                            $recent_post->photos->first()->file_name
-                                                                ? asset(
-                                                                    'assets/events/' .
-                                                                        $recent_post->photos->first()->file_name,
-                                                                )
-                                                                : $recentDefaultImg;
-                                                        break;
-
-                                                    // Add more cases as needed for other routes
-
-                                                    default:
-                                                        $recent_post_img = $recentDefaultImg;
-                                                        break;
-                                                }
-
-                                                // Check if the file exists in public directory
-                                                if (
-                                                    !file_exists(public_path(parse_url($recent_post_img, PHP_URL_PATH)))
-                                                ) {
-                                                    $recent_post_img = $recentDefaultImg;
-                                                }
-                                            @endphp
-
-                                            @switch(true)
-                                                @case($currentRoute === 'frontend.blog_tag_list')
-                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
-                                                        <img src="{{ $recent_post_img }}" alt="">
-                                                    </a>
-                                                @break
-
-                                                @case($currentRoute === 'frontend.news_tag_list')
-                                                    <a href="{{ route('frontend.news_single', $recent_post->slug) }}">
-                                                        <img src="{{ $recent_post_img }}" alt="">
-                                                    </a>
-                                                @break
-
-                                                @case($currentRoute === 'frontend.events_tag_list')
-                                                    <a href="{{ route('frontend.event_single', $recent_post->slug) }}">
-                                                        <img src="{{ $recent_post_img }}" alt="">
-                                                    </a>
-                                                @break
-
-                                                @default
-                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
-                                                        <img src="{{ $recent_post_img }}" alt="">
-                                                    </a>
-                                            @endswitch
-
-
+                                            <a href="{{ route($routeName, $recent_post->slug) }}">
+                                                <img src="{{ $recentImgUrl }}" alt="">
+                                            </a>
                                         </div>
                                         <div class="post-desc">
-
-
-                                            @switch(true)
-                                                @case($currentRoute === 'frontend.blog_tag_list')
-                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
-                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
-                                                    </a>
-                                                @break
-
-                                                @case($currentRoute === 'frontend.news_tag_list')
-                                                    <a href="{{ route('frontend.news_single', $recent_post->slug) }}">
-                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
-                                                    </a>
-                                                @break
-
-                                                @case($currentRoute === 'frontend.events_tag_list')
-                                                    <a href="{{ route('frontend.event_single', $recent_post->slug) }}">
-                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
-                                                    </a>
-                                                @break
-
-                                                @default
-                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
-                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
-                                                    </a>
-                                            @endswitch
-
+                                            <a href="{{ route($routeName, $recent_post->slug) }}">
+                                                {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
+                                            </a>
                                             <span class="date">
-                                                <?php
-                                                $date = $recent_post->created_at;
-                                                $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
-                                                ?>
                                                 <i class="fa fa-calendar"></i>
-                                                {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
-
-                                                <span> | </span>
-
-                                                {{ $recent_post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
-
-
+                                                {{ formatPostDateDash($recent_post->created_at) }}
                                             </span>
                                         </div>
                                     </div>
