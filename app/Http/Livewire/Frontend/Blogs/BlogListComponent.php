@@ -17,17 +17,13 @@ class BlogListComponent extends Component
 
     public $slug;
 
-
-
     public $searchQuery = '';
-    public $selectedNames = [];
 
     protected $queryString = ['searchQuery'];
 
     public function resetFilters()
     {
         $this->searchQuery = '';
-        $this->selectedNames = [];
     }
 
     public function render()

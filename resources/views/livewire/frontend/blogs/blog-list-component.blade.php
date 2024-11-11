@@ -130,50 +130,57 @@
                     </div>
                     <div class="col-lg-8 pr-50 md-pr-15">
                         <div class="row">
-                            <div class="col-lg-12 mb-70">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/1.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">University while the lovely valley team
-                                                work</a>
-                                        </h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">University</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
+
+                            @foreach ($collection as $item)
+                                <div class="col-lg-12 mb-70">
+                                    <div class="blog-item">
+                                        <div class="blog-img">
+                                            <a href="#"><img src="{{ asset('frontend/images/blog/inner/1.jpg') }}"
+                                                    alt=""></a>
                                         </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        <div class="blog-content">
+                                            <h3 class="blog-title"><a href="#">University while the lovely valley
+                                                    team
+                                                    work</a>
+                                            </h3>
+                                            <div class="blog-meta">
+                                                <ul class="btm-cate">
+                                                    <li>
+                                                        <div class="blog-date">
+                                                            <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="author">
+                                                            <i class="fa fa-user-o"></i> admin
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="tag-line">
+                                                            <i class="fa fa-book"></i>
+                                                            <a href="#">University</a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="blog-desc">
+                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                                ligula
+                                                eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                                parturient
+                                                montes, nascetur ridiculus mus. Donec quam...
+                                            </div>
+                                            <div class="blog-button">
+                                                <a class="blog-btn" href="#">Continue Reading</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 mb-70">
+                            @endforeach
+
+
+
+                            {{-- <div class="col-lg-12 mb-70">
                                 <div class="blog-item">
                                     <div class="blog-img">
                                         <a href="#"><img src="{{ asset('frontend/images/blog/inner/2.jpg') }}"
@@ -469,7 +476,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
