@@ -166,23 +166,21 @@
                                                     </li>
                                                     <li>
                                                         <div class="author">
-                                                            <i class="fa fa-user-o"></i> admin
+                                                            <i class="fa fa-user-o"></i>
+                                                            {{ $post->users && $post->users->isNotEmpty() ? $post->users->first()->full_name : __('panel.admin') }}
+
                                                         </div>
                                                     </li>
-                                                    <li>
+                                                    {{-- <li>
                                                         <div class="tag-line">
                                                             <i class="fa fa-book"></i>
                                                             <a href="#">University</a>
                                                         </div>
-                                                    </li>
+                                                    </li> --}}
                                                 </ul>
                                             </div>
                                             <div class="blog-desc">
-                                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                                ligula
-                                                eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                                parturient
-                                                montes, nascetur ridiculus mus. Donec quam...
+                                                {{ \Illuminate\Support\Str::words($post->content, 30, '...') }}
                                             </div>
                                             <div class="blog-button">
                                                 <a class="blog-btn" href="#">Continue Reading</a>
