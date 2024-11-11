@@ -131,7 +131,7 @@
                     <div class="col-lg-8 pr-50 md-pr-15">
                         <div class="row">
 
-                            @foreach ($collection as $item)
+                            @foreach ($posts as $post)
                                 <div class="col-lg-12 mb-70">
                                     <div class="blog-item">
                                         <div class="blog-img">
@@ -139,15 +139,29 @@
                                                     alt=""></a>
                                         </div>
                                         <div class="blog-content">
-                                            <h3 class="blog-title"><a href="#">University while the lovely valley
-                                                    team
-                                                    work</a>
+                                            <h3 class="blog-title">
+                                                <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                    {{ $post->title }}
+                                                </a>
                                             </h3>
                                             <div class="blog-meta">
                                                 <ul class="btm-cate">
                                                     <li>
+                                                        <?php
+                                                        $date = $post->created_at;
+                                                        $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                        ?>
+
                                                         <div class="blog-date">
-                                                            <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                            <i class="fa fa-calendar-check-o"></i>
+
+                                                            {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+
+                                                            <span>{{ __('panel.corresponding_to') }} </span>
+
+                                                            {{ $post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+
                                                         </div>
                                                     </li>
                                                     <li>
