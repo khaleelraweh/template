@@ -33,21 +33,30 @@
                                 </div>
                             </div>
                             <div class="recent-posts-widget mb-50">
-                                <h3 class="widget-title">Recent Posts</h3>
-                                <div class="show-featured ">
-                                    <div class="post-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/1.jpg') }}"
-                                                alt=""></a>
+                                <h3 class="widget-title">{{ __('panel.recent_posts') }}</h3>
+
+                                @foreach ($recent_posts as $recent_post)
+                                    <div class="show-featured ">
+                                        <div class="post-img">
+                                            <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"><img
+                                                    src="{{ asset('frontend/images/blog/style2/1.jpg') }}"
+                                                    alt=""></a>
+                                        </div>
+                                        <div class="post-desc">
+                                            <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
+                                                {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
+                                            </a>
+                                            <span class="date">
+                                                <i class="fa fa-calendar"></i>
+                                                April 6, 2020
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="post-desc">
-                                        <a href="#">Covid-19 threatens the next generation of smartphones</a>
-                                        <span class="date">
-                                            <i class="fa fa-calendar"></i>
-                                            April 6, 2020
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="show-featured ">
+                                @endforeach
+
+
+
+                                {{-- <div class="show-featured ">
                                     <div class="post-img">
                                         <a href="#"><img src="{{ asset('frontend/images/blog/style2/2.jpg') }}"
                                                 alt=""></a>
@@ -98,25 +107,9 @@
                                             September 6, 2020
                                         </span>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
-                            <div class="widget-archives mb-50">
-                                <h3 class="widget-title">Archives</h3>
-                                <ul>
-                                    <li><a href="#">September 2020</a></li>
-                                    <li><a href="#">September 2020</a></li>
-                                </ul>
-                            </div>
-                            <div class="widget-archives mb-50">
-                                <h3 class="widget-title">Categories</h3>
-                                <ul>
-                                    <li><a href="#">College</a></li>
-                                    <li><a href="#">High School</a></li>
-                                    <li><a href="#">Primary</a></li>
-                                    <li><a href="#">School</a></li>
-                                    <li><a href="#">University</a></li>
-                                </ul>
-                            </div>
+
                             <div class="recent-posts mb-50">
                                 <h3 class="widget-title">Meta</h3>
                                 <ul>
@@ -130,12 +123,11 @@
                     </div>
                     <div class="col-lg-8 pr-50 md-pr-15">
                         <div class="row">
-
                             @foreach ($posts as $post)
                                 <div class="col-lg-12 mb-70">
                                     <div class="blog-item">
                                         <div class="blog-img">
-                                            <a href="#">
+                                            <a href="{{ route('frontend.blog_single', $post->slug) }}">
                                                 @php
                                                     if (
                                                         $post->photos->first() != null &&
@@ -200,7 +192,7 @@
                                                 </ul>
                                             </div>
                                             <div class="blog-desc">
-                                                {{ \Illuminate\Support\Str::words($post->content, 30, '...') }}
+                                                {!! \Illuminate\Support\Str::words($post->content, 30, '...') !!}
                                             </div>
                                             <div class="blog-button">
                                                 <a class="blog-btn"
@@ -210,306 +202,6 @@
                                     </div>
                                 </div>
                             @endforeach
-
-
-
-                            {{-- <div class="col-lg-12 mb-70">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/2.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">High school program starting soon
-                                                2021</a></h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">High School</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-70">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/3.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">Modern School the lovely valley team
-                                                work</a>
-                                        </h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">Primary</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-70">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/4.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">While the lovely valley team work</a>
-                                        </h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">College</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-70">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/5.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">This is a great source of content for
-                                                anyone…</a>
-                                        </h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">College</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-70">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/6.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">While the lovely valley team work</a>
-                                        </h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">College</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 mb-70">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/7.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">The Expenses You Are Thinking</a>
-                                        </h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">School</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="blog-item">
-                                    <div class="blog-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/8.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="blog-content">
-                                        <h3 class="blog-title"><a href="#">This is a great source of content for
-                                                anyone…</a>
-                                        </h3>
-                                        <div class="blog-meta">
-                                            <ul class="btm-cate">
-                                                <li>
-                                                    <div class="blog-date">
-                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="author">
-                                                        <i class="fa fa-user-o"></i> admin
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="tag-line">
-                                                        <i class="fa fa-book"></i>
-                                                        <a href="#">School</a>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="blog-desc">
-                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-                                            ligula
-                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
-                                            parturient
-                                            montes, nascetur ridiculus mus. Donec quam...
-                                        </div>
-                                        <div class="blog-button">
-                                            <a class="blog-btn" href="#">Continue Reading</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
