@@ -47,8 +47,18 @@
                                                 {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
                                             </a>
                                             <span class="date">
+                                                <?php
+                                                $date = $recent_post->created_at;
+                                                $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
+                                                ?>
                                                 <i class="fa fa-calendar"></i>
-                                                April 6, 2020
+                                                {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
+
+                                                <span> | </span>
+
+                                                {{ $recent_post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
+
+
                                             </span>
                                         </div>
                                     </div>
