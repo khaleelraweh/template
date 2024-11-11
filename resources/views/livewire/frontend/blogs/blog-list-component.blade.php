@@ -147,14 +147,61 @@
                                                 }
                                             @endphp
 
+                                            @switch(true)
+                                                @case($currentRoute === 'frontend.blog_list')
+                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
+                                                        <img src="{{ $recent_post_img }}" alt="">
+                                                    </a>
+                                                @break
 
-                                            <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"><img
-                                                    src="{{ $recent_post_img }}" alt=""></a>
+                                                @case($currentRoute === 'frontend.news_list')
+                                                    <a href="{{ route('frontend.news_single', $recent_post->slug) }}">
+                                                        <img src="{{ $recent_post_img }}" alt="">
+                                                    </a>
+                                                @break
+
+                                                @case($currentRoute === 'frontend.events_list')
+                                                    <a href="{{ route('frontend.event_single', $recent_post->slug) }}">
+                                                        <img src="{{ $recent_post_img }}" alt="">
+                                                    </a>
+                                                @break
+
+                                                @default
+                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
+                                                        <img src="{{ $recent_post_img }}" alt="">
+                                                    </a>
+                                            @endswitch
+
+
                                         </div>
                                         <div class="post-desc">
-                                            <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
-                                                {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
-                                            </a>
+
+
+                                            @switch(true)
+                                                @case($currentRoute === 'frontend.blog_list')
+                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
+                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
+                                                    </a>
+                                                @break
+
+                                                @case($currentRoute === 'frontend.news_list')
+                                                    <a href="{{ route('frontend.news_single', $recent_post->slug) }}">
+                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
+                                                    </a>
+                                                @break
+
+                                                @case($currentRoute === 'frontend.events_list')
+                                                    <a href="{{ route('frontend.event_single', $recent_post->slug) }}">
+                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
+                                                    </a>
+                                                @break
+
+                                                @default
+                                                    <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
+                                                        {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
+                                                    </a>
+                                            @endswitch
+
                                             <span class="date">
                                                 <?php
                                                 $date = $recent_post->created_at;
@@ -173,60 +220,6 @@
                                     </div>
                                 @endforeach
 
-
-
-                                {{-- <div class="show-featured ">
-                                    <div class="post-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/2.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="post-desc">
-                                        <a href="#">Soundtrack filma Lady Exclusive Music</a>
-                                        <span class="date">
-                                            <i class="fa fa-calendar"></i>
-                                            November 19, 2018
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="show-featured ">
-                                    <div class="post-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/3.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="post-desc">
-                                        <a href="#">Soundtrack filma Lady Exclusive Music </a>
-                                        <span class="date">
-                                            <i class="fa fa-calendar"></i>
-                                            September 6, 2020
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="show-featured ">
-                                    <div class="post-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/4.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="post-desc">
-                                        <a href="#">Given void great you’re good appear have i also fifth </a>
-                                        <span class="date">
-                                            <i class="fa fa-calendar"></i>
-                                            September 6, 2020
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="show-featured ">
-                                    <div class="post-img">
-                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/5.jpg') }}"
-                                                alt=""></a>
-                                    </div>
-                                    <div class="post-desc">
-                                        <a href="#">Lights winged seasons fish abundantly evening.</a>
-                                        <span class="date">
-                                            <i class="fa fa-calendar"></i>
-                                            September 6, 2020
-                                        </span>
-                                    </div>
-                                </div> --}}
                             </div>
 
                             <div class="recent-posts mb-50">
@@ -250,30 +243,6 @@
                                     <div class="blog-item">
                                         <div class="blog-img">
                                             <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                {{-- @php
-                                                    if (
-                                                        $post->photos->first() != null &&
-                                                        $post->photos->first()->file_name != null
-                                                    ) {
-                                                        $post_img = asset(
-                                                            'assets/posts/' . $post->photos->first()->file_name,
-                                                        );
-
-                                                        if (
-                                                            !file_exists(
-                                                                public_path(
-                                                                    'assets/posts/' . $post->photos->first()->file_name,
-                                                                ),
-                                                            )
-                                                        ) {
-                                                            $post_img = asset(
-                                                                'image/not_found/item_image_not_found.webp',
-                                                            );
-                                                        }
-                                                    } else {
-                                                        $post_img = asset('image/not_found/item_image_not_found.webp');
-                                                    }
-                                                @endphp --}}
 
                                                 @php
                                                     $postDefaultImg = asset(
