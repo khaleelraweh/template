@@ -27,9 +27,11 @@
                         <div class="widget-area">
                             <div class="search-widget mb-50">
                                 <div class="search-wrap">
-                                    <input type="search" placeholder="Searching..." name="s" class="search-input"
+                                    <input type="search" wire:model="searchQuery"
+                                        placeholder="{{ __('transf.search') }}..." name="s" class="search-input"
                                         value="">
-                                    <button type="submit" value="Search"><i class=" flaticon-search"></i></button>
+
+                                    {{-- <button type="submit" value="Search"><i class=" flaticon-search"></i></button> --}}
                                 </div>
                             </div>
                             <div class="recent-posts-widget mb-50">
