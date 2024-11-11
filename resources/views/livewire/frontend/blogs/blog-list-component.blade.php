@@ -226,8 +226,33 @@
                                 <h3 class="widget-title tags_title">{{ __('panel.tags') }}</h3>
                                 <ul>
                                     @foreach ($tags as $tag)
-                                        <li><a
-                                                href="{{ route('frontend.blog_tag_list', $tag->slug) }}">{{ $tag->name }}</a>
+                                        <li>
+                                            @switch(true)
+                                                @case($currentRoute === 'frontend.blog_list')
+                                                    <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">
+                                                        {{ $tag->name }}
+                                                    </a>
+                                                @break
+
+                                                @case($currentRoute === 'frontend.news_list')
+                                                    <a href="{{ route('frontend.news_tag_list', $tag->slug) }}">
+                                                        {{ $tag->name }}
+                                                    </a>
+                                                @break
+
+                                                @case($currentRoute === 'frontend.events_list')
+                                                    <a href="{{ route('frontend.events_tag_list', $tag->slug) }}">
+                                                        {{ $tag->name }}
+                                                    </a>
+                                                @break
+
+                                                @default
+                                                    <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">
+                                                        {{ $tag->name }}
+                                                    </a>
+                                            @endswitch
+
+
                                         </li>
                                     @endforeach
 
