@@ -43,6 +43,7 @@
     <!-- End layout styles -->
 
     <link rel="shortcut icon" href="{{ asset('backend/images/favicon.png') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('backend/css/custom' . $rtl . '.css') }}">
 
     @yield('style')
 </head>
