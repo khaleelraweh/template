@@ -1481,7 +1481,11 @@ return [
     'browse_albums'                                     =>  'Browse albums',
 
     'links_that_interest_you'                           =>   'Interested Link',
+
     'recent_posts'                                      =>  'Recent Posts',
+    'recent_news'                                       =>  'Recent Posts',
+    'recent_events'                                     =>  'Recent Posts',
+
     'all_rights_reserved'                               =>  'All Rights Reserved',
     'statistics_and_numbers'                            =>  'Statistics and Numbers',
     'admin'                                             =>  'Admin',

@@ -88,7 +88,24 @@
                                 </div>
                             </div>
                             <div class="recent-posts-widget mb-50">
-                                <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
+
+                                @switch(true)
+                                    @case($currentRoute === 'frontend.blog_list')
+                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
+                                    @break
+
+                                    @case($currentRoute === 'frontend.news_list')
+                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_news') }}</h3>
+                                    @break
+
+                                    @case($currentRoute === 'frontend.events_list')
+                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_events') }}</h3>
+                                    @break
+
+                                    @default
+                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
+                                @endswitch
+
 
                                 @foreach ($recent_posts as $recent_post)
                                     <div class="show-featured ">
