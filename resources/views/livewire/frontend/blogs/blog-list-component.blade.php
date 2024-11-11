@@ -4,15 +4,68 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image">
+                {{-- <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image"> --}}
+                <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/breadcrumbs/2.jpg') }}"
+                    alt="{{ $siteSettings['site_name']->value }}">
             </div>
             <div class="breadcrumbs-text white-color">
-                <h1 class="page-title">Blog Sidebar</h1>
+                <h1 class="page-title">
+                    @switch(true)
+                        @case($currentRoute === 'frontend.blog_list')
+                            {{ __('panel.blog_list') }}
+                        @break
+
+                        @case(Route::is('frontend.news_single'))
+                            {{ __('panel.news_list') }}
+                        @break
+
+                        @case(Route::is('frontend.event_single'))
+                            {{ __('panel.events_list') }}
+                        @break
+
+                        @case(Route::is('frontend.blog_index'))
+                            Blog Index
+                        @break
+
+                        @case(Route::is('frontend.contact'))
+                            Contact Us
+                        @break
+
+                        @default
+                            Default Title
+                    @endswitch
+                </h1>
                 <ul>
                     <li>
-                        <a class="active" href="index.html">Home</a>
+                        <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
+
                     </li>
-                    <li>Blog Single</li>
+                    <li>
+                        @switch(true)
+                            @case($currentRoute === 'frontend.blog_list')
+                                {{ __('panel.blog_list') }}
+                            @break
+
+                            @case(Route::is('frontend.news_single'))
+                                {{ __('panel.news_list') }}
+                            @break
+
+                            @case(Route::is('frontend.event_single'))
+                                {{ __('panel.events_list') }}
+                            @break
+
+                            @case(Route::is('frontend.blog_index'))
+                                Blog Index
+                            @break
+
+                            @case(Route::is('frontend.contact'))
+                                Contact Us
+                            @break
+
+                            @default
+                                Default Title
+                        @endswitch
+                    </li>
                 </ul>
             </div>
         </div>
