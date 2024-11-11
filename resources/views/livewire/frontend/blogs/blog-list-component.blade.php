@@ -139,6 +139,7 @@
                                             </a>
                                             <span class="date">
                                                 <i class="fa fa-calendar"></i>
+
                                                 {{ Alkoumi\LaravelHijriDate\Hijri::ShortDate($recent_post->created_at) }}
                                                 {{ __('panel.calendar_hijri') }}
                                                 <span> | </span>
@@ -180,88 +181,27 @@
                                     <div class="blog-item">
                                         <div class="blog-img">
 
-                                            @switch(true)
-                                                @case($currentRoute === 'frontend.blog_list')
-                                                    <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                    @break
+                                            @php
+                                                $linkRoute = match ($currentRoute) {
+                                                    'frontend.blog_list' => 'frontend.blog_single',
+                                                    'frontend.news_list' => 'frontend.news_single',
+                                                    'frontend.events_list' => 'frontend.event_single',
+                                                    default => 'frontend.blog_single',
+                                                };
+                                            @endphp
 
-                                                    @case($currentRoute === 'frontend.news_list')
-                                                        <a href="{{ route('frontend.news_single', $post->slug) }}">
-                                                        @break
+                                            <x-post-link :route="$linkRoute" :slug="$post->slug">
+                                                @php
+                                                    $post_img = getPostImage(
+                                                        $post,
+                                                        $currentRoute,
+                                                        asset('image/not_found/item_image_not_found.webp'),
+                                                    );
+                                                @endphp
+                                                <img src="{{ $post_img }}" alt="">
 
-                                                        @case($currentRoute === 'frontend.events_list')
-                                                            <a href="{{ route('frontend.event_single', $post->slug) }}">
-                                                            @break
+                                            </x-post-link>
 
-                                                            @default
-                                                                <a href="{{ route('frontend.blog_single', $post->slug) }}">
-                                                                @break
-                                                            @endswitch
-
-
-
-                                                            @php
-                                                                $postDefaultImg = asset(
-                                                                    'image/not_found/item_image_not_found.webp',
-                                                                );
-                                                                $post_img = $postDefaultImg; // Set a default image
-
-                                                                switch (true) {
-                                                                    case $currentRoute === 'frontend.blog_list':
-                                                                        $post_img =
-                                                                            $post->photos->first() &&
-                                                                            $post->photos->first()->file_name
-                                                                                ? asset(
-                                                                                    'assets/posts/' .
-                                                                                        $post->photos->first()
-                                                                                            ->file_name,
-                                                                                )
-                                                                                : $postDefaultImg;
-                                                                        break;
-
-                                                                    case $currentRoute === 'frontend.news_list':
-                                                                        $post_img =
-                                                                            $post->photos->first() &&
-                                                                            $post->photos->first()->file_name
-                                                                                ? asset(
-                                                                                    'assets/news/' .
-                                                                                        $post->photos->first()
-                                                                                            ->file_name,
-                                                                                )
-                                                                                : $postDefaultImg;
-                                                                        break;
-
-                                                                    case $currentRoute === 'frontend.events_list':
-                                                                        $post_img =
-                                                                            $post->photos->first() &&
-                                                                            $post->photos->first()->file_name
-                                                                                ? asset(
-                                                                                    'assets/events/' .
-                                                                                        $post->photos->first()
-                                                                                            ->file_name,
-                                                                                )
-                                                                                : $postDefaultImg;
-                                                                        break;
-
-                                                                    // Add more cases as needed for other routes
-
-                                                                    default:
-                                                                        $post_img = $postDefaultImg;
-                                                                        break;
-                                                                }
-
-                                                                // Check if the file exists in public directory
-                                                                if (
-                                                                    !file_exists(
-                                                                        public_path(parse_url($post_img, PHP_URL_PATH)),
-                                                                    )
-                                                                ) {
-                                                                    $post_img = $postDefaultImg;
-                                                                }
-                                                            @endphp
-
-                                                            <img src="{{ $post_img }}" alt="">
-                                                        </a>
                                         </div>
                                         <div class="blog-content">
                                             <h3 class="blog-title">
@@ -294,22 +234,12 @@
                                             <div class="blog-meta">
                                                 <ul class="btm-cate">
                                                     <li>
-                                                        <?php
-                                                        $date = $post->created_at;
-                                                        $higriShortDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date); // With optional Timestamp It will return Hijri Date of [$date] => Results "1442/05/12"
-                                                        ?>
 
                                                         <div class="blog-date">
                                                             <i class="fa fa-calendar-check-o"></i>
-
-                                                            {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
-
-                                                            <span>{{ __('panel.corresponding_to') }} </span>
-
-                                                            {{ $post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
-
-
+                                                            {{ formatPostDate($post->created_at) }}
                                                         </div>
+
                                                     </li>
                                                     <li>
                                                         <div class="author">
