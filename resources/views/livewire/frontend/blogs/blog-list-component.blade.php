@@ -1,254 +1,482 @@
 <div>
-    <!-- banner section start -->
-    <div class="main-banner-blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="banner-content">
-                        <h1>Blog List pages</h1>
-                        <p>Home - Blog List Page</p>
-                    </div>
-                </div>
+    <!-- Main content Start -->
+    <div class="main-content">
+        <!-- Breadcrumbs Start -->
+        <div class="rs-breadcrumbs breadcrumbs-overlay">
+            <div class="breadcrumbs-img">
+                <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image">
+            </div>
+            <div class="breadcrumbs-text white-color">
+                <h1 class="page-title">Blog Sidebar</h1>
+                <ul>
+                    <li>
+                        <a class="active" href="index.html">Home</a>
+                    </li>
+                    <li>Blog Single</li>
+                </ul>
             </div>
         </div>
-    </div>
-    <!-- banner section end -->
+        <!-- Breadcrumbs End -->
 
-    <!-- blog-list page start -->
-    <div class="blog-list-main-sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9 col-md-8 col-sm-12">
-                    <div class="blog-list-main-content">
 
-                        @foreach ($posts as $post)
-                            <!-- Blog List Block Start -->
-                            <div class="blog-list-block">
-                                <div class="image clearfix">
-                                    @php
-                                        if (
-                                            $post->photos->first() != null &&
-                                            $post->photos->first()->file_name != null
-                                        ) {
-                                            $post_img = asset('assets/posts/' . $post->photos->first()->file_name);
-
-                                            if (
-                                                !file_exists(
-                                                    public_path('assets/posts/' . $post->photos->first()->file_name),
-                                                )
-                                            ) {
-                                                $post_img = asset('image/not_found/item_image_not_found.webp');
-                                            }
-                                        } else {
-                                            $post_img = asset('image/not_found/item_image_not_found.webp');
-                                        }
-                                    @endphp
-                                    <img src="{{ $post_img }}" class="img-responsive" alt="blog-list-img-1">
+        <!-- Blog Section Start -->
+        <div class="rs-inner-blog orange-color pt-100 pb-100 md-pt-70 md-pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 order-last">
+                        <div class="widget-area">
+                            <div class="search-widget mb-50">
+                                <div class="search-wrap">
+                                    <input type="search" placeholder="Searching..." name="s" class="search-input"
+                                        value="">
+                                    <button type="submit" value="Search"><i class=" flaticon-search"></i></button>
                                 </div>
-                                <div class="content-detail-blog clearfix">
-                                    <p class="heading-main">{{ $post->title }}</p>
-                                    <div class="sub-heading-main">
-                                        <ul>
-                                            <li>{{ $post->tags->first()->name ?? 'Global' }}</li>
-                                            <li> {{ $post->created_at ? \Carbon\Carbon::parse($post->created_at)->translatedFormat('d F Y') : null }}
-                                            </li>
-                                            <li>{{ __('transf.posted_by') }}:
-                                                <a href="#">{{ $post->users->first()->full_name ?? '' }}</a>
-                                            </li>
-                                        </ul>
+                            </div>
+                            <div class="recent-posts-widget mb-50">
+                                <h3 class="widget-title">Recent Posts</h3>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/1.jpg') }}"
+                                                alt=""></a>
                                     </div>
-                                    <div class="desc">
-                                        <p>
-                                            {{ $post->description }}
-                                        </p>
-                                        <div class="read-more">
-                                            <ul>
+                                    <div class="post-desc">
+                                        <a href="#">Covid-19 threatens the next generation of smartphones</a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            April 6, 2020
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/2.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Soundtrack filma Lady Exclusive Music</a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            November 19, 2018
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/3.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Soundtrack filma Lady Exclusive Music </a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            September 6, 2020
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/4.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Given void great you’re good appear have i also fifth </a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            September 6, 2020
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="show-featured ">
+                                    <div class="post-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/style2/5.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="post-desc">
+                                        <a href="#">Lights winged seasons fish abundantly evening.</a>
+                                        <span class="date">
+                                            <i class="fa fa-calendar"></i>
+                                            September 6, 2020
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget-archives mb-50">
+                                <h3 class="widget-title">Archives</h3>
+                                <ul>
+                                    <li><a href="#">September 2020</a></li>
+                                    <li><a href="#">September 2020</a></li>
+                                </ul>
+                            </div>
+                            <div class="widget-archives mb-50">
+                                <h3 class="widget-title">Categories</h3>
+                                <ul>
+                                    <li><a href="#">College</a></li>
+                                    <li><a href="#">High School</a></li>
+                                    <li><a href="#">Primary</a></li>
+                                    <li><a href="#">School</a></li>
+                                    <li><a href="#">University</a></li>
+                                </ul>
+                            </div>
+                            <div class="recent-posts mb-50">
+                                <h3 class="widget-title">Meta</h3>
+                                <ul>
+                                    <li><a href="#">Log in</a></li>
+                                    <li><a href="#">Entries feed</a></li>
+                                    <li><a href="#">Comments feed</a></li>
+                                    <li><a href="#">WordPress.org</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 pr-50 md-pr-15">
+                        <div class="row">
+                            <div class="col-lg-12 mb-70">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/1.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">University while the lovely valley team
+                                                work</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
                                                 <li>
-                                                    <a class="btn btn-default"
-                                                        href="{{ route('frontend.blog_single', $post->slug) }}"
-                                                        role="button">Read
-                                                        More</a>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                    </div>
                                                 </li>
-
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">University</a>
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Blog List Block End -->
-                        @endforeach
-
-
-                        <!-- Pagination Start -->
-                        <div class="pagination-main visible-xs visible-sm">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    {!! $posts->appends(request()->all())->onEachSide(3)->links() !!}
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- Pagination End -->
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-12">
-                    <div class="blog-list-widget clearfix">
-                        <!-- Search Widget Start -->
-                        <div class="widget-block search-widget clearfix">
-                            <h3 class="widget-title">search</h3>
-                            <div class="search-box">
-                                {{-- <input type="text" class="form-control" placeholder="Search here"> --}}
-
-                                <input wire:model="searchQuery" class="form-control" type="search"
-                                    placeholder="{{ __('transf.search') }}" aria-label="Search">
-
-                                <a href="javascript::void()" class="search">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Search Widget End -->
-                        <!-- News Post Widget Start -->
-                        <div class="widget-block news-post-widget clearfix">
-                            <div class="news-post-tab">
-                                <!-- Nav tabs -->
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active">
-                                        <a href="#recent" aria-controls="recent" role="tab" data-toggle="tab">Recent
-                                            Post</a>
-                                    </li>
-                                    <li role="presentation">
-                                        <a href="#popular" aria-controls="popular" role="tab"
-                                            data-toggle="tab">Popular
-                                            Post</a>
-                                    </li>
-                                </ul>
-                                <!-- Tab panes -->
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="recent">
-
-                                        @foreach ($recent_posts->take(5) as $latest_post)
-                                            <!-- News Block Start -->
-                                            <div class="news-block">
-                                                <div class="desc">
-                                                    <div class="image">
-                                                        @php
-                                                            if (
-                                                                $latest_post->photos->last() != null &&
-                                                                $latest_post->photos->last()->file_name != null
-                                                            ) {
-                                                                $latest_post_img = asset(
-                                                                    'assets/posts/' .
-                                                                        $latest_post->photos->last()->file_name,
-                                                                );
-
-                                                                if (
-                                                                    !file_exists(
-                                                                        public_path(
-                                                                            'assets/posts/' .
-                                                                                $latest_post->photos->last()->file_name,
-                                                                        ),
-                                                                    )
-                                                                ) {
-                                                                    $latest_post_img = asset(
-                                                                        'image/not_found/item_image_not_found.webp',
-                                                                    );
-                                                                }
-                                                            } else {
-                                                                $latest_post_img = asset(
-                                                                    'image/not_found/item_image_not_found.webp',
-                                                                );
-                                                            }
-                                                        @endphp
-                                                        <img class="img-responsive" src="{{ $latest_post_img }}"
-                                                            alt="news-post">
+                            <div class="col-lg-12 mb-70">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/2.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">High school program starting soon
+                                                2021</a></h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
+                                                <li>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
                                                     </div>
-                                                    <span><i class="fa fa-clock-o" aria-hidden="true"></i>
-                                                        {{ $latest_post->created_at ? \Carbon\Carbon::parse($latest_post->created_at)->translatedFormat('d F Y') : null }}
-                                                    </span>
-                                                    <a href="{{ route('frontend.blog_single', $latest_post->slug) }}"
-                                                        class="news-title">{{ $latest_post->title }}</a>
-                                                </div>
-                                            </div>
-                                            <!-- News Block End -->
-                                        @endforeach
-
+                                                </li>
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">High School</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="popular">...</div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-70">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/3.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">Modern School the lovely valley team
+                                                work</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
+                                                <li>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">Primary</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-70">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/4.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">While the lovely valley team work</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
+                                                <li>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">College</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-70">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/5.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">This is a great source of content for
+                                                anyone…</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
+                                                <li>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">College</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-70">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/6.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">While the lovely valley team work</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
+                                                <li>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">College</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 mb-70">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/7.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">The Expenses You Are Thinking</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
+                                                <li>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">School</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="blog-item">
+                                    <div class="blog-img">
+                                        <a href="#"><img src="{{ asset('frontend/images/blog/inner/8.jpg') }}"
+                                                alt=""></a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3 class="blog-title"><a href="#">This is a great source of content for
+                                                anyone…</a>
+                                        </h3>
+                                        <div class="blog-meta">
+                                            <ul class="btm-cate">
+                                                <li>
+                                                    <div class="blog-date">
+                                                        <i class="fa fa-calendar-check-o"></i> September 14, 2020
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="author">
+                                                        <i class="fa fa-user-o"></i> admin
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tag-line">
+                                                        <i class="fa fa-book"></i>
+                                                        <a href="#">School</a>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="blog-desc">
+                                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                            ligula
+                                            eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis
+                                            parturient
+                                            montes, nascetur ridiculus mus. Donec quam...
+                                        </div>
+                                        <div class="blog-button">
+                                            <a class="blog-btn" href="#">Continue Reading</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- News Post Widget End -->
-
-                        <!-- Advertisement Widget Start -->
-                        <div class="widget-block advertisement-widget clearfix" style="display: none;">
-                            <h3 class="widget-title">
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i> advertisement
-                            </h3>
-                            <div class="row">
-                                <!-- Col Start -->
-                                <div class="col-sm-12 col-md-12 col-lg-12">
-                                    <div class="advertisement-block full-block">
-                                        <div class="image">
-                                            <img class="img-responsive" src="assets/images/blog/advertisement-1.jpg"
-                                                alt="advertisement">
-                                        </div>
-                                        <span class="title">video hive Deal 23off</span>
-                                    </div>
-                                </div>
-                                <!-- Col End -->
-                                <!-- Col Start -->
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-                                    <div class="advertisement-block">
-                                        <div class="image">
-                                            <img class="img-responsive" src="assets/images/blog/advertisement-2.jpg"
-                                                alt="advertisement">
-                                        </div>
-                                        <span class="title">WordPress Deals</span>
-                                    </div>
-                                </div>
-                                <!-- Col End -->
-                                <!-- Col Start -->
-                                <div class="col-sm-6 col-md-6 col-lg-6">
-                                    <div class="advertisement-block">
-                                        <div class="image">
-                                            <img class="img-responsive" src="assets/images/blog/advertisement-2.jpg"
-                                                alt="advertisement">
-                                        </div>
-                                        <span class="title">WordPress Deals</span>
-                                    </div>
-                                </div>
-                                <!-- Col End -->
-                            </div>
-                        </div>
-                        <!-- Advertisement Widget End -->
-                        <!-- Tags Widget Start -->
-                        <div class="widget-block tags-widget clearfix">
-                            <h3 class="widget-title">
-                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i> {{ __('transf.tags') }}
-                            </h3>
-
-                            @foreach ($tags as $tag)
-                                <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">{{ $tag->name }}</a>
-                            @endforeach
-
-                        </div>
-                        <!-- Tags Widget End -->
-
-
                     </div>
                 </div>
             </div>
-            <!-- Pagination Start -->
-
-            <div>
-                <!-- PAGINATION -->
-                <nav class="mb-11" aria-label="Page navigationa">
-                    {!! $posts->appends(request()->all())->onEachSide(3)->links('vendor.pagination.bootstrap-4') !!}
-                </nav>
-            </div>
-
-            <!-- Pagination End -->
         </div>
+        <!-- Blog Section End -->
+
     </div>
-    <!-- blog-list page start -->
+    <!-- Main content End -->
 </div>
