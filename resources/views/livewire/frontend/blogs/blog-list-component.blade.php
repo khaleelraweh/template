@@ -4,7 +4,6 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                {{-- <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image"> --}}
                 <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/breadcrumbs/2.jpg') }}"
                     alt="{{ $siteSettings['site_name']->value }}">
             </div>
@@ -38,7 +37,6 @@
                 <ul>
                     <li>
                         <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
-
                     </li>
                     <li>
                         @switch(true)
@@ -54,14 +52,6 @@
                                 {{ __('panel.events_list') }}
                             @break
 
-                            @case(Route::is('frontend.blog_index'))
-                                Blog Index
-                            @break
-
-                            @case(Route::is('frontend.contact'))
-                                Contact Us
-                            @break
-
                             @default
                                 Default Title
                         @endswitch
@@ -71,14 +61,13 @@
         </div>
         <!-- Breadcrumbs End -->
 
-
         <!-- Blog Section Start -->
         <div class="rs-inner-blog orange-color pt-100 pb-100 md-pt-70 md-pb-70">
             <div class="container">
                 <div class="row">
+                    <!-- Sidebar Start -->
                     <div class="col-lg-4 col-md-12 order-last">
                         <div class="widget-area">
-
                             <!-- Search Widget -->
                             <div class="search-widget mb-50">
                                 <div class="search-wrap">
@@ -90,7 +79,6 @@
                             <!-- Recent Posts Widget -->
                             <div class="recent-posts-widget mb-50">
                                 @php
-                                    // Determine the appropriate titles and paths based on the route
                                     $titleMap = [
                                         'frontend.blog_list' => __('panel.recent_posts'),
                                         'frontend.news_list' => __('panel.recent_news'),
@@ -121,7 +109,7 @@
                                             'image/not_found/item_image_not_found.webp';
                                         $recentImgUrl = asset($assetPath . $recentImage);
 
-                                        // Check if the image file exists, otherwise fallback to default
+                                        // Check if the image exists, otherwise fallback to default
                                         if (!file_exists(public_path(parse_url($recentImgUrl, PHP_URL_PATH)))) {
                                             $recentImgUrl = asset('image/not_found/item_image_not_found.webp');
                                         }
@@ -165,17 +153,17 @@
                                     @endforeach
                                 </ul>
                             </div>
-
                         </div>
                     </div>
+                    <!-- Sidebar End -->
 
+                    <!-- Main Content Start -->
                     <div class="col-lg-8 pr-50 md-pr-15">
                         <div class="row">
                             @foreach ($posts as $post)
                                 <div class="col-lg-12 mb-70">
                                     <div class="blog-item">
                                         <div class="blog-img">
-
                                             @php
                                                 $linkRoute = match ($currentRoute) {
                                                     'frontend.blog_list' => 'frontend.blog_single',
@@ -194,10 +182,9 @@
                                                     );
                                                 @endphp
                                                 <img src="{{ $post_img }}" alt="">
-
                                             </x-post-link>
-
                                         </div>
+
                                         <div class="blog-content">
                                             <h3 class="blog-title">
                                                 <x-post-link :route="$linkRoute" :slug="$post->slug">
@@ -216,25 +203,18 @@
                                                         <div class="author">
                                                             <i class="fa fa-user-o"></i>
                                                             {{ $post->users && $post->users->isNotEmpty() ? $post->users->first()->full_name : __('panel.admin') }}
-
                                                         </div>
                                                     </li>
-
                                                 </ul>
                                             </div>
                                             <div class="blog-desc">
                                                 {!! \Illuminate\Support\Str::words($post->content, 30, '...') !!}
                                             </div>
                                             <div class="blog-button">
-
-
-                                                {{-- Button --}}
-                                                <div class="blog-button">
-                                                    <x-post-link :route="$linkRoute" :slug="$post->slug" class="blog-btn">
-                                                        {{ __('panel.continue_reading') }}
-                                                    </x-post-link>
-                                                </div>
-
+                                                <!-- Button -->
+                                                <x-post-link :route="$linkRoute" :slug="$post->slug" class="blog-btn">
+                                                    {{ __('panel.continue_reading') }}
+                                                </x-post-link>
                                             </div>
                                         </div>
                                     </div>
@@ -242,11 +222,11 @@
                             @endforeach
                         </div>
                     </div>
+                    <!-- Main Content End -->
                 </div>
             </div>
         </div>
         <!-- Blog Section End -->
-
     </div>
     <!-- Main content End -->
 </div>
