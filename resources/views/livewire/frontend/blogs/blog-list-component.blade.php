@@ -15,11 +15,11 @@
                             {{ __('panel.blog_list') }}
                         @break
 
-                        @case(Route::is('frontend.news_single'))
+                        @case($currentRoute === 'frontend.news_list')
                             {{ __('panel.news_list') }}
                         @break
 
-                        @case(Route::is('frontend.event_single'))
+                        @case($currentRoute === 'frontend.events_list')
                             {{ __('panel.events_list') }}
                         @break
 
@@ -46,11 +46,11 @@
                                 {{ __('panel.blog_list') }}
                             @break
 
-                            @case(Route::is('frontend.news_single'))
+                            @case($currentRoute === 'frontend.news_list')
                                 {{ __('panel.news_list') }}
                             @break
 
-                            @case(Route::is('frontend.event_single'))
+                            @case($currentRoute === 'frontend.events_list')
                                 {{ __('panel.events_list') }}
                             @break
 
