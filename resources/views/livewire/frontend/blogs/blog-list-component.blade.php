@@ -38,9 +38,38 @@
                                 @foreach ($recent_posts as $recent_post)
                                     <div class="show-featured ">
                                         <div class="post-img">
+
+                                            @php
+                                                if (
+                                                    $recent_post->photos->first() != null &&
+                                                    $recent_post->photos->first()->file_name != null
+                                                ) {
+                                                    $recent_post_img = asset(
+                                                        'assets/posts/' . $recent_post->photos->first()->file_name,
+                                                    );
+
+                                                    if (
+                                                        !file_exists(
+                                                            public_path(
+                                                                'assets/posts/' .
+                                                                    $recent_post->photos->first()->file_name,
+                                                            ),
+                                                        )
+                                                    ) {
+                                                        $recent_post_img = asset(
+                                                            'image/not_found/item_image_not_found.webp',
+                                                        );
+                                                    }
+                                                } else {
+                                                    $recent_post_img = asset(
+                                                        'image/not_found/item_image_not_found.webp',
+                                                    );
+                                                }
+                                            @endphp
+
+
                                             <a href="{{ route('frontend.blog_single', $recent_post->slug) }}"><img
-                                                    src="{{ asset('frontend/images/blog/style2/1.jpg') }}"
-                                                    alt=""></a>
+                                                    src="{{ $recent_post_img }}" alt=""></a>
                                         </div>
                                         <div class="post-desc">
                                             <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
