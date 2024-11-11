@@ -139,12 +139,7 @@
                                             </a>
                                             <span class="date">
                                                 <i class="fa fa-calendar"></i>
-
-                                                {{ Alkoumi\LaravelHijriDate\Hijri::ShortDate($recent_post->created_at) }}
-                                                {{ __('panel.calendar_hijri') }}
-                                                <span> | </span>
-                                                {{ $recent_post->created_at->isoFormat('YYYY/MM/DD') }}
-                                                {{ __('panel.calendar_gregorian') }}
+                                                {{ formatPostDateDash($recent_post->created_at) }}
                                             </span>
                                         </div>
                                     </div>
@@ -234,12 +229,10 @@
                                             <div class="blog-meta">
                                                 <ul class="btm-cate">
                                                     <li>
-
                                                         <div class="blog-date">
                                                             <i class="fa fa-calendar-check-o"></i>
                                                             {{ formatPostDate($post->created_at) }}
                                                         </div>
-
                                                     </li>
                                                     <li>
                                                         <div class="author">

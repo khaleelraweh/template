@@ -50,3 +50,11 @@ function formatPostDate($date)
 
     return "$hijriDate " . __('panel.calendar_hijri') . " " . __('panel.corresponding_to') . " $gregorianDate " . __('panel.calendar_gregorian');
 }
+
+function formatPostDateDash($date)
+{
+    $hijriDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date);
+    $gregorianDate = $date->isoFormat('YYYY/MM/DD');
+
+    return "$hijriDate " . __('panel.calendar_hijri') . " " . "|" . " $gregorianDate " . __('panel.calendar_gregorian');
+}
