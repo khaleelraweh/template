@@ -43,6 +43,24 @@ function getPostImage($post, $currentRoute, $defaultImage)
     return $defaultImage;
 }
 
+function getPostTagImage($post, $currentRoute, $defaultImage)
+{
+    $basePaths = [
+        'frontend.blog_tag_list' => 'assets/posts/',
+        'frontend.news_tag_list' => 'assets/news/',
+        'frontend.events_tag_list' => 'assets/events/',
+    ];
+
+    $path = $basePaths[$currentRoute] ?? null;
+
+    if ($path && $post->photos->first() && $post->photos->first()->file_name) {
+        $imagePath = public_path("{$path}{$post->photos->first()->file_name}");
+        return file_exists($imagePath) ? asset("{$path}{$post->photos->first()->file_name}") : $defaultImage;
+    }
+
+    return $defaultImage;
+}
+
 function formatPostDate($date)
 {
     $hijriDate = Alkoumi\LaravelHijriDate\Hijri::ShortDate($date);

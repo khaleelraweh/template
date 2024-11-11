@@ -33,7 +33,7 @@
 
                     </li>
                     <li>
-                        {{-- @switch(true)
+                        @switch(true)
                             @case($currentRoute === 'frontend.blog_tag_list')
                                 {{ __('panel.blog_list') }}
                             @break
@@ -56,9 +56,7 @@
 
                             @default
                                 Default Title
-                        @endswitch --}}
-
-                        {{ $tag_title ?? '' }}
+                        @endswitch
                     </li>
                 </ul>
             </div>
@@ -281,29 +279,88 @@
                                     <div class="blog-item">
                                         <div class="blog-img">
 
-                                            @php
-                                                $linkRoute = match ($currentRoute) {
-                                                    'frontend.blog_tag_list' => 'frontend.blog_single',
-                                                    'frontend.news_tag_list' => 'frontend.news_single',
-                                                    'frontend.events_tag_list' => 'frontend.event_single',
-                                                    default => 'frontend.blog_single',
-                                                };
-                                            @endphp
+                                            @switch(true)
+                                                @case($currentRoute === 'frontend.blog_tag_list')
+                                                    <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                    @break
 
-                                            <x-post-link :route="$linkRoute" :slug="$post->slug">
+                                                    @case($currentRoute === 'frontend.news_tag_list')
+                                                        <a href="{{ route('frontend.news_single', $post->slug) }}">
+                                                        @break
 
-                                                @php
-                                                    $post_img = getPostTagImage(
-                                                        $post,
-                                                        $currentRoute,
-                                                        asset('image/not_found/item_image_not_found.webp'),
-                                                    );
-                                                @endphp
-                                                <img src="{{ $post_img }}" alt="">
+                                                        @case($currentRoute === 'frontend.events_tag_list')
+                                                            <a href="{{ route('frontend.event_single', $post->slug) }}">
+                                                            @break
 
-                                            </x-post-link>
+                                                            @default
+                                                                <a href="{{ route('frontend.blog_single', $post->slug) }}">
+                                                                @break
+                                                            @endswitch
 
 
+
+                                                            @php
+                                                                $postDefaultImg = asset(
+                                                                    'image/not_found/item_image_not_found.webp',
+                                                                );
+                                                                $post_img = $postDefaultImg; // Set a default image
+
+                                                                switch (true) {
+                                                                    case $currentRoute === 'frontend.blog_tag_list':
+                                                                        $post_img =
+                                                                            $post->photos->first() &&
+                                                                            $post->photos->first()->file_name
+                                                                                ? asset(
+                                                                                    'assets/posts/' .
+                                                                                        $post->photos->first()
+                                                                                            ->file_name,
+                                                                                )
+                                                                                : $postDefaultImg;
+                                                                        break;
+
+                                                                    case $currentRoute === 'frontend.news_tag_list':
+                                                                        $post_img =
+                                                                            $post->photos->first() &&
+                                                                            $post->photos->first()->file_name
+                                                                                ? asset(
+                                                                                    'assets/news/' .
+                                                                                        $post->photos->first()
+                                                                                            ->file_name,
+                                                                                )
+                                                                                : $postDefaultImg;
+                                                                        break;
+
+                                                                    case $currentRoute === 'frontend.events_tag_list':
+                                                                        $post_img =
+                                                                            $post->photos->first() &&
+                                                                            $post->photos->first()->file_name
+                                                                                ? asset(
+                                                                                    'assets/events/' .
+                                                                                        $post->photos->first()
+                                                                                            ->file_name,
+                                                                                )
+                                                                                : $postDefaultImg;
+                                                                        break;
+
+                                                                    // Add more cases as needed for other routes
+
+                                                                    default:
+                                                                        $post_img = $postDefaultImg;
+                                                                        break;
+                                                                }
+
+                                                                // Check if the file exists in public directory
+                                                                if (
+                                                                    !file_exists(
+                                                                        public_path(parse_url($post_img, PHP_URL_PATH)),
+                                                                    )
+                                                                ) {
+                                                                    $post_img = $postDefaultImg;
+                                                                }
+                                                            @endphp
+
+                                                            <img src="{{ $post_img }}" alt="">
+                                                        </a>
                                         </div>
                                         <div class="blog-content">
                                             <h3 class="blog-title">
