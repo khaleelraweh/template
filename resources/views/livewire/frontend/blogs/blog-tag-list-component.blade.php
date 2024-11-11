@@ -33,31 +33,6 @@
 
                     </li>
                     <li>
-                        {{-- @switch(true)
-                            @case($currentRoute === 'frontend.blog_tag_list')
-                                {{ __('panel.blog_list') }}
-                            @break
-
-                            @case($currentRoute === 'frontend.news_tag_list')
-                                {{ __('panel.news_list') }}
-                            @break
-
-                            @case($currentRoute === 'frontend.events_tag_list')
-                                {{ __('panel.events_list') }}
-                            @break
-
-                            @case(Route::is('frontend.blog_index'))
-                                Blog Index
-                            @break
-
-                            @case(Route::is('frontend.contact'))
-                                Contact Us
-                            @break
-
-                            @default
-                                Default Title
-                        @endswitch --}}
-
                         {{ $tag_title ?? '' }}
                     </li>
                 </ul>
@@ -77,29 +52,36 @@
                                     <input type="search" wire:model="searchQuery"
                                         placeholder="{{ __('transf.search') }}..." name="s" class="search-input"
                                         value="">
-
-                                    {{-- <button type="submit" value="Search"><i class=" flaticon-search"></i></button> --}}
                                 </div>
                             </div>
                             <div class="recent-posts-widget mb-50">
 
+                                @php
+                                    $titleMap = [
+                                        'frontend.blog_tag_list' => __('panel.recent_posts'),
+                                        'frontend.news_tag_list' => __('panel.recent_news'),
+                                        'frontend.events_tag_list' => __('panel.recent_events'),
+                                    ];
+                                    $routeMap = [
+                                        'frontend.blog_tag_list' => 'frontend.blog_single',
+                                        'frontend.news_tag_list' => 'frontend.news_single',
+                                        'frontend.events_tag_list' => 'frontend.event_single',
+                                    ];
+                                    $assetMap = [
+                                        'frontend.blog_tag_list' => 'assets/posts/',
+                                        'frontend.news_tag_list' => 'assets/news/',
+                                        'frontend.events_tag_list' => 'assets/events/',
+                                    ];
 
-                                @switch(true)
-                                    @case($currentRoute === 'frontend.blog_tag_list')
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
-                                    @break
+                                    $widgetTitle = $titleMap[$currentRoute] ?? __('panel.recent_posts');
+                                    $routeName = $routeMap[$currentRoute] ?? 'frontend.blog_single';
+                                    $assetPath = $assetMap[$currentRoute] ?? 'assets/posts/';
+                                @endphp
 
-                                    @case($currentRoute === 'frontend.news_tag_list')
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_news') }}</h3>
-                                    @break
+                                <h3 class="widget-title recent_post_title">{{ $widgetTitle }}</h3>
 
-                                    @case($currentRoute === 'frontend.events_tag_list')
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_events') }}</h3>
-                                    @break
 
-                                    @default
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
-                                @endswitch
+
 
 
 
