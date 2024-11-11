@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                             <div class="recent-posts-widget mb-50">
-                                <h3 class="widget-title">{{ __('panel.recent_posts') }}</h3>
+                                <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
 
                                 @foreach ($recent_posts as $recent_post)
                                     <div class="show-featured ">
@@ -150,7 +150,7 @@
                             </div>
 
                             <div class="recent-posts mb-50">
-                                <h3 class="widget-title">Meta</h3>
+                                <h3 class="widget-title tags_title">{{ __('panel.tags') }}</h3>
                                 <ul>
                                     @foreach ($tags as $tag)
                                         <li><a
