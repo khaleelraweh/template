@@ -1455,6 +1455,8 @@ return [
     'and_instructions_will_be_sent_to_you'              =>  ' وسيتم إرسال التعليمات لك!',
     'send_email'                                        =>  'إرسال البريد الإلكتروني',
     'already_have_an_account'                           =>  'لديك حساب بالفعل!',
+    'continue_reading'                                  =>  'مواصلة القراءة',
+
 
 
 

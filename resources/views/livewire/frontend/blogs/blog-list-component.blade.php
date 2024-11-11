@@ -178,7 +178,8 @@
                                                 {{ \Illuminate\Support\Str::words($post->content, 30, '...') }}
                                             </div>
                                             <div class="blog-button">
-                                                <a class="blog-btn" href="#">Continue Reading</a>
+                                                <a class="blog-btn"
+                                                    href="#">{{ __('panel.continue_reading') }}</a>
                                             </div>
                                         </div>
                                     </div>
