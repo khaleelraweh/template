@@ -66,7 +66,7 @@ class EventsController extends Controller
         $input['start_date']            = $startDate;
         $input['end_date']              = $endDate;
 
-        $input['section']               =   3; // for eventertisement
+        $input['section']               =   3; // for event
         $input['status']                =   $request->status;
         $input['created_by']            =   auth()->user()->full_name;
 

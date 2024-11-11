@@ -171,12 +171,7 @@
 
                                                         </div>
                                                     </li>
-                                                    {{-- <li>
-                                                        <div class="tag-line">
-                                                            <i class="fa fa-book"></i>
-                                                            <a href="#">University</a>
-                                                        </div>
-                                                    </li> --}}
+
                                                 </ul>
                                             </div>
                                             <div class="blog-desc">

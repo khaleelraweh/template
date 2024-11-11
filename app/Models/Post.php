@@ -83,6 +83,14 @@ class Post extends Model
     {
         return $query->whereSection(1);
     }
+    public function scopeNews($query)
+    {
+        return $query->whereSection(2);
+    }
+    public function scopeAdvertisement($query)
+    {
+        return $query->whereSection(3);
+    }
 
     public function tags(): MorphToMany
     {

@@ -44,9 +44,9 @@ Route::get('/blog-list/{blog?}', [FrontendController::class, 'blog_list'])->name
 // Route::get('/blog-list', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
 // Route::get('/blog-tag-list/{slug?}', [FrontendController::class, 'blog_tag_list'])->name('frontend.blog_tag_list');
 
-Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single');
-Route::get('/news-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.news_single');
-Route::get('/event-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.event_single');
+Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.blog_single'); //section 1
+Route::get('/news-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.news_single'); //section 2
+Route::get('/event-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.event_single'); //section 3
 
 
 Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
