@@ -23,14 +23,6 @@
                             {{ __('panel.events_list') }}
                         @break
 
-                        @case(Route::is('frontend.blog_index'))
-                            Blog Index
-                        @break
-
-                        @case(Route::is('frontend.contact'))
-                            Contact Us
-                        @break
-
                         @default
                             Default Title
                     @endswitch
@@ -41,7 +33,7 @@
 
                     </li>
                     <li>
-                        @switch(true)
+                        {{-- @switch(true)
                             @case($currentRoute === 'frontend.blog_tag_list')
                                 {{ __('panel.blog_list') }}
                             @break
@@ -64,7 +56,9 @@
 
                             @default
                                 Default Title
-                        @endswitch
+                        @endswitch --}}
+
+                        {{ $tag_title ?? '' }}
                     </li>
                 </ul>
             </div>

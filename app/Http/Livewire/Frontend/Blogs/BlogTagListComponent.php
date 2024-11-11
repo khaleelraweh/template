@@ -41,7 +41,12 @@ class BlogTagListComponent extends Component
     public function render()
     {
 
-        // dd($this->currentRoute);
+        $tag_title = Tag::query()
+            ->whereStatus(1)
+            ->where('slug', $this->slug)
+            ->orWhere('slug->' . app()->getLocale(), $this->slug) // Ensure you're using the correct locale
+            ->first()->name;
+
 
         // Get common tags
         $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
@@ -104,6 +109,7 @@ class BlogTagListComponent extends Component
                 'total_Posts'   => $total_Posts,
                 'recent_posts'  => $recent_posts,
                 'tags'          => $tags,
+                'tag_title'     => $tag_title
             ]
         );
     }
