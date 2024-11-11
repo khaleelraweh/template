@@ -1497,5 +1497,8 @@ return [
     'send_email'                                        =>  'Send Email',
     'already_have_an_account'                           =>  'Already have an accont!',
     'continue_reading'                                  =>  'Continue Reading',
+    'blog_list'                                         =>  'Blog List',
+    'news_list'                                         =>  'News List',
+    'events_list'                                       =>  'Events List',
 
 ];

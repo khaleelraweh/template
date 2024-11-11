@@ -1457,6 +1457,10 @@ return [
     'already_have_an_account'                           =>  'لديك حساب بالفعل!',
     'continue_reading'                                  =>  'مواصلة القراءة',
 
+    'blog_list'                                         =>  'المدونة',
+    'news_list'                                         =>  'الاخبار',
+    'events_list'                                       =>  'الفعاليات والاحداث القادمة',
+
 
 
 
