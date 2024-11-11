@@ -135,8 +135,33 @@
                                 <div class="col-lg-12 mb-70">
                                     <div class="blog-item">
                                         <div class="blog-img">
-                                            <a href="#"><img src="{{ asset('frontend/images/blog/inner/1.jpg') }}"
-                                                    alt=""></a>
+                                            <a href="#">
+                                                @php
+                                                    if (
+                                                        $post->photos->first() != null &&
+                                                        $post->photos->first()->file_name != null
+                                                    ) {
+                                                        $post_img = asset(
+                                                            'assets/posts/' . $post->photos->first()->file_name,
+                                                        );
+
+                                                        if (
+                                                            !file_exists(
+                                                                public_path(
+                                                                    'assets/posts/' . $post->photos->first()->file_name,
+                                                                ),
+                                                            )
+                                                        ) {
+                                                            $post_img = asset(
+                                                                'image/not_found/item_image_not_found.webp',
+                                                            );
+                                                        }
+                                                    } else {
+                                                        $post_img = asset('image/not_found/item_image_not_found.webp');
+                                                    }
+                                                @endphp
+                                                <img src="{{ $post_img }}" alt="">
+                                            </a>
                                         </div>
                                         <div class="blog-content">
                                             <h3 class="blog-title">
