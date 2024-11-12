@@ -174,6 +174,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('document_archives', DocumentArchivesController::class);
 
         // ==============   Statistics Tab   ==============  //
+        Route::post('statistics/remove-statistic-image', [StatisticsController::class, 'remove_statistic_image'])->name('statistics.remove_statistic_image');
         Route::resource('statistics', StatisticsController::class);
 
         // ==============   Site Setting  Tab   ==============  //

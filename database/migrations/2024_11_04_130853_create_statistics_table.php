@@ -19,6 +19,7 @@ return new class extends Migration
             $table->json('slug');
             $table->string('icon')->nullable();
             $table->integer('statistic_number')->nullable();
+            $table->string('statistic_image')->nullable();
 
             // SEO
             $table->json('metadata_title');

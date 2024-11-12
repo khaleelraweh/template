@@ -7,6 +7,9 @@ use App\Http\Requests\Backend\StatisticRequest;
 use App\Models\Statistic;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\File;
 
 class StatisticsController extends Controller
 {
@@ -56,6 +59,15 @@ class StatisticsController extends Controller
 
         $input['status']                    =   $request->status;
         $input['created_by']                =   auth()->user()->full_name;
+
+        // Save album profile 
+        if ($image = $request->file('statistic_image')) {
+            $manager = new ImageManager(new Driver());
+            $file_name = 'album' . time() . '.' . $image->extension();
+            $img = $manager->read($request->file('statistic_image'));
+            $img->toJpeg(80)->save(base_path('public/assets/statistics/' . $file_name));
+            $input['statistic_image'] = $file_name;
+        }
 
         $statistic = Statistic::create($input);
 
@@ -110,6 +122,20 @@ class StatisticsController extends Controller
         $input['status']                    =   $request->status;
         $input['created_by']                =   auth()->user()->full_name;
 
+        // Save album profile 
+        if ($statisticImage = $request->file('statistic_image')) {
+
+            if (File::exists('assets/statistics/' . $statisticImage)) {
+                unlink('assets/statistics/' . $statisticImage);
+            }
+
+            $manager = new ImageManager(new Driver());
+            $file_name = 'statistics' . time() . '.' . $statisticImage->extension();
+            $img = $manager->read($request->file('statistic_image'));
+            $img->toJpeg(80)->save(base_path('public/assets/statistics/' . $file_name));
+            $input['statistic_image'] = $file_name;
+        }
+
         $statistic->update($input);
 
 
@@ -148,5 +174,21 @@ class StatisticsController extends Controller
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function remove_statistic_image(Request $request)
+    {
+        $statistic = Statistic::findOrFail($request->statistic_id);
+
+        if ($statistic->statistic_image != '') {
+            if (File::exists('assets/statistics/' . $statistic->statistic_image)) {
+                unlink('assets/statistics/' . $statistic->statistic_image);
+            }
+
+            $statistic->statistic_image = null;
+            $statistic->save();
+
+            return true;
+        }
     }
 }

@@ -147,6 +147,30 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="images">
+                                    {{ __('panel.statistic_image') }}
+                                    <span>
+                                        <br>
+                                        <small> {{ __('panel.best_size') }}</small>
+                                        <small> 350 * 250</small>
+
+                                    </span>
+
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="file-loading">
+                                    <input type="file" name="statistic_image" id="statistic_image"
+                                        class="file-input-overview">
+                                </div>
+                                @error('images')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
                     </div>
 
 
@@ -242,4 +266,23 @@
 
     </div>
 
+@endsection
+
+
+@section('script')
+    <script>
+        $(function() {
+
+            $("#statistic_image").fileinput({
+                theme: "fa5",
+                maxFileCount: 1,
+                allowedFileTypes: ['image'],
+                showCancel: true,
+                showRemove: false,
+                showUpload: false,
+                overwriteInitial: false
+            });
+
+        });
+    </script>
 @endsection
