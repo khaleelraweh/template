@@ -172,12 +172,14 @@
 
                                         <h3 class="title">
                                             <a href="{{ route('frontend.news_single', $news->slug) }}">
-                                                {!! $news->title !!}
+
+                                                {!! \Illuminate\Support\Str::words($news->title, 8, '...') !!}
+
                                             </a>
                                         </h3>
 
                                         <div class="desc">
-                                            {!! $news->content !!}
+                                            {!! \Illuminate\Support\Str::words($news->content, 10, '...') !!}
                                         </div>
                                         <div class="btn-btm">
                                             <div class="cat-list">
