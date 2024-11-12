@@ -98,18 +98,18 @@ class FrontendController extends Controller
     }
 
 
-    // public function album($slug)
-    // {
-    //     $album = Album::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
-
-    //     return view('frontend.album', compact('album'));
-    // }
-
-    public function album()
+    public function album($slug)
     {
-        // $album = Album::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
+        $album = Album::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
 
-        // return view('frontend.album', compact('album'));
-        return view('frontend.album');
+        return view('frontend.album', compact('album'));
     }
+
+    // public function album()
+    // {
+    //     // $album = Album::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
+
+    //     // return view('frontend.album', compact('album'));
+    //     return view('frontend.album');
+    // }
 }
