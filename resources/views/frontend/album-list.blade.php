@@ -36,7 +36,42 @@
                             </h2>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 mb-30">
+                    @foreach ($albums as $album)
+                        <div class="col-lg-4 col-md-6 mb-30">
+                            <div class="degree-wrap">
+                                @php
+                                    if ($album->album_profile != null) {
+                                        $album_img = asset('assets/albums/' . $album->album_profile);
+
+                                        if (!file_exists(public_path('assets/albums/' . $album->album_profile))) {
+                                            $album_img = asset('image/not_found/item_image_not_found.webp');
+                                        }
+                                    } else {
+                                        $album_img = asset('image/not_found/item_image_not_found.webp');
+                                    }
+                                @endphp
+                                <img src="{{ $album_img }}" alt="">
+
+                                <div class="title-part">
+                                    <h4 class="title">{{ $album->title }}</h4>
+                                </div>
+                                <div class="content-part">
+                                    <h4 class="title">
+                                        <a href="{{ route('frontend.album_single', $album->slug) }}">
+                                            {{ $album->title }}
+                                        </a>
+                                    </h4>
+                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
+                                        impedit quo minus id quod </p>
+                                    <div class="btn-part">
+                                        <a href="#">Read More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
+                    {{-- <div class="col-lg-4 col-md-6 mb-30">
                         <div class="degree-wrap">
                             <img src="{{ asset('frontend/images/degrees/1.jpg') }}" alt="">
                             <div class="title-part">
@@ -51,8 +86,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-30">
+                    </div> --}}
+
+                    {{-- <div class="col-lg-4 col-md-6 mb-30">
                         <div class="degree-wrap">
                             <img src="{{ asset('frontend/images/degrees/2.jpg') }}" alt="">
                             <div class="title-part">
@@ -115,7 +151,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
