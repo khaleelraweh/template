@@ -323,6 +323,7 @@
                         <div
                             class="col-lg-3 col-md-6 {{ $loop->last ? '' : 'md-mb-30' }}  {{ !$loop->last && count($statistics) > 4 ? 'lg-mb-70' : ' ' }} ">
                             <div class="counter-item text-center">
+                                <img class="image" src="{{ asset('frontend/images/waleed/5.png') }}" alt="">
                                 <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
                                 <h4 class="title mb-0 ">{{ $statistic->title }}</h4>
                             </div>
@@ -387,6 +388,7 @@
                         <h3 class="title mb-0 header-album text-white">{{ __('panel.photo_album') }}</h3>
                         <div class="primary header-album-subtitle text-white">{{ __('panel.browse_albums') }}</div>
                         {{-- <h3 class="title mb-0">{{ __('panel.browse_albums') }}</h3> --}}
+                        <button class="btn album-btn">كل البومات الصور</button>
                     </div>
                 </div>
 
@@ -416,6 +418,7 @@
                                     <a href="{{ route('frontend.album', $album->slug) }}">
                                         <h4 class="title">{{ $album->title }}</h4>
                                     </a>
+
 
                                 </div>
                             </div>
