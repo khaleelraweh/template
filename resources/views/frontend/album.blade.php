@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@section('style')
+    <style>
+        .gallery-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+@endsection
+
 @section('content')
     <!-- Main content Start -->
     <div class="main-content">
@@ -29,9 +39,9 @@
         <!-- Breadcrumbs End -->
 
         <!-- Events Section Start -->
-        <div class="rs-gallery style2">
-            <div class="row margin-0">
-                <div class="col-lg-2 padding-0 mb-0 col-md-4 col-sm-6">
+        <div class="rs-gallery style4 px-4 py-4">
+            <div class="row ">
+                <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/1.jpg') }}"><img
@@ -39,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 padding-0 mb-0 col-md-4 col-sm-6">
+                <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/2.jpg') }}"><img
@@ -47,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 padding-0 mb-0 col-md-4 col-sm-6">
+                <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/3.jpg') }}"><img
@@ -55,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 padding-0 mb-0 col-md-4 col-sm-6">
+                <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/4.jpg') }}"><img
@@ -63,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 padding-0 mb-0 col-md-4 col-sm-6">
+                <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/5.jpg') }}"><img
@@ -71,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 padding-0 mb-0 col-md-4 col-sm-6">
+                <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/6.jpg') }}"><img
