@@ -61,10 +61,13 @@
                                             {{ $album->title }}
                                         </a>
                                     </h4>
-                                    <p class="desc">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil
-                                        impedit quo minus id quod </p>
+                                    <p class="desc">
+                                        {!! \Illuminate\Support\Str::words($album->description, 50, '...') !!}
+
+                                    </p>
                                     <div class="btn-part">
-                                        <a href="#">Read More</a>
+                                        <a
+                                            href="{{ route('frontend.album_single', $album->slug) }}">{{ __('panel.read_more') }}</a>
                                     </div>
                                 </div>
                             </div>
