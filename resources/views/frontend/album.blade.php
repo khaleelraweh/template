@@ -38,18 +38,35 @@
         </div>
         <!-- Breadcrumbs End -->
 
+
+
         <!-- Events Section Start -->
         <div class="rs-gallery style4 px-4 py-4">
             <div class="row ">
-                <div class="col-lg-4 mb-3 col-sm-6">
+                @if ($albums->photos)
+                    @foreach ($albums->photos as $media)
+                        <div class="col-lg-4 mb-3 col-sm-6">
+                            <div class="gallery-part">
+                                <div class="gallery-img">
+                                    <a class="image-popup" href="{{ asset('assets/albums/' . $media->file_name) }}"><img
+                                            src="{{ asset('assets/albums/' . $media->file_name) }}" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+
+
+                {{-- <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/1.jpg') }}"><img
                                     src="{{ asset('frontend/images/gallery/home8/1.jpg') }}" alt=""></a>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 mb-3 col-sm-6">
+                </div> --}}
+
+                {{-- <div class="col-lg-4 mb-3 col-sm-6">
                     <div class="gallery-part">
                         <div class="gallery-img">
                             <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/2.jpg') }}"><img
@@ -88,7 +105,7 @@
                                     src="{{ asset('frontend/images/gallery/home8/6.jpg') }}" alt=""></a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
         <!-- Events Section End -->
