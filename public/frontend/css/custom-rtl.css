@@ -120,6 +120,7 @@
 }
 
 /* event part  */
+
 .event-row{
     padding-top: 15px;
     padding-bottom: 15px;
@@ -139,11 +140,23 @@
     right: 0;
 }
 
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    .rs-blog.style1 .events-short{
+        flex-direction: column;
+    }
+    .rs-blog.style1 .events-short .date-part{
+        position: relative;
+        margin-bottom: 1em;
+    }
+    .rs-blog.style1 .events-short .content-part{
+        padding-right: 0;
+        text-align: center;
+    }
+}
 
     
 
 /*  latest news  */
-
 .rs-blog.style1 .blog-item .blog-content{
     padding: 14px 14px 14px;
 }
