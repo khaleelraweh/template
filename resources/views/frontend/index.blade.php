@@ -181,9 +181,9 @@
                                         </div>
                                         <div class="btn-btm">
                                             <div class="cat-list">
-                                                <ul class="post-categories">
+                                                {{-- <ul class="post-categories">
                                                     <li><a href="#">{{ $news->created_by }}</a></li>
-                                                </ul>
+                                                </ul> --}}
                                             </div>
                                             <div class="rs-view-btn">
                                                 <a
