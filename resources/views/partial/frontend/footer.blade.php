@@ -70,16 +70,16 @@
                      <ul class="address-widget">
                          <li>
 
-                             <div class="desc">{{ $siteSettings['site_address']->value ?? '' }}</div>
+                             <div class="desc desc-title">{{ $siteSettings['site_address']->value ?? '' }}</div>
                          </li>
                          <li>
-                             <div class="desc">
+                             <div class="desc desc-title">
                                  <a
                                      href="tel:(+04){{ $siteSettings['site_mobile']->value ?? '' }}">(+04){{ $siteSettings['site_mobile']->value ?? '' }}</a>
                              </div>
                          </li>
                          <li>
-                             <div class="desc">
+                             <div class="desc desc-title">
                                  <?php
                                  $parsedUrl = parse_url($siteSettings['site_email1']->value, PHP_URL_HOST);
                                  
