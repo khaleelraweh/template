@@ -443,7 +443,9 @@
     height: 100%;
 }
 
-@media (max-width:768px){
+@media only screen and  (max-width: 991px)
+/* @media (max-width:768px) */
+{
     .rs-counter.style2-about .counter-item{
        flex-direction: column;
     }
