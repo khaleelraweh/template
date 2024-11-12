@@ -24,14 +24,14 @@
             </div>
             <div class="breadcrumbs-text white-color">
                 <h1 class="page-title">
-                    album title
+                    {{ __('panel.photo_album') }}
                 </h1>
                 <ul>
                     <li>
                         <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
                     </li>
                     <li>
-                        album title
+                        {{ $albums->title }}
                     </li>
                 </ul>
             </div>
@@ -56,56 +56,6 @@
                     @endforeach
                 @endif
 
-
-                {{-- <div class="col-lg-4 mb-3 col-sm-6">
-                    <div class="gallery-part">
-                        <div class="gallery-img">
-                            <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/1.jpg') }}"><img
-                                    src="{{ asset('frontend/images/gallery/home8/1.jpg') }}" alt=""></a>
-                        </div>
-                    </div>
-                </div> --}}
-
-                {{-- <div class="col-lg-4 mb-3 col-sm-6">
-                    <div class="gallery-part">
-                        <div class="gallery-img">
-                            <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/2.jpg') }}"><img
-                                    src="{{ asset('frontend/images/gallery/home8/2.jpg') }}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-3 col-sm-6">
-                    <div class="gallery-part">
-                        <div class="gallery-img">
-                            <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/3.jpg') }}"><img
-                                    src="{{ asset('frontend/images/gallery/home8/3.jpg') }}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-3 col-sm-6">
-                    <div class="gallery-part">
-                        <div class="gallery-img">
-                            <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/4.jpg') }}"><img
-                                    src="{{ asset('frontend/images/gallery/home8/4.jpg') }}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-3 col-sm-6">
-                    <div class="gallery-part">
-                        <div class="gallery-img">
-                            <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/5.jpg') }}"><img
-                                    src="{{ asset('frontend/images/gallery/home8/5.jpg') }}" alt=""></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 mb-3 col-sm-6">
-                    <div class="gallery-part">
-                        <div class="gallery-img">
-                            <a class="image-popup" href="{{ asset('frontend/images/gallery/home8/6.jpg') }}"><img
-                                    src="{{ asset('frontend/images/gallery/home8/6.jpg') }}" alt=""></a>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
         <!-- Events Section End -->
