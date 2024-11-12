@@ -400,7 +400,7 @@
 
 .rs-counter.style2-about .counter-item .statistic-image .image {
     width: 5.7em;
-    height: 5.7em;
+    height: 100%;
 }
 
 @media (max-width:768px){
