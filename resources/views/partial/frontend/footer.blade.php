@@ -31,9 +31,29 @@
                      <div class="footer-logo mb-30">
                          {{-- <a href="index.html"><img src="{{ asset('frontend/images/lite-logo.png') }}" alt=""></a>
                              --}}
-                         <a href="index.html">
-                             <img src="{{ $siteSettings['site_logo_large_light']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_light']->value) : asset('frontend/images/lite-logo.png') }}"
-                                 alt="{{ $siteSettings['site_name']->value }}">
+                         <a href="{{ route('frontend.index') }}">
+                             @php
+                                 if ($siteSettings['site_logo_large_light']->value != null) {
+                                     $site_logo_large_light = asset(
+                                         'assets/site_settings/' . $siteSettings['site_logo_large_light']->value,
+                                     );
+
+                                     if (
+                                         !file_exists(
+                                             public_path(
+                                                 'assets/site_settings/' .
+                                                     $siteSettings['site_logo_large_light']->value,
+                                             ),
+                                         )
+                                     ) {
+                                         $site_logo_large_light = asset('frontend/images/logo.png');
+                                     }
+                                 } else {
+                                     $site_logo_large_light = asset('frontend/images/logo.png');
+                                 }
+                             @endphp
+
+                             <img src="{{ $site_logo_large_light }}" alt="{{ $siteSettings['site_name']->value }}">
                          </a>
                      </div>
 
