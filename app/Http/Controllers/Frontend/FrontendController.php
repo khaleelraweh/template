@@ -98,7 +98,7 @@ class FrontendController extends Controller
     }
 
 
-    public function album($slug)
+    public function album_single($slug)
     {
         $albums = Album::with('photos')->where('slug->' . app()->getLocale(), $slug)->firstOrFail();
 

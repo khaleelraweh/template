@@ -417,7 +417,7 @@
                                 @endphp
                                 <img src="{{ $album_img }}" alt="">
                                 <div class="title-part">
-                                    <a href="{{ route('frontend.album', $album->slug) }}">
+                                    <a href="{{ route('frontend.album-single', $album->slug) }}">
                                         <h4 class="title">{{ $album->title }}</h4>
                                     </a>
 
