@@ -394,7 +394,6 @@
 .rs-counter.style2-about .counter-item .statistic-image{
     padding-right: 0.7em;
 }
-
 .rs-counter.style2-about .counter-item .statistic-content{
     text-align: left;
 }
@@ -403,6 +402,23 @@
     width: 5.7em;
     height: 5.7em;
 }
+
+@media (max-width:768px){
+    .rs-counter.style2-about .counter-item{
+       flex-direction: column;
+    }
+    .rs-counter.style2-about .counter-item .statistic-image{
+        padding-left: 0;
+        padding-right: 0;
+        margin-bottom: 1em;
+    }
+    .rs-counter.style2-about .counter-item .statistic-content{
+        text-align: center;
+    }
+}
+
+
+
 
 .rs-counter.style2-about .counter-item .rs-count {
     color: #506378 !important;

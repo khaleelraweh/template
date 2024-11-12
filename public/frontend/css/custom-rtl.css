@@ -409,12 +409,12 @@
 .rs-blog.style1 .events-short .content-part .title a {
     color: #000;
 }
+
+
+
 .rs-counter.style2-about .counter-item{
     display: flex;
 }
-
-
-
 .rs-counter.style2-about .counter-item .statistic-image{
     padding-left: 0.7em;
 }
@@ -424,7 +424,7 @@
 
 .rs-counter.style2-about .counter-item .statistic-image .image {
     width: 5.7em;
-    height: 5.7em;
+    height: 100%;
 }
 
 @media (max-width:768px){
@@ -440,6 +440,9 @@
         text-align: center;
     }
 }
+
+
+
 
 .rs-counter.style2-about .counter-item .rs-count {
     color: #506378 !important;
