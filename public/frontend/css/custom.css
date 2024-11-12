@@ -330,6 +330,9 @@
     box-shadow: 0px 0px 12px 11px rgba(0, 0, 0, 0.03);
 }
 /* news  */
+.rs-blog.main-home .blog-item .blog-content .blog-meta li:last-child{
+    font-size: 12px;
+}
 
 .rs-blog.main-home .blog-item .blog-content .title a {
     color: #000;

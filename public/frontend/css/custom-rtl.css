@@ -102,6 +102,9 @@
 }
 
 /* news part  */
+.rs-blog.main-home .blog-item .blog-content .blog-meta li:last-child{
+    font-size: 12px;
+}
 .header-news{
     position: relative;
 }
