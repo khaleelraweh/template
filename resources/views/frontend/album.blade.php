@@ -21,6 +21,8 @@
                     alt="{{ $siteSettings['site_name']->value }}"> --}}
 
                 <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image">
+
+
             </div>
             <div class="breadcrumbs-text white-color">
                 <h1 class="page-title">
