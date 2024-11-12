@@ -124,7 +124,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                                 <a class="dark-logo" href="{{ route('frontend.index') }}">
                                     @php
                                         if ($siteSettings['site_logo_large_dark']->value != null) {
-                                            $site_image_large_dark = asset(
+                                            $site_logo_large_dark = asset(
                                                 'assets/site_settings/' . $siteSettings['site_logo_large_dark']->value,
                                             );
 
@@ -136,14 +136,14 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                                                     ),
                                                 )
                                             ) {
-                                                $site_image_large_dark = asset('frontend/images/logo-dark.png');
+                                                $site_logo_large_dark = asset('frontend/images/logo-dark.png');
                                             }
                                         } else {
-                                            $site_image_large_dark = asset('frontend/images/logo-dark.png');
+                                            $site_logo_large_dark = asset('frontend/images/logo-dark.png');
                                         }
                                     @endphp
 
-                                    <img src="{{ $site_image_large_dark }}"
+                                    <img src="{{ $site_logo_large_dark }}"
                                         alt="{{ $siteSettings['site_name']->value }}">
 
                                 </a>
