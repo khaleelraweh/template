@@ -136,7 +136,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
 
                         </div>
                     </div>
-                    <div class="col-lg-10 text-center">
+                    <div class="col-lg-8 text-center">
                         <div class="rs-menu-area">
                             <div class="main-menu ">
                                 <div class="mobile-menu">
@@ -179,6 +179,26 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                             </div> <!-- //.main-menu -->
 
 
+                        </div>
+                    </div>
+                    <div class="col-lg-2 text-right">
+                        <div class="expand-btn-inner">
+                            <ul>
+
+                                <li>
+                                    <a class="hidden-xs rs-search" data-target=".search-modal" data-toggle="modal"
+                                        href="#">
+                                        <i class="flaticon-search"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <span>
+                                <a id="nav-expander" class="nav-expander">
+                                    <span class="dot1"></span>
+                                    <span class="dot2"></span>
+                                    <span class="dot3"></span>
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
