@@ -1504,5 +1504,6 @@ return [
     'blog_list'                                         =>  'Blog List',
     'news_list'                                         =>  'News List',
     'events_list'                                       =>  'Events List',
+    'all_photo_albums'                                  =>  'All photo albums',
 
 ];

@@ -390,7 +390,7 @@
                         <h3 class="title mb-0 header-album text-white">{{ __('panel.photo_album') }}</h3>
                         <div class="primary header-album-subtitle text-white">{{ __('panel.browse_albums') }}</div>
                         {{-- <h3 class="title mb-0">{{ __('panel.browse_albums') }}</h3> --}}
-                        <button class="btn album-btn">كل البومات الصور</button>
+                        <button class="btn album-btn">{{ __('panel.all_photo_albums') }}</button>
                     </div>
                 </div>
 
