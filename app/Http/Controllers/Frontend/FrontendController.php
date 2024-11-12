@@ -96,4 +96,20 @@ class FrontendController extends Controller
 
         return view('frontend.blog-single', compact('post', 'latest_posts', 'whatsappShareUrl'));
     }
+
+
+    // public function album($slug)
+    // {
+    //     $album = Album::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
+
+    //     return view('frontend.album', compact('album'));
+    // }
+
+    public function album()
+    {
+        // $album = Album::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
+
+        // return view('frontend.album', compact('album'));
+        return view('frontend.album');
+    }
 }

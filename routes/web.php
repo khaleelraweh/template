@@ -52,6 +52,10 @@ Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->
 Route::get('/news-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.news_single'); //section 2
 Route::get('/event-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.event_single'); //section 3
 
+// Route::get('/album/{album?}', [FrontendController::class, 'album'])->name('frontend.album'); 
+
+Route::get('/album', [FrontendController::class, 'album'])->name('frontend.album');
+
 
 Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
 
