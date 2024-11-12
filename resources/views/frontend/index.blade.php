@@ -421,8 +421,6 @@
                                     <a href="{{ route('frontend.album_single', $album->slug) }}">
                                         <h4 class="title">{{ $album->title }}</h4>
                                     </a>
-
-
                                 </div>
                             </div>
                         @endforeach
