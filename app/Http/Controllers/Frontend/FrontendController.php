@@ -97,6 +97,13 @@ class FrontendController extends Controller
         return view('frontend.blog-single', compact('post', 'latest_posts', 'whatsappShareUrl'));
     }
 
+    public function album_list()
+    {
+        $albums = Album::all();
+
+        return view('frontend.album-list', compact('albums'));
+    }
+
 
     public function album_single($slug)
     {

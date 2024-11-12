@@ -390,7 +390,8 @@
                         <h3 class="title mb-0 header-album text-white">{{ __('panel.photo_album') }}</h3>
                         <div class="primary header-album-subtitle text-white">{{ __('panel.browse_albums') }}</div>
                         {{-- <h3 class="title mb-0">{{ __('panel.browse_albums') }}</h3> --}}
-                        <button class="btn album-btn">{{ __('panel.all_photo_albums') }}</button>
+                        <a href="{{ route('frontend.album_list') }}"
+                            class="btn album-btn">{{ __('panel.all_photo_albums') }}</a>
                     </div>
                 </div>
 
@@ -417,7 +418,7 @@
                                 @endphp
                                 <img src="{{ $album_img }}" alt="">
                                 <div class="title-part">
-                                    <a href="{{ route('frontend.album-single', $album->slug) }}">
+                                    <a href="{{ route('frontend.album_single', $album->slug) }}">
                                         <h4 class="title">{{ $album->title }}</h4>
                                     </a>
 

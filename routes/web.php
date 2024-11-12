@@ -52,8 +52,8 @@ Route::get('/blog-single/{blog?}', [FrontendController::class, 'blog_single'])->
 Route::get('/news-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.news_single'); //section 2
 Route::get('/event-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.event_single'); //section 3
 
-Route::get('/album-list/{slug}', [FrontendController::class, 'album_list'])->name('frontend.album-list');
-Route::get('/album-single/{album?}', [FrontendController::class, 'album_single'])->name('frontend.album-single');
+Route::get('/album-list', [FrontendController::class, 'album_list'])->name('frontend.album_list');
+Route::get('/album-single/{album?}', [FrontendController::class, 'album_single'])->name('frontend.album_single');
 
 // Route::get('/album', [FrontendController::class, 'album'])->name('frontend.album');
 
