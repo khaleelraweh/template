@@ -325,7 +325,26 @@
                         <div
                             class="col-lg-3 col-md-6 {{ $loop->last ? '' : 'md-mb-30' }}  {{ !$loop->last && count($statistics) > 4 ? 'lg-mb-70' : ' ' }} ">
                             <div class="counter-item text-center">
-                                <img class="image" src="{{ asset('frontend/images/waleed/5.png') }}" alt="">
+
+                                {{-- <img class="image" src="{{ asset('frontend/images/waleed/5.png') }}" alt=""> --}}
+
+                                @php
+                                    if ($statistic->statistic_image != null) {
+                                        $statistic_img = asset('assets/statistics/' . $statistic->statistic_image);
+
+                                        if (
+                                            !file_exists(
+                                                public_path('assets/statistics/' . $statistic->statistic_image),
+                                            )
+                                        ) {
+                                            $statistic_img = asset('frontend/images/waleed/5.png');
+                                        }
+                                    } else {
+                                        $statistic_img = asset('frontend/images/waleed/5.png');
+                                    }
+                                @endphp
+                                <img src="{{ $statistic_img }}" alt="" class="image">
+
                                 <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
                                 <h4 class="title mb-0 ">{{ $statistic->title }}</h4>
                             </div>
@@ -406,10 +425,10 @@
                         @foreach ($albums as $album)
                             <div class="blog-item degree-wrap">
                                 @php
-                                    if ($album->album_profile != null) {
-                                        $album_img = asset('assets/albums/' . $album->album_profile);
+                                    if ($album->statistic_image != null) {
+                                        $album_img = asset('assets/albums/' . $album->statistic_image);
 
-                                        if (!file_exists(public_path('assets/albums/' . $album->album_profile))) {
+                                        if (!file_exists(public_path('assets/albums/' . $album->statistic_image))) {
                                             $album_img = asset('image/not_found/item_image_not_found.webp');
                                         }
                                     } else {
