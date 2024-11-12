@@ -122,13 +122,56 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                             {{-- <div class="logo-part pr-90"> --}}
                             <div class="logo-part ">
                                 <a class="dark-logo" href="{{ route('frontend.index') }}">
-                                    {{-- <img src="{{ asset('frontend/images/logo-dark.png') }}" alt=""> --}}
-                                    <img src="{{ $siteSettings['site_logo_large_dark']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_dark']->value) : asset('frontend/images/logo-dark.png') }}"
+                                    @php
+                                        if ($siteSettings['site_logo_large_dark']->value != null) {
+                                            $site_image_large_dark = asset(
+                                                'assets/site_settings/' . $siteSettings['site_logo_large_dark']->value,
+                                            );
+
+                                            if (
+                                                !file_exists(
+                                                    public_path(
+                                                        'assets/site_settings/' .
+                                                            $siteSettings['site_logo_large_dark']->value,
+                                                    ),
+                                                )
+                                            ) {
+                                                $site_image_large_dark = asset('frontend/images/logo-dark.png');
+                                            }
+                                        } else {
+                                            $site_image_large_dark = asset('frontend/images/logo-dark.png');
+                                        }
+                                    @endphp
+
+                                    <img src="{{ $site_image_large_dark }}"
                                         alt="{{ $siteSettings['site_name']->value }}">
+
                                 </a>
+
+
                                 <a class="light-logo" href="{{ route('frontend.index') }}">
-                                    {{-- <img src="{{ asset('frontend/images/logo.png') }}" alt=""> --}}
-                                    <img src="{{ $siteSettings['site_logo_large_light']->value ? asset('assets/site_settings/' . $siteSettings['site_logo_large_light']->value) : asset('frontend/images/logo.png') }}"
+                                    @php
+                                        if ($siteSettings['site_logo_large_light']->value != null) {
+                                            $site_logo_large_light = asset(
+                                                'assets/site_settings/' . $siteSettings['site_logo_large_light']->value,
+                                            );
+
+                                            if (
+                                                !file_exists(
+                                                    public_path(
+                                                        'assets/site_settings/' .
+                                                            $siteSettings['site_logo_large_light']->value,
+                                                    ),
+                                                )
+                                            ) {
+                                                $site_logo_large_light = asset('frontend/images/logo.png');
+                                            }
+                                        } else {
+                                            $site_logo_large_light = asset('frontend/images/logo.png');
+                                        }
+                                    @endphp
+
+                                    <img src="{{ $site_logo_large_light }}"
                                         alt="{{ $siteSettings['site_name']->value }}">
                                 </a>
                             </div>
