@@ -7,97 +7,12 @@
 
     @include('frontend.home.colleges-institutes')
 
-    <!-- start statistics -->
-    <div class=" main-home event-bg rs-statistics pt-100 pb-100 md-pt-70 md-pb-70 bg12">
-        {{-- <div class=" main-home event-bg rs-statistics pt-100 pb-100 md-pt-70 md-pb-70 bg2"> --}}
-        <div class="rs-counter style2-about">
-            <div class="container">
-                <div class="sec-title mb-40 md-mb-40 text-left">
-                    <h2 class="title mb-0 header-statistics">{{ __('panel.statistics_and_numbers') }}</h2>
-                </div>
-                <div class="row couter-area">
-                    @foreach ($statistics as $statistic)
-                        <div
-                            class="col-lg-3 col-md-6 {{ $loop->last ? '' : 'md-mb-30' }}  {{ !$loop->last && count($statistics) > 4 ? 'lg-mb-70' : ' ' }} ">
-                            <div class="counter-item text-center">
+    @include('frontend.home.statistics')
 
-                                <div class="statistic-image">
-                                    {{-- <img class="image" src="{{ asset('frontend/images/waleed/5.png') }}" alt=""> --}}
-                                    @php
-                                        if ($statistic->statistic_image != null) {
-                                            $statistic_img = asset('assets/statistics/' . $statistic->statistic_image);
-
-                                            if (
-                                                !file_exists(
-                                                    public_path('assets/statistics/' . $statistic->statistic_image),
-                                                )
-                                            ) {
-                                                $statistic_img = asset('frontend/images/waleed/5.png');
-                                            }
-                                        } else {
-                                            $statistic_img = asset('frontend/images/waleed/5.png');
-                                        }
-                                    @endphp
-                                    <img src="{{ $statistic_img }}" alt="" class="image">
-
-                                </div>
-                                <div class="statistic-content">
-                                    <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
-                                    <h4 class="title mb-0 ">{{ $statistic->title }}</h4>
-                                </div>
+    @include('frontend.home.playlists')
 
 
-                            </div>
-                        </div>
-                    @endforeach
 
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- end statistics -->
-
-    <!-- Videos Section Start -->
-    <div id="rs-blog" class=" rs-faq-part rs-college-videos style1 main-home pb-80 pt-80 md-pt-60 md-pb-60">
-        <div class="container">
-            <div class="sec-title mb-60 md-mb-30 text-left">
-                <h2 class="title mb-0 header_playlist">{{ __('panel.newest_video') }}</h2>
-            </div>
-            <div class="rs-carousel owl-carousel" data-loop="true" data-items="3" data-margin="30" data-autoplay="true"
-                data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false"
-                data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1"
-                data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="2"
-                data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="1"
-                data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="4" data-md-device-nav="false"
-                data-md-device-dots="false">
-                @foreach ($playlists as $playlist)
-                    <div class="blog-item">
-                        @php
-                            if ($playlist->photos->first() != null && $playlist->photos->first()->file_name != null) {
-                                $playlist_img = asset('assets/playlists/' . $playlist->photos->first()->file_name);
-
-                                if (
-                                    !file_exists(
-                                        public_path('assets/playlists/' . $playlist->photos->first()->file_name),
-                                    )
-                                ) {
-                                    $playlist_img = asset('frontend/images/faq/1.jpg');
-                                }
-                            } else {
-                                $playlist_img = asset('frontend/images/faq/1.jpg');
-                            }
-                        @endphp
-                        <div class="img-part media-icon orange-color" style="background-image: url({{ $playlist_img }})">
-                            <a class="popup-videos" href="{{ $playlist->videoLinks()->first()->link ?? '' }}">
-                                <i class="fa fa-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- Videos Section End -->
 
     <!-- college album Start  -->
     <div class="rs-degree rs-college-album style1 modify gray-bg pt-100 pb-100 md-pt-70 md-pb-70">
