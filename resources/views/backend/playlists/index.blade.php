@@ -84,7 +84,7 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="https://teqni.era-t.com/playlists/{{ $playlist->slug }}"
+                                        data-copy-text="https://ibbuniv.era-t.com/playlists/{{ $playlist->slug }}"
                                         title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>

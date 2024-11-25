@@ -90,7 +90,7 @@
                                         </a>
 
                                         <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                            data-copy-text="https://teqni.era-t.com/blog-single/{{ $new->slug }}"
+                                            data-copy-text="https://ibbuniv.era-t.com/blog-single/{{ $new->slug }}"
                                             title="Copy the link">
                                             <i class="far fa-copy"></i>
                                         </a>
