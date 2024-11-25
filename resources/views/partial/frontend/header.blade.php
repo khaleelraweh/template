@@ -305,10 +305,37 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
             </div>
             <div class="canvas-contact">
                 <ul class="social">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    @if ($siteSettings['site_facebook']->value)
+                        <li>
+                            <a href="{{ $siteSettings['site_facebook']->value }}" target="_blank">
+                                <span><i class="fa fa-facebook"></i></span>
+                            </a>
+                        </li>
+                    @endif
+                    @if ($siteSettings['site_twitter']->value)
+                        <li>
+                            <a href="{{ $siteSettings['site_twitter']->value }}" target="_blank">
+                                <span><i class="fa fa-twitter"></i></span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if ($siteSettings['site_youtube']->value)
+                        <li>
+                            <a href="{{ $siteSettings['site_youtube']->value }}" target="_blank">
+                                <span><i class="fa fa-youtube "></i></span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if ($siteSettings['site_instagram']->value)
+                        <li>
+                            <a href="{{ $siteSettings['site_instagram']->value }}" target="_blank">
+                                <span><i class="fa fa-instagram "></i></span>
+                            </a>
+                        </li>
+                    @endif
+
                 </ul>
             </div>
         </nav>
