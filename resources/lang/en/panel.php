@@ -1485,7 +1485,7 @@ return [
     'recent_posts'                                      =>  'Recent Posts',
     'recent_news'                                       =>  'Recent News',
     'recent_events'                                     =>  'Recent Events',
-
+    'applications_and_social_media'                     =>  'Applications and social media',
     'all_rights_reserved'                               =>  'All Rights Reserved',
     'statistics_and_numbers'                            =>  'Statistics and Numbers',
     'admin'                                             =>  'Admin',

@@ -1444,6 +1444,8 @@ return [
     'recent_posts'                                      =>  'المقالات الحديثة',
     'recent_news'                                       =>  'الأخبار الحديثة',
     'recent_events'                                     =>  'الفعاليات الحديثة',
+    'applications_and_social_media'                     =>  'التطبيقات و وسائل التواصل',
+
 
     'all_rights_reserved'                               =>  'جميع الحقوق محفوظة',
     'statistics_and_numbers'                            =>  'احصائيات وارقام',
