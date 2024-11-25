@@ -277,8 +277,18 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                 @if ($site_album->photos()->count() > 0)
                     @foreach ($site_album->photos as $media)
                         <div class="gallery-img">
-                            <a class="image-popup" href="{{ asset('assets/site_settings/' . $media->file_name) }}">
+                            {{-- <a class="image-popup" href="{{ asset('assets/site_settings/' . $media->file_name) }}">
                                 <img src="{{ asset('assets/site_settings/' . $media->file_name) }}"
+                                    alt="{{ $media->file_name }}">
+                            </a> --}}
+                            @php
+                                $imagePath = public_path('assets/site_settings/' . $media->file_name);
+                            @endphp
+
+                            <a class="image-popup"
+                                href="{{ File::exists($imagePath) ? asset('assets/site_settings/' . $media->file_name) : asset('image/not_found/placeholder.jpg') }}">
+                                <img style="width: 7.27em;height:4.8em"
+                                    src="{{ File::exists($imagePath) ? asset('assets/site_settings/' . $media->file_name) : asset('image/not_found/placeholder.jpg') }}"
                                     alt="{{ $media->file_name }}">
                             </a>
                         </div>
