@@ -264,15 +264,37 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
             </div>
             <div class="offcanvas-text">
                 <p>
-                    {{ $siteSettings['site_description']->value ?? '' }}
+                    {!! $siteSettings['site_description']->value ?? '' !!}
                 </p>
             </div>
             <div class="offcanvas-gallery">
-                <div class="gallery-img">
-                    <a class="image-popup" href="{{ asset('frontend/images/gallery/1.jpg') }}"><img
-                            src="{{ asset('frontend/images/gallery/1.jpg') }}" alt=""></a>
-                </div>
-                <div class="gallery-img">
+
+                @php
+                    use App\Models\SiteSetting;
+                    $site_album = SiteSetting::where('key', 'site_name')->get()->first();
+                @endphp
+
+                @if ($site_album->photos()->count() > 0)
+                    @foreach ($site_album->photos as $media)
+                        <div class="gallery-img">
+                            <a class="image-popup" href="{{ asset('assets/site_settings/' . $media->file_name) }}">
+                                <img src="{{ asset('assets/site_settings/' . $media->file_name) }}"
+                                    alt="{{ $media->file_name }}">
+                            </a>
+                        </div>
+                    @endforeach
+                @endif
+
+
+
+
+
+
+                {{-- <a class="image-popup" href="{{ asset('frontend/images/gallery/1.jpg') }}">
+                            <img src="{{ asset('frontend/images/gallery/1.jpg') }}" alt="">
+                        </a> --}}
+
+                {{-- <div class="gallery-img">
                     <a class="image-popup" href="{{ asset('frontend/images/gallery/2.jpg') }}"><img
                             src="{{ asset('frontend/images/gallery/2.jpg') }}" alt=""></a>
                 </div>
@@ -291,7 +313,7 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                 <div class="gallery-img">
                     <a class="image-popup" href="{{ asset('frontend/images/gallery/6.jpg') }}"><img
                             src="{{ asset('frontend/images/gallery/6.jpg') }}" alt=""></a>
-                </div>
+                </div> --}}
             </div>
             <div class="map-img">
                 <img src="{{ asset('frontend/images/map.jpg') }}" alt="">
