@@ -38,10 +38,10 @@
                                 $page_img = asset('assets/pages/' . $page->photos->last()->file_name);
 
                                 if (!file_exists(public_path('assets/pages/' . $page->photos->last()->file_name))) {
-                                    $page_img = asset('image/not_found/item_image_not_found.webp');
+                                    $page_img = asset('image/not_found/placeholder.jpg');
                                 }
                             } else {
-                                $page_img = asset('image/not_found/item_image_not_found.webp');
+                                $page_img = asset('image/not_found/placeholder.jpg');
                             }
                         @endphp
 

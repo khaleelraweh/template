@@ -81,7 +81,7 @@
                 <div class="blog-deatails">
                     <div class="bs-img">
                         @php
-                            $defaultImg = asset('image/not_found/item_image_not_found.webp');
+                            $defaultImg = asset('image/not_found/placeholder.jpg');
                             $post_img = $defaultImg; // Set a default image
 
                             switch (true) {

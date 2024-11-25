@@ -79,10 +79,10 @@
                                                     ),
                                                 )
                                             ) {
-                                                $slider_img = asset('image/not_found/item_image_not_found.webp');
+                                                $slider_img = asset('image/not_found/placeholder.jpg');
                                             }
                                         } else {
-                                            $slider_img = asset('image/not_found/item_image_not_found.webp');
+                                            $slider_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     @endphp
 

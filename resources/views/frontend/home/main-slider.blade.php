@@ -73,11 +73,11 @@
                                                 ),
                                             )
                                         ) {
-                                            // $advertisor_slider_img = asset('image/not_found/item_image_not_found.webp');
+                                            // $advertisor_slider_img = asset('image/not_found/placeholder.jpg');
                                             $advertisor_slider_img = asset('frontend/images/features/icon/3.png');
                                         }
                                     } else {
-                                        // $advertisor_slider_img = asset('image/not_found/item_image_not_found.webp');
+                                        // $advertisor_slider_img = asset('image/not_found/placeholder.jpg');
                                         $advertisor_slider_img = asset('frontend/images/features/icon/3.png');
                                     }
                                 @endphp

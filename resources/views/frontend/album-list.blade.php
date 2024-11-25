@@ -44,10 +44,10 @@
                                         $album_img = asset('assets/albums/' . $album->album_profile);
 
                                         if (!file_exists(public_path('assets/albums/' . $album->album_profile))) {
-                                            $album_img = asset('image/not_found/item_image_not_found.webp');
+                                            $album_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     } else {
-                                        $album_img = asset('image/not_found/item_image_not_found.webp');
+                                        $album_img = asset('image/not_found/placeholder.jpg');
                                     }
                                 @endphp
                                 <img src="{{ $album_img }}" alt="">
