@@ -263,8 +263,9 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                         alt="logo"></a>
             </div>
             <div class="offcanvas-text">
-                <p>We denounce with righteous indige nationality and dislike men who are so beguiled and demo by the
-                    charms of pleasure of the moment data com so blinded by desire.</p>
+                <p>
+                    {{ $siteSettings['site_description']->value ?? '' }}
+                </p>
             </div>
             <div class="offcanvas-gallery">
                 <div class="gallery-img">
