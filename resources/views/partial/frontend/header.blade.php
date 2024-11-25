@@ -296,7 +296,12 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                 @endif
             </div>
             <div class="map-img">
-                <img src="{{ asset('frontend/images/map.jpg') }}" alt="">
+                {{-- <img src="{{ asset('frontend/images/map.jpg') }}" alt=""> --}}
+                <iframe
+                    src="https://maps.google.com/maps?q=Ibb%20University,%20Yemen&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0" style="border:0;width:25.5em; height:13.5em" allowfullscreen=""
+                    aria-hidden="false" tabindex="0">
+                </iframe>
             </div>
             <div class="canvas-contact">
                 <ul class="social">
