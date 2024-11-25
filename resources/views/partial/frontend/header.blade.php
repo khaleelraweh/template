@@ -294,36 +294,6 @@ $domain = preg_replace('/^www\./', '', $parsedUrl);
                         </div>
                     @endforeach
                 @endif
-
-
-
-
-
-
-                {{-- <a class="image-popup" href="{{ asset('frontend/images/gallery/1.jpg') }}">
-                            <img src="{{ asset('frontend/images/gallery/1.jpg') }}" alt="">
-                        </a> --}}
-
-                {{-- <div class="gallery-img">
-                    <a class="image-popup" href="{{ asset('frontend/images/gallery/2.jpg') }}"><img
-                            src="{{ asset('frontend/images/gallery/2.jpg') }}" alt=""></a>
-                </div>
-                <div class="gallery-img">
-                    <a class="image-popup" href="{{ asset('frontend/images/gallery/3.jpg') }}"><img
-                            src="{{ asset('frontend/images/gallery/3.jpg') }}" alt=""></a>
-                </div>
-                <div class="gallery-img">
-                    <a class="image-popup" href="{{ asset('frontend/images/gallery/4.jpg') }}"><img
-                            src="{{ asset('frontend/images/gallery/4.jpg') }}" alt=""></a>
-                </div>
-                <div class="gallery-img">
-                    <a class="image-popup" href="{{ asset('frontend/images/gallery/5.jpg') }}"><img
-                            src="{{ asset('frontend/images/gallery/5.jpg') }}" alt=""></a>
-                </div>
-                <div class="gallery-img">
-                    <a class="image-popup" href="{{ asset('frontend/images/gallery/6.jpg') }}"><img
-                            src="{{ asset('frontend/images/gallery/6.jpg') }}" alt=""></a>
-                </div> --}}
             </div>
             <div class="map-img">
                 <img src="{{ asset('frontend/images/map.jpg') }}" alt="">
