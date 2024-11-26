@@ -34,7 +34,8 @@
     <!-- endinject -->
 
     <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{ asset('backend/vendors/flatpickr/flatpickr.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('backend/vendors/flatpickr/flatpickr.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('backend/vendors/flatpickr/flatpickr' . $rtl . '.min.css') }}">
     <!-- End plugin css for this page -->
 
     <!-- inject:css -->
