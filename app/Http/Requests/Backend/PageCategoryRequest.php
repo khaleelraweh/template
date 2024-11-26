@@ -26,8 +26,8 @@ class PageCategoryRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'                   =>  'required|max:255',
-                        'content.*'                 =>  'nullable',
+                        'title.ar'                   =>  'required|max:255',
+                        'content.ar'                 =>  'nullable',
                         'metadata_title.*'          =>  'nullable',
                         'metadata_description.*'    =>  'nullable',
                         'metadata_keywords.*'       =>  'nullable',
@@ -46,8 +46,8 @@ class PageCategoryRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'                   =>   'required|max:255',
-                        'content.*'                 =>   'nullable',
+                        'title.ar'                   =>   'required|max:255',
+                        'content.ar'                 =>   'nullable',
                         'metadata_title.*'          =>  'nullable',
                         'metadata_description.*'    =>  'nullable',
                         'metadata_keywords.*'       =>  'nullable',
