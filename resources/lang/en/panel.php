@@ -310,6 +310,11 @@ return [
     'yes_delete'                                    =>  'Yes,Delete',
     'page_category_can_not_be_deleted'              =>  'Page Category can not be deleted',
     'page_category_have_pages_you_must_delete_pages_before' =>  'Page category have pages , You must delete pages before',
+    'operation_options'                                       =>  'Options',
+    'operation_edit'                                          =>  'Edit',
+    'operation_delete'                                        =>  'Delete',
+    'operation_copy_link'                                     =>  'Copy Link',
+
 
 
     ########################### Manage Albums  ##################################
