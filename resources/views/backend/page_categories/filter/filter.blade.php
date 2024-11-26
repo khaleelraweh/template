@@ -78,7 +78,10 @@
             </div>
             <div class="col-2 col-sm-2 col-md-1">
                 <div class="form-group">
-                    <button type="submit" name="submit" class="btn btn-link">{{ __('panel.search') }}</button>
+                    <button type="submit" name="submit" class="btn   btn-outline-primary">
+                        <i class="fa fa-search fa-sm"></i>
+                        {{ __('panel.search') }}
+                    </button>
                 </div>
             </div>
         </div>
