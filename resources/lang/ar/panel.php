@@ -308,7 +308,7 @@ return [
     'metadata_title'                                =>  'عنوان صفحة تعريفية ( Page Title)',
     'metadata_description'                          =>  'وصف صفحة تعريفية (Page Description)',
     'metadata_keywords'                             =>  'وصف الكلمات التعريفية (Page Keywords)',
-    'cancel'                                        =>  'إلغاء الامر',
+    'cancel'                                        =>  'إلغاء',
     'ok'                                            =>  'نعم',
     'yes_delete'                                    =>  'نعم،قم بالحذف',
     'page_category_can_not_be_deleted'              =>  'لا يمكن حذف هذالتصنيف حاليا',
