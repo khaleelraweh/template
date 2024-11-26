@@ -74,7 +74,7 @@
                                 </span>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $page_category->created_at->format('Y/m/d') }}
+                                {{ \Carbon\Carbon::parse($page_category->created_at)->diffForHumans() }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
