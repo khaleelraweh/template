@@ -148,6 +148,9 @@
                                         <i data-feather="calendar"></i>
                                     </span>
                                 </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
