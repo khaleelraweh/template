@@ -23,3 +23,6 @@
 .sidebar .sidebar-body .nav .nav-item.active .nav-link::before {
     right: -15px;
 }
+.sidebar .sidebar-body .nav.sub-menu .nav-item .nav-link{
+    height: 2.4em;
+}
