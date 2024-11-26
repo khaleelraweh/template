@@ -73,15 +73,15 @@
                                     <a href="javascript:void(0);" class="updatePageCategoryStatus btn"
                                         id="page-category-{{ $page_category->id }}"
                                         page_category_id="{{ $page_category->id }}">
-                                        <i class="fas fa-toggle-on fa-lg text-primary" aria-hidden="true"
-                                            status="Active"></i>
+                                        <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true" status="Active"
+                                            style="font-size: 1.6em"></i>
                                     </a>
                                 @else
                                     <a href="javascript:void(0);" class="updatePageCategoryStatus btn  "
                                         id="page-category-{{ $page_category->id }}"
                                         page_category_id="{{ $page_category->id }}">
-                                        <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
-                                            status="Inactive"></i>
+                                        <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true" status="Inactive"
+                                            style="font-size: 1.6em"></i>
                                     </a>
                                 @endif
                                 {{-- <span class="btn btn-round rounded-pill btn-success btn-xs ">
@@ -144,7 +144,8 @@
                                                 <i data-feather="copy" class="icon-sm me-2"></i>
                                                 <span class="">{{ __('panel.operation_copy_link') }}</span>
                                             </a>
-                                            <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+                                            <span class="copyMessage"
+                                                style="display:none;">{{ __('panel.copied') }}</span>
                                         </div>
                                     </div>
                                 </div>
