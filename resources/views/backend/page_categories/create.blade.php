@@ -327,16 +327,20 @@
             'use strict';
 
             const locale = "{{ app()->getLocale() }}";
+
             // datetime picker
             if ($('#flatpickr-datetime').length) {
+                const defaultDate = "{{ old('published_on') }}" ?
+                    "{{ old('published_on') }}" :
+                    new Date(); // Set to now if no old date exists
+
                 flatpickr("#flatpickr-datetime", {
                     enableTime: true,
                     wrap: true,
                     dateFormat: "Y/m/d h:i K",
                     minDate: "today", // Prevent dates before today
                     locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
-                    defaultDate: {{ old('published_on') }} ??
-                new Date(), // Set default date and time to now
+                    defaultDate: defaultDate,
                 });
             }
         });
