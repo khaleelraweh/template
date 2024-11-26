@@ -1,7 +1,7 @@
 <div class="card-body">
     <form action="{{ route('admin.page_categories.index') }}" method="get">
         <div class="row">
-            <div class="col-8 col-sm-7 col-md-4">
+            <div class="col-md-3 col-lg-3 col-8 col-sm-7 ">
                 <div class="form-group">
                     <input type="text" name="keyword" value="{{ old('keyword', request()->input('keyword')) }}"
                         class="form-control" placeholder="{{ __('panel.keyword') }}">
@@ -20,7 +20,7 @@
                     </select>
                 </div>
             </div>
-            <div class="d-none d-sm-block col-sm-2 col-md-2">
+            <div class="col-md-2 d-none d-sm-block col-sm-2 ">
                 <div class="form-group">
                     <select name="sort_by" class="form-control">
                         {{-- <option value="">---</option> --}}
@@ -44,7 +44,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-md-1 d-none d-md-block">
+            <div class="col-md-2 d-none d-md-block">
                 <div class="form-group">
                     <select name="order_by" class="form-control">
                         {{-- <option value="">---</option> --}}
@@ -76,11 +76,12 @@
             </div>
             {{-- <div class="col-1 d-none d-lg-block col-sm-1 col-md-1 ">
             </div> --}}
-            <div class="col-4 col-sm-3 col-md-2">
+            <div class="col-md-2 col-lg-2 col-4 col-sm-3 d-flex justify-content-end">
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn   btn-outline-primary">
                         <i class="fa fa-search "></i>
                         {{ __('panel.search') }}
+
                     </button>
                 </div>
             </div>
