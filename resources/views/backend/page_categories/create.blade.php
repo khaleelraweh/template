@@ -13,7 +13,7 @@
                     <i class="fa fa-plus-square"></i>
                     {{ __('panel.add_new_page_category') }}
                 </h3>
-                <ul class="breadcrumb pt-2">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
@@ -239,13 +239,15 @@
                         <div class="col-sm-12 col-md 10 pt-3">
 
                             <button type="submit" name="submit" class="btn btn-primary">
+                                <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
                                 {{ __('panel.save_data') }}
                             </button>
 
-                            <button type="submit" name="submit" class=" btn btn-outline-danger">
+                            <a href="{{ route('admin.page_categories.index') }}" name="submit"
+                                class=" btn btn-outline-danger">
                                 <i class="icon-lg  me-2" data-feather="x"></i>
                                 {{ __('panel.cancel') }}
-                            </button>
+                            </a>
 
                         </div>
                     </div>
