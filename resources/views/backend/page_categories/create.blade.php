@@ -1,61 +1,6 @@
 @extends('layouts.admin')
 
-@section('style')
-    <style>
-        ul,
-        #myUL {
-            list-style-type: none;
-        }
 
-        #myUL {
-            margin: 0;
-            padding: 0;
-        }
-
-        .caret {
-            cursor: pointer;
-            -webkit-user-select: none;
-            /* Safari 3.1+ */
-            -moz-user-select: none;
-            /* Firefox 2+ */
-            -ms-user-select: none;
-            /* IE 10+ */
-            user-select: none;
-        }
-
-        .caret::before {
-            content: "\25B6";
-            color: black;
-            display: inline-block;
-            margin-right: 6px;
-        }
-
-        .caret-down::before {
-            -ms-transform: rotate(90deg);
-            /* IE 9 */
-            -webkit-transform: rotate(90deg);
-            /* Safari */
-            '
-     transform: rotate(90deg);
-        }
-
-        .nested {
-            display: none;
-        }
-
-        .active {
-            display: block;
-        }
-
-        .language-type {
-            display: inline-block;
-            background-color: #f8f9fa;
-            color: black;
-            padding: 5px 7px;
-            border-radius: 5px;
-        }
-    </style>
-@endsection
 
 @section('content')
     {{-- main holder page  --}}
@@ -319,38 +264,6 @@
                 showUpload: false,
                 overwriteInitial: false
             });
-
-        });
-    </script>
-
-    <script>
-        var toggler = document.getElementsByClassName("caret");
-        var i;
-
-        for (i = 0; i < toggler.length; i++) {
-            toggler[i].addEventListener("click", function() {
-                this.parentElement.querySelector(".nested").classList.toggle("active");
-                this.classList.toggle("caret-down");
-            });
-        }
-    </script>
-
-    <script>
-        $(function() {
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 150,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
 
         });
     </script>
