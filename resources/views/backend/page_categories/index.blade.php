@@ -80,51 +80,56 @@
                                 <div class="btn-group btn-group-sm">
 
 
-                                    @if ($page_category->pages->count() > 0)
-                                        <div class="dropdown mb-2 ">
-                                            <a type="button" class="d-flex" id="dropdownMenuButton"
-                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
-                                                خيارات
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
-                                                    viewBox="0 0 25 15" fill="none" stroke="currentColor"
-                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                    class="feather feather-chevron-down link-arrow">
-                                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                                </svg>
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a class="dropdown-item d-flex align-items-center"
-                                                    href="{{ route('admin.page_categories.edit', $page_category->id) }}"><i
-                                                        data-feather="edit-2" class="icon-sm me-2"></i> <span
-                                                        class="">Edit</span></a>
-                                                <a class="dropdown-item d-flex align-items-center" href="javascript:;"
-                                                    onclick="showPageCagegoryAlert()"><i data-feather="trash"
-                                                        class="icon-sm me-2"></i> <span class="">Delete</span></a>
-
-                                                <a href="javascript:void(0);"
-                                                    class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                    data-copy-text="https://ibbuniv.era-t.com/page_categories/{{ $page_category->slug }}"
-                                                    title="Copy the link">
-                                                    <i data-feather="copy" class="icon-sm me-2"></i>
-                                                    <span class="">Copy</span>
-                                                </a>
-                                                <span class="copyMessage"
-                                                    style="display:none;">{{ __('panel.copied') }}</span>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <a href="javascript:void(0);" onclick="confirmDelete({{ $page_category->id }})"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
+                                    <div class="dropdown mb-2 ">
+                                        <a type="button" class="d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                            خيارات
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                viewBox="0 0 25 15" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-chevron-down link-arrow">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
                                         </a>
-                                        <form action="{{ route('admin.page_categories.destroy', $page_category->id) }}"
-                                            method="post" class="d-none"
-                                            id="delete-page-category-{{ $page_category->id }}">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
-                                    @endif
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item d-flex align-items-center"
+                                                href="{{ route('admin.page_categories.edit', $page_category->id) }}"><i
+                                                    data-feather="edit-2" class="icon-sm me-2"></i> <span
+                                                    class="">Edit</span></a>
+
+                                            @if ($page_category->pages->count() > 0)
+                                                <a class="dropdown-item d-flex align-items-center" href="javascript:;"
+                                                    onclick="showPageCagegoryAlert()">
+                                                    <i data-feather="trash" class="icon-sm me-2"></i>
+                                                    <span class="">Delete</span>
+                                                </a>
+                                            @else
+                                                <a href="javascript:void(0);"
+                                                    onclick="confirmDelete({{ $page_category->id }})"
+                                                    class="dropdown-item d-flex align-items-center">
+                                                    <i data-feather="trash" class="icon-sm me-2"></i>
+                                                    <span class="">Delete</span>
+                                                </a>
+                                                <form
+                                                    action="{{ route('admin.page_categories.destroy', $page_category->id) }}"
+                                                    method="post" class="d-none"
+                                                    id="delete-page-category-{{ $page_category->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            @endif
+
+                                            <a href="javascript:void(0);"
+                                                class="dropdown-item d-flex align-items-center btn btn-success copyButton"
+                                                data-copy-text="https://ibbuniv.era-t.com/page_categories/{{ $page_category->slug }}"
+                                                title="Copy the link">
+                                                <i data-feather="copy" class="icon-sm me-2"></i>
+                                                <span class="">Copy</span>
+                                            </a>
+                                            <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+                                        </div>
+                                    </div>
                                 </div>
 
                             </td>
