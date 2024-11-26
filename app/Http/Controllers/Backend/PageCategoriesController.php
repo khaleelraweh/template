@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 use Illuminate\Support\Facades\File;
+use Carbon\Carbon;
 
 
 
@@ -49,10 +50,8 @@ class PageCategoriesController extends Controller
             return redirect('admin/index');
         }
 
-
         $input['title'] = $request->title;
         $input['content'] = $request->content;
-
 
         // $input['metadata_title'] = $request->metadata_title ?: $request->title;
 
@@ -61,7 +60,6 @@ class PageCategoriesController extends Controller
             $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
                 ?: $request->title[$localeKey] ?? null;
         }
-
 
         // $input['metadata_description'] = $request->metadata_description ?? $request->content;
 
@@ -83,11 +81,16 @@ class PageCategoriesController extends Controller
             $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
                 ?: $limitedContent ?: null;
         }
-
         $input['metadata_keywords'] = $request->metadata_keywords;
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $end_date = str_replace(['ص', 'م'], ['AM', 'PM'], $request->end_date);
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on']            = $publishedOn;
+
 
         $page_category = PageCategory::create($input);
 
@@ -182,6 +185,12 @@ class PageCategoriesController extends Controller
 
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+
+        $input['published_on']            = $publishedOn;
 
         $page_category->update($input);
 

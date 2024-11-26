@@ -1,3 +1,4 @@
+<?php use Carbon\Carbon; ?>
 @extends('layouts.admin')
 
 @section('style')
@@ -169,6 +170,22 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                        data-input
+                                        value="{{ old('published_on', Carbon::parse($page_category->published_on)->format('Y/m/d h:i A')) }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
@@ -319,32 +336,6 @@
             }).on('filesorted', function(event, params) {
                 console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
-        });
-        $(function() {
-
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
-
         });
     </script>
 @endsection
