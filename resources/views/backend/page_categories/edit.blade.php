@@ -149,6 +149,22 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                        data-input
+                                        value="{{ old('published_on', Carbon::parse($page_category->published_on)->format('Y/m/d h:i A')) }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status" class="control-label">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
@@ -168,21 +184,34 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                {{ __('panel.published_on') }}
+                                <label for="status" class="control-label">
+                                    <span>{{ __('panel.status') }}</span>
+                                </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
-                                        data-input
-                                        value="{{ old('published_on', Carbon::parse($page_category->published_on)->format('Y/m/d h:i A')) }}">
-                                    <span class="input-group-text input-group-addon" data-toggle>
-                                        <i data-feather="calendar"></i>
-                                    </span>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1"
+                                        {{ old('status', $page_category->status) == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
+                                        {{ __('panel.status_active') }}
+                                    </label>
                                 </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0"
+                                        {{ old('status', $page_category->status) == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
+                                        {{ __('panel.status_inactive') }}
+                                    </label>
+                                </div>
+                                @error('status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 

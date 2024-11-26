@@ -136,6 +136,21 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                        data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
                         {{-- <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status" class="control-label">
@@ -181,23 +196,6 @@
                                 @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                            </div>
-                        </div>
-
-
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                {{ __('panel.published_on') }}
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="published_on" class="form-control"
-                                        placeholder="Select date" data-input>
-                                    <span class="input-group-text input-group-addon" data-toggle>
-                                        <i data-feather="calendar"></i>
-                                    </span>
-                                </div>
                             </div>
                         </div>
                     </div>
