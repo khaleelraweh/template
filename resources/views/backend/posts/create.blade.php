@@ -2,10 +2,6 @@
 
 @section('style')
     <style>
-        .select2-container {
-            display: block !important;
-        }
-
         .language-type {
             display: inline-block;
             background-color: #f8f9fa;
