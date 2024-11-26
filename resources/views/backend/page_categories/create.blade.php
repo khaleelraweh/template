@@ -142,8 +142,8 @@
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
-                                        data-input>
+                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                        class="form-control" placeholder="Select date" data-input>
                                     <span class="input-group-text input-group-addon" data-toggle>
                                         <i data-feather="calendar"></i>
                                     </span>
@@ -319,6 +319,26 @@
                 overwriteInitial: false
             });
 
+        });
+    </script>
+
+    <script>
+        $(function() {
+            'use strict';
+
+            const locale = "{{ app()->getLocale() }}";
+            // datetime picker
+            if ($('#flatpickr-datetime').length) {
+                flatpickr("#flatpickr-datetime", {
+                    enableTime: true,
+                    wrap: true,
+                    dateFormat: "Y/m/d h:i K",
+                    minDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: {{ old('published_on') }} ??
+                new Date(), // Set default date and time to now
+                });
+            }
         });
     </script>
 @endsection
