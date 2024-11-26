@@ -305,6 +305,11 @@ return [
     'metadata_title'                                =>  'Introduction page title ( Page Title)',
     'metadata_description'                          =>  'Introduction page  Description (Page Description)',
     'metadata_keywords'                             =>  'Introduction page Keywords (Page Keywords)',
+    'cancel'                                        =>  'Cancel',
+    'ok'                                            =>  'Ok',
+    'yes_delete'                                    =>  'Yes,Delete',
+    'page_category_can_not_be_deleted'              =>  'Page Category can not be deleted',
+    'page_category_have_pages_you_must_delete_pages_before' =>  'Page category have pages , You must delete pages before',
 
 
     ########################### Manage Albums  ##################################
@@ -1505,5 +1510,7 @@ return [
     'news_list'                                         =>  'News List',
     'events_list'                                       =>  'Events List',
     'all_photo_albums'                                  =>  'All photo albums',
+
+
 
 ];
