@@ -24,7 +24,7 @@
                     <i class="fa fa-edit"></i>
                     {{ __('panel.edit_existing_page_category') }}
                 </h3>
-                <ul class="breadcrumb pt-2">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
@@ -250,12 +250,20 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group pt-3">
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    {{ __('panel.update_data') }}
-                                </button>
-                            </div>
+                        <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
+                        </div>
+                        <div class="col-sm-12 col-md 10 pt-3">
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
+                                {{ __('panel.update_data') }}
+                            </button>
+
+                            <a href="{{ route('admin.page_categories.index') }}" name="submit"
+                                class=" btn btn-outline-danger">
+                                <i class="icon-lg  me-2" data-feather="x"></i>
+                                {{ __('panel.cancel') }}
+                            </a>
+
                         </div>
                     </div>
 
@@ -313,19 +321,6 @@
             });
         });
         $(function() {
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 200,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
 
             $('#published_on').pickadate({
                 format: 'yyyy-mm-dd',
