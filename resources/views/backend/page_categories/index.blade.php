@@ -10,7 +10,7 @@
                     <i class="fa fa-folder"></i>
                     {{ __('panel.manage_page_categories') }}
                 </h3>
-                <ul class="breadcrumb pt-2">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
