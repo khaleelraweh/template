@@ -82,4 +82,9 @@ class PageCategory extends Model
     {
         return $this->MorphOne(Photo::class, 'imageable')->orderBy('file_sort', 'desc');
     }
+
+    public function pages()
+    {
+        return $this->hasMany(Page::class);
+    }
 }

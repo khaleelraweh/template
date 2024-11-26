@@ -91,18 +91,25 @@
                                     </a>
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
-                                    <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page_category->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the page_category">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
+                                    @if ($page_category->pages->count() > 0)
+                                        <a href="javascript:void(0);" onclick="showPageCagegoryAlert()"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" onclick="confirmDelete({{ $page_category->id }})"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                        <form action="{{ route('admin.page_categories.destroy', $page_category->id) }}"
+                                            method="post" class="d-none"
+                                            id="delete-page-category-{{ $page_category->id }}">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    @endif
                                 </div>
-                                <form action="{{ route('admin.page_categories.destroy', $page_category->id) }}"
-                                    method="post" class="d-none" id="delete-product-category-{{ $page_category->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
+
                             </td>
                         </tr>
                     @empty
@@ -122,6 +129,38 @@
 
 @endsection
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        function showPageCagegoryAlert() {
+            Swal.fire({
+                icon: 'warning',
+                title: '{{ __('panel.page_category_can_not_be_deleted') }}',
+                text: '{{ __('panel.page_category_have_pages_you_must_delete_pages_before') }}',
+                confirmButtonText: '{{ __('panel.ok') }}',
+            });
+        }
+
+
+
+        function confirmDelete($page_category_id) {
+            Swal.fire({
+                title: '{{ __('panel.confirm_delete_message') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '{{ __('panel.yes_delete') }}',
+                cancelButtonText: '{{ __('panel.cancel') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-page-category-' + $page_category_id).submit();
+                }
+            });
+        }
+    </script>
+
     <style>
         .copyButton {
             position: relative;
