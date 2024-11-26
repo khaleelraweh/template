@@ -25,6 +25,7 @@ class PageCategory extends Model
     protected $searchable = [
         'columns' => [
             'page_categories.title' => 10,
+            'page_categories.content' => 10,
         ]
     ];
 
