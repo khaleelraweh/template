@@ -69,9 +69,25 @@
                                 {{ $page_category->created_by }}
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                <span class="btn btn-round rounded-pill btn-success btn-xs ">
+                                @if ($page_category->status == 1)
+                                    <a href="javascript:void(0);" class="updatePageCategoryStatus btn"
+                                        id="page-category-{{ $page_category->id }}"
+                                        page_category_id="{{ $page_category->id }}">
+                                        <i class="fas fa-toggle-on fa-lg text-primary" aria-hidden="true"
+                                            status="Active"></i>
+                                    </a>
+                                @else
+                                    <a href="javascript:void(0);" class="updatePageCategoryStatus btn  "
+                                        id="page-category-{{ $page_category->id }}"
+                                        page_category_id="{{ $page_category->id }}">
+                                        <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                            status="Inactive"></i>
+                                    </a>
+                                @endif
+                                {{-- <span class="btn btn-round rounded-pill btn-success btn-xs ">
                                     {{ $page_category->status() }}
-                                </span>
+
+                                </span> --}}
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 {{ \Carbon\Carbon::parse($page_category->created_at)->diffForHumans() }}

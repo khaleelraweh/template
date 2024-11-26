@@ -151,12 +151,16 @@
 
 
 
+
+
     {{-- End added new  --}}
 
     <!-- Custom js for this page -->
     {{-- <script src="{{ asset('backend/js/dashboard-light.js') }}"></script> --}}
     <!-- End custom js for this page -->
     <script src="<?php echo asset($dark != '' ? 'backend/js/dashboard-dark.js' : 'backend/js/dashboard-light.js'); ?>"></script>
+
+    <script src="{{ asset('backend/js/custom.js') }}"></script>
 
 
 

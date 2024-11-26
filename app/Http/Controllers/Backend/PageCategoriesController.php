@@ -234,4 +234,18 @@ class PageCategoriesController extends Controller
         $image->delete();
         return true;
     }
+
+    public function updatePageCategoryStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            PageCategory::where('id', $data['page_category_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'page_category_id' => $data['page_category_id']]);
+        }
+    }
 }
