@@ -86,8 +86,6 @@
                             <td>
 
                                 <div class="btn-group btn-group-sm">
-
-
                                     <div class="dropdown mb-2 ">
                                         <a type="button" class="d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
