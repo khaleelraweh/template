@@ -27,8 +27,8 @@ class PostRequest extends FormRequest
             case 'POST': {
                     return [
                         // 'title.*'               =>  'required|max:255|unique_translation:posts',
-                        'title.*'                           =>  'required|max:255',
-                        'content.*'                         =>  'nullable',
+                        'title.ar'                           =>  'required|max:255',
+                        'content.ar'                         =>  'nullable',
 
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
@@ -47,8 +47,8 @@ class PostRequest extends FormRequest
             case 'PATCH': {
                     return [
                         // 'title.*'               =>  'required|max:255|unique_translation:posts,title,' . $this->route()->post,
-                        'title.*'               =>  'required|max:255',
-                        'content.*'         =>  'nullable',
+                        'title.ar'               =>  'required|max:255',
+                        'content.ar'         =>  'nullable',
 
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
