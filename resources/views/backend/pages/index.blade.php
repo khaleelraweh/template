@@ -48,7 +48,7 @@
                         <th class="wd-40p border-bottom-0">{{ __('panel.title') }}</th>
                         <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.author') }}</th>
                         <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.status') }}</th>
-                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.created_at') }}</th>
+                        <th class="d-none d-sm-table-cell wd-15p border-bottom-0">{{ __('panel.published_on') }}</th>
                         <th class="text-center border-bottom-0" style="width:30px;">{{ __('panel.actions') }}</th>
                     </tr>
                 </thead>
@@ -71,35 +71,9 @@
                                 </span>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{-- {{ $page->created_at->format('Y/m/d') }} --}}
                                 {{ \Carbon\Carbon::parse($page->published_on)->diffForHumans() }}
                             </td>
                             <td>
-                                {{-- <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
-                                        title="Edit the page">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="https://ibbuniv.era-t.com//pages/{{ $page->slug }}"
-                                        title="Copy the link">
-                                        <i class="far fa-copy"></i>
-                                    </a>
-                                    <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
-
-                                    <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $page->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the page">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                </div>
-                                <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post" class="d-none"
-                                    id="delete-product-category-{{ $page->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form> --}}
-
 
                                 <div class="btn-group btn-group-sm">
 
