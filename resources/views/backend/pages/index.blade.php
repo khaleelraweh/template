@@ -117,16 +117,18 @@
                                                 @method('DELETE')
                                             </form>
 
-
                                             <a href="javascript:void(0);"
                                                 class="dropdown-item d-flex align-items-center btn btn-success copyButton"
                                                 data-copy-text="https://ibbuniv.era-t.com/pages/{{ $page->slug }}"
-                                                title="Copy the link">
+                                                data-id="{{ $page->id }}" title="Copy the link">
                                                 <i data-feather="copy" class="icon-sm me-2"></i>
                                                 <span class="">{{ __('panel.operation_copy_link') }}</span>
                                             </a>
-                                            <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+
                                         </div>
+                                        <span class="copyMessage" data-id="{{ $page->id }}" style="display:none;">
+                                            {{ __('panel.copied') }}
+                                        </span>
                                     </div>
                                 </div>
 
@@ -193,7 +195,11 @@
         document.querySelectorAll(".copyButton").forEach(function(button) {
             button.addEventListener("click", function(event) {
                 event.preventDefault(); // Prevent form submission
-                var textToCopy = button.getAttribute("data-copy-text"); // Get the dynamic text
+
+                // Get the dynamic text to copy
+                var textToCopy = button.getAttribute("data-copy-text");
+
+                // Copy text to clipboard
                 var tempInput = document.createElement("input");
                 tempInput.value = textToCopy;
                 document.body.appendChild(tempInput);
@@ -201,11 +207,15 @@
                 document.execCommand("copy");
                 document.body.removeChild(tempInput);
 
-                var copyMessage = button.nextElementSibling; // Get the copyMessage span
-                copyMessage.style.display = "inline";
-                setTimeout(function() {
-                    copyMessage.style.display = "none";
-                }, 2000); // Hide the message after 2 seconds
+                // Show the copied message
+                var id = button.getAttribute("data-id");
+                var copyMessage = document.querySelector(`.copyMessage[data-id="${id}"]`);
+                if (copyMessage) {
+                    copyMessage.style.display = "inline";
+                    setTimeout(function() {
+                        copyMessage.style.display = "none";
+                    }, 2000); // Hide the message after 2 seconds
+                }
             });
         });
     </script>

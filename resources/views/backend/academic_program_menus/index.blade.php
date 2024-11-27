@@ -211,25 +211,6 @@
     </style>
 
     <script>
-        // document.querySelectorAll(".copyButton").forEach(function(button) {
-        //     button.addEventListener("click", function(event) {
-        //         event.preventDefault(); // Prevent form submission
-        //         var textToCopy = button.getAttribute("data-copy-text"); // Get the dynamic text
-        //         var tempInput = document.createElement("input");
-        //         tempInput.value = textToCopy;
-        //         document.body.appendChild(tempInput);
-        //         tempInput.select();
-        //         document.execCommand("copy");
-        //         document.body.removeChild(tempInput);
-
-        //         var copyMessage = button.nextElementSibling; // Get the copyMessage span
-        //         copyMessage.style.display = "inline";
-        //         setTimeout(function() {
-        //             copyMessage.style.display = "none";
-        //         }, 2000); // Hide the message after 2 seconds
-        //     });
-        // });
-
         document.querySelectorAll(".copyButton").forEach(function(button) {
             button.addEventListener("click", function(event) {
                 event.preventDefault(); // Prevent form submission
