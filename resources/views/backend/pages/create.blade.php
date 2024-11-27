@@ -232,7 +232,6 @@
                             </div>
                         </div>
 
-
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status" class="control-label">
