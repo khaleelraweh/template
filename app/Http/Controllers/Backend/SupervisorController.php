@@ -83,10 +83,7 @@ class SupervisorController extends Controller
         $supervisor->markEmailAsVerified();
         $supervisor->attachRole(Role::whereName('supervisor')->first()->id);
 
-        //add permissions
-        // if(isset($request->permissions) && count($request->permissions) > 0){
-        //     $supervisor->permissions()->sync($request->permissions);
-        // }
+
 
         if (isset($request->all_permissions)) {
             $permissions = Permission::get(['id']);
