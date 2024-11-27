@@ -129,7 +129,6 @@
                                         </span>
                                     </div>
                                 </div>
-
                             </td>
                         </tr>
                     @empty
