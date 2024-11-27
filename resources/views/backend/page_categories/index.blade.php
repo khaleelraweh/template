@@ -181,8 +181,6 @@
             });
         }
 
-
-
         function confirmDelete($page_category_id) {
             Swal.fire({
                 title: '{{ __('panel.confirm_delete_message') }}',
@@ -199,7 +197,6 @@
             });
         }
     </script>
-
 
     <script>
         document.querySelectorAll(".copyButton").forEach(function(button) {
