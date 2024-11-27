@@ -150,6 +150,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Blog/Posts Tab   ==============  //
         Route::post('posts/remove-image', [PostController::class, 'remove_image'])->name('posts.remove_image');
+        Route::post('posts/update-post-status', [PostController::class, 'updatePostStatus'])->name('posts.update_post_status');
         Route::resource('posts', PostController::class);
 
 

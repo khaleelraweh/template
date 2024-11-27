@@ -212,6 +212,7 @@ class PostController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
     public function remove_image(Request $request)
     {
         if (!auth()->user()->ability('admin', 'delete_posts')) {
@@ -224,5 +225,19 @@ class PostController extends Controller
         }
         $image->delete();
         return true;
+    }
+
+    public function updatePostStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Post::where('id', $data['post_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'post_id' => $data['post_id']]);
+        }
     }
 }

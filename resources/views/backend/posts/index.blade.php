@@ -72,7 +72,6 @@
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-
                                     @if ($post->status == 1)
                                         <a href="javascript:void(0);" class="updatePostStatus "
                                             id="post-{{ $post->id }}" post_id="{{ $post->id }}">
@@ -86,10 +85,6 @@
                                                 status="Inactive" style="font-size: 1.6em"></i>
                                         </a>
                                     @endif
-
-                                    <span class="btn btn-round rounded-pill btn-success btn-xs ">
-                                        {{ $post->status() }}
-                                    </span>
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">

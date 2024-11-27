@@ -96,4 +96,29 @@ $(document).ready(function(){
         });
     });
 
+     //  updatePostStatus Status
+     $(document).on("click",".updatePostStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var post_id = $(this).attr("post_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/posts/update-post-status',
+            data:{status:status,post_id:post_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#post-"+post_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#post-"+post_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
+
 });
