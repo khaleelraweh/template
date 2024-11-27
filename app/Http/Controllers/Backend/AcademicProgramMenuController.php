@@ -81,7 +81,7 @@ class AcademicProgramMenuController extends Controller
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/college_menus/' . $file_name));
+                $img->save(base_path('public/assets/academic_program_menus/' . $file_name));
 
                 $academic_program_menu->photos()->create([
                     'file_name' => $file_name,
@@ -130,10 +130,10 @@ class AcademicProgramMenuController extends Controller
         return view('backend.academic_program_menus.edit', compact('main_menus', 'academic_program_menu'));
     }
 
-    public function update(AcademicProgramMenuRequest $request, $college_menu)
+    public function update(AcademicProgramMenuRequest $request, $academic_program_menu)
     {
 
-        $college_menu = WebMenu::where('id', $college_menu)->first();
+        $academic_program_menu = WebMenu::where('id', $academic_program_menu)->first();
 
         $input['title']         = $request->title;
         $input['description']   = $request->description;
@@ -151,22 +151,22 @@ class AcademicProgramMenuController extends Controller
         $input['status']        =   $request->status;
         $input['created_by']    = auth()->user()->full_name;
 
-        $college_menu->update($input);
+        $academic_program_menu->update($input);
 
         if ($request->hasFile('images') && count($request->images) > 0) {
-            $i = $college_menu->photos->count() + 1;
+            $i = $academic_program_menu->photos->count() + 1;
             $images = $request->file('images');
             foreach ($images as $image) {
                 $manager = new ImageManager(new Driver());
 
-                $file_name = $college_menu->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_name = $academic_program_menu->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size = $image->getSize();
                 $file_type = $image->getMimeType();
 
                 $img = $manager->read($image);
-                $img->save(base_path('public/assets/college_menus/' . $file_name));
+                $img->save(base_path('public/assets/academic_program_menus/' . $file_name));
 
-                $college_menu->photos()->create([
+                $academic_program_menu->photos()->create([
                     'file_name' => $file_name,
                     'file_size' => $file_size,
                     'file_type' => $file_type,
@@ -177,7 +177,7 @@ class AcademicProgramMenuController extends Controller
             }
         }
 
-        if ($college_menu) {
+        if ($academic_program_menu) {
             return redirect()->route('admin.academic_program_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -191,24 +191,24 @@ class AcademicProgramMenuController extends Controller
     }
 
 
-    public function destroy($college_menu)
+    public function destroy($academic_program_menu)
     {
         if (!auth()->user()->ability('admin', 'delete_academic_program_menus')) {
             return redirect('admin/index');
         }
 
-        $college_menu = WebMenu::where('id', $college_menu)->first();
-        if ($college_menu->photos->count() > 0) {
-            foreach ($college_menu->photos as $photo) {
-                if (File::exists('assets/college_menus/' . $photo->file_name)) {
-                    unlink('assets/college_menus/' . $photo->file_name);
+        $academic_program_menu = WebMenu::where('id', $academic_program_menu)->first();
+        if ($academic_program_menu->photos->count() > 0) {
+            foreach ($academic_program_menu->photos as $photo) {
+                if (File::exists('assets/academic_program_menus/' . $photo->file_name)) {
+                    unlink('assets/academic_program_menus/' . $photo->file_name);
                 }
                 $photo->delete();
             }
         }
-        $college_menu->delete();
+        $academic_program_menu->delete();
 
-        if ($college_menu) {
+        if ($academic_program_menu) {
             return redirect()->route('admin.academic_program_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -225,10 +225,10 @@ class AcademicProgramMenuController extends Controller
         if (!auth()->user()->ability('admin', 'delete_academic_program_menus')) {
             return redirect('admin/index');
         }
-        $college_menu = WebMenu::findOrFail($request->college_menu_id);
-        $image = $college_menu->photos()->where('id', $request->image_id)->first();
-        if (File::exists('assets/college_menus/' . $image->file_name)) {
-            unlink('assets/college_menus/' . $image->file_name);
+        $academic_program_menu = WebMenu::findOrFail($request->academic_program_menu_id);
+        $image = $academic_program_menu->photos()->where('id', $request->image_id)->first();
+        if (File::exists('assets/academic_program_menus/' . $image->file_name)) {
+            unlink('assets/academic_program_menus/' . $image->file_name);
         }
         $image->delete();
         return true;
