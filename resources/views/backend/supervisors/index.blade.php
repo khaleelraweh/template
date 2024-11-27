@@ -92,7 +92,22 @@
                                 {{ $supervisor->email }} <br>
                                 {{ $supervisor->mobile }}
                             </td>
-                            <td>{{ $supervisor->status() }}</td>
+                            <td>
+
+                                @if ($supervisor->status == 1)
+                                    <a href="javascript:void(0);" class="updateSupervisorStatus "
+                                        id="supervisor-{{ $supervisor->id }}" supervisor_id="{{ $supervisor->id }}">
+                                        <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true" status="Active"
+                                            style="font-size: 1.6em"></i>
+                                    </a>
+                                @else
+                                    <a href="javascript:void(0);" class="updateSupervisorStatus"
+                                        id="supervisor-{{ $supervisor->id }}" supervisor_id="{{ $supervisor->id }}">
+                                        <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true" status="Inactive"
+                                            style="font-size: 1.6em"></i>
+                                    </a>
+                                @endif
+                            </td>
                             <td class="d-none d-sm-table-cell">{{ $supervisor->created_at->format('Y-m-d') }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">

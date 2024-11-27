@@ -214,4 +214,18 @@ class SupervisorController extends Controller
 
         return true;
     }
+
+    public function updateSupervisorStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            User::where('id', $data['supervisor_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'supervisor_id' => $data['supervisor_id']]);
+        }
+    }
 }

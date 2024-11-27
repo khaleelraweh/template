@@ -111,6 +111,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('customers', CustomerController::class);
 
         Route::post('supervisors/remove-image', [SupervisorController::class, 'remove_image'])->name('supervisors.remove_image');
+        Route::post('supervisors/update-supervisor-status', [SupervisorController::class, 'updateSupervisorStatus'])->name('supervisors.update_supervisor_status');
         Route::resource('supervisors', SupervisorController::class);
 
         Route::post('instructor/remove-image', [InstructorController::class, 'remove_image'])->name('instructors.remove_image');
@@ -135,15 +136,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Page Categories Tab   ==============  //
         Route::post('page-categories/remove-image', [PageCategoriesController::class, 'remove_image'])->name('page_categories.remove_image');
-        Route::resource('page_categories', PageCategoriesController::class);
         Route::post('page-categories/update-page-category-status', [PageCategoriesController::class, 'updatePageCategoryStatus'])->name('page_categories.update_page_category_status');
+        Route::resource('page_categories', PageCategoriesController::class);
 
 
 
         // ==============   Pages Tab   ==============  //
         Route::post('pages/remove-image', [PagesController::class, 'remove_image'])->name('pages.remove_image');
-        Route::resource('pages', PagesController::class);
         Route::post('pages/update-page-status', [PagesController::class, 'updatePageStatus'])->name('pages.update_page_status');
+        Route::resource('pages', PagesController::class);
 
 
 
