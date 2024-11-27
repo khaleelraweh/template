@@ -24,7 +24,8 @@ class Page extends Model
     // searchable lab 
     protected $searchable = [
         'columns' => [
-            'courses.title' => 10,
+            'pages.title' => 10,
+            'pages.content' => 10,
         ]
     ];
 
