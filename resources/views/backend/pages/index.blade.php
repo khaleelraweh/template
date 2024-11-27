@@ -112,7 +112,7 @@
                                                 <span class="">{{ __('panel.operation_delete') }}</span>
                                             </a>
                                             <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
-                                                class="d-none" id="delete-page-category-{{ $page->id }}">
+                                                class="d-none" id="delete-page-{{ $page->id }}">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
@@ -159,7 +159,7 @@
                 cancelButtonText: '{{ __('panel.cancel') }}',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById('delete-page-category-' + $page_id).submit();
+                    document.getElementById('delete-page-' + $page_id).submit();
                 }
             });
         }
