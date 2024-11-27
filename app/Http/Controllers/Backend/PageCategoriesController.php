@@ -191,9 +191,7 @@ class PageCategoriesController extends Controller
         $input['created_by'] = auth()->user()->full_name;
 
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
-
         $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
-
         $input['published_on']            = $publishedOn;
 
         $page_category->update($input);

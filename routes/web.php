@@ -139,6 +139,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // ==============   Pages Tab   ==============  //
         Route::post('pages/remove-image', [PagesController::class, 'remove_image'])->name('pages.remove_image');
         Route::resource('pages', PagesController::class);
+        Route::post('pages/update-page-status', [PagesController::class, 'updatePageStatus'])->name('pages.update_page_status');
+
 
 
         // ==============   Blog/Posts Tab   ==============  //
