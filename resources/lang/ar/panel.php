@@ -22,7 +22,7 @@ return [
     'manage_company_menus'              => 'إدارة قوائم المؤسسة',
     'manage_topics_menus'               => 'إدارة قوائم الموضوعات',
     'manage_tracks_menus'               => 'إدارة قوائم المسارات',
-    'manage_college_menus'              => 'إدارة قوائم الكليات والمعاهد',
+    'manage_academic_program_menus'              => 'إدارة البرامج الأكاديمية',
 
 
 
@@ -33,10 +33,10 @@ return [
     'edit_existing_link'                => 'تعديل بيانات الرابط',
     'category_menu'                     => 'تصنيفات القائمة الرئيسية',
 
-    // --------------- college Menus --------------//
-    'show_college_menus'            => 'قائمة الكليات والمعاهد',
-    'add_new_college'              => 'إضافة كلية او معهد',
-    'edit_existing_college'        => 'تعديل كلية او معهد',
+    // --------------- Academic Program Menus --------------//
+    'show_academic_program_menus'            => 'قائمة البرامج الأكاديمية',
+    'add_new_academic_program'              => 'إضافة برنامج اكاديمي',
+    'edit_existing_academic_program'        => 'تعديل برنامج اكاديمي',
 
 
     // --------------- قائمة المؤسسة --------------//

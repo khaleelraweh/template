@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_college') }}
+                    {{ __('panel.edit_existing_academic_program') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>

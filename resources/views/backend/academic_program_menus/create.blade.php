@@ -60,7 +60,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_college') }}
+                    {{ __('panel.add_new_academic_program') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
