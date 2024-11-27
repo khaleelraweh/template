@@ -57,24 +57,12 @@ class PageCategoriesController extends Controller
         $input['title'] = $request->title;
         $input['content'] = $request->content;
 
-        // $input['metadata_title'] = $request->metadata_title ?: $request->title;
 
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
             $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
                 ?: $request->title[$localeKey] ?? null;
         }
-
-        // $input['metadata_description'] = $request->metadata_description ?? $request->content;
-
-        // $input['metadata_description'] = [];
-        // foreach (config('locales.languages') as $localeKey => $localeValue) {
-        //     $content = $request->content[$localeKey] ?? '';
-        //     $limitedContent = implode(' ', array_slice(explode(' ', strip_tags($content)), 0, 30)); // Limit to 30 words
-        //     $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
-        //         ?: $limitedContent ?: null;
-        // }
-
         $input['metadata_description'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
             $content = $request->content[$localeKey] ?? '';
