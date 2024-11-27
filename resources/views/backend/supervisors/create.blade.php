@@ -246,37 +246,7 @@
 
         });
 
-        // ======= start pickadate codeing ===========
-        $('#published_on').pickadate({
-            format: 'yyyy-mm-dd',
-            min: new Date(),
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: true, // creates a dropdown to control years
-            clear: 'Clear',
-            close: 'OK',
-            colseOnSelect: true // Close Upon Selecting a date
-        });
 
-        var publishedOn = $('#published_on').pickadate(
-            'picker'); // set startdate in the picker to the start date in the #start_date elemet
-        // when change date 
-        $('#published_on').change(function() {
-            selected_ci_date = "";
-            selected_ci_date = $('#published_on').val();
-            if (selected_ci_date != null) {
-                var cidate = new Date(selected_ci_date);
-                min_codate = "";
-                min_codate = new Date();
-                min_codate.setDate(cidate.getDate() + 1);
-                enddate.set('min', min_codate);
-            }
-
-        });
-
-        $('#published_on_time').pickatime({
-            clear: ''
-        });
-        // ======= End pickadate codeing ===========
         //select2: code to search in data 
         function matchStart(params, data) {
             // If there are no search terms, return all of the data
