@@ -123,10 +123,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Menus Tab   ==============  //
         Route::resource('web_menus', WebMenuController::class);
-        // Route::post('college-menus/remove-image', [CollegeMenuController::class, 'remove_image'])->name('college_menus.remove_image');
-        // Route::resource('college_menus', CollegeMenuController::class);
+
         Route::post('academic-program-menus/remove-image', [AcademicProgramMenuController::class, 'remove_image'])->name('academic_program_menus.remove_image');
+        Route::post('academic_program_menus/update-academic-program-menus-status', [AcademicProgramMenuController::class, 'updateAcademicProgramMenuStatus'])->name('academic_program_menus.update_academic_program_menus_status');
         Route::resource('academic_program_menus', AcademicProgramMenuController::class);
+
         Route::resource('company_menus', CompanyMenuController::class);
         Route::resource('topics_menus', TopicsMenuController::class);
         Route::resource('tracks_menus', TracksMenuController::class);

@@ -233,4 +233,18 @@ class AcademicProgramMenuController extends Controller
         $image->delete();
         return true;
     }
+
+    public function updateAcademicProgramMenuStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            WebMenu::where('id', $data['academic_program_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'academic_program_menu_id' => $data['academic_program_menu_id']]);
+        }
+    }
 }
