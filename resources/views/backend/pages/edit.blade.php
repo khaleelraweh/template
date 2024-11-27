@@ -35,8 +35,8 @@
         <div class="card-body">
 
             @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
+                <div class="alert alert-danger pt-0 pb-0 mb-0">
+                    <ul class="px-2 py-3 m-0" style="list-style-type: circle">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
