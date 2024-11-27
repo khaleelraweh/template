@@ -167,30 +167,6 @@
         }
     </script>
 
-    <style>
-        .copyButton {
-            position: relative;
-        }
-
-        .copyMessage {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: none;
-            z-index: 1000;
-            font-size: 12px;
-            width: auto;
-            /* Ensure width fits content */
-            white-space: nowrap;
-            /* Prevents line break to ensure width fits content */
-        }
-    </style>
-
     <script>
         document.querySelectorAll(".copyButton").forEach(function(button) {
             button.addEventListener("click", function(event) {
