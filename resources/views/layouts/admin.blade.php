@@ -162,7 +162,8 @@
     <!-- End custom js for this page -->
     <script src="<?php echo asset($dark != '' ? 'backend/js/dashboard-dark.js' : 'backend/js/dashboard-light.js'); ?>"></script>
 
-    <script src="{{ asset('backend/js/custom.js') }}"></script>
+    <script src="{{ asset('backend/js/change-status.js') }}"></script>
+    {{-- <script src="{{ asset('backend/js/custom.js') }}"></script> --}}
 
 
 
