@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdvertisorSliderController;
+use App\Http\Controllers\Backend\AcademicProgramMenuController;
 use App\Http\Controllers\Backend\AdvsController;
 use App\Http\Controllers\Backend\AlbumsController;
 use App\Http\Controllers\Backend\BackendController;
@@ -122,8 +123,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Menus Tab   ==============  //
         Route::resource('web_menus', WebMenuController::class);
-        Route::post('college-menus/remove-image', [CollegeMenuController::class, 'remove_image'])->name('college_menus.remove_image');
-        Route::resource('college_menus', CollegeMenuController::class);
+        // Route::post('college-menus/remove-image', [CollegeMenuController::class, 'remove_image'])->name('college_menus.remove_image');
+        // Route::resource('college_menus', CollegeMenuController::class);
+        Route::post('academic-program-menus/remove-image', [AcademicProgramMenuController::class, 'remove_image'])->name('academic_program_menus.remove_image');
+        Route::resource('academic_program_menus', AcademicProgramMenuController::class);
         Route::resource('company_menus', CompanyMenuController::class);
         Route::resource('topics_menus', TopicsMenuController::class);
         Route::resource('tracks_menus', TracksMenuController::class);
