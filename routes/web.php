@@ -156,6 +156,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   News Tab   ==============  //
         Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
+        Route::post('news/update-news-status', [NewsController::class, 'updateNewsStatus'])->name('pages.update_news_status');
         Route::resource('news', NewsController::class);
 
         // ==============   advs Tab   ==============  //

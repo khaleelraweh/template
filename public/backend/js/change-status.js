@@ -120,5 +120,29 @@ $(document).ready(function(){
         });
     });
 
+     //  updateNewsStatus Status
+     $(document).on("click",".updateNewsStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var new_id = $(this).attr("new_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/news/update-news-status',
+            data:{status:status,new_id:new_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#post-"+new_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#post-"+new_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 
 });

@@ -226,4 +226,18 @@ class NewsController extends Controller
         $image->delete();
         return true;
     }
+
+    public function updateNewsStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Post::where('id', $data['new_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'new_id' => $data['new_id']]);
+        }
+    }
 }
