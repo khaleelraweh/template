@@ -50,7 +50,6 @@
                         <th class="wd-40p border-bottom-0">{{ __('panel.title') }}</th>
                         <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.author') }}</th>
                         <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.status') }}</th>
-                        {{-- <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.created_at') }}</th> --}}
                         <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.published_on') }}</th>
                         <th class="text-center border-bottom-0" style="width:30px;">{{ __('panel.actions') }}</th>
                     </tr>
@@ -85,19 +84,12 @@
                                             style="font-size: 1.6em"></i>
                                     </a>
                                 @endif
-                                {{-- <span class="btn btn-round rounded-pill btn-success btn-xs ">
-                                    {{ $page_category->status() }}
-
-                                </span> --}}
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{-- {{ \Carbon\Carbon::parse($page_category->created_at)->diffForHumans() }} --}}
                                 {{ \Carbon\Carbon::parse($page_category->published_on)->diffForHumans() }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-
-
                                     <div class="dropdown mb-2 ">
                                         <a type="button" class="d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown"
                                             aria-haspopup="true" aria-expanded="false">
@@ -118,32 +110,18 @@
                                             </a>
 
                                             @if ($page_category->pages->count() > 0)
-                                                <a class="dropdown-item d-flex align-items-center" href="javascript:;"
-                                                    onclick="showPageCagegoryAlert()">
-                                                    <i data-feather="trash" class="icon-sm me-2"></i>
+                                                <a href="javascript:void(0);"
+                                                    class="dropdown-item d-flex align-items-center"
+                                                    onclick="showAlert(
+                                                        'warning', 
+                                                        '{{ __('panel.page_category_can_not_be_deleted') }}', 
+                                                        '{{ __('panel.page_category_have_pages_you_must_delete_pages_before') }}', 
+                                                        '{{ __('panel.ok') }}'
+                                                    )">
+                                                    <i data-feather="alert-circle" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_delete') }}</span>
                                                 </a>
                                             @else
-                                                {{-- <a href="javascript:void(0);"
-                                                    onclick="confirmDelete({{ $page_category->id }})"
-                                                    class="dropdown-item d-flex align-items-center">
-                                                    <i data-feather="trash" class="icon-sm me-2"></i>
-                                                    <span class="">{{ __('panel.operation_delete') }}</span>
-                                                </a>
-                                                <form
-                                                    action="{{ route('admin.page_categories.destroy', $page_category->id) }}"
-                                                    method="post" class="d-none"
-                                                    id="delete-page-category-{{ $page_category->id }}">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form> --}}
-
-                                                {{-- <a href="javascript:void(0);"
-                                                    onclick="confirmDelete({{ $page_category->id }}, 'delete-page-category-')"
-                                                    class="dropdown-item d-flex align-items-center">
-                                                    <i data-feather="trash" class="icon-sm me-2"></i>
-                                                    <span class="">{{ __('panel.operation_delete') }}</span>
-                                                </a> --}}
                                                 <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center"
                                                     onclick="confirmDelete('delete-page-category-{{ $page_category->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')">
@@ -188,31 +166,4 @@
 
     </div>
 
-@endsection
-@section('script')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function showPageCagegoryAlert() {
-            Swal.fire({
-                icon: 'warning',
-                title: '{{ __('panel.page_category_can_not_be_deleted') }}',
-                text: '{{ __('panel.page_category_have_pages_you_must_delete_pages_before') }}',
-                confirmButtonText: '{{ __('panel.ok') }}',
-            });
-        }
-    </script>
-
-
-    <script>
-        const deleteMessage = @json(__('panel.confirm_delete_message'));
-        const yesDelete = @json(__('panel.yes_delete'));
-        const cancelText = @json(__('panel.cancel'));
-    </script>
-
-
-    <script>
-        const confirmDeleteMessage = "{{ __('panel.confirm_delete_message') }}";
-        const confirmButtonText = "{{ __('panel.yes_delete') }}";
-        const cancelButtonText = "{{ __('panel.cancel') }}";
-    </script>
 @endsection

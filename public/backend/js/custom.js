@@ -1,36 +1,31 @@
-// function confirmDelete(deleteElementId, confirmMessage, yesText = "Yes", cancelText = "Cancel") {
-//     Swal.fire({
-//         title: confirmMessage || 'Are you sure?',
-//         icon: 'warning',
-//         showCancelButton: true,
-//         confirmButtonColor: '#d33',
-//         cancelButtonColor: '#3085d6',
-//         confirmButtonText: yesText,
-//         cancelButtonText: cancelText,
-//     }).then((result) => {
-//         if (result.isConfirmed) {
-//             document.getElementById(deleteElementId).submit();
-//         }
-//     });
-// }
-
-
-// Confirm Delete Function
-function confirmDelete(pageCategoryId, deleteFormId) {
+//show alert function
+function showAlert(iconType, titleMessage, textMessage, confirmButtonText = "OK") {
     Swal.fire({
-        title: confirmDeleteMessage, // Set this as a global variable
+        icon: iconType || 'info', // Default icon is 'info' if not provided
+        title: titleMessage || 'Alert',
+        text: textMessage || '',
+        confirmButtonText: confirmButtonText,
+    });
+}
+
+
+//Confirm Delete Function
+function confirmDelete(deleteElementId, confirmMessage, confirmButtonText = "Yes", cancelButtonText = "Cancel") {
+    Swal.fire({
+        title: confirmMessage || 'Are you sure?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
-        confirmButtonText: confirmButtonText, // Set this as a global variable
-        cancelButtonText: cancelButtonText, // Set this as a global variable
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: cancelButtonText,
     }).then((result) => {
         if (result.isConfirmed) {
-            document.getElementById(deleteFormId + pageCategoryId).submit();
+            document.getElementById(deleteElementId).submit();
         }
     });
 }
+
 
 // Copy Button Functionality
 document.addEventListener("DOMContentLoaded", function () {

@@ -53,7 +53,6 @@
                     </tr>
                 </thead>
 
-
                 <tbody>
                     @forelse ($pages as $page)
                         <tr>
@@ -84,7 +83,6 @@
                                 {{ \Carbon\Carbon::parse($page->published_on)->diffForHumans() }}
                             </td>
                             <td>
-
                                 <div class="btn-group btn-group-sm">
                                     <div class="dropdown mb-2 ">
                                         <a type="button" class="d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown"
@@ -105,27 +103,14 @@
                                                 <span class="">{{ __('panel.operation_edit') }}</span>
                                             </a>
 
-
-                                            {{-- <a href="javascript:void(0);" onclick="confirmDelete({{ $page->id }})"
+                                            <a href="javascript:void(0);"
+                                                onclick="confirmDelete('delete-page-{{ $page->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
                                                 class="dropdown-item d-flex align-items-center">
                                                 <i data-feather="trash" class="icon-sm me-2"></i>
                                                 <span class="">{{ __('panel.operation_delete') }}</span>
                                             </a>
                                             <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
                                                 class="d-none" id="delete-page-{{ $page->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form> --}}
-
-
-                                            <a href="javascript:void(0);"
-                                                onclick="confirmDelete({{ $page->id }}, 'delete-page-category-')"
-                                                class="dropdown-item d-flex align-items-center">
-                                                <i data-feather="trash" class="icon-sm me-2"></i>
-                                                <span class="">{{ __('panel.operation_delete') }}</span>
-                                            </a>
-                                            <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
-                                                class="d-none" id="delete-page-category-{{ $page->id }}">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
@@ -159,24 +144,4 @@
 
     </div>
 
-@endsection
-@section('script')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function confirmDelete($page_id) {
-            Swal.fire({
-                title: '{{ __('panel.confirm_delete_message') }}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: '{{ __('panel.yes_delete') }}',
-                cancelButtonText: '{{ __('panel.cancel') }}',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-page-' + $page_id).submit();
-                }
-            });
-        }
-    </script>
 @endsection
