@@ -1,20 +1,5 @@
 @extends('layouts.admin')
 
-@section('style')
-    <style>
-        .select2-container {
-            display: block !important;
-        }
-
-        .language-type {
-            display: inline-block;
-            background-color: #f8f9fa;
-            color: black;
-            padding: 5px 7px;
-            border-radius: 5px;
-        }
-    </style>
-@endsection
 
 @section('content')
 
@@ -171,22 +156,46 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                        data-input
+                                        value="{{ old('published_on', $new->published_on ? \Carbon\Carbon::parse($new->published_on)->format('Y/m/d h:i A') : '') }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="status">
+                                <label for="status" class="control-label">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $new->status) == '1' ? 'selected' : null }}>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1" {{ old('status', $new->status) == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status', $new->status) == '0' ? 'selected' : null }}>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0" {{ old('status', $new->status) == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
+                                    </label>
+                                </div>
                                 @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
