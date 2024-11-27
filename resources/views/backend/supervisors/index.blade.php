@@ -40,10 +40,8 @@
         {{-- filter form part  --}}
 
         @include('backend.supervisors.filter.filter')
-
-        {{-- table part --}}
-        <div class="table-responsive">
-            <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
+        <div class="card-body">
+            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                 <thead>
                     <tr>
