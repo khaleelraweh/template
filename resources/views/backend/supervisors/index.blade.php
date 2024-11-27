@@ -3,7 +3,6 @@
 
     <div class="card shadow mb-4">
 
-        {{-- breadcrumb part  --}}
         <div class="card-header py-3 d-flex justify-content-between">
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
@@ -37,9 +36,8 @@
 
         </div>
 
-        {{-- filter form part  --}}
-
         @include('backend.supervisors.filter.filter')
+
         <div class="card-body">
             <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap"
                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
