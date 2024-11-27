@@ -79,25 +79,6 @@
                                 </td>
 
                                 <td>
-                                    {{-- <div class="btn-group btn-group-sm">
-
-                                        <a href="{{ route('admin.academic_program_menus.edit', $academic_program_menu->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-category-{{ $academic_program_menu->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                    <form
-                                        action="{{ route('admin.academic_program_menus.destroy', $academic_program_menu->id) }}"
-                                        method="post" class="d-none"
-                                        id="delete-product-category-{{ $academic_program_menu->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form> --}}
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
                                             <a type="button" class="d-flex" id="dropdownMenuButton"
@@ -134,7 +115,7 @@
                                                 </form>
 
 
-                                                <a href="javascript:void(0);"
+                                                {{-- <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center btn btn-success copyButton"
                                                     data-copy-text="https://ibbuniv.era-t.com/academic_program_menus/{{ $academic_program_menu->slug }}"
                                                     title="Copy the link">
@@ -142,8 +123,22 @@
                                                     <span class="">{{ __('panel.operation_copy_link') }}</span>
                                                 </a>
                                                 <span class="copyMessage"
-                                                    style="display:none;">{{ __('panel.copied') }}</span>
+                                                    style="display:none;">{{ __('panel.copied') }}</span> --}}
+
+                                                <a href="javascript:void(0);"
+                                                    class="dropdown-item d-flex align-items-center btn btn-success copyButton"
+                                                    data-copy-text="https://ibbuniv.era-t.com/academic_program_menus/{{ $academic_program_menu->slug }}"
+                                                    data-id="{{ $academic_program_menu->id }}" title="Copy the link">
+                                                    <i data-feather="copy" class="icon-sm me-2"></i>
+                                                    <span class="">{{ __('panel.operation_copy_link') }}</span>
+                                                </a>
+
+
                                             </div>
+                                            <span class="copyMessage" data-id="{{ $academic_program_menu->id }}"
+                                                style="display:none;">
+                                                {{ __('panel.copied') }}
+                                            </span>
                                         </div>
                                     </div>
                                 </td>
@@ -216,10 +211,33 @@
     </style>
 
     <script>
+        // document.querySelectorAll(".copyButton").forEach(function(button) {
+        //     button.addEventListener("click", function(event) {
+        //         event.preventDefault(); // Prevent form submission
+        //         var textToCopy = button.getAttribute("data-copy-text"); // Get the dynamic text
+        //         var tempInput = document.createElement("input");
+        //         tempInput.value = textToCopy;
+        //         document.body.appendChild(tempInput);
+        //         tempInput.select();
+        //         document.execCommand("copy");
+        //         document.body.removeChild(tempInput);
+
+        //         var copyMessage = button.nextElementSibling; // Get the copyMessage span
+        //         copyMessage.style.display = "inline";
+        //         setTimeout(function() {
+        //             copyMessage.style.display = "none";
+        //         }, 2000); // Hide the message after 2 seconds
+        //     });
+        // });
+
         document.querySelectorAll(".copyButton").forEach(function(button) {
             button.addEventListener("click", function(event) {
                 event.preventDefault(); // Prevent form submission
-                var textToCopy = button.getAttribute("data-copy-text"); // Get the dynamic text
+
+                // Get the dynamic text to copy
+                var textToCopy = button.getAttribute("data-copy-text");
+
+                // Copy text to clipboard
                 var tempInput = document.createElement("input");
                 tempInput.value = textToCopy;
                 document.body.appendChild(tempInput);
@@ -227,11 +245,15 @@
                 document.execCommand("copy");
                 document.body.removeChild(tempInput);
 
-                var copyMessage = button.nextElementSibling; // Get the copyMessage span
-                copyMessage.style.display = "inline";
-                setTimeout(function() {
-                    copyMessage.style.display = "none";
-                }, 2000); // Hide the message after 2 seconds
+                // Show the copied message
+                var id = button.getAttribute("data-id");
+                var copyMessage = document.querySelector(`.copyMessage[data-id="${id}"]`);
+                if (copyMessage) {
+                    copyMessage.style.display = "inline";
+                    setTimeout(function() {
+                        copyMessage.style.display = "none";
+                    }, 2000); // Hide the message after 2 seconds
+                }
             });
         });
     </script>
