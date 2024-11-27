@@ -5,7 +5,7 @@
 
     @include('frontend.home.news-events')
 
-    @include('frontend.home.colleges-institutes')
+    @include('frontend.home.academic-programs')
 
     @include('frontend.home.statistics')
 

@@ -9,40 +9,42 @@
                     data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="1"
                     data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="3"
                     data-md-device-nav="false" data-md-device-dots="false">
-                    @foreach ($web_menus->where('section', 2) as $college_menu)
+                    @foreach ($web_menus->where('section', 2) as $academic_program_menu)
                         <div class="blog-item">
                             <div class="degree-wrap">
                                 @php
                                     if (
-                                        $college_menu->photos->first() != null &&
-                                        $college_menu->photos->first()->file_name != null
+                                        $academic_program_menu->photos->first() != null &&
+                                        $academic_program_menu->photos->first()->file_name != null
                                     ) {
-                                        $college_menu_img = asset(
-                                            'assets/college_menus/' . $college_menu->photos->first()->file_name,
+                                        $academic_program_menu_img = asset(
+                                            'assets/academic_program_menus/' .
+                                                $academic_program_menu->photos->first()->file_name,
                                         );
 
                                         if (
                                             !file_exists(
                                                 public_path(
-                                                    'assets/college_menus/' . $college_menu->photos->first()->file_name,
+                                                    'assets/academic_program_menus/' .
+                                                        $academic_program_menu->photos->first()->file_name,
                                                 ),
                                             )
                                         ) {
-                                            $college_menu_img = asset('images/not_found/placeholder.jpg');
+                                            $academic_program_menu_img = asset('images/not_found/placeholder.jpg');
                                         }
                                     } else {
-                                        $college_menu_img = asset('image/not_found/placeholder.jpg');
+                                        $academic_program_menu_img = asset('image/not_found/placeholder.jpg');
                                     }
                                 @endphp
 
-                                <img src="{{ $college_menu_img }}" alt="">
+                                <img src="{{ $academic_program_menu_img }}" alt="">
                                 <div class="title-part">
-                                    <h4 class="title">{{ $college_menu->title }}</h4>
+                                    <h4 class="title">{{ $academic_program_menu->title }}</h4>
                                 </div>
                                 <div class="content-part">
-                                    <h4 class="title"><a href="#">{{ $college_menu->title }}</a></h4>
+                                    <h4 class="title"><a href="#">{{ $academic_program_menu->title }}</a></h4>
                                     <p class="desc">
-                                        {!! $college_menu->description !!}
+                                        {!! $academic_program_menu->description !!}
                                     </p>
                                     <div class="btn-part">
                                         <a href="#">{{ __('panel.read_more') }}</a>
