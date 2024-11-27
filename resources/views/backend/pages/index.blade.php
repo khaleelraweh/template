@@ -71,10 +71,11 @@
                                 </span>
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $page->created_at->format('Y/m/d') }}
+                                {{-- {{ $page->created_at->format('Y/m/d') }} --}}
+                                {{ \Carbon\Carbon::parse($page->published_on)->diffForHumans() }}
                             </td>
                             <td>
-                                <div class="btn-group btn-group-sm">
+                                {{-- <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.pages.edit', $page->id) }}" class="btn btn-primary"
                                         title="Edit the page">
                                         <i class="fa fa-edit"></i>
@@ -97,7 +98,56 @@
                                     id="delete-product-category-{{ $page->id }}">
                                     @csrf
                                     @method('DELETE')
-                                </form>
+                                </form> --}}
+
+
+                                <div class="btn-group btn-group-sm">
+
+
+                                    <div class="dropdown mb-2 ">
+                                        <a type="button" class="d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                                            aria-haspopup="true" aria-expanded="false">
+                                            <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                            {{ __('panel.operation_options') }}
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                viewBox="0 0 25 15" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-chevron-down link-arrow">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item d-flex align-items-center"
+                                                href="{{ route('admin.pages.edit', $page->id) }}">
+                                                <i data-feather="edit-2" class="icon-sm me-2"></i>
+                                                <span class="">{{ __('panel.operation_edit') }}</span>
+                                            </a>
+
+
+                                            <a href="javascript:void(0);" onclick="confirmDelete({{ $page->id }})"
+                                                class="dropdown-item d-flex align-items-center">
+                                                <i data-feather="trash" class="icon-sm me-2"></i>
+                                                <span class="">{{ __('panel.operation_delete') }}</span>
+                                            </a>
+                                            <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
+                                                class="d-none" id="delete-page-category-{{ $page->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+
+
+                                            <a href="javascript:void(0);"
+                                                class="dropdown-item d-flex align-items-center btn btn-success copyButton"
+                                                data-copy-text="https://ibbuniv.era-t.com/pages/{{ $page->slug }}"
+                                                title="Copy the link">
+                                                <i data-feather="copy" class="icon-sm me-2"></i>
+                                                <span class="">{{ __('panel.operation_copy_link') }}</span>
+                                            </a>
+                                            <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </td>
                         </tr>
                     @empty
@@ -114,6 +164,25 @@
 
 @endsection
 @section('script')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete($page_id) {
+            Swal.fire({
+                title: '{{ __('panel.confirm_delete_message') }}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: '{{ __('panel.yes_delete') }}',
+                cancelButtonText: '{{ __('panel.cancel') }}',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-page-category-' + $page_id).submit();
+                }
+            });
+        }
+    </script>
+
     <style>
         .copyButton {
             position: relative;
