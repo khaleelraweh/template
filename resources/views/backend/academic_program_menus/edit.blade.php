@@ -35,8 +35,8 @@
         <div class="card-body">
 
             @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
+                <div class="alert alert-danger pt-0 pb-0 mb-0">
+                    <ul class="px-2 py-3 m-0" style="list-style-type: circle">
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
                         @endforeach
@@ -66,28 +66,6 @@
                 <div class="tab-content" id="myTabContent">
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
-
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="icon"> {{ __('panel.choose_icon') }} </label>
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <div class="input-group iconpicker-container ">
-                                    <input data-placement="bottomRight"
-                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
-                                        value=" {{ old('icon', $academic_program_menu->icon) ?? 'fas fa-archive' }}"
-                                        type="text" name="icon">
-                                    <span class="input-group-addon btn btn-primary">
-                                        <i class="{{ $academic_program_menu->icon ?? 'fas fa-archive' }}"></i>
-                                    </span>
-                                </div>
-
-                                @error('icon')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="row ">
                             <div class="col-sm-12 col-md-2 pt-3">
@@ -204,8 +182,7 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <input type="text" name="link[{{ $key }}]"
-                                        id="link[{{ $key }}]"
+                                    <input type="text" name="link[{{ $key }}]" id="link[{{ $key }}]"
                                         value="{{ old('link.' . $key, $academic_program_menu->getTranslation('link', $key)) }}"
                                         class="form-control">
                                     @error('link.' . $key)
@@ -239,21 +216,67 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="status">
+                                <label for="icon"> {{ __('panel.choose_icon') }} </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group iconpicker-container ">
+                                    <input data-placement="bottomRight"
+                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                        value=" {{ old('icon', $academic_program_menu->icon) ?? 'fas fa-archive' }}"
+                                        type="text" name="icon">
+                                    <span class="input-group-addon btn btn-primary">
+                                        <i class="{{ $academic_program_menu->icon ?? 'fas fa-archive' }}"></i>
+                                    </span>
+                                </div>
+
+                                @error('icon')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control"
+                                        placeholder="Select date" data-input
+                                        value="{{ old('published_on', $academic_program_menu->published_on ? \Carbon\Carbon::parse($academic_program_menu->published_on)->format('Y/m/d h:i A') : '') }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="status" class="control-label">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="status" class="form-control">
-                                    <option value="1"
-                                        {{ old('status', $academic_program_menu->status) == '1' ? 'selected' : null }}>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1"
+                                        {{ old('status', $academic_program_menu->status) == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0"
-                                        {{ old('status', $academic_program_menu->status) == '0' ? 'selected' : null }}>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0"
+                                        {{ old('status', $academic_program_menu->status) == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
+                                    </label>
+                                </div>
                                 @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror

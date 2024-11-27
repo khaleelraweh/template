@@ -26,9 +26,9 @@ class AcademicProgramMenuRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'                       =>  'required|max:255',
-                        'description.*'                 =>  'required',
-                        'link.*'                        =>  'nullable',
+                        'title.ar'                       =>  'required|max:255',
+                        'description.ar'                 =>  'required',
+                        'link.ar'                        =>  'nullable',
                         'icon'                          =>  'nullable',
                         'parent_id'                     =>  'nullable',
                         'section'                       =>  'nullable',
@@ -52,9 +52,9 @@ class AcademicProgramMenuRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'           =>   'required|max:255',
-                        'description.*'              =>   'nullable',
-                        'link.*'              =>   'nullable',
+                        'title.ar'           =>   'required|max:255',
+                        'description.ar'              =>   'nullable',
+                        'link.ar'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',
                         'section'           =>   'nullable',
@@ -86,10 +86,12 @@ class AcademicProgramMenuRequest extends FormRequest
         $attr = [
             'link'      => '( ' . __('panel.link') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
+            'images'    =>  '( ' . __('panel.images') . ' )',
         ];
 
         foreach (config('locales.languages') as $key => $val) {
             $attr += ['title.' . $key       =>  "( " . __('panel.title')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
+            $attr += ['description.' . $key       =>  "( " . __('panel.description')   . ' ' . __('panel.in') . ' ' . __('panel.' . $val['lang'])   . " )",];
         }
 
 
