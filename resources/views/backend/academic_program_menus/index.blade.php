@@ -99,9 +99,8 @@
                                                     <span class="">{{ __('panel.operation_edit') }}</span>
                                                 </a>
 
-
                                                 <a href="javascript:void(0);"
-                                                    onclick="confirmDelete({{ $academic_program_menu->id }})"
+                                                    onclick="confirmDelete('delete-academic-program-menu-{{ $academic_program_menu->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
                                                     class="dropdown-item d-flex align-items-center">
                                                     <i data-feather="trash" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_delete') }}</span>
@@ -113,17 +112,6 @@
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
-
-
-                                                {{-- <a href="javascript:void(0);"
-                                                    class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                    data-copy-text="https://ibbuniv.era-t.com/academic_program_menus/{{ $academic_program_menu->slug }}"
-                                                    title="Copy the link">
-                                                    <i data-feather="copy" class="icon-sm me-2"></i>
-                                                    <span class="">{{ __('panel.operation_copy_link') }}</span>
-                                                </a>
-                                                <span class="copyMessage"
-                                                    style="display:none;">{{ __('panel.copied') }}</span> --}}
 
                                                 <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center btn btn-success copyButton"
@@ -164,78 +152,4 @@
 
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        function confirmDelete($academic_program_menu_id) {
-            Swal.fire({
-                title: '{{ __('panel.confirm_delete_message') }}',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                confirmButtonText: '{{ __('panel.yes_delete') }}',
-                cancelButtonText: '{{ __('panel.cancel') }}',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-academic-program-menu-' + $academic_program_menu_id).submit();
-                }
-            });
-        }
-    </script>
-
-    <style>
-        .copyButton {
-            position: relative;
-        }
-
-        .copyMessage {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            display: none;
-            z-index: 1000;
-            font-size: 12px;
-            width: auto;
-            /* Ensure width fits content */
-            white-space: nowrap;
-            /* Prevents line break to ensure width fits content */
-        }
-    </style>
-
-    <script>
-        document.querySelectorAll(".copyButton").forEach(function(button) {
-            button.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent form submission
-
-                // Get the dynamic text to copy
-                var textToCopy = button.getAttribute("data-copy-text");
-
-                // Copy text to clipboard
-                var tempInput = document.createElement("input");
-                tempInput.value = textToCopy;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand("copy");
-                document.body.removeChild(tempInput);
-
-                // Show the copied message
-                var id = button.getAttribute("data-id");
-                var copyMessage = document.querySelector(`.copyMessage[data-id="${id}"]`);
-                if (copyMessage) {
-                    copyMessage.style.display = "inline";
-                    setTimeout(function() {
-                        copyMessage.style.display = "none";
-                    }, 2000); // Hide the message after 2 seconds
-                }
-            });
-        });
-    </script>
 @endsection
