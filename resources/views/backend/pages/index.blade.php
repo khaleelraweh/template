@@ -106,13 +106,26 @@
                                             </a>
 
 
-                                            <a href="javascript:void(0);" onclick="confirmDelete({{ $page->id }})"
+                                            {{-- <a href="javascript:void(0);" onclick="confirmDelete({{ $page->id }})"
                                                 class="dropdown-item d-flex align-items-center">
                                                 <i data-feather="trash" class="icon-sm me-2"></i>
                                                 <span class="">{{ __('panel.operation_delete') }}</span>
                                             </a>
                                             <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
                                                 class="d-none" id="delete-page-{{ $page->id }}">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form> --}}
+
+
+                                            <a href="javascript:void(0);"
+                                                onclick="confirmDelete({{ $page->id }}, 'delete-page-category-')"
+                                                class="dropdown-item d-flex align-items-center">
+                                                <i data-feather="trash" class="icon-sm me-2"></i>
+                                                <span class="">{{ __('panel.operation_delete') }}</span>
+                                            </a>
+                                            <form action="{{ route('admin.pages.destroy', $page->id) }}" method="post"
+                                                class="d-none" id="delete-page-category-{{ $page->id }}">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
@@ -165,34 +178,5 @@
                 }
             });
         }
-    </script>
-
-    <script>
-        document.querySelectorAll(".copyButton").forEach(function(button) {
-            button.addEventListener("click", function(event) {
-                event.preventDefault(); // Prevent form submission
-
-                // Get the dynamic text to copy
-                var textToCopy = button.getAttribute("data-copy-text");
-
-                // Copy text to clipboard
-                var tempInput = document.createElement("input");
-                tempInput.value = textToCopy;
-                document.body.appendChild(tempInput);
-                tempInput.select();
-                document.execCommand("copy");
-                document.body.removeChild(tempInput);
-
-                // Show the copied message
-                var id = button.getAttribute("data-id");
-                var copyMessage = document.querySelector(`.copyMessage[data-id="${id}"]`);
-                if (copyMessage) {
-                    copyMessage.style.display = "inline";
-                    setTimeout(function() {
-                        copyMessage.style.display = "none";
-                    }, 2000); // Hide the message after 2 seconds
-                }
-            });
-        });
     </script>
 @endsection
