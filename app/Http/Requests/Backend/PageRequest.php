@@ -82,6 +82,8 @@ class PageRequest extends FormRequest
     {
         $attr = [
             'content'      => '( ' . __('panel.f_content') . ' )',
+            'page_category_id'      => '( ' . __('panel.category_name') . ' )',
+            'images'      => '( ' . __('panel.images') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
         ];
 
