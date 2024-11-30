@@ -161,6 +161,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   advs Tab   ==============  //
         Route::post('advs/remove-image', [AdvsController::class, 'remove_image'])->name('advs.remove_image');
+        Route::post('advs/update-adv-status', [AdvsController::class, 'updateAdvStatus'])->name('advs.update_adv_status');
         Route::resource('advs', AdvsController::class);
 
 
