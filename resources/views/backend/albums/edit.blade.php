@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    {{-- main holder page  --}}
+    {{-- main holder album  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -170,19 +170,44 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                        data-input
+                                        value="{{ old('published_on', $album->published_on ? \Carbon\Carbon::parse($album->published_on)->format('Y/m/d h:i A') : '') }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status" class="control-label">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $album->status) == '1' ? 'selected' : null }}>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1" {{ old('status', $album->status) == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status', $album->status) == '0' ? 'selected' : null }}>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0" {{ old('status', $album->status) == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
+                                    </label>
+                                </div>
                                 @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -358,26 +383,6 @@
                     }
                 @endif
             ]
-        });
-
-
-
-        $(function() {
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 200,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
-
         });
     </script>
 @endsection
