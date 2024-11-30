@@ -226,4 +226,18 @@ class AdvsController extends Controller
         $image->delete();
         return true;
     }
+
+    public function updateAdvStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Post::where('id', $data['adv_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'adv_id' => $data['adv_id']]);
+        }
+    }
 }
