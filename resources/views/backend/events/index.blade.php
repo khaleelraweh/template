@@ -52,7 +52,7 @@
                             <th class="wd-40p border-bottom-0">{{ __('panel.title') }}</th>
                             <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.author') }}</th>
                             <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.status') }}</th>
-                            <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.created_at') }}</th>
+                            <th class="wd-15p border-bottom-0 d-none d-sm-table-cell ">{{ __('panel.published_on') }}</th>
                             <th class="text-center border-bottom-0" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
@@ -92,7 +92,7 @@
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-                                    {{ $event->created_at->format('Y/m/d') }}
+                                    {{ \Carbon\Carbon::parse($event->published_on)->diffForHumans() }}
                                 </td>
 
                                 <td>
