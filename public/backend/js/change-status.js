@@ -120,8 +120,8 @@ $(document).ready(function(){
         });
     });
 
-     //  updateNewsStatus Status
-     $(document).on("click",".updateNewsStatus",function(){
+    //  updateNewsStatus Status
+    $(document).on("click",".updateNewsStatus",function(){
         var status = $(this).children("i").attr("status");
         var new_id = $(this).attr("new_id");
 
