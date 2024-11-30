@@ -185,7 +185,7 @@ class AdvsController extends Controller
             $i                  = $adv->photos->count() + 1;
             $images             = $request->file('images');
             foreach ($images as $image) {
-                $manager = new ImageManager(new Driver());
+                $manager        = new ImageManager(new Driver());
 
                 $file_name      = $adv->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
                 $file_size      = $image->getSize();
