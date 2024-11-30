@@ -53,6 +53,7 @@ class EventsController extends Controller
         $input['title']                 = $request->title;
         $input['content']               = $request->content;
 
+        $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
             $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
                 ?: $request->title[$localeKey] ?? null;
