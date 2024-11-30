@@ -40,6 +40,7 @@ class AlbumRequest extends FormRequest
 
                         // used always 
                         'status'                    =>  'required',
+                        'published_on'              =>  'required',
                         'created_by'                =>  'nullable',
                         'updated_by'                =>  'nullable',
                         'deleted_by'                =>  'nullable',
@@ -62,6 +63,7 @@ class AlbumRequest extends FormRequest
 
                         // used always 
                         'status'             =>  'required',
+                        'published_on'              =>  'required',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
                         'deleted_by'         =>  'nullable',
