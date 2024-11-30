@@ -83,7 +83,7 @@
                                 @endif
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ $playlist->created_at->format('Y/m/d') }}
+                                {{ \Carbon\Carbon::parse($playlist->published_on)->diffForHumans() }}
                             </td>
                             <td>
                                 {{-- <div class="btn-group btn-group-sm">
