@@ -18,7 +18,7 @@
 
 @section('content')
 
-    {{-- main holder page  --}}
+    {{-- main holder adv  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -174,19 +174,44 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="status">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                        data-input
+                                        value="{{ old('published_on', $adv->published_on ? \Carbon\Carbon::parse($adv->published_on)->format('Y/m/d h:i A') : '') }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="status" class="control-label">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
                             </div>
                             <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status', $adv->status) == '1' ? 'selected' : null }}>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1" {{ old('status', $adv->status) == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
                                         {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status', $adv->status) == '0' ? 'selected' : null }}>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0" {{ old('status', $adv->status) == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
                                         {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
+                                    </label>
+                                </div>
                                 @error('status')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -294,56 +319,8 @@
 @endsection
 
 @section('script')
-    {{-- Call select2 plugin --}}
-    <script src="{{ asset('backend/vendor/select2/js/select2.full.min.js') }}"></script>
-
-
     <script>
         $(function() {
-
-            //select2: code to search in data 
-            function matchStart(params, data) {
-                // If there are no search terms, return all of the data
-                if ($.trim(params.term) === '') {
-                    return data;
-                }
-
-                // Skip if there is no 'children' property
-                if (typeof data.children === 'undefined') {
-                    return null;
-                }
-
-                // `data.children` contains the actual options that we are matching against
-                var filteredChildren = [];
-                $.each(data.children, function(idx, child) {
-                    if (child.text.toUpperCase().indexOf(params.term.toUpperCase()) == 0) {
-                        filteredChildren.push(child);
-                    }
-                });
-
-                // If we matched any of the timezone group's children, then set the matched children on the group
-                // and return the group object
-                if (filteredChildren.length) {
-                    var modifiedData = $.extend({}, data, true);
-                    modifiedData.children = filteredChildren;
-
-                    // You can return modified objects from here
-                    // This includes matching the `children` how you want in nested data sets
-                    return modifiedData;
-                }
-
-                // Return `null` if the term should not be displayed
-                return null;
-            }
-
-            // select2 : .select2 : is  identifier used with element to be effected
-            $(".select2").select2({
-                tags: true,
-                colseOnSelect: false,
-                minimumResultsForSearch: Infinity,
-                matcher: matchStart
-            });
-
             $("#course_images").fileinput({
                 theme: "fa5",
                 maxFileCount: 5,
@@ -354,7 +331,7 @@
                 overwriteInitial: false,
                 // اضافات للتعامل مع الصورة عند التعديل علي احد اقسام المنتجات
                 // delete images from photos and assets/products 
-                // because there are maybe more than one image we will go for each image and show them in the edit page 
+                // because there are maybe more than one image we will go for each image and show them in the edit adv 
                 initialPreview: [
                     @if ($adv->photos()->count() > 0)
                         @foreach ($adv->photos as $media)
@@ -382,48 +359,6 @@
             }).on('filesorted', function(event, params) {
                 console.log(params.previewId, params.oldIndex, params.newIndex, params.stack);
             });
-
-
-            // ======= start pickadate codeing  for start and end date ===========
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
-            // ======= End pickadate codeing for publish start and end date  ===========
-
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 200,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
 
         });
     </script>
