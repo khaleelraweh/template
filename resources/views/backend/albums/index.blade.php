@@ -68,38 +68,24 @@
                                 {{ $album->created_by }}
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                <span class="btn btn-round rounded-pill btn-success btn-xs ">
-                                    {{ $album->status() }}
-                                </span>
+                                @if ($album->status == 1)
+                                    <a href="javascript:void(0);" class="updateAlbumStatus " id="album-{{ $album->id }}"
+                                        album_id="{{ $album->id }}">
+                                        <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true" status="Active"
+                                            style="font-size: 1.6em"></i>
+                                    </a>
+                                @else
+                                    <a href="javascript:void(0);" class="updateAlbumStatus" id="album-{{ $album->id }}"
+                                        album_id="{{ $album->id }}">
+                                        <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true" status="Inactive"
+                                            style="font-size: 1.6em"></i>
+                                    </a>
+                                @endif
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 {{ \Carbon\Carbon::parse($album->published_on)->diffForHumans() }}
                             </td>
                             <td>
-                                {{-- <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.albums.edit', $album->id) }}" class="btn btn-primary"
-                                        title="Edit the album">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="https://ibbuniv.era-t.com/albums/{{ $album->slug }}"
-                                        title="Copy the link">
-                                        <i class="far fa-copy"></i>
-                                    </a>
-                                    <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
-
-                                    <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $album->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the album">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                </div>
-                                <form action="{{ route('admin.albums.destroy', $album->id) }}" method="post"
-                                    class="d-none" id="delete-product-category-{{ $album->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form> --}}
                                 <div class="btn-group btn-group-sm">
                                     <div class="dropdown mb-2 ">
                                         <a type="button" class="d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown"
