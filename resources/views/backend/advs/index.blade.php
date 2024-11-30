@@ -83,7 +83,7 @@
                                 </td>
 
                                 <td>
-                                    <div class="btn-group btn-group-sm">
+                                    {{-- <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.advs.edit', $adv->id) }}" class="btn btn-primary">
                                             <i class="fa fa-edit"></i>
                                         </a>
@@ -105,7 +105,55 @@
                                         class="d-none" id="delete-adv-{{ $adv->id }}">
                                         @csrf
                                         @method('DELETE')
-                                    </form>
+                                    </form> --}}
+
+                                    <div class="btn-group btn-group-sm">
+                                        <div class="dropdown mb-2 ">
+                                            <a type="button" class="d-flex" id="dropdownMenuButton"
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                                {{ __('panel.operation_options') }}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                    viewBox="0 0 25 15" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-chevron-down link-arrow">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                    href="{{ route('admin.advs.edit', $adv->id) }}">
+                                                    <i data-feather="edit-2" class="icon-sm me-2"></i>
+                                                    <span class="">{{ __('panel.operation_edit') }}</span>
+                                                </a>
+
+                                                <a href="javascript:void(0);"
+                                                    onclick="confirmDelete('delete-adv-{{ $adv->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
+                                                    class="dropdown-item d-flex align-items-center">
+                                                    <i data-feather="trash" class="icon-sm me-2"></i>
+                                                    <span class="">{{ __('panel.operation_delete') }}</span>
+                                                </a>
+                                                <form action="{{ route('admin.advs.destroy', $adv->id) }}" method="post"
+                                                    class="d-none" id="delete-adv-{{ $adv->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+
+                                                <a href="javascript:void(0);"
+                                                    class="dropdown-item d-flex align-items-center btn btn-success copyButton"
+                                                    data-copy-text="https://ibbuniv.era-t.com/advs/{{ $adv->slug }}"
+                                                    data-id="{{ $adv->id }}" title="Copy the link">
+                                                    <i data-feather="copy" class="icon-sm me-2"></i>
+                                                    <span class="">{{ __('panel.operation_copy_link') }}</span>
+                                                </a>
+
+                                            </div>
+                                            <span class="copyMessage" data-id="{{ $adv->id }}" style="display:none;">
+                                                {{ __('panel.copied') }}
+                                            </span>
+                                        </div>
+                                    </div>
+
                                 </td>
                             </tr>
                         @empty
