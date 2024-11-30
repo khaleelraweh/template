@@ -167,6 +167,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   events Tab   ==============  //
         Route::post('events/remove-image', [EventsController::class, 'remove_image'])->name('events.remove_image');
+        Route::post('events/update-event-status', [EventsController::class, 'updateEventStatus'])->name('events.update_event_status');
         Route::resource('events', EventsController::class);
 
 

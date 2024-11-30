@@ -243,4 +243,18 @@ class EventsController extends Controller
         $image->delete();
         return true;
     }
+
+    public function updateEventStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Event::where('id', $data['event_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'event_id' => $data['event_id']]);
+        }
+    }
 }
