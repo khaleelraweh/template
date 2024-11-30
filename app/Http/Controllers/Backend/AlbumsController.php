@@ -282,4 +282,18 @@ class AlbumsController extends Controller
             return true;
         }
     }
+
+    public function updateAlbumStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Album::where('id', $data['album_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'album_id' => $data['album_id']]);
+        }
+    }
 }
