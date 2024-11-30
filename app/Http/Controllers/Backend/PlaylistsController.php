@@ -246,4 +246,18 @@ class PlaylistsController extends Controller
         $image->delete();
         return true;
     }
+
+    public function updatePlaylistStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Album::where('id', $data['playlist_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'playlist_id' => $data['playlist_id']]);
+        }
+    }
 }

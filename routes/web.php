@@ -180,6 +180,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   playlists Tab   ==============  //
         Route::post('playlists/remove-image', [PlaylistsController::class, 'remove_image'])->name('playlists.remove_image');
+        Route::post('playlists/update-playlist-status', [PlaylistsController::class, 'updatePlaylistStatus'])->name('playlists.update_playlist_status');
         Route::resource('playlists', PlaylistsController::class);
 
 
