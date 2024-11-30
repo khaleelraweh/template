@@ -144,5 +144,29 @@ $(document).ready(function(){
         });
     });
 
+     //  updateAdvStatus Status
+     $(document).on("click",".updateAdvStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var adv_id = $(this).attr("adv_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/advs/update-adv-status',
+            data:{status:status,adv_id:adv_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#adv-"+adv_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#adv-"+adv_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 
 });
