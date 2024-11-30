@@ -87,16 +87,16 @@ class AdvsController extends Controller
 
         if ($request->hasFile('images') && count($request->images) > 0) {
 
-            $i = $adv->photos->count() + 1;
-            $images = $request->file('images');
+            $i          = $adv->photos->count() + 1;
+            $images     = $request->file('images');
             foreach ($images as $image) {
-                $manager = new ImageManager(new Driver());
+                $manager    = new ImageManager(new Driver());
 
-                $file_name = $adv->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
-                $file_size = $image->getSize();
-                $file_type = $image->getMimeType();
+                $file_name  = $adv->slug . '_' . time() . $i . '.' . $image->getClientOriginalExtension();
+                $file_size  = $image->getSize();
+                $file_type  = $image->getMimeType();
 
-                $img = $manager->read($image);
+                $img        = $manager->read($image);
                 $img->save(base_path('public/assets/advs/' . $file_name));
 
                 $adv->photos()->create([
@@ -134,8 +134,8 @@ class AdvsController extends Controller
         if (!auth()->user()->ability('admin', 'update_advs')) {
             return redirect('admin/index');
         }
-        $adv = Post::where('id', $adv)->first();
-        $tags = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
+        $adv            = Post::where('id', $adv)->first();
+        $tags           = Tag::whereStatus(1)->where('section', 3)->get(['id', 'name']);
         return view('backend.advs.edit', compact('adv', 'tags'));
     }
 
@@ -146,8 +146,8 @@ class AdvsController extends Controller
         }
         $adv = Post::where('id', $adv)->first();
 
-        $input['title'] = $request->title;
-        $input['content'] = $request->content;
+        $input['title']         = $request->title;
+        $input['content']       = $request->content;
 
 
         $input['metadata_title'] = [];
@@ -195,11 +195,11 @@ class AdvsController extends Controller
                 $img->save(base_path('public/assets/advs/' . $file_name));
 
                 $adv->photos()->create([
-                    'file_name' => $file_name,
-                    'file_size' => $file_size,
-                    'file_type' => $file_type,
-                    'file_status' => 'true',
-                    'file_sort' => $i,
+                    'file_name'     => $file_name,
+                    'file_size'     => $file_size,
+                    'file_type'     => $file_type,
+                    'file_status'   => 'true',
+                    'file_sort'     => $i,
                 ]);
                 $i++;
             }
