@@ -72,9 +72,23 @@
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
-                                    <span class="btn btn-round rounded-pill btn-success btn-xs ">
+
+                                    {{-- <span class="btn btn-round rounded-pill btn-success btn-xs ">
                                         {{ $event->status() }}
-                                    </span>
+                                    </span> --}}
+                                    @if ($event->status == 1)
+                                        <a href="javascript:void(0);" class="updateEventStatus "
+                                            id="event-{{ $event->id }}" event_id="{{ $event->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updateEventStatus"
+                                            id="event-{{ $event->id }}" event_id="{{ $event->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
                                 </td>
 
                                 <td class="d-none d-sm-table-cell">
