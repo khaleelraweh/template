@@ -98,7 +98,24 @@
                                 <td>{{ $main_slider->title }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $main_slider->created_by }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $main_slider->created_at }}</td>
-                                <td>{{ $main_slider->status() }}</td>
+                                <td>
+                                    {{-- {{ $main_slider->status() }} --}}
+                                    @if ($main_slider->status == 1)
+                                        <a href="javascript:void(0);" class="updateMainSliderStatus "
+                                            id="main-slider-{{ $main_slider->id }}"
+                                            main_slider_id="{{ $main_slider->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updateMainSliderStatus"
+                                            id="main-slider-{{ $main_slider->id }}"
+                                            main_slider_id="{{ $main_slider->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
