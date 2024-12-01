@@ -191,4 +191,18 @@ class StatisticsController extends Controller
             return true;
         }
     }
+
+    public function updateStatisticStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Statistic::where('id', $data['statistic_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'statistic_id' => $data['statistic_id']]);
+        }
+    }
 }
