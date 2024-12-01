@@ -176,111 +176,114 @@
                     {{-- url Tab --}}
                     <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
 
-                        @foreach (config('locales.languages') as $key => $val)
-                            <div class="row ">
+                        <fieldset style="border: 1px solid #eee;padding:20px;margin:20px 0;">
+                            <legend>خيارات زر التنقل</legend>
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-3 pt-3">
+                                        <label for="btn_title[{{ $key }}]">
+                                            {{ __('panel.browse_button_title') }}
+                                            <span class="language-type">
+                                                <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                    title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                {{ __('panel.' . $key) }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-9 pt-3">
+                                        <input type="text" name="btn_title[{{ $key }}]"
+                                            id="btn_title[{{ $key }}]" value="{{ old('btn_title.' . $key) }}"
+                                            class="form-control">
+                                        @error('btn_title.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            @foreach (config('locales.languages') as $key => $val)
+                                <div class="row ">
+                                    <div class="col-sm-12 col-md-3 pt-3">
+                                        <label for="url[{{ $key }}]">
+                                            {{ __('panel.url_link') }}
+                                            <span class="language-type">
+                                                <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                    title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                                {{ __('panel.' . $key) }}
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-sm-12 col-md-9 pt-3">
+                                        <input type="text" name="url[{{ $key }}]"
+                                            id="url[{{ $key }}]" value="{{ old('url.' . $key) }}"
+                                            class="form-control">
+                                        @error('url.' . $key)
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endforeach
+
+                            <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
-                                    <label for="btn_title[{{ $key }}]">
-                                        {{ __('panel.browse_button_title') }}
-                                        <span class="language-type">
-                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
-                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
-                                            {{ __('panel.' . $key) }}
-                                        </span>
+                                    <label for="show_btn_title" class="control-label">
+                                        <span>{{ __('panel.url_target') }}</span>
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-9 pt-3">
-                                    <input type="text" name="btn_title[{{ $key }}]"
-                                        id="btn_title[{{ $key }}]" value="{{ old('btn_title.' . $key) }}"
-                                        class="form-control">
-                                    @error('btn_title.' . $key)
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="target" id="target_active"
+                                            value="1" {{ old('target', '1') == '1' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="target_active">
+                                            {{ __('panel.in_the_same_tab') }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="target"
+                                            id="target_inactive" value="0"
+                                            {{ old('target') == '0' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="target_inactive">
+                                            {{ __('panel.in_new_tab') }}
+                                        </label>
+                                    </div>
+                                    @error('target')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                        @endforeach
 
 
-                        @foreach (config('locales.languages') as $key => $val)
-                            <div class="row ">
+                            <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
-                                    <label for="url[{{ $key }}]">
-                                        {{ __('panel.url_link') }}
-                                        <span class="language-type">
-                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
-                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
-                                            {{ __('panel.' . $key) }}
-                                        </span>
+                                    <label for="show_btn_title" class="control-label">
+                                        <span>{{ __('panel.show_browsing_button') }}</span>
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-9 pt-3">
-                                    <input type="text" name="url[{{ $key }}]" id="url[{{ $key }}]"
-                                        value="{{ old('url.' . $key) }}" class="form-control">
-                                    @error('url.' . $key)
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="show_btn_title"
+                                            id="show_btn_title_active" value="1"
+                                            {{ old('show_btn_title', '1') == '1' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="show_btn_title_active">
+                                            {{ __('panel.yes') }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="show_btn_title"
+                                            id="show_btn_title_inactive" value="0"
+                                            {{ old('show_btn_title') == '0' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="show_btn_title_inactive">
+                                            {{ __('panel.no') }}
+                                        </label>
+                                    </div>
+                                    @error('show_btn_title')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                        @endforeach
 
+                        </fieldset>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-3 pt-3">
-                                <label for="show_btn_title" class="control-label">
-                                    <span>{{ __('panel.url_target') }}</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-12 col-md-9 pt-3">
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="target" id="target_active"
-                                        value="1" {{ old('target', '1') == '1' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="target_active">
-                                        {{ __('panel.in_the_same_tab') }}
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="target" id="target_inactive"
-                                        value="0" {{ old('target') == '0' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="target_inactive">
-                                        {{ __('panel.in_new_tab') }}
-                                    </label>
-                                </div>
-                                @error('target')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-3 pt-3">
-                                <label for="show_btn_title" class="control-label">
-                                    <span>{{ __('panel.show_browsing_button') }}</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-12 col-md-9 pt-3">
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="show_btn_title"
-                                        id="show_btn_title_active" value="1"
-                                        {{ old('show_btn_title', '1') == '1' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="show_btn_title_active">
-                                        {{ __('panel.yes') }}
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="show_btn_title"
-                                        id="show_btn_title_inactive" value="0"
-                                        {{ old('show_btn_title') == '0' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="show_btn_title_inactive">
-                                        {{ __('panel.no') }}
-                                    </label>
-                                </div>
-                                @error('show_btn_title')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <hr>
 
                         <div class="row">
                             <div class="col-sm-12 col-md-3 pt-3">
