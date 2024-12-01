@@ -192,6 +192,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Statistics Tab   ==============  //
         Route::post('statistics/remove-statistic-image', [StatisticsController::class, 'remove_statistic_image'])->name('statistics.remove_statistic_image');
+        Route::post('statistics/update-statistic-status', [StatisticsController::class, 'updateStatisticStatus'])->name('statistics.update_statistic_status');
         Route::resource('statistics', StatisticsController::class);
 
         // ==============   Site Setting  Tab   ==============  //

@@ -288,5 +288,29 @@ $(document).ready(function(){
         });
     });
 
+    //  updateStatisticStatus Status
+    $(document).on("click",".updateStatisticStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var statistic_id = $(this).attr("statistic_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/statistics/update-statistic-status',
+            data:{status:status,statistic_id:statistic_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#statistic-"+statistic_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#statistic-"+statistic_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 
 });
