@@ -96,7 +96,8 @@
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="title[{{ $key }}]"
-                                        id="title[{{ $key }}]" value="{{ old('title.' . $key) }}"
+                                        id="title[{{ $key }}]"
+                                        value="{{ old('title.' . $key, $mainSlider->getTranslation('title', $key)) }}"
                                         class="form-control">
                                     @error('title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -121,7 +122,8 @@
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <input type="text" name="subtitle[{{ $key }}]"
-                                        id="subtitle[{{ $key }}]" value="{{ old('subtitle.' . $key) }}"
+                                        id="subtitle[{{ $key }}]"
+                                        value="{{ old('subtitle.' . $key, $mainSlider->getTranslation('subtitle', $key)) }}"
                                         class="form-control">
                                     @error('subtitle.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
@@ -146,7 +148,7 @@
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
                                     <textarea id="tinymceExample" name="description[{{ $key }}]" rows="10" class="form-control ">{!! old('description.' . $key) !!}</textarea>
-                                    @error('description.' . $key)
+                                    @error('description.' . $key, $mainSlider->getTranslation('description', $key))
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -199,7 +201,8 @@
                                     </div>
                                     <div class="col-sm-12 col-md-9 pt-3">
                                         <input type="text" name="btn_title[{{ $key }}]"
-                                            id="btn_title[{{ $key }}]" value="{{ old('btn_title.' . $key) }}"
+                                            id="btn_title[{{ $key }}]"
+                                            value="{{ old('btn_title.' . $key, $mainSlider->getTranslation('btn_title', $key)) }}"
                                             class="form-control">
                                         @error('btn_title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -222,7 +225,8 @@
                                     </div>
                                     <div class="col-sm-12 col-md-9 pt-3">
                                         <input type="text" name="url[{{ $key }}]"
-                                            id="url[{{ $key }}]" value="{{ old('url.' . $key) }}"
+                                            id="url[{{ $key }}]"
+                                            value="{{ old('url.' . $key, $mainSlider->getTranslation('url', $key)) }}"
                                             class="form-control">
                                         @error('url.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
