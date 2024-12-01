@@ -32,6 +32,12 @@ return new class extends Migration
 
             $table->boolean('show_info')->default(true); // عرض العنوان والتصفاصيل 
 
+            // SEO
+            $table->json('metadata_title')->nullable();
+            $table->json('metadata_description')->nullable();
+            $table->json('metadata_keywords')->nullable();
+            // end SEO
+
             // will be use always
             $table->boolean('status')->default(true);
             $table->dateTime('published_on')->nullable();

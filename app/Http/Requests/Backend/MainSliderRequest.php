@@ -38,6 +38,10 @@ class MainSliderRequest extends FormRequest
                         'images'                =>  'required',
                         'images.*'              =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
 
+                        'metadata_title.*'              =>  'nullable',
+                        'metadata_description.*'        =>  'nullable',
+                        'metadata_keywords.*'           =>  'nullable',
+
                         // used always 
                         'status'                =>  'required',
                         'published_on'          =>  'nullable',
@@ -62,6 +66,10 @@ class MainSliderRequest extends FormRequest
                         'show_info'          => 'required',
                         'images'            =>  'nullable',
                         'images.*'          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
+
+                        'metadata_title.*'              =>  'nullable',
+                        'metadata_description.*'        =>  'nullable',
+                        'metadata_keywords.*'           =>  'nullable',
 
                         // used always 
                         'status'             =>  'required',
