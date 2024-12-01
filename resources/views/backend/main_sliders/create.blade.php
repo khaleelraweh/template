@@ -57,16 +57,11 @@
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="url-tab" data-bs-toggle="tab" data-bs-target="#url" type="button"
-                            role="tab" aria-controls="url" aria-selected="true">{{ __('panel.url_tab') }}
+                            role="tab" aria-controls="url" aria-selected="true">{{ __('panel.operation_options') }}
                         </button>
                     </li>
 
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}
-                        </button>
-                    </li>
+
 
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="SEO-tab" data-bs-toggle="tab" data-bs-target="#SEO" type="button"
