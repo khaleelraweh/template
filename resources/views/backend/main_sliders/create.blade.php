@@ -177,7 +177,7 @@
                     <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
 
                         <fieldset class="p-3 my-3" style="border: 1px solid #eee;">
-                            <legend>خيارات زر التنقل</legend>
+                            <legend>{{ __('panel.browse_button_options') }}</legend>
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="row ">
                                     <div class="col-sm-12 col-md-3 pt-3">
@@ -285,7 +285,7 @@
                         </fieldset>
 
                         <fieldset class="p-3 my-3" style="border: 1px solid #eee;">
-                            <legend>خيارات النشر</legend>
+                            <legend>{{ __('panel.publishing_options') }}</legend>
                             <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
                                     {{ __('panel.published_on') }}
@@ -334,7 +334,7 @@
                         </fieldset>
 
                         <fieldset class="p-3 my-3" style="border: 1px solid #eee">
-                            <legend>خيارات تفاصيل الشريحة</legend>
+                            <legend>{{ __('panel.slide_detail_options') }}</legend>
                             <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
                                     <label for="show_info" class="control-label">

@@ -90,6 +90,10 @@ return [
     'in_new_tab'                    =>  'In New Tab',
     'browse_button_title'           =>  'Browse button title',
     'show_browsing_button'          =>  'Show browse button',
+    'browse_button_options'         =>  'Browse button options',
+    'publishing_options'            =>  'Publishing options',
+    'slide_detail_options'          =>  'Slide detail options',
+
 
 
     ########################### Manage Categories  ##################################

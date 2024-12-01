@@ -94,6 +94,12 @@ return [
     'in_new_tab'                        => 'عرض في تبويب جديد',
     'browse_button_title'               =>  'عنوان زر التصفح',
     'show_browsing_button'               =>  'عرض زر التصفح',
+    'browse_button_options'             =>  'خيارات زر التصفح',
+    'publishing_options'                =>  'خيارات النشر',
+    'slide_detail_options'              =>  'خيارات تفاصيل الشريحة',
+
+
+
 
 
     ################################ Manage Categories  #########################
