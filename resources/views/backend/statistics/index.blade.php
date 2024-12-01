@@ -62,10 +62,7 @@
                         @forelse ($statistics as $statistic)
                             <tr>
                                 <td>
-
-
                                     <i class="{{ $statistic->icon }}" style="font-size: 40px"></i>
-
                                 </td>
                                 <td>{{ $statistic->title }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $statistic->created_by }}</td>
@@ -75,24 +72,6 @@
                                 </td>
                                 <td>{{ $statistic->status() }}</td>
                                 <td>
-
-                                    {{-- <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.statistics.edit', $statistic->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-{{ $statistic->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                    <form action="{{ route('admin.statistics.destroy', $statistic->id) }}" method="post"
-                                        class="d-none" id="delete-product-{{ $statistic->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form> --}}
-
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
                                             <a type="button" class="d-flex" id="dropdownMenuButton"
