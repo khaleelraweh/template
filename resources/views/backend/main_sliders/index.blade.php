@@ -56,7 +56,7 @@
                             <th>{{ __('panel.image') }}</th>
                             <th>{{ __('panel.title') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
+                            <th class="d-none d-sm-table-cell"> {{ __('panel.published_on') }} </th>
                             <th>{{ __('panel.status') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
@@ -97,7 +97,10 @@
                                 </td>
                                 <td>{{ $main_slider->title }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $main_slider->created_by }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $main_slider->created_at }}</td>
+                                <td class="d-none d-sm-table-cell">
+                                    {{ \Carbon\Carbon::parse($main_slider->published_on)->diffForHumans() }}
+
+                                </td>
                                 <td>
                                     {{-- {{ $main_slider->status() }} --}}
                                     @if ($main_slider->status == 1)
