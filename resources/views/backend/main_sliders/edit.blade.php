@@ -269,7 +269,6 @@
                             </div>
                         </div>
 
-
                         <div class="row">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="status" class="control-label">
@@ -297,26 +296,34 @@
                             </div>
                         </div>
 
-                        {{-- show info field --}}
                         <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-4">
-                                <label for="show_info">{{ __('panel.show_slider_info') }}</label>
-                                <select name="show_info" class="form-control">
-                                    <option value="1"
-                                        {{ old('show_info', $mainSlider->show_info) == '1' ? 'selected' : null }}>
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="show_info" class="control-label">
+                                    <span>{{ __('panel.show_slider_info') }}</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="show_info" id="show_info"
+                                        value="1"
+                                        {{ old('show_info', $mainSlider->show_info) == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="show_info">
                                         {{ __('panel.yes') }}
-                                    </option>
-                                    <option value="0"
-                                        {{ old('show_info', $mainSlider->show_info) == '0' ? 'selected' : null }}>
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="show_info" id="status_inactive"
+                                        value="0"
+                                        {{ old('show_info', $mainSlider->show_info) == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="show_info">
                                         {{ __('panel.no') }}
-                                    </option>
-                                </select>
+                                    </label>
+                                </div>
                                 @error('show_info')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
-
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
