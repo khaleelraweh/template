@@ -101,7 +101,7 @@
                                 <td>
                                     {{-- {{ $main_slider->status() }} --}}
                                     @if ($main_slider->status == 1)
-                                        <a href="javascript:void(0);" class="updateMainSliderStatus "
+                                        <a href="javascript:void(0);" class="updateMainSliderStatus"
                                             id="main-slider-{{ $main_slider->id }}"
                                             main_slider_id="{{ $main_slider->id }}">
                                             <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"

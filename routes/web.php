@@ -99,6 +99,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Sliders Tab   ==============  //
         Route::post('main_sliders/remove-image', [MainSliderController::class, 'remove_image'])->name('main_sliders.remove_image');
+        Route::post('main_sliders/update-main-slider-status', [MainSliderController::class, 'updateMainSliderStatus'])->name('main_sliders.update_main_slider_status');
         Route::resource('main_sliders', MainSliderController::class);
 
         Route::post('advertisor_sliders/remove-image', [AdvertisorSliderController::class, 'remove_image'])->name('advertisor_sliders.remove_image');
