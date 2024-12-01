@@ -305,4 +305,18 @@ class MainSliderController extends Controller
 
         return true;
     }
+
+    public function updateMainSliderStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Slider::where('id', $data['main_slider_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'main_slider_id' => $data['main_slider_id']]);
+        }
+    }
 }
