@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
 
             $table->json('btn_title');
-            $table->string('url')->nullable();
+            $table->json('url')->nullable();
             $table->boolean('show_btn_title')->default(true); // عرض العنوان والتصفاصيل 
 
             $table->string('target')->default('_self');
