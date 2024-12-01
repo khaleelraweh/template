@@ -176,7 +176,7 @@
                     {{-- url Tab --}}
                     <div class="tab-pane fade" id="url" role="tabpanel" aria-labelledby="url-tab">
 
-                        <fieldset style="border: 1px solid #eee;padding:20px;margin:20px 0;">
+                        <fieldset class="p-3 my-3" style="border: 1px solid #eee;">
                             <legend>خيارات زر التنقل</legend>
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="row ">
@@ -284,80 +284,88 @@
 
                         </fieldset>
 
+                        <fieldset class="p-3 my-3" style="border: 1px solid #eee;">
+                            <legend>خيارات النشر</legend>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    {{ __('panel.published_on') }}
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <div class="input-group flatpickr" id="flatpickr-datetime">
+                                        <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                            class="form-control" placeholder="Select date" data-input>
+                                        <span class="input-group-text input-group-addon" data-toggle>
+                                            <i data-feather="calendar"></i>
+                                        </span>
+                                    </div>
+                                    @error('published_on')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-3 pt-3">
-                                {{ __('panel.published_on') }}
-                            </div>
-                            <div class="col-sm-12 col-md-9 pt-3">
-                                <div class="input-group flatpickr" id="flatpickr-datetime">
-                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
-                                        class="form-control" placeholder="Select date" data-input>
-                                    <span class="input-group-text input-group-addon" data-toggle>
-                                        <i data-feather="calendar"></i>
-                                    </span>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="status" class="control-label">
+                                        <span>{{ __('panel.status') }}</span>
+                                    </label>
                                 </div>
-                                @error('published_on')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="status" id="status_active"
+                                            value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="status_active">
+                                            {{ __('panel.status_active') }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="status"
+                                            id="status_inactive" value="0"
+                                            {{ old('status') == '0' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="status_inactive">
+                                            {{ __('panel.status_inactive') }}
+                                        </label>
+                                    </div>
+                                    @error('status')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                        </fieldset>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-3 pt-3">
-                                <label for="status" class="control-label">
-                                    <span>{{ __('panel.status') }}</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-12 col-md-9 pt-3">
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="status" id="status_active"
-                                        value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="status_active">
-                                        {{ __('panel.status_active') }}
+                        <fieldset class="p-3 my-3" style="border: 1px solid #eee">
+                            <legend>خيارات تفاصيل الشريحة</legend>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="show_info" class="control-label">
+                                        <span>{{ __('panel.show_slider_info') }}</span>
                                     </label>
                                 </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
-                                        value="0" {{ old('status') == '0' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="status_inactive">
-                                        {{ __('panel.status_inactive') }}
-                                    </label>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="show_info"
+                                            id="show_info_active" value="1"
+                                            {{ old('show_info', '1') == '1' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="show_info_active">
+                                            {{ __('panel.yes') }}
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" name="show_info"
+                                            id="show_info_inactive" value="0"
+                                            {{ old('show_info') == '0' ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="show_info_inactive">
+                                            {{ __('panel.no') }}
+                                        </label>
+                                    </div>
+                                    @error('show_info')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
                             </div>
-                        </div>
+                        </fieldset>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-3 pt-3">
-                                <label for="show_info" class="control-label">
-                                    <span>{{ __('panel.show_slider_info') }}</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-12 col-md-9 pt-3">
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="show_info"
-                                        id="show_info_active" value="1"
-                                        {{ old('show_info', '1') == '1' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="show_info_active">
-                                        {{ __('panel.yes') }}
-                                    </label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" name="show_info"
-                                        id="show_info_inactive" value="0"
-                                        {{ old('show_info') == '0' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="show_info_inactive">
-                                        {{ __('panel.no') }}
-                                    </label>
-                                </div>
-                                @error('show_info')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
