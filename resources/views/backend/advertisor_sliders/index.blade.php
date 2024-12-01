@@ -78,7 +78,24 @@
                                 <td class="d-none d-sm-table-cell">
                                     {{ \Carbon\Carbon::parse($advertisor_slider->published_on)->diffForHumans() }}
                                 </td>
-                                <td>{{ $advertisor_slider->status() }}</td>
+                                <td>
+                                    {{-- {{ $advertisor_slider->status() }} --}}
+                                    @if ($advertisor_slider->status == 1)
+                                        <a href="javascript:void(0);" class="updateAdvertisorSliderStatus"
+                                            id="advertisor-slider-{{ $advertisor_slider->id }}"
+                                            advertisor_slider_id="{{ $advertisor_slider->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updateAdvertisorSliderStatus"
+                                            id="advertisor-slider-{{ $advertisor_slider->id }}"
+                                            advertisor_slider_id="{{ $advertisor_slider->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
@@ -101,7 +118,7 @@
                                                 </a>
 
                                                 <a href="javascript:void(0);"
-                                                    onclick="confirmDelete('delete-main_slider-{{ $advertisor_slider->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
+                                                    onclick="confirmDelete('delete-advertisor_slider-{{ $advertisor_slider->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
                                                     class="dropdown-item d-flex align-items-center">
                                                     <i data-feather="trash" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_delete') }}</span>
@@ -109,14 +126,14 @@
                                                 <form
                                                     action="{{ route('admin.advertisor_sliders.destroy', $advertisor_slider->id) }}"
                                                     method="post" class="d-none"
-                                                    id="delete-main_slider-{{ $advertisor_slider->id }}">
+                                                    id="delete-advertisor_slider-{{ $advertisor_slider->id }}">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
 
                                                 <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                    data-copy-text="https://ibbuniv.era-t.com/main_sliders/{{ $advertisor_slider->slug }}"
+                                                    data-copy-text="https://ibbuniv.era-t.com/advertisor_sliders/{{ $advertisor_slider->slug }}"
                                                     data-id="{{ $advertisor_slider->id }}" title="Copy the link">
                                                     <i data-feather="copy" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_copy_link') }}</span>

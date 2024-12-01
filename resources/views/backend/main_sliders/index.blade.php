@@ -102,7 +102,6 @@
 
                                 </td>
                                 <td>
-                                    {{-- {{ $main_slider->status() }} --}}
                                     @if ($main_slider->status == 1)
                                         <a href="javascript:void(0);" class="updateMainSliderStatus"
                                             id="main-slider-{{ $main_slider->id }}"
