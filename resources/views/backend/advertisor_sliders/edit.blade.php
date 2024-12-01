@@ -298,10 +298,10 @@
                         <fieldset class="p-3 my-3" style="border: 1px solid #eee;">
                             <legend>{{ __('panel.publishing_options') }}</legend>
                             <div class="row">
-                                <div class="col-sm-12 col-md-2 pt-3">
+                                <div class="col-sm-12 col-md-3 pt-3">
                                     {{ __('panel.published_on') }}
                                 </div>
-                                <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="col-sm-12 col-md-9 pt-3">
                                     <div class="input-group flatpickr" id="flatpickr-datetime">
                                         <input type="text" name="published_on" class="form-control"
                                             placeholder="Select date" data-input
@@ -317,12 +317,12 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-12 col-md-2 pt-3">
+                                <div class="col-sm-12 col-md-3 pt-3">
                                     <label for="status" class="control-label">
                                         <span>{{ __('panel.status') }}</span>
                                     </label>
                                 </div>
-                                <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="col-sm-12 col-md-9 pt-3">
                                     <div class="form-check form-check-inline">
                                         <input type="radio" class="form-check-input" name="status" id="status_active"
                                             value="1"
@@ -348,6 +348,29 @@
 
                         <fieldset class="p-3 my-3" style="border: 1px solid #eee">
                             <legend>{{ __('panel.slide_detail_options') }}</legend>
+
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="show_info" class="control-label">
+                                        <span>{{ __('panel.choose_icon') }}</span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <div class="input-group iconpicker-container ">
+                                        <input data-placement="bottomRight"
+                                            class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                            value=" {{ old('icon', $advertisorSlider->icon) ?? 'fas fa-archive' }}"
+                                            type="text" name="icon">
+                                        <span class="input-group-addon btn btn-primary">
+                                            <i class="{{ $advertisorSlider->icon ?? 'fas fa-archive' }}"></i>
+                                        </span>
+                                    </div>
+
+                                    @error('icon')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
 
                             <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
@@ -377,6 +400,7 @@
                                     @enderror
                                 </div>
                             </div>
+
                         </fieldset>
 
 
@@ -461,9 +485,9 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
+                        <div class="col-sm-12 col-md-3 pt-3 d-none d-md-block">
                         </div>
-                        <div class="col-sm-12 col-md 10 pt-3">
+                        <div class="col-sm-12 col-md-9 pt-3">
                             <button type="submit" name="submit" class="btn btn-primary">
                                 <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
                                 {{ __('panel.update_data') }}

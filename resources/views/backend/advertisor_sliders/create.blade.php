@@ -334,6 +334,31 @@
 
                         <fieldset class="p-3 my-3" style="border: 1px solid #eee">
                             <legend>{{ __('panel.slide_detail_options') }}</legend>
+                            <div class="row ">
+
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="show_info" class="control-label">
+                                        <span>{{ __('panel.choose_icon') }}</span>
+                                    </label>
+                                </div>
+
+                                <div class="col-sm-12 col-md-9 pt-3">
+
+                                    <div class="input-group iconpicker-container ">
+                                        <input data-placement="bottomRight"
+                                            class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                            value="fas fa-archive" type="text" name="icon">
+                                        <span class="input-group-addon btn btn-primary">
+                                            <i class="fas fa-archive"></i>
+                                        </span>
+                                    </div>
+
+                                    @error('icon')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
                                     <label for="show_info" class="control-label">
@@ -362,30 +387,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="row ">
 
-                                <div class="col-sm-12 col-md-3 pt-3">
-                                    <label for="show_info" class="control-label">
-                                        <span>{{ __('panel.choose_icon') }}</span>
-                                    </label>
-                                </div>
-
-                                <div class="col-sm-12 col-md-9 pt-3">
-
-                                    <div class="input-group iconpicker-container ">
-                                        <input data-placement="bottomRight"
-                                            class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
-                                            value="fas fa-archive" type="text" name="icon">
-                                        <span class="input-group-addon btn btn-primary">
-                                            <i class="fas fa-archive"></i>
-                                        </span>
-                                    </div>
-
-                                    @error('icon')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
                         </fieldset>
 
 
