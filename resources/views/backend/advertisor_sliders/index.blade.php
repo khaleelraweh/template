@@ -93,7 +93,7 @@
                                             </a>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a class="dropdown-item d-flex align-items-center"
-                                                    href="{{ route('admin.main_sliders.edit', $advertisor_slider->id) }}">
+                                                    href="{{ route('admin.advertisor_sliders.edit', $advertisor_slider->id) }}">
                                                     <i data-feather="edit-2" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_edit') }}</span>
                                                 </a>
@@ -105,7 +105,7 @@
                                                     <span class="">{{ __('panel.operation_delete') }}</span>
                                                 </a>
                                                 <form
-                                                    action="{{ route('admin.main_sliders.destroy', $advertisor_slider->id) }}"
+                                                    action="{{ route('admin.advertisor_sliders.destroy', $advertisor_slider->id) }}"
                                                     method="post" class="d-none"
                                                     id="delete-main_slider-{{ $advertisor_slider->id }}">
                                                     @csrf
