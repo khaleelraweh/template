@@ -264,5 +264,29 @@ $(document).ready(function(){
         });
     });
 
+    //  updateAdvertisorSliderStatus Status
+    $(document).on("click",".updateAdvertisorSliderStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var advertisor_slider_id = $(this).attr("advertisor_slider_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/advertisor_sliders/update-advertisor-slider-status',
+            data:{status:status,advertisor_slider_id:advertisor_slider_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#advertisor-slider-"+advertisor_slider_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#advertisor-slider-"+advertisor_slider_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 
 });
