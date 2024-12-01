@@ -300,12 +300,19 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group pt-3">
-                                <button type="submit" name="submit" class="btn btn-primary">
-                                    {{ __('panel.update_data') }}
-                                </button>
-                            </div>
+                        <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
+                        </div>
+                        <div class="col-sm-12 col-md 10 pt-3">
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
+                                {{ __('panel.update_data') }}
+                            </button>
+
+                            <a href="{{ route('admin.posts.index') }}" name="submit" class=" btn btn-outline-danger">
+                                <i class="icon-lg  me-2" data-feather="x"></i>
+                                {{ __('panel.cancel') }}
+                            </a>
+
                         </div>
                     </div>
                 </div>
