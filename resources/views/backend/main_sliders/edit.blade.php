@@ -147,8 +147,8 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-10 pt-3">
-                                    <textarea id="tinymceExample" name="description[{{ $key }}]" rows="10" class="form-control ">{!! old('description.' . $key) !!}</textarea>
-                                    @error('description.' . $key, $mainSlider->getTranslation('description', $key))
+                                    <textarea id="tinymceExample" name="description[{{ $key }}]" rows="10" class="form-control ">{!! old('description.' . $key, $mainSlider->getTranslation('description', $key)) !!}</textarea>
+                                    @error('description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
