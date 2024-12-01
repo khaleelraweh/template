@@ -53,7 +53,7 @@
                             <th>{{ __('panel.icon') }}</th>
                             <th>{{ __('panel.title') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
+                            <th class="d-none d-sm-table-cell"> {{ __('panel.published_on') }} </th>
                             <th>{{ __('panel.status') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
@@ -75,7 +75,9 @@
                                 </td>
                                 <td>{{ $advertisor_slider->title }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $advertisor_slider->created_by }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $advertisor_slider->created_at }}</td>
+                                <td class="d-none d-sm-table-cell">
+                                    {{ \Carbon\Carbon::parse($advertisor_slider->published_on)->diffForHumans() }}
+                                </td>
                                 <td>{{ $advertisor_slider->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
