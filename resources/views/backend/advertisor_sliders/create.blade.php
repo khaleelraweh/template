@@ -478,7 +478,7 @@
                                 {{ __('panel.save_data') }}
                             </button>
 
-                            <a href="{{ route('admin.main_sliders.index') }}" name="submit"
+                            <a href="{{ route('admin.advertisor_sliders.index') }}" name="submit"
                                 class=" btn btn-outline-danger">
                                 <i class="icon-lg  me-2" data-feather="x"></i>
                                 {{ __('panel.cancel') }}
