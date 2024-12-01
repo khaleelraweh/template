@@ -71,6 +71,23 @@ class MainSliderController extends Controller
         $input['status']            =   $request->status;
         $input['created_by']        =   auth()->user()->full_name;
 
+        $input['metadata_title'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
+                ?: $request->title[$localeKey] ?? null;
+        }
+        $input['metadata_description'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $description = $request->description[$localeKey] ?? '';
+            // Remove all tags and decode HTML entities
+            $plainDescription = html_entity_decode(strip_tags($description), ENT_QUOTES | ENT_HTML5);
+            // Limit to 30 words
+            $limitedDescription = implode(' ', array_slice(explode(' ', $plainDescription), 0, 30));
+            $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
+                ?: $limitedDescription ?: null;
+        }
+        $input['metadata_keywords'] = $request->metadata_keywords;
+
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
         $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
         $input['published_on'] = $published_on;
@@ -164,6 +181,24 @@ class MainSliderController extends Controller
         $input['show_info']            =   $request->show_info;
         $input['status']            =   $request->status;
         $input['updated_by']        =   auth()->user()->full_name;
+
+        $input['metadata_title'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
+                ?: $request->title[$localeKey] ?? null;
+        }
+        $input['metadata_description'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $description = $request->description[$localeKey] ?? '';
+            // Remove all tags and decode HTML entities
+            $plainDescription = html_entity_decode(strip_tags($description), ENT_QUOTES | ENT_HTML5);
+            // Limit to 30 words
+            $limitedDescription = implode(' ', array_slice(explode(' ', $plainDescription), 0, 30));
+            $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
+                ?: $limitedDescription ?: null;
+        }
+        $input['metadata_keywords'] = $request->metadata_keywords;
+
 
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
         $published_on = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
