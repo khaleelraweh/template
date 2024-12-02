@@ -72,28 +72,7 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        <div class="row ">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="icon"> {{ __('panel.choose_icon') }} </label>
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
 
-                                <div class="input-group iconpicker-container ">
-                                    <input data-placement="bottomRight"
-                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
-                                        value=" {{ old('icon', $statistic->icon) ?? 'fas fa-archive' }}" type="text"
-                                        name="icon">
-                                    <span class="input-group-addon btn btn-primary">
-                                        <i class="{{ $statistic->icon ?? 'fas fa-archive' }}"></i>
-                                    </span>
-                                </div>
-
-                                @error('icon')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-
-                            </div>
-                        </div>
 
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
@@ -173,6 +152,29 @@
                                 @error('published_on')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="icon"> {{ __('panel.choose_icon') }} </label>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
+
+                                <div class="input-group iconpicker-container ">
+                                    <input data-placement="bottomRight"
+                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                        value=" {{ old('icon', $statistic->icon) ?? 'fas fa-archive' }}" type="text"
+                                        name="icon">
+                                    <span class="input-group-addon btn btn-primary">
+                                        <i class="{{ $statistic->icon ?? 'fas fa-archive' }}"></i>
+                                    </span>
+                                </div>
+
+                                @error('icon')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
                             </div>
                         </div>
 
