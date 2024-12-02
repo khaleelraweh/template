@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\SupportMenuRequest;
+use App\Models\Menu;
 use App\Models\WebMenu;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
@@ -150,5 +151,19 @@ class SupportMenuController extends Controller
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function updateSupportMenuStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Menu::where('id', $data['support_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'support_menu_id' => $data['support_menu_id']]);
+        }
     }
 }

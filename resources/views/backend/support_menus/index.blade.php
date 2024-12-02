@@ -51,7 +51,7 @@
                                     <th>{{ __('panel.title') }}</th>
                                     <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                                     <th>{{ __('panel.status') }}</th>
-                                    <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                                    <th class="d-none d-sm-table-cell">{{ __('panel.published_on') }}</th>
                                     <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                                 </tr>
                             </thead>
@@ -71,28 +71,28 @@
                                         </td>
                                         <td class="d-none d-sm-table-cell">{{ $support_menu->created_by }}</td>
                                         <td>
-                                            <span
-                                                class="btn btn-round  rounded-pill btn-success btn-xs">{{ $support_menu->status() }}</span>
+                                            @if ($support_menu->status == 1)
+                                                <a href="javascript:void(0);" class="updateSupportMenuStatus "
+                                                    id="support-menu-{{ $support_menu->id }}"
+                                                    support_menu_id="{{ $support_menu->id }}">
+                                                    <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                        status="Active" style="font-size: 1.6em"></i>
+                                                </a>
+                                            @else
+                                                <a href="javascript:void(0);" class="updateSupportMenuStatus"
+                                                    id="support-menu-{{ $support_menu->id }}"
+                                                    support_menu_id="{{ $support_menu->id }}">
+                                                    <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                        status="Inactive" style="font-size: 1.6em"></i>
+                                                </a>
+                                            @endif
                                         </td>
-                                        <td class="d-none d-sm-table-cell">{{ $support_menu->created_at }}</td>
+                                        <td class="d-none d-sm-table-cell">
+                                            {{ \Carbon\Carbon::parse($support_menu->published_on)->diffForHumans() }}
+
+                                        </td>
                                         <td>
-                                            {{-- <div class="btn-group btn-group-sm">
-                                                <a href="{{ route('admin.support_menus.edit', $support_menu->id) }}"
-                                                    class="btn btn-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="javascript:void(0);"
-                                                    onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{ $support_menu->id }}').submit();}else{return false;}"
-                                                    class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
-                                            </div>
-                                            <form action="{{ route('admin.support_menus.destroy', $support_menu->id) }}"
-                                                method="post" class="d-none"
-                                                id="delete-product-category-{{ $support_menu->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form> --}}
+
                                             <div class="btn-group btn-group-sm">
                                                 <div class="dropdown mb-2 ">
                                                     <a type="button" class="d-flex" id="dropdownMenuButton"
