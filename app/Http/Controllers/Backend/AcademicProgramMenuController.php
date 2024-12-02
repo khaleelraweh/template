@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AcademicProgramMenuRequest;
-use App\Models\WebMenu;
+use App\Models\Menu;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
@@ -21,7 +21,7 @@ class AcademicProgramMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $academic_program_menus = WebMenu::query()->where('section', 2)
+        $academic_program_menus = Menu::query()->where('section', 2)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -42,7 +42,7 @@ class AcademicProgramMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $main_menus = WebMenu::tree();
+        $main_menus = Menu::tree();
 
         return view('backend.academic_program_menus.create', compact('main_menus'));
     }
@@ -86,7 +86,7 @@ class AcademicProgramMenuController extends Controller
         $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
         $input['published_on']            = $publishedOn;
 
-        $academic_program_menu = WebMenu::create($input);
+        $academic_program_menu = Menu::create($input);
 
 
         if ($request->hasFile('images') && count($request->images) > 0) {
@@ -144,8 +144,8 @@ class AcademicProgramMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $main_menus = WebMenu::tree();
-        $academic_program_menu = WebMenu::where('id', $academic_program_menu)->first();
+        $main_menus = Menu::tree();
+        $academic_program_menu = Menu::where('id', $academic_program_menu)->first();
 
         return view('backend.academic_program_menus.edit', compact('main_menus', 'academic_program_menu'));
     }
@@ -153,7 +153,7 @@ class AcademicProgramMenuController extends Controller
     public function update(AcademicProgramMenuRequest $request, $academic_program_menu)
     {
 
-        $academic_program_menu = WebMenu::where('id', $academic_program_menu)->first();
+        $academic_program_menu = Menu::where('id', $academic_program_menu)->first();
 
         $input['title']         = $request->title;
         $input['description']   = $request->description;
@@ -233,7 +233,7 @@ class AcademicProgramMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $academic_program_menu = WebMenu::where('id', $academic_program_menu)->first();
+        $academic_program_menu = Menu::where('id', $academic_program_menu)->first();
         if ($academic_program_menu->photos->count() > 0) {
             foreach ($academic_program_menu->photos as $photo) {
                 if (File::exists('assets/academic_program_menus/' . $photo->file_name)) {
@@ -261,7 +261,7 @@ class AcademicProgramMenuController extends Controller
         if (!auth()->user()->ability('admin', 'delete_academic_program_menus')) {
             return redirect('admin/index');
         }
-        $academic_program_menu = WebMenu::findOrFail($request->academic_program_menu_id);
+        $academic_program_menu = Menu::findOrFail($request->academic_program_menu_id);
         $image = $academic_program_menu->photos()->where('id', $request->image_id)->first();
         if (File::exists('assets/academic_program_menus/' . $image->file_name)) {
             unlink('assets/academic_program_menus/' . $image->file_name);
@@ -279,7 +279,7 @@ class AcademicProgramMenuController extends Controller
             } else {
                 $status = 1;
             }
-            WebMenu::where('id', $data['academic_program_menu_id'])->update(['status' => $status]);
+            Menu::where('id', $data['academic_program_menu_id'])->update(['status' => $status]);
             return response()->json(['status' => $status, 'academic_program_menu_id' => $data['academic_program_menu_id']]);
         }
     }
