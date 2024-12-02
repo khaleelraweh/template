@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\DocumentArchive;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -23,8 +24,10 @@ class DocumentArchivesController extends Controller
             ->when(\request()->status != null, function ($query) {
                 $query->where('status', \request()->status);
             })
-            ->orderBy(\request()->sort_by ?? 'id', \request()->order_by ?? 'desc')
-            ->paginate(\request()->limit_by ?? 10);
+            ->orderByRaw(request()->sort_by == 'published_on'
+                ? 'published_on IS NULL, published_on ' . (request()->order_by ?? 'desc')
+                : (request()->sort_by ?? 'created_at') . ' ' . (request()->order_by ?? 'desc'))
+            ->paginate(\request()->limit_by ?? 100);
 
 
         return view('backend.document_archives.index', compact('documentArchives'));
@@ -52,7 +55,13 @@ class DocumentArchivesController extends Controller
         ]);
 
         $data['doc_archive_name']          = $validatedData['doc_archive_name'];
+
+        $input['status']                =   $request->status;
         $data['created_by']                = auth()->user()->full_name;
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on']            = $publishedOn;
 
 
         // Handle file uploads
@@ -106,8 +115,13 @@ class DocumentArchivesController extends Controller
         ]);
 
         $data['doc_archive_name']           = $validatedData['doc_archive_name'];
+
+        $data['status']                     = $request->status;
         $data['updated_by']                 = auth()->user()->full_name;
-        // $data['status']                     = $request->status;
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on']            = $publishedOn;
 
 
         // remove the file if exist 
