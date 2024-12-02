@@ -16,7 +16,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_post') }}
+                    {{ __('panel.add_new_document_archive') }}
 
                 </h3>
                 <ul class="breadcrumb pt-3">
