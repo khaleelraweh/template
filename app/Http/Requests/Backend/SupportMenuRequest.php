@@ -26,7 +26,6 @@ class SupportMenuRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        // 'title.*' => 'required|max:255|unique_translation:web_menus,title,NULL,section,section,' . $this->get('section'),
                         'title.*'       => 'required|max:255',
                         'link'          =>  'nullable',
                         'icon'          =>  'nullable',

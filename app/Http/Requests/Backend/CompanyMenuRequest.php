@@ -26,7 +26,6 @@ class CompanyMenuRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        // 'title.*' => 'required|max:255|unique_translation:web_menus,title,NULL,section,section,' . $this->get('section'),
                         'title.*' => 'required|max:255',
 
 
@@ -48,7 +47,6 @@ class CompanyMenuRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        // 'title.*' => 'required|unique_translation:web_menus,title,NULL,section,section,' . $this->get('section') . ',id,id' . $this->route()->company_menu,
                         'title.*'           =>   'required|max:255',
 
 

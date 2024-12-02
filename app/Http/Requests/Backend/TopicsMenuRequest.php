@@ -26,7 +26,6 @@ class TopicsMenuRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        // 'title.*' => 'required|max:255|unique_translation:web_menus,title,NULL,section,section,' . $this->get('section'),
                         'title.*' => 'required|max:255',
                         'link'          =>  'nullable',
                         'icon'          =>  'nullable',
@@ -46,7 +45,6 @@ class TopicsMenuRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        // 'title.*' => 'required|unique_translation:web_menus,title,NULL,section,section,' . $this->get('section') . ',id,id' . $this->route()->topics_menu,
                         'title.*' => 'required',
                         'link'              =>   'nullable',
                         'icon'              =>  'nullable',
