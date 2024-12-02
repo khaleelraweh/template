@@ -63,13 +63,13 @@
                                 <td>
                                     {{-- {{ $tag->status() }} --}}
                                     @if ($tag->status == 1)
-                                        <a href="javascript:void(0);" class="updatetagStatus " id="tag-{{ $tag->id }}"
+                                        <a href="javascript:void(0);" class="updateTagStatus " id="tag-{{ $tag->id }}"
                                             tag_id="{{ $tag->id }}">
                                             <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
                                                 status="Active" style="font-size: 1.6em"></i>
                                         </a>
                                     @else
-                                        <a href="javascript:void(0);" class="updatetagStatus" id="tag-{{ $tag->id }}"
+                                        <a href="javascript:void(0);" class="updateTagStatus" id="tag-{{ $tag->id }}"
                                             tag_id="{{ $tag->id }}">
                                             <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
                                                 status="Inactive" style="font-size: 1.6em"></i>

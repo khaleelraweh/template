@@ -121,6 +121,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::resource('specializations', SpecializationController::class);
 
+        Route::post('tags/update-tag-status', [TagController::class, 'updateTagStatus'])->name('tags.update_tag_status');
         Route::resource('tags', TagController::class);
 
 

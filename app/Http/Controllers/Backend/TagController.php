@@ -142,4 +142,18 @@ class TagController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+    public function updateTagStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Tag::where('id', $data['tag_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'tag_id' => $data['tag_id']]);
+        }
+    }
 }
