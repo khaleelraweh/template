@@ -23,8 +23,8 @@
                         @endif
                     </li>
                     <li>
-                        <a href="{{ route('admin.web_menus.index') }}">
-                            {{ __('panel.show_web_menus') }}
+                        <a href="{{ route('admin.main_menus.index') }}">
+                            {{ __('panel.show_main_menus') }}
                         </a>
                     </li>
                 </ul>
@@ -45,7 +45,7 @@
             @endif
 
 
-            <form action="{{ route('admin.web_menus.store') }}" method="post">
+            <form action="{{ route('admin.main_menus.store') }}" method="post">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
