@@ -140,7 +140,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('topics-menus/update-topics-menu-status', [TopicsMenuController::class, 'updateTopicsMenuStatus'])->name('topics_menus.update_topics_menu_status');
         Route::resource('topics_menus', TopicsMenuController::class);
 
+        Route::post('tracks_menus/update-tracks-menu-status', [TracksMenuController::class, 'updateTracksMenuStatus'])->name('tracks_menus.update_tracks_menu_status');
         Route::resource('tracks_menus', TracksMenuController::class);
+
         Route::resource('support_menus', SupportMenuController::class);
 
         // ==============   Page Categories Tab   ==============  //

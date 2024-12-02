@@ -152,4 +152,18 @@ class TracksMenuController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+    public function updateTracksMenuStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Menu::where('id', $data['tracks_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'tracks_menu_id' => $data['tracks_menu_id']]);
+        }
+    }
 }
