@@ -33,7 +33,6 @@ class CompanyMenuRequest extends FormRequest
                         'link'          =>  'nullable',
                         'icon'          =>  'nullable',
                         'parent_id'     =>  'nullable',
-                        'section'       =>  'required',
 
                         // used always 
                         'status'             =>  'required',
@@ -52,7 +51,6 @@ class CompanyMenuRequest extends FormRequest
                         // 'title.*' => 'required|unique_translation:web_menus,title,NULL,section,section,' . $this->get('section') . ',id,id' . $this->route()->company_menu,
                         'title.*'           =>   'required|max:255',
 
-                        'section'           =>   'required',
 
                         'link'              =>   'nullable',
                         'icon'              =>  'nullable',
