@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('style')
     <!---Internal Fileupload css-->
-    <link href="{{ URL::asset('frontend/assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ URL::asset('backend/vendors/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
     <!---Internal Fancy uploader css-->
-    <link href="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('backend/vendors/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
 @endsection
 
 
@@ -59,14 +59,15 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-2 pt-3">
                         <label for="doc_archive_name" class="control-label">
-                            <span>ارفاق اسم المستند</span>
-                            <p class="text-muted card-sub-title">يجب ان يكون المستند ضمن الصيغ
-                                التالية ( .pdf ,
-                                .docx)</p>
+                            <span>{{ __('panel.attach_the_document') }}</span>
+
                         </label>
                     </div>
                     <div class="col-sm-12 col-md-10 pt-3">
                         <input class="dropify" type="file" name="doc_archive_attached_file" accept=".pdf, .docx">
+                        <p class="text-muted card-sub-title">يجب ان يكون المستند ضمن الصيغ
+                            التالية ( .pdf ,
+                            .docx)</p>
                         @error('doc_archive_attached_file')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -104,12 +105,12 @@
 
 @section('script')
     <!--Internal Fileuploads js-->
-    <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/fileupload.js') }}"></script>w
-    <script src="{{ URL::asset('frontend/assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+    <script src="{{ URL::asset('backend/vendors/fileuploads/js/fileupload.js') }}"></script>w
+    <script src="{{ URL::asset('backend/vendors/fileuploads/js/file-upload.js') }}"></script>
     <!--Internal Fancy uploader js-->
-    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
-    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
-    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
-    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
-    <script src="{{ URL::asset('frontend/assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
+    <script src="{{ URL::asset('backend/vendors/fancyuploder/jquery.ui.widget.js') }}"></script>
+    <script src="{{ URL::asset('backend/vendors/fancyuploder/jquery.fileupload.js') }}"></script>
+    <script src="{{ URL::asset('backend/vendors/fancyuploder/jquery.iframe-transport.js') }}"></script>
+    <script src="{{ URL::asset('backend/vendors/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
+    <script src="{{ URL::asset('backend/vendors/fancyuploder/fancy-uploader.js') }}"></script>
 @endsection

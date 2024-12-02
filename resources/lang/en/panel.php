@@ -398,6 +398,7 @@ return [
     // ........... commons in Archive   ....... //
     'document_archive_data'                                =>  'Document Archive Data',
     'document_archive_name'                                =>  'Document Archive Name',
+    'attach_the_document'                                   =>  'Attach the document',
 
 
     // --------------- Document Statistics  --------------//
