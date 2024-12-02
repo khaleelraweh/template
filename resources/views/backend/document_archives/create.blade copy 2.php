@@ -65,14 +65,25 @@
                                 .docx)</p>
                         </label>
                     </div>
-                    <div class="col-sm-12 col-md-10 pt-3">
-                        <input class="dropify" type="file" name="doc_archive_attached_file" accept=".pdf, .docx">
-                        @error('doc_archive_attached_file')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
 
+
+                                <div>
+
+                                    <input class="dropify" type="file" name="doc_archive_attached_file"
+                                        accept=".pdf, .docx">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
+
+
 
                 <div class="row">
                     <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
