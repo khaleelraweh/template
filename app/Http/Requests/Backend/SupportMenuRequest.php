@@ -31,7 +31,6 @@ class SupportMenuRequest extends FormRequest
                         'link'          =>  'nullable',
                         'icon'          =>  'nullable',
                         'parent_id'     =>  'nullable',
-                        'section'       =>  'required',
 
                         // used always 
                         'status'             =>  'required',
@@ -51,7 +50,6 @@ class SupportMenuRequest extends FormRequest
                         'link'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',
-                        'section'           =>   'required',
 
                         // used always 
                         'status'             =>  'required',
