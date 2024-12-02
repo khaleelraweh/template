@@ -118,34 +118,53 @@ class MainMenuController extends Controller
             return redirect('admin/index');
         }
 
-
         $main_menus = Menu::tree();
-
         $mainMenu = Menu::where('id', $mainMenu)->first();
 
         return view('backend.main_menus.edit', compact('main_menus', 'mainMenu'));
     }
 
-    public function update(WebMenuRequest $request, $webMenu)
+    public function update(MainMenuRequest $request, $mainMenu)
     {
 
-        $webMenu = WebMenu::where('id', $webMenu)->first();
+        $mainMenu = Menu::where('id', $mainMenu)->first();
 
         $input['title'] = $request->title;
+        $input['description'] = $request->description;
         $input['link'] = $request->link;
         $input['icon'] = $request->icon;
         $input['parent_id'] = $request->parent_id;
         $input['section'] = 1;
 
+        $input['metadata_title'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
+                ?: $request->title[$localeKey] ?? null;
+        }
+        $input['metadata_description'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $description = $request->description[$localeKey] ?? '';
+            // Remove all tags and decode HTML entities
+            $plainDescription = html_entity_decode(strip_tags($description), ENT_QUOTES | ENT_HTML5);
+            // Limit to 30 words
+            $limitedDescription = implode(' ', array_slice(explode(' ', $plainDescription), 0, 30));
+            $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
+                ?: $limitedDescription ?: null;
+        }
+        $input['metadata_keywords'] = $request->metadata_keywords;
+
+
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
 
-        $webMenu->update($input);
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on']            = $publishedOn;
 
-        if ($webMenu) {
+
+        $mainMenu->update($input);
+
+        if ($mainMenu) {
             return redirect()->route('admin.main_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
