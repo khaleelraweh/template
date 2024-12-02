@@ -66,7 +66,7 @@
 
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
-                                <div class="col-sm-12 col-md-2 pt-3">
+                                <div class="col-sm-12 col-md-3 pt-3">
                                     <label for="title[{{ $key }}]">
                                         {{ __('panel.tag_name') }}
                                         <span class="language-type">
@@ -77,7 +77,7 @@
                                     </label>
                                 </div>
 
-                                <div class="col-sm-12 col-md-10 pt-3">
+                                <div class="col-sm-12 col-md-9 pt-3">
                                     <input type="text" name="name[{{ $key }}]" id="name[{{ $key }}]"
                                         value="{{ old('name.' . $key) }}" class="form-control">
                                     @error('name.' . $key)
@@ -88,8 +88,13 @@
                         @endforeach
 
                         <div class="row">
-                            <div class="col-sm-12 pt-3">
-                                <label for="section">{{ __('panel.tag_type') }}</label>
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                <label for="status" class="control-label">
+                                    <span>{{ __('panel.tag_type') }}</span>
+                                </label>
+                            </div>
+
+                            <div class="col-sm-12 col-md-9 pt-3">
                                 <select name="section" class="form-control">
                                     <option value="1" {{ old('section') == '1' ? 'selected' : null }}>
                                         {{ __('panel.course_tag') }}</option>
