@@ -432,5 +432,29 @@ $(document).ready(function(){
         });
     });
 
+    //  updateCompanyMenuStatus Status
+    $(document).on("click",".updateCompanyMenuStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var company_menu_id = $(this).attr("company_menu_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/company_menus/update-company-menu-status',
+            data:{status:status,company_menu_id:company_menu_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#company-menu-"+company_menu_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#company-menu-"+company_menu_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 
 });

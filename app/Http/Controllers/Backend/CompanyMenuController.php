@@ -153,4 +153,18 @@ class CompanyMenuController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+    public function updateCompanyMenuStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Menu::where('id', $data['company_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'company_menu_id' => $data['company_menu_id']]);
+        }
+    }
 }
