@@ -56,43 +56,96 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($support_menus as $menu)
+                                @forelse ($support_menus as $support_menu)
                                     <tr>
                                         <td>
-                                            {{ $menu->title }}
+                                            {{ $support_menu->title }}
                                             <br>
-                                            @if ($menu->parent != null)
+                                            @if ($support_menu->parent != null)
                                                 <small
                                                     style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
                                                     {{-- تابع للقائمة: --}}
-                                                    <span>{{ $menu->parent?->title }}</span>
+                                                    <span>{{ $support_menu->parent?->title }}</span>
                                                 </small>
                                             @endif
                                         </td>
-                                        <td class="d-none d-sm-table-cell">{{ $menu->created_by }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $support_menu->created_by }}</td>
                                         <td>
                                             <span
-                                                class="btn btn-round  rounded-pill btn-success btn-xs">{{ $menu->status() }}</span>
+                                                class="btn btn-round  rounded-pill btn-success btn-xs">{{ $support_menu->status() }}</span>
                                         </td>
-                                        <td class="d-none d-sm-table-cell">{{ $menu->created_at }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $support_menu->created_at }}</td>
                                         <td>
-                                            <div class="btn-group btn-group-sm">
-                                                <a href="{{ route('admin.support_menus.edit', $menu->id) }}"
+                                            {{-- <div class="btn-group btn-group-sm">
+                                                <a href="{{ route('admin.support_menus.edit', $support_menu->id) }}"
                                                     class="btn btn-primary">
                                                     <i class="fa fa-edit"></i>
                                                 </a>
                                                 <a href="javascript:void(0);"
-                                                    onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{ $menu->id }}').submit();}else{return false;}"
+                                                    onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-category-{{ $support_menu->id }}').submit();}else{return false;}"
                                                     class="btn btn-danger">
                                                     <i class="fa fa-trash"></i>
                                                 </a>
                                             </div>
-                                            <form action="{{ route('admin.support_menus.destroy', $menu->id) }}"
+                                            <form action="{{ route('admin.support_menus.destroy', $support_menu->id) }}"
                                                 method="post" class="d-none"
-                                                id="delete-product-category-{{ $menu->id }}">
+                                                id="delete-product-category-{{ $support_menu->id }}">
                                                 @csrf
                                                 @method('DELETE')
-                                            </form>
+                                            </form> --}}
+                                            <div class="btn-group btn-group-sm">
+                                                <div class="dropdown mb-2 ">
+                                                    <a type="button" class="d-flex" id="dropdownMenuButton"
+                                                        data-bs-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <i class="icon-lg text-muted pb-3px"
+                                                            data-feather="more-vertical"></i>
+                                                        {{ __('panel.operation_options') }}
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="15"
+                                                            height="15" viewBox="0 0 25 15" fill="none"
+                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-chevron-down link-arrow">
+                                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                                        </svg>
+                                                    </a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item d-flex align-items-center"
+                                                            href="{{ route('admin.support_menus.edit', $support_menu->id) }}">
+                                                            <i data-feather="edit-2" class="icon-sm me-2"></i>
+                                                            <span class="">{{ __('panel.operation_edit') }}</span>
+                                                        </a>
+
+                                                        <a href="javascript:void(0);"
+                                                            onclick="confirmDelete('delete-support_menu-{{ $support_menu->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
+                                                            class="dropdown-item d-flex align-items-center">
+                                                            <i data-feather="trash" class="icon-sm me-2"></i>
+                                                            <span class="">{{ __('panel.operation_delete') }}</span>
+                                                        </a>
+                                                        <form
+                                                            action="{{ route('admin.support_menus.destroy', $support_menu->id) }}"
+                                                            method="post" class="d-none"
+                                                            id="delete-support_menu-{{ $support_menu->id }}">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                        </form>
+
+                                                        <a href="javascript:void(0);"
+                                                            class="dropdown-item d-flex align-items-center btn btn-success copyButton"
+                                                            data-copy-text="https://ibbuniv.era-t.com/support_menus/{{ $support_menu->slug }}"
+                                                            data-id="{{ $support_menu->id }}" title="Copy the link">
+                                                            <i data-feather="copy" class="icon-sm me-2"></i>
+                                                            <span
+                                                                class="">{{ __('panel.operation_copy_link') }}</span>
+                                                        </a>
+
+                                                    </div>
+                                                    <span class="copyMessage" data-id="{{ $support_menu->id }}"
+                                                        style="display:none;">
+                                                        {{ __('panel.copied') }}
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty
