@@ -175,15 +175,15 @@ class MainMenuController extends Controller
         ]);
     }
 
-    public function destroy($webMenu)
+    public function destroy($mainMenu)
     {
         if (!auth()->user()->ability('admin', 'delete_main_menus')) {
             return redirect('admin/index');
         }
 
-        $webMenu = WebMenu::where('id', $webMenu)->first()->delete();
+        $mainMenu = Menu::where('id', $mainMenu)->first()->delete();
 
-        if ($webMenu) {
+        if ($mainMenu) {
             return redirect()->route('admin.main_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
