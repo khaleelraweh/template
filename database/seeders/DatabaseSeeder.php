@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MainSliderSeeder::class);
         $this->call(AdvSliderSeeder::class);
 
-        // $this->call(WebMenuSeeder::class); // section 1
         $this->call(MainMenuSeeder::class); // section 1
         $this->call(AcademicProgramMenuSeeder::class); //section 2
         $this->call(TopicsMenuSeeder::class); // section 3
