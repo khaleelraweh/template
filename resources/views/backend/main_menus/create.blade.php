@@ -13,7 +13,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_link') }}
+                    {{ __('panel.add_new_main_menu_item') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
