@@ -188,6 +188,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   Document Archive Tab   ==============  //
+        Route::post('document_archives/update-document-archive-status', [DocumentArchivesController::class, 'updateDocumentArchiveStatus'])->name('pages.update_document_archive_status');
         Route::resource('document_archives', DocumentArchivesController::class);
 
         // ==============   Statistics Tab   ==============  //
