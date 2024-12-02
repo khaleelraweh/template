@@ -50,18 +50,24 @@
 
                 @foreach (config('locales.languages') as $key => $val)
                     <div class="row ">
-                        <div class="col-sm-12 pt-3">
-                            <div class="form-group">
-                                <label for="name[{{ $key }}]">{{ __('panel.tag_name') }}
-                                    ({{ $key }})
-                                </label>
-                                <input type="text" name="name[{{ $key }}]" id="name[{{ $key }}]"
-                                    value="{{ old('name.' . $key, $tag->getTranslation('name', $key)) }}"
-                                    class="form-control">
-                                @error('name.' . $key)
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
+                        <div class="col-sm-12 col-md-3 pt-3">
+                            <label for="title[{{ $key }}]">
+                                {{ __('panel.tag_name') }}
+                                <span class="language-type">
+                                    <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                        title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                    {{ __('panel.' . $key) }}
+                                </span>
+                            </label>
+                        </div>
+
+                        <div class="col-sm-12 col-md-9 pt-3">
+                            <input type="text" name="name[{{ $key }}]" id="name[{{ $key }}]"
+                                value="{{ old('name.' . $key, $tag->getTranslation('name', $key)) }}" class="form-control">
+                            @error('name.' . $key)
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+
                         </div>
                     </div>
                 @endforeach
