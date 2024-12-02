@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\TagRequest;
 use App\Models\Tag;
 use Carbon\Carbon;
-use DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class TagController extends Controller
@@ -101,9 +100,10 @@ class TagController extends Controller
         $input['status']        =   $request->status;
         $input['updated_by']    =   auth()->user()->full_name;
 
-        $published_on = $request->published_on . ' ' . $request->published_on_time;
-        $published_on = new DateTimeImmutable($published_on);
-        $input['published_on'] = $published_on;
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on']            = $publishedOn;
+
 
         $tag->update($input);
 
