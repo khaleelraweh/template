@@ -75,6 +75,51 @@
                 </div>
 
                 <div class="row">
+                    <div class="col-sm-12 col-md-2 pt-3">
+                        {{ __('panel.published_on') }}
+                    </div>
+                    <div class="col-sm-12 col-md-10 pt-3">
+                        <div class="input-group flatpickr" id="flatpickr-datetime">
+                            <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                class="form-control" placeholder="Select date" data-input>
+                            <span class="input-group-text input-group-addon" data-toggle>
+                                <i data-feather="calendar"></i>
+                            </span>
+                        </div>
+                        @error('published_on')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 pt-3">
+                        <label for="status" class="control-label">
+                            <span>{{ __('panel.status') }}</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-10 pt-3">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="status" id="status_active" value="1"
+                                {{ old('status', '1') == '1' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="status_active">
+                                {{ __('panel.status_active') }}
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                value="0" {{ old('status') == '0' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="status_inactive">
+                                {{ __('panel.status_inactive') }}
+                            </label>
+                        </div>
+                        @error('status')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
                     </div>
                     <div class="col-sm-12 col-md 10 pt-3">
