@@ -162,4 +162,18 @@ class DocumentArchivesController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+    public function updateDocumentArchiveStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            DocumentArchive::where('id', $data['document_archive_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'document_archive_id' => $data['document_archive_id']]);
+        }
+    }
 }
