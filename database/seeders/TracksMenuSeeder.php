@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Menu;
 use App\Models\WebMenu;
 use Faker\Factory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,11 +19,11 @@ class TracksMenuSeeder extends Seeder
     {
         $faker = Factory::create();
 
-        WebMenu::create(['title'  => ['ar' => 'تصميم الويب', 'en' => 'Web Design'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        WebMenu::create(['title'  => ['ar' => 'تطوير الويب', 'en' => 'Web Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        WebMenu::create(['title'  => ['ar' => 'تطوير القضبان', 'en' => 'Rails Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        WebMenu::create(['title'  => ['ar' => 'تطوير PHP', 'en' => 'PHP Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        WebMenu::create(['title'  => ['ar' => 'تطوير اندرويد', 'en' => 'Android Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        WebMenu::create(['title'  => ['ar' => 'بدء نشاط التجاري', 'en' => 'Starting a Business'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'تصميم الويب', 'en' => 'Web Design'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'تطوير الويب', 'en' => 'Web Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'تطوير القضبان', 'en' => 'Rails Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'تطوير PHP', 'en' => 'PHP Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'تطوير اندرويد', 'en' => 'Android Development'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'بدء نشاط التجاري', 'en' => 'Starting a Business'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  4, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
     }
 }

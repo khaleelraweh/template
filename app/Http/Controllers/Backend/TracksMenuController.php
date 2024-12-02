@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\TracksMenuRequest;
-use App\Models\WebMenu;
+use App\Models\Menu;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class TracksMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $tracks_menus = WebMenu::query()->where('section', 4)
+        $tracks_menus = Menu::query()->where('section', 4)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -58,7 +58,7 @@ class TracksMenuController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $company_menu = WebMenu::create($input);
+        $company_menu = Menu::create($input);
 
 
         if ($company_menu) {
@@ -90,7 +90,7 @@ class TracksMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $tracksMenu = WebMenu::where('id', $tracksMenu)->first();
+        $tracksMenu = Menu::where('id', $tracksMenu)->first();
 
         return view('backend.tracks_menus.edit', compact('tracksMenu'));
     }
@@ -101,7 +101,7 @@ class TracksMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $tracksMenu = WebMenu::where('id', $tracksMenu)->first();
+        $tracksMenu = Menu::where('id', $tracksMenu)->first();
 
         $input['title']     = $request->title;
         $input['link']      = $request->link;
@@ -136,7 +136,7 @@ class TracksMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $tracksMenu = WebMenu::where('id', $tracksMenu)->first();
+        $tracksMenu = Menu::where('id', $tracksMenu)->first();
 
         $tracksMenu->delete();
 
