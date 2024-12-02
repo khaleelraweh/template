@@ -62,7 +62,7 @@
 
                 <div class="tab-content" id="myTabContent">
 
-                    <div class="tab-pane fade active show" id="content" role="tabpanel" aria-labelledby="content-tab">
+                    <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row ">
