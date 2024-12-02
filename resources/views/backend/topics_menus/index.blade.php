@@ -71,8 +71,21 @@
                                         </td>
                                         <td class="d-none d-sm-table-cell">{{ $topics_menu->created_by }}</td>
                                         <td>
-                                            <span
-                                                class="btn btn-round  rounded-pill btn-success btn-xs">{{ $topics_menu->status() }}</span>
+                                            @if ($topics_menu->status == 1)
+                                                <a href="javascript:void(0);" class="updateTopicsMenuStatus "
+                                                    id="topics-menu-{{ $topics_menu->id }}"
+                                                    topics_menu_id="{{ $topics_menu->id }}">
+                                                    <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                        status="Active" style="font-size: 1.6em"></i>
+                                                </a>
+                                            @else
+                                                <a href="javascript:void(0);" class="updateTopicsMenuStatus"
+                                                    id="topics-menu-{{ $topics_menu->id }}"
+                                                    topics_menu_id="{{ $topics_menu->id }}">
+                                                    <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                        status="Inactive" style="font-size: 1.6em"></i>
+                                                </a>
+                                            @endif
                                         </td>
                                         <td class="d-none d-sm-table-cell">
                                             {{ \Carbon\Carbon::parse($topics_menu->published_on)->diffForHumans() }}

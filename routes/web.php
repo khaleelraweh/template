@@ -136,7 +136,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('academic_program_menus', AcademicProgramMenuController::class);
 
         Route::resource('company_menus', CompanyMenuController::class);
+
+        Route::post('topics-menus/update-topics-menu-status', [TopicsMenuController::class, 'updateTopicsMenuStatus'])->name('topics_menus.update_topics_menu_status');
         Route::resource('topics_menus', TopicsMenuController::class);
+
         Route::resource('tracks_menus', TracksMenuController::class);
         Route::resource('support_menus', SupportMenuController::class);
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\TopicsMenuRequest;
+use App\Models\Menu;
 use App\Models\WebMenu;
 use DateTimeImmutable;
 use Illuminate\Http\Request;
@@ -152,5 +153,19 @@ class TopicsMenuController extends Controller
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function updateTopicsMenuStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Menu::where('id', $data['topics_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'topics_menu_id' => $data['topics_menu_id']]);
+        }
     }
 }

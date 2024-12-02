@@ -384,5 +384,29 @@ $(document).ready(function(){
         });
     });
 
+    //  updateTopicsMenuStatus Status
+    $(document).on("click",".updateTopicsMenuStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var topics_menu_id = $(this).attr("topics_menu_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/topics-menus/update-topics-menu-status',
+            data:{status:status,topics_menu_id:topics_menu_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#topics-menu-"+topics_menu_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#topics-menu-"+topics_menu_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 
 });
