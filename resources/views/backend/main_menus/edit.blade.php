@@ -57,9 +57,9 @@
 
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}</button>
+                        <button class="nav-link" id="SEO-tab" data-bs-toggle="tab" data-bs-target="#SEO" type="button"
+                            role="tab" aria-controls="SEO" aria-selected="false">{{ __('panel.SEO_tab') }}
+                        </button>
                     </li>
 
                 </ul>
@@ -292,56 +292,82 @@
                         </div> --}}
                     </div>
 
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('published_on')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
+                    <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="metadata_title[{{ $key }}]">
+                                        {{ __('panel.metadata_title') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
                                 </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="metadata_title[{{ $key }}]"
+                                        id="metadata_title[{{ $key }}]"
+                                        value="{{ old('metadata_title.' . $key, $mainMenu->getTranslation('metadata_title', $key)) }}"
                                         class="form-control">
-                                    @error('published_on_time')
+                                    @error('metadata_title.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
+                        @endforeach
 
-                        </div>
+                        <hr>
 
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-3 col-sm-12 ">
-                                    <span>{{ __('panel.status') }}</span>
-                                </label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="metadata_description[{{ $key }}]">
+                                        {{ __('panel.metadata_description') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="metadata_description[{{ $key }}]"
+                                        id="metadata_description[{{ $key }}]"
+                                        value="{{ old('metadata_description.' . $key, $mainMenu->getTranslation('metadata_description', $key)) }}"
+                                        class="form-control">
+                                    @error('metadata_description.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
 
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="metadata_keywords[{{ $key }}]">
+                                        {{ __('panel.metadata_keywords') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="metadata_keywords[{{ $key }}]"
+                                        id="metadata_keywords[{{ $key }}]"
+                                        value="{{ old('metadata_keywords.' . $key, $mainMenu->getTranslation('metadata_keywords', $key)) }}"
+                                        class="form-control">
+                                    @error('metadata_keywords.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
 
 
@@ -371,37 +397,4 @@
         </div>
 
     </div>
-@endsection
-
-
-@section('script')
-    <script>
-        $(function() {
-
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
-            });
-
-        });
-    </script>
 @endsection
