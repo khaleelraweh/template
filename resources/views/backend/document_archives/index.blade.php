@@ -101,14 +101,14 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
+                                <td colspan="7" class="text-center">{{ __('panel.no_found_item') }}</td>
                             </tr>
                         @endforelse
 
                     </tbody>
                     <tfoot>
                         <tr>
-                            <td colspan="6">
+                            <td colspan="7">
                                 <div class="float-right">
                                     {!! $documentArchives->appends(request()->all())->links() !!}
                                 </div>
