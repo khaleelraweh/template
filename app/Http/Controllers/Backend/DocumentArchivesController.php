@@ -56,14 +56,12 @@ class DocumentArchivesController extends Controller
 
         $data['doc_archive_name']          = $validatedData['doc_archive_name'];
 
-        $input['status']                =   $request->status;
+        $data['status']                =   $request->status;
         $data['created_by']                = auth()->user()->full_name;
 
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
         $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
-        $input['published_on']            = $publishedOn;
-
-        dd($request);
+        $data['published_on']            = $publishedOn;
 
 
         // Handle file uploads
@@ -123,7 +121,7 @@ class DocumentArchivesController extends Controller
 
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
         $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
-        $input['published_on']            = $publishedOn;
+        $data['published_on']            = $publishedOn;
 
 
         // remove the file if exist 
