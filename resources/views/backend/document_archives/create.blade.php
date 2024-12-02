@@ -60,7 +60,6 @@
                     <div class="col-sm-12 col-md-2 pt-3">
                         <label for="doc_archive_name" class="control-label">
                             <span>{{ __('panel.attach_the_document') }}</span>
-
                         </label>
                     </div>
                     <div class="col-sm-12 col-md-10 pt-3">
