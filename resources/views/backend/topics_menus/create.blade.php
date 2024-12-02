@@ -290,7 +290,7 @@
                                 {{ __('panel.save_data') }}
                             </button>
 
-                            <a href="{{ route('admin.main_menus.index') }}" name="submit"
+                            <a href="{{ route('admin.topics_menus.index') }}" name="submit"
                                 class=" btn btn-outline-danger">
                                 <i class="icon-lg  me-2" data-feather="x"></i>
                                 {{ __('panel.cancel') }}
@@ -301,15 +301,6 @@
 
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group pt-3 mx-3">
-                            <button type="submit" name="submit" class="btn btn-primary">
-                                {{ __('panel.save_data') }}
-                            </button>
-                        </div>
-                    </div>
-                </div>
 
             </form>
 
