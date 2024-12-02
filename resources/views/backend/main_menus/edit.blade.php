@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    {{-- main holder page  --}}
+    {{-- main holder mainMenu  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -12,16 +12,16 @@
                     <i class="fa fa-edit"></i>
                     {{ __('panel.edit_existing_link') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
+                    <li class="ms-1">
                         <a href="{{ route('admin.main_menus.index') }}">
                             {{ __('panel.show_main_menus') }}
                         </a>
@@ -68,31 +68,15 @@
 
                     <div class="tab-pane fade show active" id="content" role="tabpanel" aria-labelledby="content-tab">
 
-                        <div class="row ">
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <div class="form-group">
-                                    <label for="icon"> {{ __('panel.choose_icon') }} </label>
-
-                                    <div class="input-group iconpicker-container ">
-                                        <input data-placement="bottomRight"
-                                            class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
-                                            value=" {{ old('icon', $mainMenu->icon) ?? 'fas fa-archive' }}" type="text"
-                                            name="icon">
-                                        <span class="input-group-addon btn btn-primary">
-                                            <i class="{{ $mainMenu->icon ?? 'fas fa-archive' }}"></i>
-                                        </span>
-                                    </div>
-
-                                    @error('icon')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                <label for="parent_id" class="control-label">
+                                    <span>{{ __('panel.category_menu') }}</span>
+                                </label>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 pt-3">
-                                <label for="parent_id" class="control-label">
-                                    {{ __('panel.category_menu') }}
-                                </label>
+                            <div class="col-sm-12 col-md-9 pt-3">
+
                                 <select name="parent_id" class="form-control">
                                     <option value="">{{ __('panel.main_category') }} __</option>
 
@@ -141,30 +125,152 @@
                                     @endforeach
                                 </select>
                             </div>
+
                         </div>
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="title[{{ $key }}]">
-                                            {{ __('panel.title') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" name="title[{{ $key }}]"
-                                            id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $mainMenu->getTranslation('title', $key)) }}"
-                                            class="form-control">
-                                        @error('title.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="title[{{ $key }}]">
+                                        {{ __('panel.title') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
                                 </div>
-                            @endforeach
-                        </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="title[{{ $key }}]"
+                                        id="title[{{ $key }}]"
+                                        value="{{ old('title.' . $key, $mainMenu->getTranslation('title', $key)) }}"
+                                        class="form-control">
+                                    @error('title.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="description[{{ $key }}]">
+                                        {{ __('panel.f_description') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <textarea id="tinymceExample" name="description[{{ $key }}]" rows="10" class="form-control ">{!! old('description.' . $key, $mainMenu->getTranslation('description', $key)) !!}</textarea>
+                                    @error('description.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="link[{{ $key }}]">
+                                        {{ __('panel.link') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="link[{{ $key }}]" id="link[{{ $key }}]"
+                                        value="{{ old('link.' . $key, $mainMenu->getTranslation('link', $key)) }}"
+                                        class="form-control">
+                                    @error('link.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
 
                         <div class="row ">
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                <label for="icon" class="control-label">
+                                    <span>{{ __('panel.choose_icon') }}</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-9 pt-3">
+                                <div class="input-group iconpicker-container ">
+                                    <input data-placement="bottomRight"
+                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                        value=" {{ old('icon', $mainMenu->icon) ?? 'fas fa-archive' }}" type="text"
+                                        name="icon">
+                                    <span class="input-group-addon btn btn-primary">
+                                        <i class="{{ $mainMenu->icon ?? 'fas fa-archive' }}"></i>
+                                    </span>
+                                </div>
+                                @error('icon')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-9 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" class="form-control"
+                                        placeholder="Select date" data-input
+                                        value="{{ old('published_on', $mainMenu->published_on ? \Carbon\Carbon::parse($mainMenu->published_on)->format('Y/m/d h:i A') : '') }}">
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                <label for="status" class="control-label">
+                                    <span>{{ __('panel.status') }}</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-9 pt-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1" {{ old('status', $mainMenu->status) == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
+                                        {{ __('panel.status_active') }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0" {{ old('status', $mainMenu->status) == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
+                                        {{ __('panel.status_inactive') }}
+                                    </label>
+                                </div>
+                                @error('status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        {{-- <div class="row ">
                             @foreach (config('locales.languages') as $key => $val)
                                 <div class="col-sm-12 col-md-6 pt-3">
                                     <div class="form-group">
@@ -183,7 +289,7 @@
                                     </div>
                                 </div>
                             @endforeach
-                        </div>
+                        </div> --}}
                     </div>
 
                     <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
@@ -219,7 +325,7 @@
 
                         <div class="row">
                             <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-2 col-sm-12 ">
+                                <label for="status" class="control-label col-md-3 col-sm-12 ">
                                     <span>{{ __('panel.status') }}</span>
                                 </label>
                                 <select name="status" class="form-control">

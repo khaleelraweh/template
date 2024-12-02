@@ -71,7 +71,7 @@
 
                         <div class="row">
                             <div class="col-sm-12 col-md-3 pt-3">
-                                <label for="status" class="control-label">
+                                <label for="parent_id" class="control-label">
                                     <span>{{ __('panel.category_menu') }}</span>
                                 </label>
                             </div>
@@ -196,7 +196,7 @@
 
                         <div class="row ">
                             <div class="col-sm-12 col-md-3 pt-3">
-                                <label for="status" class="control-label">
+                                <label for="icon" class="control-label">
                                     <span>{{ __('panel.choose_icon') }}</span>
                                 </label>
                             </div>
