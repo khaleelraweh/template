@@ -65,9 +65,9 @@
                     </div>
                     <div class="col-sm-12 col-md-10 pt-3">
                         <input class="dropify" type="file" name="doc_archive_attached_file" accept=".pdf, .docx">
-                        <p class="text-muted card-sub-title">يجب ان يكون المستند ضمن الصيغ
-                            التالية ( .pdf ,
-                            .docx)</p>
+                        <p class="text-muted card-sub-title">
+                            {{ __('panel.document_format_message') }}
+                        </p>
                         @error('doc_archive_attached_file')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror

@@ -402,6 +402,7 @@ return [
     'document_archive_data'                                =>  'بيانات ارشيف مستند',
     'document_archive_name'                                =>  'إسم ارشيف الوثيقة',
     'attach_the_document'                                   =>  'ارفاق المستند',
+    'document_format_message'                               =>  'يجب أن تكون الوثيقة بالتنسيقات التالية ( PDF - Docx ) ',
 
     // --------------- Document Statistics  --------------//
     'manage_statistics'                                     =>  'إدارة إحصائيات الجامعة',

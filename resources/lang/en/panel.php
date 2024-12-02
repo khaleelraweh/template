@@ -392,7 +392,8 @@ return [
     'manage_document_archive'                               =>  'Manage Document Archive',
     'show_document_archives'                               => 'Document Archives',
     'add_new_document_archive'                             => 'New Document Archive',
-    'edit_existing_document_archive'                       => 'Edit Existing Document Archive ',
+    'edit_existing_document_archive'                       => 'Edit Existing Document Archive',
+    'document_format_message'                               =>  'The document must be of the following formats .PDF , .docx',
 
 
     // ........... commons in Archive   ....... //
