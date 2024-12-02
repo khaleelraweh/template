@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        if (Schema::hasTable('web_menus')) {
+        if (Schema::hasTable('menus')) {
             $web_menus = Menu::tree();
             View::share('web_menus', $web_menus);
         }
