@@ -269,27 +269,6 @@
                             </div>
                         </div>
 
-
-                        {{-- <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="link[{{ $key }}]">
-                                            {{ __('panel.link') }}
-                                            {{ __('panel.in') }}
-                                            ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" id="link[{{ $key }}]"
-                                            name="link[{{ $key }}]"
-                                            value="{{ old('link.' . $key, $mainMenu->getTranslation('link', $key)) }}"
-                                            class="form-control">
-                                        @error('link.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div> --}}
                     </div>
 
                     <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
