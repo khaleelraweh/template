@@ -51,7 +51,7 @@
                             <th>{{ __('panel.title') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                             <th>{{ __('panel.status') }}</th>
-                            <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.published_on') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
@@ -71,10 +71,23 @@
                                 </td>
                                 <td class="d-none d-sm-table-cell">{{ $main_menu->created_by }}</td>
                                 <td>
-                                    <span
-                                        class="btn btn-round  rounded-pill btn-success btn-xs">{{ $main_menu->status() }}</span>
+                                    @if ($main_menu->status == 1)
+                                        <a href="javascript:void(0);" class="updateMainMenuStatus"
+                                            id="main-menu-{{ $main_menu->id }}" main_menu_id="{{ $main_menu->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updateMainMenuStatus"
+                                            id="main-menu-{{ $main_menu->id }}" main_menu_id="{{ $main_menu->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
                                 </td>
-                                <td class="d-none d-sm-table-cell">{{ $main_menu->created_at }}</td>
+                                <td class="d-none d-sm-table-cell">
+                                    {{ \Carbon\Carbon::parse($main_menu->published_on)->diffForHumans() }}
+                                </td>
                                 <td>
                                     {{-- <div class="btn-group btn-group-sm">
 
