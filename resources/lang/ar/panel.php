@@ -33,6 +33,13 @@ return [
     'edit_existing_link'                => 'تعديل بيانات الرابط',
     'category_menu'                     => 'تصنيفات القائمة الرئيسية',
 
+    // --------------- Main Menu --------------//
+    'manage_main_menus'                 => 'إدارة القائمة الرئيسية',
+    'show_main_menus'                   => 'القائمة الرئيسية',
+    'add_new_main_menu_item'            => 'إضافة عنصر قائمة رئيسية',
+    'edit_existing_main_menu_item'      => 'تعديل عنصر قائمة رئيسية',
+    'category_menu'                     => 'تصنيفات القائمة الرئيسية',
+
     // --------------- Academic Program Menus --------------//
     'show_academic_program_menus'            => 'قائمة البرامج الأكاديمية',
     'add_new_academic_program'              => 'إضافة برنامج اكاديمي',

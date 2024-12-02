@@ -17,7 +17,7 @@ return [
     'univercity'                =>  'Univercity',
 
     ############################ Manage Web Menus #################################
-    'manage_menus'              => 'Manage Web Menus',
+    'manage_menus'              => 'Manage  Menus',
     'manage_company_menus'      => 'Manage Company Menus',
     'manage_topics_menus'       => 'Manage Topics Menus',
     'manage_tracks_menus'       => 'Manage Tracks Menus',
@@ -26,10 +26,11 @@ return [
 
 
     // --------------- Main Menu --------------//
-    'show_web_menus'            => 'Main Menu',
-    'add_new_link'              => 'Add New Link',
-    'edit_existing_link'        => 'Edit Existing Link',
-    'category_menu'             => 'Category Menu',
+    'manage_main_menus'                 => 'Manage Main Menus',
+    'show_main_menus'                   => 'Main Menu',
+    'add_new_main_menu_item'            => 'Add New Main Menu Item',
+    'edit_existing_main_menu_item'      => 'Edit Existing Main Menu Item',
+    'category_menu'                     => 'Category Menu',
 
     // --------------- Academic program Menus --------------//
     'show_academic_program_menus'            => 'Academic Program Menus',

@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\DocumentArchivesController;
 use App\Http\Controllers\Backend\EventsController;
 use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\LocaleController;
+use App\Http\Controllers\Backend\MainMenuController;
 use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PageCategoriesController;
@@ -126,7 +127,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   Menus Tab   ==============  //
-        Route::resource('web_menus', WebMenuController::class);
+        // Route::resource('web_menus', WebMenuController::class);
+        Route::resource('main_menus', MainMenuController::class);
 
         Route::post('academic-program-menus/remove-image', [AcademicProgramMenuController::class, 'remove_image'])->name('academic_program_menus.remove_image');
         Route::post('academic_program_menus/update-academic-program-menus-status', [AcademicProgramMenuController::class, 'updateAcademicProgramMenuStatus'])->name('academic_program_menus.update_academic_program_menus_status');

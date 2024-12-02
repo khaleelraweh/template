@@ -1,0 +1,165 @@
+@extends('layouts.admin')
+
+@section('content')
+    <div class="card shadow mb-4">
+
+        {{-- breadcrumb part  --}}
+        <div class="card-header py-3 d-flex justify-content-between">
+            <div class="card-naving">
+                <h3 class="font-weight-bold text-primary">
+                    <i class="fa fa-folder"></i>
+                    {{ __('panel.manage_menus') }}
+                </h3>
+                <ul class="breadcrumb pt-3">
+                    <li>
+                        <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
+                        @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
+                            /
+                        @else
+                            \
+                        @endif
+                    </li>
+                    <li class="ms-1">
+                        {{ __('panel.show_main_menus') }}
+                    </li>
+                </ul>
+            </div>
+            <div class="ml-auto">
+                @ability('admin', 'create_main_menus')
+                    <a href="{{ route('admin.main_menus.create') }}" class="btn btn-primary">
+                        <span class="icon text-white-50">
+                            <i class="fa fa-plus-square"></i>
+                        </span>
+                        <span class="text">{{ __('panel.add_new_content') }}</span>
+                    </a>
+                @endability
+            </div>
+
+        </div>
+
+        <div class="card-body">
+
+            {{-- filter form part  --}}
+            @include('backend.main_menus.filter.filter')
+
+            {{-- table part --}}
+            <div class="table-responsive">
+                <table class="table table-hover table-striped table-bordered dt-responsive nowrap"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>{{ __('panel.title') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
+                            <th>{{ __('panel.status') }}</th>
+                            <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                            <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($main_menus as $main_menu)
+                            <tr>
+                                <td>
+                                    {{ $main_menu->title }}
+                                    <br>
+                                    @if ($main_menu->parent != null)
+                                        <small
+                                            style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
+                                            {{-- تابع للقائمة: --}}
+                                            <span>{{ $main_menu->parent?->title }}</span> </small>
+                                    @endif
+
+                                </td>
+                                <td class="d-none d-sm-table-cell">{{ $main_menu->created_by }}</td>
+                                <td>
+                                    <span
+                                        class="btn btn-round  rounded-pill btn-success btn-xs">{{ $main_menu->status() }}</span>
+                                </td>
+                                <td class="d-none d-sm-table-cell">{{ $main_menu->created_at }}</td>
+                                <td>
+                                    {{-- <div class="btn-group btn-group-sm">
+
+                                        <a href="{{ route('admin.main_menus.edit', $main_menu->id) }}" class="btn btn-primary">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="javascript:void(0);"
+                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-category-{{ $main_menu->id }}').submit();}else{return false;}"
+                                            class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </div>
+                                    <form action="{{ route('admin.main_menus.destroy', $main_menu->id) }}" method="post"
+                                        class="d-none" id="delete-product-category-{{ $main_menu->id }}">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form> --}}
+
+                                    <div class="btn-group btn-group-sm">
+                                        <div class="dropdown mb-2 ">
+                                            <a type="button" class="d-flex" id="dropdownMenuButton"
+                                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <i class="icon-lg text-muted pb-3px" data-feather="more-vertical"></i>
+                                                {{ __('panel.operation_options') }}
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                    viewBox="0 0 25 15" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-chevron-down link-arrow">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <a class="dropdown-item d-flex align-items-center"
+                                                    href="{{ route('admin.main_menus.edit', $main_menu->id) }}">
+                                                    <i data-feather="edit-2" class="icon-sm me-2"></i>
+                                                    <span class="">{{ __('panel.operation_edit') }}</span>
+                                                </a>
+
+                                                <a href="javascript:void(0);"
+                                                    onclick="confirmDelete('delete-menu-{{ $main_menu->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
+                                                    class="dropdown-item d-flex align-items-center">
+                                                    <i data-feather="trash" class="icon-sm me-2"></i>
+                                                    <span class="">{{ __('panel.operation_delete') }}</span>
+                                                </a>
+                                                <form action="{{ route('admin.main_menus.destroy', $main_menu->id) }}"
+                                                    method="post" class="d-none" id="delete-menu-{{ $main_menu->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+
+                                                <a href="javascript:void(0);"
+                                                    class="dropdown-item d-flex align-items-center btn btn-success copyButton"
+                                                    data-copy-text="https://ibbuniv.era-t.com/menus/{{ $main_menu->slug }}"
+                                                    data-id="{{ $main_menu->id }}" title="Copy the link">
+                                                    <i data-feather="copy" class="icon-sm me-2"></i>
+                                                    <span class="">{{ __('panel.operation_copy_link') }}</span>
+                                                </a>
+
+                                            </div>
+                                            <span class="copyMessage" data-id="{{ $main_menu->id }}" style="display:none;">
+                                                {{ __('panel.copied') }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-center">{{ __('panel.no_found_item') }}</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+
+                </table>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">
+                            <div class="float-right">
+                                {!! $main_menus->appends(request()->all())->links() !!}
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </div>
+
+        </div>
+    </div>
+@endsection
