@@ -144,9 +144,7 @@ class MainMenuController extends Controller
         $input['metadata_description'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
             $description = $request->description[$localeKey] ?? '';
-            // Remove all tags and decode HTML entities
             $plainDescription = html_entity_decode(strip_tags($description), ENT_QUOTES | ENT_HTML5);
-            // Limit to 30 words
             $limitedDescription = implode(' ', array_slice(explode(' ', $plainDescription), 0, 30));
             $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
                 ?: $limitedDescription ?: null;

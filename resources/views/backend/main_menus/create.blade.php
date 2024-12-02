@@ -152,8 +152,8 @@
                         @foreach (config('locales.languages') as $key => $val)
                             <div class="row">
                                 <div class="col-sm-12 col-md-3 pt-3">
-                                    <label for="metadata_description[{{ $key }}]">
-                                        {{ __('panel.metadata_description') }}
+                                    <label for="description[{{ $key }}]">
+                                        {{ __('panel.f_description') }}
                                         <span class="language-type">
                                             <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
                                                 title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
@@ -162,10 +162,8 @@
                                     </label>
                                 </div>
                                 <div class="col-sm-12 col-md-9 pt-3">
-                                    <input type="text" name="metadata_description[{{ $key }}]"
-                                        id="metadata_description[{{ $key }}]"
-                                        value="{{ old('metadata_description.' . $key) }}" class="form-control">
-                                    @error('metadata_description.' . $key)
+                                    <textarea name="description[{{ $key }}]" id="tinymceExample" rows="10" class="form-control">{!! old('description.' . $key) !!}</textarea>
+                                    @error('description.' . $key)
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
