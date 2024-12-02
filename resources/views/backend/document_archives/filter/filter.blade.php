@@ -36,9 +36,9 @@
                             {{ old('sort_by', request()->input('sort_by')) == 'id' ? 'selected' : '' }}>
                             {{ __('panel.id') }}
                         </option>
-                        <option value="title"
-                            {{ old('sort_by', request()->input('sort_by')) == 'title' ? 'selected' : '' }}>
-                            {{ __('panel.title') }}
+                        <option value="doc_archive_name"
+                            {{ old('sort_by', request()->input('sort_by')) == 'doc_archive_name' ? 'selected' : '' }}>
+                            {{ __('panel.document_archive_name') }}
                         </option>
                     </select>
                 </div>

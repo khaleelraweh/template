@@ -73,7 +73,6 @@
                                 </td>
                                 <td>{{ $document_archive->created_by }}</td>
                                 <td>
-                                    {{ $document_archive->status() }}
                                     @if ($document_archive->status == 1)
                                         <a href="javascript:void(0);" class="updateDocumentArchiveStatus "
                                             id="document-archive-{{ $document_archive->id }}"
