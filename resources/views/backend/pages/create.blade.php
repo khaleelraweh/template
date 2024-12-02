@@ -339,7 +339,7 @@
                     <div class="row">
                         <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
                         </div>
-                        <div class="col-sm-12 col-md 10 pt-3">
+                        <div class="col-sm-12 col-md-10 pt-3">
 
                             <button type="submit" name="submit" class="btn btn-primary">
                                 <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
