@@ -7,7 +7,7 @@ use App\Http\Requests\Backend\WebMenuRequest;
 use App\Models\Menu;
 use App\Models\WebMenu;
 use DateTimeImmutable;
-
+use Illuminate\Http\Request;
 
 class MainMenuController extends Controller
 {
@@ -135,9 +135,6 @@ class MainMenuController extends Controller
         ]);
     }
 
-
-
-
     public function destroy($webMenu)
     {
         if (!auth()->user()->ability('admin', 'delete_main_menus')) {
@@ -157,5 +154,19 @@ class MainMenuController extends Controller
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
+    }
+
+    public function updateMainMenuStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Menu::where('id', $data['main_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'main_menu_id' => $data['main_menu_id']]);
+        }
     }
 }

@@ -128,6 +128,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   Menus Tab   ==============  //
         // Route::resource('web_menus', WebMenuController::class);
+        Route::post('main_menus/update-main-menu-status', [MainMenuController::class, 'updateMainMenuStatus'])->name('pages.update_main_menu_status');
         Route::resource('main_menus', MainMenuController::class);
 
         Route::post('academic-program-menus/remove-image', [AcademicProgramMenuController::class, 'remove_image'])->name('academic_program_menus.remove_image');
