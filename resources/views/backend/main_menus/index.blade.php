@@ -89,23 +89,6 @@
                                     {{ \Carbon\Carbon::parse($main_menu->published_on)->diffForHumans() }}
                                 </td>
                                 <td>
-                                    {{-- <div class="btn-group btn-group-sm">
-
-                                        <a href="{{ route('admin.main_menus.edit', $main_menu->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-product-category-{{ $main_menu->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                    <form action="{{ route('admin.main_menus.destroy', $main_menu->id) }}" method="post"
-                                        class="d-none" id="delete-product-category-{{ $main_menu->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form> --}}
-
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
                                             <a type="button" class="d-flex" id="dropdownMenuButton"
