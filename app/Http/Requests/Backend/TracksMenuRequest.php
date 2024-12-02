@@ -31,7 +31,6 @@ class TracksMenuRequest extends FormRequest
                         'link'          =>  'nullable',
                         'icon'          =>  'nullable',
                         'parent_id'     =>  'nullable',
-                        'section'       =>  'required',
 
                         // used always 
                         'status'             =>  'required',
@@ -52,7 +51,6 @@ class TracksMenuRequest extends FormRequest
                         'link'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',
-                        'section'           =>   'required',
 
                         // used always 
                         'status'             =>  'required',
