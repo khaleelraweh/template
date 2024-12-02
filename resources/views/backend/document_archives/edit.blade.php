@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-    {{-- main holder page  --}}
+    {{-- main holder documentArchive  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -54,52 +54,95 @@
                 @csrf
                 @method('PATCH')
 
+
+
                 <div class="row">
-                    <div class="col-sm-12 col-md-12">
+                    <div class="col-sm-12 col-md-2 pt-3">
+                        <label for="doc_archive_name" class="control-label">
+                            <span>{{ __('panel.document_archive_name') }}</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-10 pt-3">
+                        <input type="text" id="doc_archive_name" name="doc_archive_name"
+                            value="{{ old('doc_archive_name', $documentArchive->doc_archive_name) }}" class="form-control"
+                            placeholder="">
+                        @error('doc_archive_name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
 
-                        <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="doc_archive_name" class="control-label">
-                                    <span>{{ __('panel.document_archive_name') }}</span>
-                                </label>
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="text" id="doc_archive_name" name="doc_archive_name"
-                                    value="{{ old('doc_archive_name', $documentArchive->doc_archive_name) }}"
-                                    class="form-control" placeholder="">
-                                @error('doc_archive_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                <!-- row -->
+                <div class="row">
 
-                        <!-- row -->
-                        <div class="row">
-
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="doc_archive_name" class="control-label">
-                                    <span>{{ __('panel.attach_the_document') }}</span>
-                                </label>
-                            </div>
-
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <input type="file" name="doc_archive_attached_file" class="dropify"
-                                    data-default-file="{{ asset('assets/document_archives/' . $documentArchive->doc_archive_attached_file) }}"
-                                    accept=".pdf, .docx" />
-                                <p class="text-muted card-sub-title pt-2">
-                                    <small> {{ __('panel.document_format_message') }} </small>
-                                </p>
-                                @error('doc_archive_attached_file')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-
-                        </div>
-
+                    <div class="col-sm-12 col-md-2 pt-3">
+                        <label for="doc_archive_name" class="control-label">
+                            <span>{{ __('panel.attach_the_document') }}</span>
+                        </label>
                     </div>
 
+                    <div class="col-sm-12 col-md-10 pt-3">
+                        <input type="file" name="doc_archive_attached_file" class="dropify"
+                            data-default-file="{{ asset('assets/document_archives/' . $documentArchive->doc_archive_attached_file) }}"
+                            accept=".pdf, .docx" />
+                        <p class="text-muted card-sub-title pt-2">
+                            <small> {{ __('panel.document_format_message') }} </small>
+                        </p>
+                        @error('doc_archive_attached_file')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                 </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 pt-3">
+                        {{ __('panel.published_on') }}
+                    </div>
+                    <div class="col-sm-12 col-md-10 pt-3">
+                        <div class="input-group flatpickr" id="flatpickr-datetime">
+                            <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                data-input
+                                value="{{ old('published_on', $documentArchive->published_on ? \Carbon\Carbon::parse($documentArchive->published_on)->format('Y/m/d h:i A') : '') }}">
+                            <span class="input-group-text input-group-addon" data-toggle>
+                                <i data-feather="calendar"></i>
+                            </span>
+                        </div>
+                        @error('published_on')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-2 pt-3">
+                        <label for="status" class="control-label">
+                            <span>{{ __('panel.status') }}</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-10 pt-3">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="status" id="status_active" value="1"
+                                {{ old('status', $documentArchive->status) == '1' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="status_active">
+                                {{ __('panel.status_active') }}
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                value="0" {{ old('status', $documentArchive->status) == '0' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="status_inactive">
+                                {{ __('panel.status_inactive') }}
+                            </label>
+                        </div>
+                        @error('status')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+
+
 
                 <div class="row">
                     <div class="col-sm-12 ">
