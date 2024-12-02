@@ -67,7 +67,10 @@
                                 <td class="text-center"><input type="checkbox" name="checkfilter"
                                         value="{{ $document_archive->id }}"></td>
                                 <td>{{ $document_archive->doc_archive_name }}</td>
-                                <td>{{ $document_archive->created_at->format('Y-m-d ') }}</td>
+                                <td>
+                                    {{ \Carbon\Carbon::parse($document_archive->published_on)->diffForHumans() }}
+
+                                </td>
                                 <td>{{ $document_archive->created_by }}</td>
                                 <td>{{ $document_archive->status() }}</td>
                                 <td>
