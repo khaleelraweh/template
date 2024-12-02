@@ -175,23 +175,94 @@
                             </div>
                         @endforeach
 
-                        <div class="row ">
-                            @foreach (config('locales.languages') as $key => $val)
-                                <div class="col-sm-12 col-md-6 pt-3">
-                                    <div class="form-group">
-                                        <label for="link[{{ $key }}]">
-                                            {{ __('panel.link') }}
-                                            {{ __('panel.in') }} ({{ __('panel.' . $key) }})
-                                        </label>
-                                        <input type="text" id="link[{{ $key }}]"
-                                            name="link[{{ $key }}]" value="{{ old('link.' . $key) }}"
-                                            class="form-control">
-                                        @error('link.' . $key)
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row ">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="link[{{ $key }}]">
+                                        {{ __('panel.link') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
                                 </div>
-                            @endforeach
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="link[{{ $key }}]" id="link[{{ $key }}]"
+                                        value="{{ old('link.' . $key) }}" class="form-control">
+                                    @error('link.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                <label for="status" class="control-label">
+                                    <span>{{ __('panel.choose_icon') }}</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-9 pt-3">
+                                <div class="input-group iconpicker-container ">
+                                    <input data-placement="bottomRight"
+                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
+                                        value="fas fa-archive" type="text" name="icon">
+                                    <span class="input-group-addon btn btn-primary">
+                                        <i class="fas fa-archive"></i>
+                                    </span>
+                                </div>
+
+                                @error('icon')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                {{ __('panel.published_on') }}
+                            </div>
+                            <div class="col-sm-12 col-md-9 pt-3">
+                                <div class="input-group flatpickr" id="flatpickr-datetime">
+                                    <input type="text" name="published_on" value="{{ old('published_on') }}"
+                                        class="form-control" placeholder="Select date" data-input>
+                                    <span class="input-group-text input-group-addon" data-toggle>
+                                        <i data-feather="calendar"></i>
+                                    </span>
+                                </div>
+                                @error('published_on')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3 pt-3">
+                                <label for="status" class="control-label">
+                                    <span>{{ __('panel.status') }}</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-12 col-md-9 pt-3">
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_active"
+                                        value="1" {{ old('status', '1') == '1' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_active">
+                                        {{ __('panel.status_active') }}
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                        value="0" {{ old('status') == '0' ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="status_inactive">
+                                        {{ __('panel.status_inactive') }}
+                                    </label>
+                                </div>
+                                @error('status')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
 
                     </div>
@@ -257,29 +328,7 @@
                         </div>
                     </div>
 
-                    <div class="row ">
-                        <div class="col-sm-12 col-md-6 pt-3">
-                            <div class="form-group">
-                                <label for="icon"> {{ __('panel.choose_icon') }} </label>
 
-                                <div class="input-group iconpicker-container ">
-                                    <input data-placement="bottomRight"
-                                        class="form-control icp icp-auto iconpicker-element iconpicker-input icon-picker form-control"
-                                        value="fas fa-archive" type="text" name="icon">
-                                    <span class="input-group-addon btn btn-primary">
-                                        <i class="fas fa-archive"></i>
-                                    </span>
-                                </div>
-
-                                @error('icon')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-                    </div>
 
                 </div>
 
@@ -294,36 +343,25 @@
 @section('script')
     <script>
         $(function() {
+            'use strict';
 
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true,
-                selectYears: true,
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true
-            });
+            const locale = "{{ app()->getLocale() }}";
 
-            var publishedOn = $('#published_on').pickadate(
-                'picker');
+            // datetime picker
+            if ($('#flatpickr-datetime').length) {
+                const defaultDate = "{{ old('published_on') }}" ?
+                    "{{ old('published_on') }}" :
+                    new Date(); // Set to now if no old date exists
 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = $('#published_on').val();
-                if (selected_ci_date != null) {
-                    var cidate = new Date(selected_ci_date);
-                    min_codate = "";
-                    min_codate = new Date();
-                    min_codate.setDate(cidate.getDate() + 1);
-                    enddate.set('min', min_codate);
-                }
-            });
-
-            $('#published_on_time').pickatime({
-
-                clear: ''
-            });
+                flatpickr("#flatpickr-datetime", {
+                    enableTime: true,
+                    wrap: true,
+                    dateFormat: "Y/m/d h:i K",
+                    minDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+                });
+            }
         });
     </script>
 
