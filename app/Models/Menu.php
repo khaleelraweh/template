@@ -92,19 +92,19 @@ class Menu extends Model
     // Get Parent of This Element in the same table inner Relationship
     public function parent(): HasOne
     {
-        return $this->hasOne(webMenu::class, 'id',  'parent_id');
+        return $this->hasOne(Menu::class, 'id',  'parent_id');
     }
 
     // Get All Childreen of This Element in the same table inner Relationship
     public function children()
     {
-        return $this->hasMany(webMenu::class, 'parent_id', 'id');
+        return $this->hasMany(Menu::class, 'parent_id', 'id');
     }
 
     // Get The children that allowed to be appeared and used
     public function appearedChildren()
     {
-        return $this->hasMany(webMenu::class, 'parent_id', 'id')->where('status', true);
+        return $this->hasMany(Menu::class, 'parent_id', 'id')->where('status', true);
     }
 
     //This will get all route categories and its childreen under route categories
