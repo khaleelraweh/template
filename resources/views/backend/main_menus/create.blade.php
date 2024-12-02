@@ -1,53 +1,6 @@
 @extends('layouts.admin')
 
-@section('style')
-    <style>
-        ul,
-        #myUL {
-            list-style-type: none;
-        }
 
-        #myUL {
-            margin: 0;
-            padding: 0;
-        }
-
-        .caret {
-            cursor: pointer;
-            -webkit-user-select: none;
-            /* Safari 3.1+ */
-            -moz-user-select: none;
-            /* Firefox 2+ */
-            -ms-user-select: none;
-            /* IE 10+ */
-            user-select: none;
-        }
-
-        .caret::before {
-            content: "\25B6";
-            color: black;
-            display: inline-block;
-            margin-right: 6px;
-        }
-
-        .caret-down::before {
-            -ms-transform: rotate(90deg);
-            /* IE 9 */
-            -webkit-transform: rotate(90deg);
-            /* Safari */
-            '
-     transform: rotate(90deg);
-        }
-
-        .nested {
-            display: none;
-        }
-
-        .active {
-            display: block;
-        }
-    </style>
-@endsection
 
 @section('content')
 
@@ -62,17 +15,17 @@
                     <i class="fa fa-plus-square"></i>
                     {{ __('panel.add_new_link') }}
                 </h3>
-                <ul class="breadcrumb">
+                <ul class="breadcrumb pt-3">
                     <li>
                         <a href="{{ route('admin.index') }}">{{ __('panel.main') }}</a>
                         @if (config('locales.languages')[app()->getLocale()]['rtl_support'] == 'rtl')
-                            <i class="fa fa-solid fa-chevron-left chevron"></i>
+                            /
                         @else
-                            <i class="fa fa-solid fa-chevron-right chevron"></i>
+                            \
                         @endif
                     </li>
-                    <li>
-                        <a href="{{ route('admin.web_menus.index') }}">
+                    <li class="ms-1">
+                        <a href="{{ route('admin.main_menus.index') }}">
                             {{ __('panel.show_web_menus') }}
                         </a>
                     </li>
@@ -94,7 +47,7 @@
             @endif
 
 
-            <form action="{{ route('admin.web_menus.store') }}" method="post">
+            <form action="{{ route('admin.main_menus.store') }}" method="post">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
