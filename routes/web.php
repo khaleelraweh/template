@@ -27,7 +27,6 @@ use App\Http\Controllers\Backend\SupportMenuController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\TopicsMenuController;
 use App\Http\Controllers\Backend\TracksMenuController;
-use App\Http\Controllers\Backend\WebMenuController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -127,7 +126,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   Menus Tab   ==============  //
-        // Route::resource('web_menus', WebMenuController::class);
         Route::post('main_menus/update-main-menu-status', [MainMenuController::class, 'updateMainMenuStatus'])->name('pages.update_main_menu_status');
         Route::resource('main_menus', MainMenuController::class);
 
