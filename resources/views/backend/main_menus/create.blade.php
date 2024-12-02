@@ -26,7 +26,7 @@
                     </li>
                     <li class="ms-1">
                         <a href="{{ route('admin.main_menus.index') }}">
-                            {{ __('panel.show_web_menus') }}
+                            {{ __('panel.show_main_menus') }}
                         </a>
                     </li>
                 </ul>
