@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\CompanyMenuRequest;
-use App\Models\WebMenu;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use DateTimeImmutable;
 
@@ -17,7 +17,7 @@ class CompanyMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $company_menus = WebMenu::query()->where('section', 6)
+        $company_menus = Menu::query()->where('section', 6)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -58,7 +58,7 @@ class CompanyMenuController extends Controller
         $published_on = new DateTimeImmutable($published_on);
         $input['published_on'] = $published_on;
 
-        $company_menu = WebMenu::create($input);
+        $company_menu = Menu::create($input);
 
 
         if ($company_menu) {
@@ -90,7 +90,7 @@ class CompanyMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $companyMenu = WebMenu::where('id', $companyMenu)->first();
+        $companyMenu = Menu::where('id', $companyMenu)->first();
 
         return view('backend.company_menus.edit', compact('companyMenu'));
     }
@@ -101,7 +101,7 @@ class CompanyMenuController extends Controller
         //     return redirect('admin/index');
         // }
 
-        $companyMenu = WebMenu::where('id', $companyMenu)->first();
+        $companyMenu = Menu::where('id', $companyMenu)->first();
 
         $input['section']    = 6;
 
@@ -137,7 +137,7 @@ class CompanyMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $companyMenu = WebMenu::where('id', $companyMenu)->first();
+        $companyMenu = Menu::where('id', $companyMenu)->first();
 
         $companyMenu->delete();
 
