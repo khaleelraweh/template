@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-    {{-- main holder page  --}}
+    {{-- main holder tag  --}}
     <div class="card shadow mb-4">
 
         {{-- breadcrumb part  --}}
@@ -73,8 +73,12 @@
                 @endforeach
 
                 <div class="row">
-                    <div class="col-sm-12 pt-4">
-                        <label for="section">{{ __('panel.tag_type') }}</label>
+                    <div class="col-sm-12 col-md-3 pt-3">
+                        <label for="status" class="control-label">
+                            <span>{{ __('panel.tag_type') }}</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-9 pt-3">
                         <select name="section" class="form-control">
                             <option value="1" {{ old('section', $tag->section) == '1' ? 'selected' : null }}>
                                 {{ __('panel.course_tag') }}
@@ -93,12 +97,65 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group pt-3">
-                            <button type="submit" name="submit" class="btn btn-primary">
-                                {{ __('panel.update_data') }}
-                            </button>
+                    <div class="col-sm-12 col-md-3 pt-3">
+                        {{ __('panel.published_on') }}
+                    </div>
+                    <div class="col-sm-12 col-md-9 pt-3">
+                        <div class="input-group flatpickr" id="flatpickr-datetime">
+                            <input type="text" name="published_on" class="form-control" placeholder="Select date"
+                                data-input
+                                value="{{ old('published_on', $tag->published_on ? \Carbon\Carbon::parse($tag->published_on)->format('Y/m/d h:i A') : '') }}">
+                            <span class="input-group-text input-group-addon" data-toggle>
+                                <i data-feather="calendar"></i>
+                            </span>
                         </div>
+                        @error('published_on')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 pt-3">
+                        <label for="status" class="control-label">
+                            <span>{{ __('panel.status') }}</span>
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-9 pt-3">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="status" id="status_active" value="1"
+                                {{ old('status', $tag->status) == '1' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="status_active">
+                                {{ __('panel.status_active') }}
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="status" id="status_inactive"
+                                value="0" {{ old('status', $tag->status) == '0' ? 'checked' : '' }}>
+                            <label class="form-check-label" for="status_inactive">
+                                {{ __('panel.status_inactive') }}
+                            </label>
+                        </div>
+                        @error('status')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 pt-3 d-none d-md-block">
+                    </div>
+                    <div class="col-sm-12 col-md-9 pt-3">
+                        <button type="submit" name="submit" class="btn btn-primary">
+                            <i class="icon-lg  me-2" data-feather="corner-down-left"></i>
+                            {{ __('panel.update_data') }}
+                        </button>
+
+                        <a href="{{ route('admin.tags.index') }}" name="submit" class=" btn btn-outline-danger">
+                            <i class="icon-lg  me-2" data-feather="x"></i>
+                            {{ __('panel.cancel') }}
+                        </a>
+
                     </div>
                 </div>
 
