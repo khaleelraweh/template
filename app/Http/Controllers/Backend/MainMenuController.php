@@ -112,18 +112,18 @@ class MainMenuController extends Controller
         return view('backend.main_menus.show');
     }
 
-    public function edit($webMenu)
+    public function edit($mainMenu)
     {
         if (!auth()->user()->ability('admin', 'update_main_menus')) {
             return redirect('admin/index');
         }
 
 
-        $main_menus = WebMenu::tree();
+        $main_menus = Menu::tree();
 
-        $webMenu = WebMenu::where('id', $webMenu)->first();
+        $mainMenu = Menu::where('id', $mainMenu)->first();
 
-        return view('backend.main_menus.edit', compact('main_menus', 'webMenu'));
+        return view('backend.main_menus.edit', compact('main_menus', 'mainMenu'));
     }
 
     public function update(WebMenuRequest $request, $webMenu)
