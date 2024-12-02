@@ -27,8 +27,9 @@ class MainMenuRequest extends FormRequest
             case 'POST': {
                     return [
                         // 'title.*'       =>  'required|max:255|unique_translation:web_menus',
-                        'title.*'       =>  'required|max:255',
-                        'link'          =>  'nullable',
+                        'title.ar'       =>  'required|max:255',
+                        'description.ar'                     =>  'nullable',
+                        'link.*'          =>  'nullable',
                         'icon'          =>  'nullable',
                         'parent_id'     =>  'nullable',
                         'section'       =>  'nullable',
@@ -47,10 +48,9 @@ class MainMenuRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        // 'slug.*' => "unique_translation:posts,slug,{$post->id}",
-                        // 'title.*'           =>   'required|max:255|unique_translation:web_menus,title,' . $this->route()->web_menu,
-                        'title.*'           =>   'required|max:255',
-                        'link'              =>   'nullable',
+                        'title.ar'       =>  'required|max:255',
+                        'description.ar'                     =>  'nullable',
+                        'link.*'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',
                         'section'           =>   'nullable',
