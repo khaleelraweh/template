@@ -49,8 +49,8 @@ class DocumentArchivesController extends Controller
 
         $validatedData = $request->validate([
             'doc_archive_name' => 'required|string',
-            // 'doc_archive_attached_file' => 'nullable|file|mimes:pdf,docx|max:2048', // Validate each file
-            'doc_archive_attached_file' => 'nullable|file|mimes:pdf,docx', // Validate each file
+            'doc_archive_attached_file' => 'nullable|file|mimes:pdf,docx',
+            'published_on'              => 'required',
 
         ]);
 
@@ -62,6 +62,8 @@ class DocumentArchivesController extends Controller
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
         $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
         $input['published_on']            = $publishedOn;
+
+        dd($request);
 
 
         // Handle file uploads
