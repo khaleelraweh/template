@@ -25,10 +25,10 @@ class MainMenuController extends Controller
             ->when(\request()->status != null, function ($query) {
                 $query->where('status', \request()->status);
             })
-            ->orderBy(\request()->sort_by ?? 'published_on', \request()->order_by ?? 'desc')
-            ->paginate(\request()->limit_by ?? 10);
-
-
+            ->orderByRaw(request()->sort_by == 'published_on'
+                ? 'published_on IS NULL, published_on ' . (request()->order_by ?? 'desc')
+                : (request()->sort_by ?? 'created_at') . ' ' . (request()->order_by ?? 'desc'))
+            ->paginate(\request()->limit_by ?? 100);
 
         return view('backend.main_menus.index', compact('main_menus'));
     }
@@ -39,7 +39,7 @@ class MainMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $main_menus = WebMenu::tree();
+        $main_menus = Menu::tree();
 
         return view('backend.main_menus.create', compact('main_menus'));
     }
