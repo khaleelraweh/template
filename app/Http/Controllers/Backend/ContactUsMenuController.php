@@ -19,7 +19,7 @@ class ContactUsMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $support_menus = Menu::query()->where('section', 5)
+        $contact_us_menus = Menu::query()->where('section', 8)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -31,7 +31,7 @@ class ContactUsMenuController extends Controller
                 : (request()->sort_by ?? 'created_at') . ' ' . (request()->order_by ?? 'desc'))
             ->paginate(\request()->limit_by ?? 100);
 
-        return view('backend.contact_us_menus.index', compact('support_menus'));
+        return view('backend.contact_us_menus.index', compact('contact_us_menus'));
     }
 
     public function create()
