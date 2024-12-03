@@ -51,7 +51,7 @@
                             <th>{{ __('panel.title') }}</th>
                             <th>{{ __('panel.author') }}</th>
                             <th> {{ __('panel.status') }} </th>
-                            <th> {{ __('panel.created_at') }} </th>
+                            <th> {{ __('panel.published_on') }} </th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
@@ -63,7 +63,9 @@
                                 </td>
                                 <td>{{ $common_question_video->created_by }}</td>
                                 <td>{{ $common_question_video->status() }}</td>
-                                <td>{{ $common_question_video->created_at->format('Y-m-d h:i a') }}</td>
+                                <td>
+                                    {{ \Carbon\Carbon::parse($common_question_video->published_on)->diffForHumans() }}
+                                </td>
                                 <td>
                                     {{-- <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.common_question_videos.edit', $common_question_video->id) }}"
