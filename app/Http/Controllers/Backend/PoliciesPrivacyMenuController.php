@@ -8,16 +8,16 @@ use App\Models\Menu;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class SupportMenuController extends Controller
+class PoliciesPrivacyMenuController extends Controller
 {
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_support_menus , show_support_menus')) {
+        if (!auth()->user()->ability('admin', 'manage_policies_privacy_menus , show_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $support_menus = Menu::query()->where('section', 5)
+        $support_menus = Menu::query()->where('section', 9)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -29,21 +29,21 @@ class SupportMenuController extends Controller
                 : (request()->sort_by ?? 'created_at') . ' ' . (request()->order_by ?? 'desc'))
             ->paginate(\request()->limit_by ?? 100);
 
-        return view('backend.support_menus.index', compact('support_menus'));
+        return view('backend.policies_privacy_menus.index', compact('support_menus'));
     }
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_support_menus')) {
+        if (!auth()->user()->ability('admin', 'create_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        return view('backend.support_menus.create');
+        return view('backend.policies_privacy_menus.create');
     }
 
     public function store(SupportMenuRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_support_menus')) {
+        if (!auth()->user()->ability('admin', 'create_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
@@ -84,13 +84,13 @@ class SupportMenuController extends Controller
 
 
         if ($support_menu) {
-            return redirect()->route('admin.support_menus.index')->with([
+            return redirect()->route('admin.policies_privacy_menus.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.support_menus.index')->with([
+        return redirect()->route('admin.policies_privacy_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -99,27 +99,27 @@ class SupportMenuController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_support_menus')) {
+        if (!auth()->user()->ability('admin', 'display_policies_privacy_menus')) {
             return redirect('admin/index');
         }
-        return view('backend.support_menus.show');
+        return view('backend.policies_privacy_menus.show');
     }
 
 
     public function edit($supportMenu)
     {
-        if (!auth()->user()->ability('admin', 'update_support_menus')) {
+        if (!auth()->user()->ability('admin', 'update_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
         $supportMenu = Menu::where('id', $supportMenu)->first();
 
-        return view('backend.support_menus.edit', compact('supportMenu'));
+        return view('backend.policies_privacy_menus.edit', compact('supportMenu'));
     }
 
     public function update(SupportMenuRequest $request,  $supportMenu)
     {
-        if (!auth()->user()->ability('admin', 'update_support_menus')) {
+        if (!auth()->user()->ability('admin', 'update_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
@@ -160,13 +160,13 @@ class SupportMenuController extends Controller
         $supportMenu->update($input);
 
         if ($supportMenu) {
-            return redirect()->route('admin.support_menus.index')->with([
+            return redirect()->route('admin.policies_privacy_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.support_menus.index')->with([
+        return redirect()->route('admin.policies_privacy_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);
@@ -175,7 +175,7 @@ class SupportMenuController extends Controller
     public function destroy($supportMenu)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_support_menus')) {
+        if (!auth()->user()->ability('admin', 'delete_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
@@ -184,13 +184,13 @@ class SupportMenuController extends Controller
         $supportMenu->delete();
 
         if ($supportMenu) {
-            return redirect()->route('admin.support_menus.index')->with([
+            return redirect()->route('admin.policies_privacy_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         }
 
-        return redirect()->route('admin.support_menus.index')->with([
+        return redirect()->route('admin.policies_privacy_menus.index')->with([
             'message' => __('panel.something_was_wrong'),
             'alert-type' => 'danger'
         ]);

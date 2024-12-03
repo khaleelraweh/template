@@ -20,6 +20,7 @@ use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PageCategoriesController;
 use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\PlaylistsController;
+use App\Http\Controllers\Backend\PoliciesPrivacyMenuController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\SiteSettingsController;
 use App\Http\Controllers\Backend\SpecializationController;
@@ -152,6 +153,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('contact_us_menus/update-contact-us-menu-status', [ContactUsMenuController::class, 'updateContactUsMenuStatus'])->name('contact_us_menus.update_contact_us_menu_status');
         Route::resource('contact_us_menus', ContactUsMenuController::class);
+
+        Route::resource('policies_privacy_menus', PoliciesPrivacyMenuController::class);
 
         // ==============   Page Categories Tab   ==============  //
         Route::post('page-categories/remove-image', [PageCategoriesController::class, 'remove_image'])->name('page_categories.remove_image');
