@@ -58,7 +58,16 @@
                     <tbody>
                         @forelse ($tags as $tag)
                             <tr>
-                                <td>{{ $tag->name }}</td>
+                                <td>
+                                    {{ $tag->name }}
+                                    <br>
+                                    <small>
+                                        <span class="bg-info px-2 text-white rounded-pill">
+                                            {{ __('panel.category') }}:
+                                            <strong>{{ $tag->section }}</strong>
+                                        </span>
+                                    </small>
+                                </td>
                                 <td class="d-none d-sm-table-cell">{{ $tag->created_by ?? 'admin' }}</td>
                                 <td>
                                     {{-- {{ $tag->status() }} --}}
