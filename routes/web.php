@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\AlbumsController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CollegeMenuController;
 use App\Http\Controllers\Backend\CompanyMenuController;
+use App\Http\Controllers\Backend\ContactUsMenuController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DocumentArchivesController;
 use App\Http\Controllers\Backend\EventsController;
@@ -148,6 +149,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('important_link_menus/update-important-link-menu-status', [ImportantLinkMenuController::class, 'updateImportantLinkMenuStatus'])->name('important_link_menus.update_important_link_menu_status');
         Route::resource('important_link_menus', ImportantLinkMenuController::class);
+
+        Route::resource('contact_us_menus', ContactUsMenuController::class);
 
         // ==============   Page Categories Tab   ==============  //
         Route::post('page-categories/remove-image', [PageCategoriesController::class, 'remove_image'])->name('page_categories.remove_image');
