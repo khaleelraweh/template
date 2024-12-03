@@ -51,7 +51,7 @@
                             <th>{{ __('panel.title') }}</th>
                             <th>{{ __('panel.author') }}</th>
                             <th> {{ __('panel.status') }} </th>
-                            <th> {{ __('panel.created_at') }} </th>
+                            <th> {{ __('panel.published_on') }} </th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
@@ -63,7 +63,10 @@
                                 </td>
                                 <td>{{ $testimonial->created_by }}</td>
                                 <td>{{ $testimonial->status() }}</td>
-                                <td>{{ $testimonial->created_at->format('Y-m-d h:i a') }}</td>
+                                <td>
+                                    {{ \Carbon\Carbon::parse($testimonial->published_on)->diffForHumans() }}
+                                </td>
+
                                 <td>
                                     {{-- <div class="btn-group btn-group-sm">
                                         <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}"
