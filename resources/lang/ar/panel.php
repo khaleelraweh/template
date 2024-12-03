@@ -51,6 +51,13 @@ return [
     'add_new_company_link'              => 'إضافة قائمة مؤسسة جديدة',
     'edit_existing_company_menu_link'        => 'تعديل قائمة مؤسسة موجودة',
 
+    // --------------- important link Menu --------------//
+    'manage_important_link_menus'   =>  'إدارة قائمة روابط مهمة',
+    'show_important_link_menus'        => 'قائمة روابط مهمة',
+    'add_new_important_link_menu_item'              => 'إضافة عنصر قائمة روابط مهمة',
+    'edit_existing_important_link_menu_item'        => 'تعديل عنصر قائمة روابط مهمة',
+
+
     // --------------- قائمة موضوعات --------------//
     'show_topics_menus'        => 'قائمة الموضوعات',
     'add_new_topics_link'              => 'إضافة قائمة موضوعات جديدة',

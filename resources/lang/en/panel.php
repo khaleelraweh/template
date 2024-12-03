@@ -43,6 +43,13 @@ return [
     'add_new_company_link'              => 'Add New Company Menu',
     'edit_existing_company_menu_link'        => 'Edit Existing Company Menu',
 
+
+    // --------------- important link Menu --------------//
+    'manage_important_link_menus'   =>  'Manage Important Link Menus',
+    'show_important_link_menus'        => 'Important Link Menus',
+    'add_new_important_link_menu_item'              => 'Add New Important Link Menu Item',
+    'edit_existing_important_link_menu_item'        => 'Edit Existing Important Link Menu Item',
+
     // --------------- Topics Menu --------------//
     'show_topics_menus'        => 'Topics Menus',
     'add_new_topics_link'              => 'Add New Topics Menu',
