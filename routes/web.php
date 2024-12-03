@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\MainSliderController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\Backend\PageCategoriesController;
 use App\Http\Controllers\Backend\PagesController;
+use App\Http\Controllers\Backend\PartnerController;
 use App\Http\Controllers\Backend\PlaylistsController;
 use App\Http\Controllers\Backend\PoliciesPrivacyMenuController;
 use App\Http\Controllers\Backend\PostController;
@@ -220,9 +221,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
 
-        // ==============   Pages Tab   ==============  //
+        // ==============   presidentspeeches Tab   ==============  //
         Route::post('president_speeches/remove-image', [PresidentSpeechController::class, 'remove_image'])->name('president_speeches.remove_image');
         Route::resource('president_speeches', PresidentSpeechController::class);
+
+        // ================== Partners ================// 
+        Route::post('partners/remove-image', [PartnerController::class, 'remove_image'])->name('partners.remove_image');
+        Route::resource('partners', PartnerController::class);
 
 
 

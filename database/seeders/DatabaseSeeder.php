@@ -51,5 +51,6 @@ class DatabaseSeeder extends Seeder
         $this->call(StatisticSeeder::class);
 
         $this->call(PresidentSpeechSeeder::class);
+        $this->call(PartnerSeeder::class);
     }
 }
