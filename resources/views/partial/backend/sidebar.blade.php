@@ -1,7 +1,7 @@
 <nav class="sidebar">
     <div class="sidebar-header">
         <a href="{{ route('admin.index') }}" class="sidebar-brand">
-            {{ __('panel.univercity') }}<span> {{ __('panel.ibb') }}</span>
+            {{ __('panel.univercity') }} <span> {{ __('panel.ibb') }}</span>
         </a>
         <div class="sidebar-toggler not-active">
             <span></span>
