@@ -41,8 +41,10 @@
                                 <ul class="nav sub-menu">
                                     @foreach ($menu->appearedChildren as $sub_menu)
                                         <li class="nav-item">
-                                            <a href="{{ route('admin.' . $sub_menu->as) }}"
-                                                class="nav-link">{{ $sub_menu->display_name }}</a>
+                                            <a href="{{ route('admin.' . $sub_menu->as) }}" class="nav-link">
+                                                {{-- {{ $sub_menu->display_name }} --}}
+                                                {{ \Illuminate\Support\Str::limit($sub_menu->display_name, 25) }}
+                                            </a>
                                         </li>
                                     @endforeach
                                 </ul>
