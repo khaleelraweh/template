@@ -699,8 +699,36 @@ return [
     'add_new_question'                => 'Add New Question',
     'edit_existing_question'          => 'Edit Existing Question ',
 
-
     // ........... commons in questions   ....... //
+
+
+    ##############################################################
+
+    // =============  Manage Common Question Videos   ===============//
+    'manage_common_question_videos'                => 'Manage Common Question Videos',
+
+    // --------------- Common Question Video --------------//
+    'show_common_question_videos'                   => 'Common Question Videos',
+    'add_new_common_question_video'                 => 'Add New Common Question Video',
+    'edit_existing_common_question_video'           => 'Edit Existing Common Question Video',
+
+    // ........... commons in question Video  ....... //
+    'frequently_asked_questions'                    =>  'Frequently Asked Questions',
+
+    ##############################################################
+
+    // =============  Manage Testimonial   ===============//
+    'manage_testimonials'                => 'Manage Testimonial',
+
+    // --------------- Testimonial --------------//
+    'show_testimonials'                   => 'Testimonial',
+    'add_new_testimonial'                 => 'Add New Testimonial',
+    'edit_existing_testimonial'           => 'Edit Existing Testimonial',
+
+    // ........... commons in Testimontails  ....... //
+    'testimonial'                           =>  'Testimonial',
+    'what_students_saying'                  =>  'What Students Saying',
+
 
 
 

@@ -692,6 +692,34 @@ return [
     // ........... commons in Questions   ....... //
 
 
+    ##############################################################
+
+    // =============  Manage Common Question Videos   ===============//
+    'manage_common_question_videos'                => 'إدارة فيديوهات الاسئلة الشائعة',
+
+    // --------------- Common Question Video --------------//
+    'show_common_question_videos'                   => 'فيديوها الأسئلة الشائعة',
+    'add_new_common_question_video'                 => 'إضافة فيديو سؤال جديد',
+    'edit_existing_common_question_video'           => 'تعديل فيديو سؤال جديد',
+
+    // ........... commons in question Video  ....... //
+    'frequently_asked_questions'                    =>  'الأسئلة المتداولة',
+
+    ##############################################################
+
+    // =============  Manage Testimonial   ===============//
+    'manage_testimonials'                => 'إدارة الشهادات الترويجية',
+
+    // --------------- Testimonial --------------//
+    'show_testimonials'                   => 'الشهادات الترويجية',
+    'add_new_testimonial'                 => 'إضافة شهادة ترويجية جديدة',
+    'edit_existing_testimonial'           => 'تعديل شهادة ترويجية',
+
+    // ........... commons in Testimontails  ....... //
+    'testimonial'                           =>  'شهادة',
+    'what_students_saying'                  =>  'ماذا يقول طلابنا',
+
+
     ################################ Manage Blogs ############################
     'manage_blogs'                  => 'إدارة المدونة',
 
