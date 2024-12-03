@@ -74,7 +74,21 @@
                                 <td class="d-none d-sm-table-cell">
                                     {{ \Carbon\Carbon::parse($partner->published_on)->diffForHumans() }}
                                 </td>
-                                <td class="d-none d-sm-table-cell">{{ $partner->status() }}</td>
+                                <td class="d-none d-sm-table-cell">
+                                    @if ($partner->status == 1)
+                                        <a href="javascript:void(0);" class="updatePartnerStatus "
+                                            id="partner-{{ $partner->id }}" partner_id="{{ $partner->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updatePartnerStatus"
+                                            id="partner-{{ $partner->id }}" partner_id="{{ $partner->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
+                                </td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
