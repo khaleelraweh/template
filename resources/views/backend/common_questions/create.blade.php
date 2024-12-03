@@ -264,3 +264,30 @@
     </div>
 
 @endsection
+
+
+@section('script')
+    <script>
+        $(function() {
+            'use strict';
+
+            const locale = "{{ app()->getLocale() }}";
+
+            // datetime picker
+            if ($('#flatpickr-datetime').length) {
+                const defaultDate = "{{ old('published_on') }}" ?
+                    "{{ old('published_on') }}" :
+                    new Date(); // Set to now if no old date exists
+
+                flatpickr("#flatpickr-datetime", {
+                    enableTime: true,
+                    wrap: true,
+                    dateFormat: "Y/m/d h:i K",
+                    minDate: "today", // Prevent dates before today
+                    locale: typeof flatPickrLanguage !== 'undefined' ? flatPickrLanguage : 'en',
+                    defaultDate: defaultDate,
+                });
+            }
+        });
+    </script>
+@endsection
