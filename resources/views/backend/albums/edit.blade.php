@@ -1,16 +1,5 @@
 @extends('layouts.admin')
 
-@section('style')
-    <style>
-        .language-type {
-            display: inline-block;
-            background-color: #f8f9fa;
-            color: black;
-            padding: 5px 7px;
-            border-radius: 5px;
-        }
-    </style>
-@endsection
 
 @section('content')
     {{-- main holder album  --}}
