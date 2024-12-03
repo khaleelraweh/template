@@ -319,7 +319,7 @@
                             caption: "{{ $president_speech->promotional_image }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.president_speeches.remove_image', ['about_instatute_id' => $president_speech->id, '_token' => csrf_token()]) }}",
+                            url: "{{ route('admin.president_speeches.remove_image', ['president_speech_id' => $president_speech->id, '_token' => csrf_token()]) }}",
                             key: {{ $president_speech->id }}
                         }
                     @endif

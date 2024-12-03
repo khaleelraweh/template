@@ -133,10 +133,10 @@ class PresidentSpeechController extends Controller
         return view('backend.president_speeches.edit', compact('president_speech'));
     }
 
-    public function update(PresidentSpeechRequest $request, $about_instatute)
+    public function update(PresidentSpeechRequest $request, $president_speech)
     {
 
-        $about_instatute = PresidentSpeech::where('id', $about_instatute)->first();
+        $president_speech = PresidentSpeech::where('id', $president_speech)->first();
 
         $input['title'] = $request->title;
         $input['content'] = $request->content;
@@ -170,8 +170,8 @@ class PresidentSpeechController extends Controller
 
 
         if ($image = $request->file('promotional_image')) {
-            if ($about_instatute->promotional_image != null && File::exists('assets/president_speeches/' . $about_instatute->promotional_image)) {
-                unlink('assets/president_speeches/' . $about_instatute->promotional_image);
+            if ($president_speech->promotional_image != null && File::exists('assets/president_speeches/' . $president_speech->promotional_image)) {
+                unlink('assets/president_speeches/' . $president_speech->promotional_image);
             }
 
             $manager = new ImageManager(new Driver());
@@ -184,9 +184,9 @@ class PresidentSpeechController extends Controller
             $input['promotional_image'] = $file_name;
         }
 
-        $about_instatute->update($input);
+        $president_speech->update($input);
 
-        if ($about_instatute) {
+        if ($president_speech) {
             return redirect()->route('admin.president_speeches.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -200,15 +200,15 @@ class PresidentSpeechController extends Controller
     }
 
 
-    public function destroy($about_instatute)
+    public function destroy($president_speech)
     {
         if (!auth()->user()->ability('admin', 'delete_president_speeches')) {
             return redirect('admin/index');
         }
 
-        $about_instatute = PresidentSpeech::where('id', $about_instatute)->first()->delete();
+        $president_speech = PresidentSpeech::where('id', $president_speech)->first()->delete();
 
-        if ($about_instatute) {
+        if ($president_speech) {
             return redirect()->route('admin.president_speeches.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -229,15 +229,15 @@ class PresidentSpeechController extends Controller
             return redirect('admin/index');
         }
 
-        $about_instatute = PresidentSpeech::findOrFail($request->about_instatute_id);
-        if (File::exists('assets/president_speeches/' . $about_instatute->promotional_image)) {
-            unlink('assets/president_speeches/' . $about_instatute->promotional_image);
-            $about_instatute->promotional_image = null;
-            $about_instatute->save();
+        $president_speech = PresidentSpeech::findOrFail($request->president_speech_id);
+        if (File::exists('assets/president_speeches/' . $president_speech->promotional_image)) {
+            unlink('assets/president_speeches/' . $president_speech->promotional_image);
+            $president_speech->promotional_image = null;
+            $president_speech->save();
         }
-        if ($about_instatute->promotional_image != null) {
-            $about_instatute->promotional_image = null;
-            $about_instatute->save();
+        if ($president_speech->promotional_image != null) {
+            $president_speech->promotional_image = null;
+            $president_speech->save();
         }
 
         return true;
