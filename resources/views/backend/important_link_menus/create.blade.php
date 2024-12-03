@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_support_link') }}
+                    {{ __('panel.add_new_important_link_menu_item') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -22,8 +22,8 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        <a href="{{ route('admin.support_menus.index') }}">
-                            {{ __('panel.show_support_menus') }}
+                        <a href="{{ route('admin.important_link_menus.index') }}">
+                            {{ __('panel.show_important_link_menus') }}
                         </a>
                     </li>
                 </ul>
@@ -44,7 +44,7 @@
             @endif
 
 
-            <form action="{{ route('admin.support_menus.store') }}" method="post">
+            <form action="{{ route('admin.important_link_menus.store') }}" method="post">
                 @csrf
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -287,7 +287,7 @@
                                 {{ __('panel.save_data') }}
                             </button>
 
-                            <a href="{{ route('admin.main_menus.index') }}" name="submit"
+                            <a href="{{ route('admin.important_link_menus.index') }}" name="submit"
                                 class=" btn btn-outline-danger">
                                 <i class="icon-lg  me-2" data-feather="x"></i>
                                 {{ __('panel.cancel') }}

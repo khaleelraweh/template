@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\ImportantLinkMenuRequest;
 use App\Http\Requests\Backend\SupportMenuRequest;
 use App\Models\Menu;
 use Carbon\Carbon;
-use DateTimeImmutable;
 use Illuminate\Http\Request;
 
 class ImportantLinkMenuController extends Controller
@@ -14,7 +14,7 @@ class ImportantLinkMenuController extends Controller
 
     public function index()
     {
-        if (!auth()->user()->ability('admin', 'manage_support_menus , show_support_menus')) {
+        if (!auth()->user()->ability('admin', 'manage_important_link_menus , show_important_link_menus')) {
             return redirect('admin/index');
         }
 
@@ -35,16 +35,16 @@ class ImportantLinkMenuController extends Controller
 
     public function create()
     {
-        if (!auth()->user()->ability('admin', 'create_support_menus')) {
+        if (!auth()->user()->ability('admin', 'create_important_link_menus')) {
             return redirect('admin/index');
         }
 
         return view('backend.important_link_menus.create');
     }
 
-    public function store(SupportMenuRequest $request)
+    public function store(ImportantLinkMenuRequest $request)
     {
-        if (!auth()->user()->ability('admin', 'create_support_menus')) {
+        if (!auth()->user()->ability('admin', 'create_important_link_menus')) {
             return redirect('admin/index');
         }
 
@@ -53,7 +53,7 @@ class ImportantLinkMenuController extends Controller
         $input['link'] = $request->link;
         $input['icon'] = $request->icon;
 
-        $input['section']    = 5;
+        $input['section']    = 7;
 
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
@@ -64,7 +64,7 @@ class ImportantLinkMenuController extends Controller
         foreach (config('locales.languages') as $localeKey => $localeValue) {
             $description = $request->description[$localeKey] ?? '';
             // Remove all tags and decode HTML entities
-            $plainDescription = html_entity_decode(strip_tags($description), ENT_QUOTES | ENT_HTML5);
+            $plainDescription = html_entity_decode(strip_tags($description), ENT_QUOTES | ENT_HTML7);
             // Limit to 30 words
             $limitedDescription = implode(' ', array_slice(explode(' ', $plainDescription), 0, 30));
             $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
@@ -81,10 +81,10 @@ class ImportantLinkMenuController extends Controller
         $input['published_on']            = $publishedOn;
 
 
-        $support_menu = Menu::create($input);
+        $important_link_menu = Menu::create($input);
 
 
-        if ($support_menu) {
+        if ($important_link_menu) {
             return redirect()->route('admin.important_link_menus.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -100,27 +100,27 @@ class ImportantLinkMenuController extends Controller
 
     public function show($id)
     {
-        if (!auth()->user()->ability('admin', 'display_support_menus')) {
+        if (!auth()->user()->ability('admin', 'display_important_link_menus')) {
             return redirect('admin/index');
         }
         return view('backend.important_link_menus.show');
     }
 
 
-    public function edit($supportMenu)
+    public function edit($importantLinkMenu)
     {
-        if (!auth()->user()->ability('admin', 'update_support_menus')) {
+        if (!auth()->user()->ability('admin', 'update_important_link_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $importantLinkMenu = Menu::where('id', $importantLinkMenu)->first();
 
-        return view('backend.important_link_menus.edit', compact('supportMenu'));
+        return view('backend.important_link_menus.edit', compact('importantLinkMenu'));
     }
 
     public function update(SupportMenuRequest $request,  $supportMenu)
     {
-        if (!auth()->user()->ability('admin', 'update_support_menus')) {
+        if (!auth()->user()->ability('admin', 'update_important_link_menus')) {
             return redirect('admin/index');
         }
 
@@ -176,7 +176,7 @@ class ImportantLinkMenuController extends Controller
     public function destroy($supportMenu)
     {
 
-        if (!auth()->user()->ability('admin', 'delete_support_menus')) {
+        if (!auth()->user()->ability('admin', 'delete_important_link_menus')) {
             return redirect('admin/index');
         }
 
