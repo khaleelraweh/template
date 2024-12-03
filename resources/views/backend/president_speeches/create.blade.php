@@ -13,7 +13,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-plus-square"></i>
-                    {{ __('panel.add_new_about_anstatute_info') }}
+                    {{ __('panel.add_new_president_speech') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -26,7 +26,7 @@
                     </li>
                     <li class="ms-1">
                         <a href="{{ route('admin.president_speeches.index') }}">
-                            {{ __('panel.show_about_instatutes') }}
+                            {{ __('panel.show_president_speeches') }}
                         </a>
                     </li>
                 </ul>

@@ -400,6 +400,18 @@ return [
 
     // ........... commons in About Instatutes ....... //
 
+    ########################### Manage president Speeches  ##################################
+
+    // =============  Manage president Speeches  ===============//
+    'manage_president_speeches'                          => 'إدارة كلمة الرئيس',
+
+    // --------------- president speeches  --------------//
+    'show_president_speeches'                            => 'كلمة الرئيس',
+    'add_new_president_speech'                          => 'إضافة كلمة الرئيس',
+    'edit_existing_president_speech'                    => 'تعديل كلمة الرئيس',
+
+    // ........... commons in President Speeches  ....... //
+
 
     #################################### Manage Tags ##########################
     'manage_tags'                       => 'إدارة الكلمات المفتاحية',

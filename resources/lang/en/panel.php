@@ -386,6 +386,18 @@ return [
 
     // ........... commons in About Instatutes ....... //
 
+    ########################### Manage president Speeches  ##################################
+
+    // =============  Manage president Speeches  ===============//
+    'manage_president_speeches'                          => 'Manage President Speeches',
+
+    // --------------- president speeches  --------------//
+    'show_president_speeches'                            => 'President Speeches',
+    'add_new_president_speech'                          => 'Add New President Speech',
+    'edit_existing_president_speech'                    => 'Edit Existing President Speech',
+
+    // ........... commons in President Speeches  ....... //
+
 
 
 

@@ -8,7 +8,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-folder"></i>
-                    {{ __('panel.manage_about_instatute_section') }}
+                    {{ __('panel.manage_president_speeches') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -20,7 +20,7 @@
                         @endif
                     </li>
                     <li class="ms-1">
-                        {{ __('panel.show_about_instatutes') }}
+                        {{ __('panel.show_president_speeches') }}
                     </li>
                 </ul>
             </div>
