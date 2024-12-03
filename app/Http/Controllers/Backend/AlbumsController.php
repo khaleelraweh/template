@@ -180,7 +180,7 @@ class AlbumsController extends Controller
         $input['metadata_keywords'] = $request->metadata_keywords;
 
         $input['status']            =   $request->status;
-        $input['created_by'] = auth()->user()->full_name;
+        $input['updated_by'] = auth()->user()->full_name;
 
 
         $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
