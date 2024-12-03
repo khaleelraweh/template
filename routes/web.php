@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\PlaylistsController;
 use App\Http\Controllers\Backend\PoliciesPrivacyMenuController;
 use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\PresidentSpeechController;
 use App\Http\Controllers\Backend\SiteSettingsController;
 use App\Http\Controllers\Backend\SpecializationController;
 use App\Http\Controllers\Backend\StatisticsController;
@@ -216,6 +217,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('statistics/remove-statistic-image', [StatisticsController::class, 'remove_statistic_image'])->name('statistics.remove_statistic_image');
         Route::post('statistics/update-statistic-status', [StatisticsController::class, 'updateStatisticStatus'])->name('statistics.update_statistic_status');
         Route::resource('statistics', StatisticsController::class);
+
+
+
+        // ==============   Pages Tab   ==============  //
+        Route::post('president_speeches/remove-image', [PresidentSpeechController::class, 'remove_image'])->name('president_speeches.remove_image');
+        Route::resource('president_speeches', PresidentSpeechController::class);
+
+
 
         // ==============   Site Setting  Tab   ==============  //
         Route::get('site_setting/site_infos', [SiteSettingsController::class, 'show_main_informations'])->name('settings.site_main_infos.show');
