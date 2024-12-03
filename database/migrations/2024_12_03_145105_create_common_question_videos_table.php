@@ -15,6 +15,17 @@ return new class extends Migration
     {
         Schema::create('common_question_videos', function (Blueprint $table) {
             $table->id();
+            $table->json('title');
+            $table->json('slug');
+            $table->json('link')->nullable();
+            $table->string('question_video_image')->nullable();
+            $table->boolean('status')->default(true);
+            $table->dateTime('published_on')->nullable();
+
+            $table->string('created_by')->nullable()->default('admin');
+            $table->string('updated_by')->nullable();
+            $table->string('deleted_by')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
