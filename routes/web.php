@@ -184,7 +184,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   News Tab   ==============  //
         Route::post('news/remove-image', [NewsController::class, 'remove_image'])->name('news.remove_image');
-        Route::post('news/update-news-status', [NewsController::class, 'updateNewsStatus'])->name('pages.update_news_status');
+        Route::post('news/update-news-status', [NewsController::class, 'updateNewsStatus'])->name('news.update_news_status');
         Route::resource('news', NewsController::class);
 
         // ==============   advs Tab   ==============  //
@@ -214,7 +214,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   Document Archive Tab   ==============  //
-        Route::post('document_archives/update-document-archive-status', [DocumentArchivesController::class, 'updateDocumentArchiveStatus'])->name('pages.update_document_archive_status');
+        Route::post('document_archives/update-document-archive-status', [DocumentArchivesController::class, 'updateDocumentArchiveStatus'])->name('document_archives.update_document_archive_status');
         Route::resource('document_archives', DocumentArchivesController::class);
 
         // ==============   Statistics Tab   ==============  //
@@ -236,6 +236,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ================== testimonials ================// 
         Route::post('testimonials/remove-image', [TestimonialController::class, 'remove_image'])->name('testimonials.remove_image');
+        Route::post('testimonials/update-testimonial-status', [TestimonialController::class, 'updateTestimonialStatus'])->name('testimonials.update_testimonial_status');
         Route::resource('testimonials', TestimonialController::class);
 
         //=============== common question =========================//

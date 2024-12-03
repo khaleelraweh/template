@@ -207,4 +207,18 @@ class TestimonialController extends Controller
 
         return true;
     }
+
+    public function updateTestimonialStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Testimonial::where('id', $data['testimonial_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'testimonial_id' => $data['testimonial_id']]);
+        }
+    }
 }
