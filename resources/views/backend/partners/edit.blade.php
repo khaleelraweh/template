@@ -171,10 +171,10 @@
                                 <div class="file-loading">
                                     <input type="file" name="partner_image" id="partner_image"
                                         class="file-input-overview" multiple="multiple">
-                                    @error('images')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
+                                @error('partner_image')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
