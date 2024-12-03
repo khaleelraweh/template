@@ -17,7 +17,7 @@ class PoliciesPrivacyMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $support_menus = Menu::query()->where('section', 9)
+        $policies_privacy_menus = Menu::query()->where('section', 9)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -29,7 +29,7 @@ class PoliciesPrivacyMenuController extends Controller
                 : (request()->sort_by ?? 'created_at') . ' ' . (request()->order_by ?? 'desc'))
             ->paginate(\request()->limit_by ?? 100);
 
-        return view('backend.policies_privacy_menus.index', compact('support_menus'));
+        return view('backend.policies_privacy_menus.index', compact('policies_privacy_menus'));
     }
 
     public function create()
