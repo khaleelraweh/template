@@ -28,7 +28,7 @@ class PostRequest extends FormRequest
                     return [
                         // 'title.*'               =>  'required|max:255|unique_translation:posts',
                         'title.ar'                           =>  'required|max:255',
-                        'content.ar'                         =>  'nullable',
+                        'content.*'                         =>  'nullable',
 
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',
@@ -49,7 +49,7 @@ class PostRequest extends FormRequest
                     return [
                         // 'title.*'               =>  'required|max:255|unique_translation:posts,title,' . $this->route()->post,
                         'title.ar'               =>  'required|max:255',
-                        'content.ar'         =>  'nullable',
+                        'content.*'         =>  'nullable',
 
                         'metadata_title.*'                  =>  'nullable',
                         'metadata_description.*'            =>  'nullable',

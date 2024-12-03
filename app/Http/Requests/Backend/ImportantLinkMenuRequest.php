@@ -26,8 +26,9 @@ class ImportantLinkMenuRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'       => 'required|max:255',
-                        'link'          =>  'nullable',
+                        'title.ar'       => 'required|max:255',
+                        'description.*'              =>   'nullable',
+                        'link.*'          =>  'nullable',
                         'icon'          =>  'nullable',
                         'parent_id'     =>  'nullable',
 
@@ -44,8 +45,9 @@ class ImportantLinkMenuRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'           => 'required|max:255',
-                        'link'              =>   'nullable',
+                        'title.ar'           => 'required|max:255',
+                        'description.*'              =>   'nullable',
+                        'link.*'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',
 

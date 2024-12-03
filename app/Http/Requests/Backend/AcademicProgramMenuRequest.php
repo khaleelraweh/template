@@ -27,8 +27,8 @@ class AcademicProgramMenuRequest extends FormRequest
             case 'POST': {
                     return [
                         'title.ar'                       =>  'required|max:255',
-                        'description.ar'                 =>  'required',
-                        'link.ar'                        =>  'nullable',
+                        'description.*'              =>   'nullable',
+                        'link.*'                        =>  'nullable',
                         'icon'                          =>  'nullable',
                         'parent_id'                     =>  'nullable',
                         'section'                       =>  'nullable',
@@ -54,8 +54,8 @@ class AcademicProgramMenuRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.ar'           =>   'required|max:255',
-                        'description.ar'              =>   'nullable',
-                        'link.ar'              =>   'nullable',
+                        'description.*'              =>   'nullable',
+                        'link.*'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',
                         'section'           =>   'nullable',

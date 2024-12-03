@@ -27,7 +27,7 @@ class AdvertisorSliderRequest extends FormRequest
             case 'POST': {
                     return [
                         'icon'        =>  'nullable',
-                        'title.*'       =>  'required|max:255|unique_translation:sliders',
+                        'title.ar'       =>  'required|max:255|unique_translation:sliders',
                         'subtitle.*'        =>  'nullable',
                         'description.*'       =>  'nullable',
                         'url'           =>  'nullable',

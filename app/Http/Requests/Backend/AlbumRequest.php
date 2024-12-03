@@ -26,7 +26,7 @@ class AlbumRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'                   =>  'required|max:255',
+                        'title.ar'                   =>  'required|max:255',
                         'description.*'                 =>  'nullable',
                         'metadata_title.*'          =>  'nullable',
                         'metadata_description.*'    =>  'nullable',
@@ -51,7 +51,7 @@ class AlbumRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'                   =>   'required|max:255',
+                        'title.ar'                   =>   'required|max:255',
                         'description.*'                 =>   'nullable',
                         'metadata_title.*'          =>  'nullable',
                         'metadata_description.*'    =>  'nullable',

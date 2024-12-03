@@ -26,7 +26,7 @@ class StatisticRequest extends FormRequest
         switch ($this->method()) {
             case 'POST': {
                     return [
-                        'title.*'                       =>  'required|max:255',
+                        'title.ar'                       =>  'required|max:255',
                         'icon'                          =>  'nullable',
                         'statistic_number'              =>  'required',
 
@@ -47,7 +47,7 @@ class StatisticRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                     return [
-                        'title.*'                           =>   'required|max:255',
+                        'title.ar'                           =>   'required|max:255',
                         'icon'                              =>  'nullable',
                         'statistic_number'                  =>  'required',
 

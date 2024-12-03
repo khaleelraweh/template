@@ -26,7 +26,7 @@ class TagRequest extends FormRequest
             switch ($this->method()) {
                 case 'POST': {
                         return [
-                            'name.*'          =>  'required|max:255|unique_translation:tags',
+                            'name.ar'          =>  'required|max:255|unique_translation:tags',
                             'section'       =>  'nullable',
 
                             // used always 
@@ -41,7 +41,7 @@ class TagRequest extends FormRequest
                 case 'PUT':
                 case 'PATCH': {
                         return [
-                            'name.*'       => 'required|max:255|unique_translation:tags,name,' . $this->route()->tag,
+                            'name.ar'       => 'required|max:255|unique_translation:tags,name,' . $this->route()->tag,
                             'section'    => 'nullable',
 
                             // used always 

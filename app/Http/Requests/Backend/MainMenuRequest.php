@@ -27,7 +27,7 @@ class MainMenuRequest extends FormRequest
             case 'POST': {
                     return [
                         'title.ar'       =>  'required|max:255',
-                        'description.ar'                     =>  'nullable',
+                        'description.*'                     =>  'nullable',
                         'link.*'          =>  'nullable',
                         'icon'          =>  'nullable',
                         'parent_id'     =>  'nullable',
@@ -47,7 +47,7 @@ class MainMenuRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.ar'       =>  'required|max:255',
-                        'description.ar'                     =>  'nullable',
+                        'description.*'                     =>  'nullable',
                         'link.*'              =>   'nullable',
                         'icon'              =>  'nullable',
                         'parent_id'         =>   'nullable',

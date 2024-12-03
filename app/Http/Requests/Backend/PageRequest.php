@@ -27,7 +27,7 @@ class PageRequest extends FormRequest
             case 'POST': {
                     return [
                         'title.ar'                       =>  'required|max:255',
-                        'content.ar'                     =>  'nullable',
+                        'content.*'                     =>  'nullable',
 
                         'page_category_id'              =>  'required',
 
@@ -51,7 +51,7 @@ class PageRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.ar'                           =>   'required|max:255',
-                        'content.ar'                         =>   'nullable',
+                        'content.*'                         =>   'nullable',
 
                         'page_category_id'                  =>  'required',
 

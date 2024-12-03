@@ -27,7 +27,7 @@ class PageCategoryRequest extends FormRequest
             case 'POST': {
                     return [
                         'title.ar'                      =>  'required|max:255',
-                        'content.ar'                    =>  'nullable',
+                        'content.*'                    =>  'nullable',
                         'metadata_title.*'              =>  'nullable',
                         'metadata_description.*'        =>  'nullable',
                         'metadata_keywords.*'           =>  'nullable',
@@ -48,7 +48,7 @@ class PageCategoryRequest extends FormRequest
             case 'PATCH': {
                     return [
                         'title.ar'                  =>   'required|max:255',
-                        'content.ar'                =>   'nullable',
+                        'content.*'                =>   'nullable',
                         'metadata_title.*'          =>  'nullable',
                         'metadata_description.*'    =>  'nullable',
                         'metadata_keywords.*'       =>  'nullable',
