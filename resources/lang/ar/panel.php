@@ -63,6 +63,13 @@ return [
     'add_new_contact_us_menu_item'              => 'إضافة عنصر قائمة تواصل معنا',
     'edit_existing_contact_us_menu_item'        => 'تعديل عنصر قائمة تواصل معنا',
 
+    // --------------- policies and privacy Menu --------------//
+    'manage_policies_privacy_menus'   =>  'إدارة قائمة السياسات والخصوصية',
+    'show_policies_privacy_menus'        => 'قائمة السياسات والخصوصية',
+    'add_new_policies_privacy_menu_item'              => 'إضافة عنصر قائمة السياسات والخصوصية',
+    'edit_existing_policies_privacy_menu_item'        => 'تعديل عنصر قائمة السياسات والخصوصية',
+
+
 
     // --------------- قائمة موضوعات --------------//
     'show_topics_menus'        => 'قائمة الموضوعات',

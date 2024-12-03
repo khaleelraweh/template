@@ -56,6 +56,12 @@ return [
     'add_new_contact_us_menu_item'              => 'Add New Contact Us Menu Item',
     'edit_existing_contact_us_menu_item'        => 'Edit Existing Contact Us Menu Item',
 
+    // --------------- policies and privacy Menu --------------//
+    'manage_policies_privacy_menus'   =>  'Manage Policies and Privacy Menus',
+    'show_policies_privacy_menus'        => 'Policies and Privacy Menus',
+    'add_new_policies_privacy_menu_item'              => 'Add New Policies and Privacy Menu Item',
+    'edit_existing_policies_privacy_menu_item'        => 'Edit Existing Policies and Privacy Menu Item',
+
     // --------------- Topics Menu --------------//
     'show_topics_menus'        => 'Topics Menus',
     'add_new_topics_link'              => 'Add New Topics Menu',
