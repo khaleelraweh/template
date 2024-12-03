@@ -26,7 +26,7 @@
             </div>
             @if (count($president_speeches) <= 0)
                 <div class="ml-auto">
-                    @ability('admin', 'create_about_instatutes')
+                    @ability('admin', 'create_president_speeches')
                         <a href="{{ route('admin.president_speeches.create') }}" class="btn btn-primary">
                             <span class="icon text-white-50">
                                 <i class="fa fa-plus-square"></i>
