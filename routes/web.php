@@ -30,6 +30,7 @@ use App\Http\Controllers\Backend\StatisticsController;
 use App\Http\Controllers\Backend\SupervisorController;
 use App\Http\Controllers\Backend\SupportMenuController;
 use App\Http\Controllers\Backend\TagController;
+use App\Http\Controllers\Backend\TestimonialController;
 use App\Http\Controllers\Backend\TopicsMenuController;
 use App\Http\Controllers\Backend\TracksMenuController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -228,6 +229,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // ================== Partners ================// 
         Route::post('partners/remove-image', [PartnerController::class, 'remove_image'])->name('partners.remove_image');
         Route::resource('partners', PartnerController::class);
+
+        // ================== testimonials ================// 
+        Route::post('testimonials/remove-image', [TestimonialController::class, 'remove_image'])->name('testimonials.remove_image');
+        Route::resource('testimonials', TestimonialController::class);
 
 
 
