@@ -62,7 +62,7 @@ class PartnerController extends Controller
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
             $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
-                ?: $request->title[$localeKey] ?? null;
+                ?: $request->name[$localeKey] ?? null;
         }
         $input['metadata_description'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
@@ -137,7 +137,7 @@ class PartnerController extends Controller
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
             $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
-                ?: $request->title[$localeKey] ?? null;
+                ?: $request->name[$localeKey] ?? null;
         }
         $input['metadata_description'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
