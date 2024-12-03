@@ -189,6 +189,84 @@
 
                     </div>
 
+                    <div class="tab-pane fade" id="SEO" role="tabpanel" aria-labelledby="SEO-tab">
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="metadata_title[{{ $key }}]">
+                                        {{ __('panel.metadata_title') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="metadata_title[{{ $key }}]"
+                                        id="metadata_title[{{ $key }}]"
+                                        value="{{ old('metadata_title.' . $key, $president_speech->getTranslation('metadata_title', $key)) }}"
+                                        class="form-control">
+                                    @error('metadata_title.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="metadata_description[{{ $key }}]">
+                                        {{ __('panel.metadata_description') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="metadata_description[{{ $key }}]"
+                                        id="metadata_description[{{ $key }}]"
+                                        value="{{ old('metadata_description.' . $key, $president_speech->getTranslation('metadata_description', $key)) }}"
+                                        class="form-control">
+                                    @error('metadata_description.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+
+                        <hr>
+
+                        @foreach (config('locales.languages') as $key => $val)
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3 pt-3">
+                                    <label for="metadata_keywords[{{ $key }}]">
+                                        {{ __('panel.metadata_keywords') }}
+                                        <span class="language-type">
+                                            <i class="flag-icon flag-icon-{{ $key == 'ar' ? 'ye' : 'us' }} mt-1 "
+                                                title="{{ app()->getLocale() == 'ar' ? 'ye' : 'us' }}"></i>
+                                            {{ __('panel.' . $key) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                <div class="col-sm-12 col-md-9 pt-3">
+                                    <input type="text" name="metadata_keywords[{{ $key }}]"
+                                        id="metadata_keywords[{{ $key }}]"
+                                        value="{{ old('metadata_keywords.' . $key, $president_speech->getTranslation('metadata_keywords', $key)) }}"
+                                        class="form-control">
+                                    @error('metadata_keywords.' . $key)
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
 
                     <div class="row">
                         <div class="col-sm-12 col-md-2 pt-3 d-none d-md-block">
@@ -209,8 +287,6 @@
                     </div>
 
                 </div>
-
-
 
             </form>
         </div>
@@ -248,47 +324,6 @@
                         }
                     @endif
                 ]
-            });
-
-        });
-
-        $(function() {
-            $('.summernote').summernote({
-                tabSize: 2,
-                height: 200,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
-            });
-
-            $('#published_on').pickadate({
-                format: 'yyyy-mm-dd',
-                min: new Date(),
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: true, // creates a dropdown to control years
-                clear: 'Clear',
-                close: 'OK',
-                colseOnSelect: true // Close Upon Selecting a date
-            });
-
-            var publishedOn = $('#published_on').pickadate(
-                'picker'); // set startdate in the picker to the start date in the #start_date elemet
-
-            // when change date 
-            $('#published_on').change(function() {
-                selected_ci_date = "";
-                selected_ci_date = now() // make selected start date in picker = start_date value  
-
-            });
-
-            $('#published_on_time').pickatime({
-                clear: ''
             });
 
         });
