@@ -134,7 +134,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 
         // ==============   Menus Tab   ==============  //
-        Route::post('main_menus/update-main-menu-status', [MainMenuController::class, 'updateMainMenuStatus'])->name('pages.update_main_menu_status');
+        Route::post('main_menus/update-main-menu-status', [MainMenuController::class, 'updateMainMenuStatus'])->name('main_menus.update_main_menu_status');
         Route::resource('main_menus', MainMenuController::class);
 
         Route::post('academic-program-menus/remove-image', [AcademicProgramMenuController::class, 'remove_image'])->name('academic_program_menus.remove_image');
@@ -230,6 +230,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ================== Partners ================// 
         Route::post('partners/remove-image', [PartnerController::class, 'remove_image'])->name('partners.remove_image');
+        Route::post('partners/update-partner-status', [PartnerController::class, 'updatePartnerStatus'])->name('partners.update_partner_status');
         Route::resource('partners', PartnerController::class);
 
         // ================== testimonials ================// 
