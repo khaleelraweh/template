@@ -56,39 +56,39 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($support_menus as $support_menu)
+                                @forelse ($important_link_menus as $important_link_menu)
                                     <tr>
                                         <td>
-                                            {{ $support_menu->title }}
+                                            {{ $important_link_menu->title }}
                                             <br>
-                                            @if ($support_menu->parent != null)
+                                            @if ($important_link_menu->parent != null)
                                                 <small
                                                     style="background: #17a2b8;color:white;padding:1px 3px;border-radius: 5px; font-size:11px">
                                                     {{-- تابع للقائمة: --}}
-                                                    <span>{{ $support_menu->parent?->title }}</span>
+                                                    <span>{{ $important_link_menu->parent?->title }}</span>
                                                 </small>
                                             @endif
                                         </td>
-                                        <td class="d-none d-sm-table-cell">{{ $support_menu->created_by }}</td>
+                                        <td class="d-none d-sm-table-cell">{{ $important_link_menu->created_by }}</td>
                                         <td>
-                                            @if ($support_menu->status == 1)
+                                            @if ($important_link_menu->status == 1)
                                                 <a href="javascript:void(0);" class="updateSupportMenuStatus "
-                                                    id="support-menu-{{ $support_menu->id }}"
-                                                    support_menu_id="{{ $support_menu->id }}">
+                                                    id="support-menu-{{ $important_link_menu->id }}"
+                                                    support_menu_id="{{ $important_link_menu->id }}">
                                                     <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
                                                         status="Active" style="font-size: 1.6em"></i>
                                                 </a>
                                             @else
                                                 <a href="javascript:void(0);" class="updateSupportMenuStatus"
-                                                    id="support-menu-{{ $support_menu->id }}"
-                                                    support_menu_id="{{ $support_menu->id }}">
+                                                    id="support-menu-{{ $important_link_menu->id }}"
+                                                    support_menu_id="{{ $important_link_menu->id }}">
                                                     <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
                                                         status="Inactive" style="font-size: 1.6em"></i>
                                                 </a>
                                             @endif
                                         </td>
                                         <td class="d-none d-sm-table-cell">
-                                            {{ \Carbon\Carbon::parse($support_menu->published_on)->diffForHumans() }}
+                                            {{ \Carbon\Carbon::parse($important_link_menu->published_on)->diffForHumans() }}
 
                                         </td>
                                         <td>
@@ -111,36 +111,36 @@
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item d-flex align-items-center"
-                                                            href="{{ route('admin.support_menus.edit', $support_menu->id) }}">
+                                                            href="{{ route('admin.support_menus.edit', $important_link_menu->id) }}">
                                                             <i data-feather="edit-2" class="icon-sm me-2"></i>
                                                             <span class="">{{ __('panel.operation_edit') }}</span>
                                                         </a>
 
                                                         <a href="javascript:void(0);"
-                                                            onclick="confirmDelete('delete-support_menu-{{ $support_menu->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
+                                                            onclick="confirmDelete('delete-support_menu-{{ $important_link_menu->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
                                                             class="dropdown-item d-flex align-items-center">
                                                             <i data-feather="trash" class="icon-sm me-2"></i>
                                                             <span class="">{{ __('panel.operation_delete') }}</span>
                                                         </a>
                                                         <form
-                                                            action="{{ route('admin.support_menus.destroy', $support_menu->id) }}"
+                                                            action="{{ route('admin.support_menus.destroy', $important_link_menu->id) }}"
                                                             method="post" class="d-none"
-                                                            id="delete-support_menu-{{ $support_menu->id }}">
+                                                            id="delete-support_menu-{{ $important_link_menu->id }}">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
 
                                                         <a href="javascript:void(0);"
                                                             class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                            data-copy-text="https://ibbuniv.era-t.com/support_menus/{{ $support_menu->slug }}"
-                                                            data-id="{{ $support_menu->id }}" title="Copy the link">
+                                                            data-copy-text="https://ibbuniv.era-t.com/support_menus/{{ $important_link_menu->slug }}"
+                                                            data-id="{{ $important_link_menu->id }}" title="Copy the link">
                                                             <i data-feather="copy" class="icon-sm me-2"></i>
                                                             <span
                                                                 class="">{{ __('panel.operation_copy_link') }}</span>
                                                         </a>
 
                                                     </div>
-                                                    <span class="copyMessage" data-id="{{ $support_menu->id }}"
+                                                    <span class="copyMessage" data-id="{{ $important_link_menu->id }}"
                                                         style="display:none;">
                                                         {{ __('panel.copied') }}
                                                     </span>
@@ -160,7 +160,7 @@
                             <tr>
                                 <td colspan="6">
                                     <div class="float-right">
-                                        {!! $support_menus->appends(request()->all())->links() !!}
+                                        {!! $important_link_menus->appends(request()->all())->links() !!}
                                     </div>
                                 </td>
                             </tr>

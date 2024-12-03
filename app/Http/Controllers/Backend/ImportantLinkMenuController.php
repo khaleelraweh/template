@@ -18,7 +18,7 @@ class ImportantLinkMenuController extends Controller
             return redirect('admin/index');
         }
 
-        $support_menus = Menu::query()->where('section', 5)
+        $important_link_menus = Menu::query()->where('section', 7)
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -30,7 +30,7 @@ class ImportantLinkMenuController extends Controller
                 : (request()->sort_by ?? 'created_at') . ' ' . (request()->order_by ?? 'desc'))
             ->paginate(\request()->limit_by ?? 100);
 
-        return view('backend.important_link_menus.index', compact('support_menus'));
+        return view('backend.important_link_menus.index', compact('important_link_menus'));
     }
 
     public function create()
