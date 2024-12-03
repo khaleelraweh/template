@@ -89,33 +89,27 @@
                             </td>
                             <td class="d-none d-sm-table-cell">{{ $president_speech->created_by ?? 'admin' }}</td>
                             <td>
-                                <span
-                                    class="btn btn-round rounded-pill btn-success btn-xs">{{ $president_speech->status() }}</span>
+
+                                @if ($president_speech->status == 1)
+                                    <a href="javascript:void(0);" class="updatePresidentSpeechStatus "
+                                        id="president-speech-{{ $president_speech->id }}"
+                                        president_speech_id="{{ $president_speech->id }}">
+                                        <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true" status="Active"
+                                            style="font-size: 1.6em"></i>
+                                    </a>
+                                @else
+                                    <a href="javascript:void(0);" class="updatePresidentSpeechStatus"
+                                        id="president-speech-{{ $president_speech->id }}"
+                                        president_speech_id="{{ $president_speech->id }}">
+                                        <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true" status="Inactive"
+                                            style="font-size: 1.6em"></i>
+                                    </a>
+                                @endif
                             </td>
                             <td class="d-none d-sm-table-cell">
                                 {{ \Carbon\Carbon::parse($president_speech->published_on)->diffForHumans() }}
                             </td>
                             <td>
-                                {{-- <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.president_speeches.edit', $president_speech->id) }}"
-                                        class="btn btn-primary" title="Edit the About Instatute">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-
-                                    <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
-
-                                    <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $president_speech->id }}').submit();}else{return false;}"
-                                        class="btn btn-danger" title="Delete the About Instatute">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
-                                </div>
-                                <form action="{{ route('admin.president_speeches.destroy', $president_speech->id) }}"
-                                    method="post" class="d-none" id="delete-product-category-{{ $president_speech->id }}">
-                                    @csrf
-                                    @method('DELETE')
-                                </form> --}}
                                 <div class="btn-group btn-group-sm">
                                     <div class="dropdown mb-2 ">
                                         <a type="button" class="d-flex" id="dropdownMenuButton" data-bs-toggle="dropdown"
