@@ -199,7 +199,7 @@ class ContactUsMenuController extends Controller
         ]);
     }
 
-    public function updateSupportMenuStatus(Request $request)
+    public function updateContactUsMenuStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->all();
@@ -208,8 +208,8 @@ class ContactUsMenuController extends Controller
             } else {
                 $status = 1;
             }
-            Menu::where('id', $data['support_menu_id'])->update(['status' => $status]);
-            return response()->json(['status' => $status, 'support_menu_id' => $data['support_menu_id']]);
+            Menu::where('id', $data['contact_us_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'contact_us_menu_id' => $data['contact_us_menu_id']]);
         }
     }
 }
