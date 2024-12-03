@@ -44,7 +44,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('admin.president_speeches.update', $about_instatute->id) }}" method="post"
+            <form action="{{ route('admin.president_speeches.update', $president_speech->id) }}" method="post"
                 enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
@@ -87,7 +87,7 @@
                                         </label>
                                         <input type="text" name="title[{{ $key }}]"
                                             id="title[{{ $key }}]"
-                                            value="{{ old('title.' . $key, $about_instatute->getTranslation('title', $key)) }}"
+                                            value="{{ old('title.' . $key, $president_speech->getTranslation('title', $key)) }}"
                                             class="form-control">
                                         @error('title.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
@@ -106,7 +106,7 @@
                                             {{ __('panel.in') }}
                                             ({{ __('panel.' . $key) }})
                                         </label>
-                                        <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $about_instatute->getTranslation('content', $key)) !!}</textarea>
+                                        <textarea id="elm1" name="content[{{ $key }}]" rows="10" class="form-control ">{!! old('content.' . $key, $president_speech->getTranslation('content', $key)) !!}</textarea>
 
                                         {{-- <textarea id="elm1"  name="area"></textarea> --}}
 
@@ -232,20 +232,20 @@
                 showUpload: false,
                 overwriteInitial: false,
                 initialPreview: [
-                    @if ($about_instatute->promotional_image != '')
-                        "{{ asset('assets/president_speeches/' . $about_instatute->promotional_image) }}",
+                    @if ($president_speech->promotional_image != '')
+                        "{{ asset('assets/president_speeches/' . $president_speech->promotional_image) }}",
                     @endif
                 ],
                 initialPreviewAsData: true,
                 initialPreviewFileType: 'image',
                 initialPreviewConfig: [
-                    @if ($about_instatute->promotional_image != '')
+                    @if ($president_speech->promotional_image != '')
                         {
-                            caption: "{{ $about_instatute->promotional_image }}",
+                            caption: "{{ $president_speech->promotional_image }}",
                             size: '1111',
                             width: "120px",
-                            url: "{{ route('admin.president_speeches.remove_image', ['about_instatute_id' => $about_instatute->id, '_token' => csrf_token()]) }}",
-                            key: {{ $about_instatute->id }}
+                            url: "{{ route('admin.president_speeches.remove_image', ['about_instatute_id' => $president_speech->id, '_token' => csrf_token()]) }}",
+                            key: {{ $president_speech->id }}
                         }
                     @endif
                 ]
