@@ -10,7 +10,7 @@
             <div class="card-naving">
                 <h3 class="font-weight-bold text-primary">
                     <i class="fa fa-edit"></i>
-                    {{ __('panel.edit_existing_support_menu_link') }}
+                    {{ __('panel.edit_existing_important_link_menu_item') }}
                 </h3>
                 <ul class="breadcrumb pt-3">
                     <li>
@@ -23,7 +23,7 @@
                     </li>
                     <li class="ms-1">
                         <a href="{{ route('admin.important_link_menus.index') }}">
-                            {{ __('panel.show_support_menus') }}
+                            {{ __('panel.show_important_link_menus') }}
                         </a>
                     </li>
                 </ul>
