@@ -26,10 +26,10 @@
     height: 2.4em;
 }
 
-.border-danger, .swal2-popup .swal2-actions button.swal2-cancel,
+/* .border-danger, .swal2-popup .swal2-actions button.swal2-cancel,
 .btn, .wizard > .actions a, .wizard > .actions a:active, .wizard > .actions a:hover, div.tox .tox-button, .swal2-popup .swal2-actions button, .fc .fc-button-primary{
     border-color: snow !important;
-}
+} */
 
 /* copy message style  */
 .copyButton {
