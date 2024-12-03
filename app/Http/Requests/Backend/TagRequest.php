@@ -31,8 +31,7 @@ class TagRequest extends FormRequest
 
                             // used always 
                             'status'             =>  'required',
-                            'published_on'       =>  'nullable',
-                            'published_on_time'  =>  'nullable',
+                            'published_on'              =>  'required',
                             'created_by'         =>  'nullable',
                             'updated_by'         =>  'nullable',
                             'deleted_by'         =>  'nullable',
@@ -47,8 +46,7 @@ class TagRequest extends FormRequest
 
                             // used always 
                             'status'             =>  'required',
-                            'published_on'       =>  'nullable',
-                            'published_on_time'  =>  'nullable',
+                            'published_on'              =>  'required',
                             'created_by'         =>  'nullable',
                             'updated_by'         =>  'nullable',
                             'deleted_by'         =>  'nullable',

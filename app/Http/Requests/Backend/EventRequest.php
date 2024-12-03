@@ -40,6 +40,7 @@ class EventRequest extends FormRequest
                         'end_time'                          =>  'nullable',
 
                         'status'                            =>  'required',
+                        'published_on'              =>  'required',
                         'tags.*'                            =>  'required',
                         'images'                            =>  'required',
                         'images.*'                          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',
@@ -65,6 +66,7 @@ class EventRequest extends FormRequest
                         'end_time'                          =>  'nullable',
 
                         'status'                            =>  'required',
+                        'published_on'              =>  'required',
                         'tags.*'                            =>  'required',
                         'images'                            =>  'nullable',
                         'images.*'                          =>  'mimes:jpg,jpeg,png,gif,webp|max:3000',

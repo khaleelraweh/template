@@ -33,7 +33,7 @@ class ContactUsMenuRequest extends FormRequest
 
                         // used always 
                         'status'             =>  'required',
-                        'published_on'       =>  'nullable',
+                        'published_on'              =>  'required',
                         'published_on_time'  =>  'nullable',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
@@ -52,7 +52,7 @@ class ContactUsMenuRequest extends FormRequest
 
                         // used always 
                         'status'             =>  'required',
-                        'published_on'       =>  'nullable',
+                        'published_on'              =>  'required',
                         'published_on_time'  =>  'nullable',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
