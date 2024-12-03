@@ -42,6 +42,7 @@ class AcademicProgramMenuRequest extends FormRequest
 
                         // used always 
                         'status'             =>  'required',
+                        'published_on'              =>  'required',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
                         'deleted_by'         =>  'nullable',
@@ -69,6 +70,7 @@ class AcademicProgramMenuRequest extends FormRequest
 
                         // used always 
                         'status'             =>  'required',
+                        'published_on'              =>  'required',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
                         'deleted_by'         =>  'nullable',
@@ -87,6 +89,8 @@ class AcademicProgramMenuRequest extends FormRequest
             'link'      => '( ' . __('panel.link') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
             'images'    =>  '( ' . __('panel.images') . ' )',
+            'published_on'      => '( ' . __('panel.published_on') . ' )',
+
         ];
 
         foreach (config('locales.languages') as $key => $val) {

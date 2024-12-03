@@ -85,6 +85,8 @@ class PageRequest extends FormRequest
             'page_category_id'      => '( ' . __('panel.category_name') . ' )',
             'images'      => '( ' . __('panel.images') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
+            'published_on'      => '( ' . __('panel.published_on') . ' )',
+
         ];
 
         foreach (config('locales.languages') as $key => $val) {

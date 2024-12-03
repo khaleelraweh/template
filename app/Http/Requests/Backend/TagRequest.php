@@ -68,6 +68,8 @@ class TagRequest extends FormRequest
 
         $attr = [
             'status'            =>  '( ' . __('panel.status') . ' )',
+            'published_on'      => '( ' . __('panel.published_on') . ' )',
+
         ];
 
         foreach (config('locales.languages') as $key => $val) {

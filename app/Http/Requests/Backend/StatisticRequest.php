@@ -73,6 +73,8 @@ class StatisticRequest extends FormRequest
         $attr = [
             'statistic_number'      => '( ' . __('panel.statistic_number') . ' )',
             'status'    =>  '( ' . __('panel.status') . ' )',
+            'published_on'      => '( ' . __('panel.published_on') . ' )',
+
         ];
 
         foreach (config('locales.languages') as $key => $val) {
