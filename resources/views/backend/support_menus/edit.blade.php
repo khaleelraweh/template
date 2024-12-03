@@ -303,7 +303,7 @@
                                     {{ __('panel.update_data') }}
                                 </button>
 
-                                <a href="{{ route('admin.main_menus.index') }}" name="submit"
+                                <a href="{{ route('admin.support_menus.index') }}" name="submit"
                                     class=" btn btn-outline-danger">
                                     <i class="icon-lg  me-2" data-feather="x"></i>
                                     {{ __('panel.cancel') }}
