@@ -31,8 +31,7 @@ class CommonQuestionRequest extends FormRequest
 
                         // used always 
                         'status'             =>  'required',
-                        'published_on'       =>  'nullable',
-                        'published_on_time'  =>  'nullable',
+                        'published_on'                      =>  'required',
                         'views'              =>  'nullable',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
@@ -49,8 +48,7 @@ class CommonQuestionRequest extends FormRequest
 
                         // used always 
                         'status'             =>  'required',
-                        'published_on'       =>  'nullable',
-                        'published_on_time'  =>  'nullable',
+                        'published_on'                      =>  'required',
                         'views'              =>  'nullable',
                         'created_by'         =>  'nullable',
                         'updated_by'         =>  'nullable',
