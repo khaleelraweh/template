@@ -197,4 +197,18 @@ class PresidentSpeechController extends Controller
 
         return true;
     }
+
+    public function updatePresidentSpeechStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            PresidentSpeech::where('id', $data['president_speech_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'president_speech_id' => $data['president_speech_id']]);
+        }
+    }
 }

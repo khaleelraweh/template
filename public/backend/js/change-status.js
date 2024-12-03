@@ -553,4 +553,28 @@ $(document).ready(function(){
         });
     });
 
+    //  updatePresidentSpeechStatus Status
+    $(document).on("click",".updatePresidentSpeechStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var president_speech_id = $(this).attr("president_speech_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/president_speeches/update-president-speech-status',
+            data:{status:status,president_speech_id:president_speech_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#president-speech-"+president_speech_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#president-speech-"+president_speech_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 });

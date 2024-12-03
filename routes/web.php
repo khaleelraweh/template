@@ -226,6 +226,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         // ==============   presidentspeeches Tab   ==============  //
         Route::post('president_speeches/remove-image', [PresidentSpeechController::class, 'remove_image'])->name('president_speeches.remove_image');
+        Route::post('president_speeches/update-president-speech-status', [PresidentSpeechController::class, 'updatePresidentSpeechStatus'])->name('president_speeches.update_president_speech_status');
         Route::resource('president_speeches', PresidentSpeechController::class);
 
         // ================== Partners ================// 
