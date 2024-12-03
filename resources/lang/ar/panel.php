@@ -57,6 +57,12 @@ return [
     'add_new_important_link_menu_item'              => 'إضافة عنصر قائمة روابط مهمة',
     'edit_existing_important_link_menu_item'        => 'تعديل عنصر قائمة روابط مهمة',
 
+    // --------------- contact us Menu --------------//
+    'manage_contact_us_menus'   =>  'إدارة قائمة تواصل معنا',
+    'show_contact_us_menus'        => 'قائمة تواصل معنا',
+    'add_new_contact_us_menu_item'              => 'إضافة عنصر قائمة تواصل معنا',
+    'edit_existing_contact_us_menu_item'        => 'تعديل عنصر قائمة تواصل معنا',
+
 
     // --------------- قائمة موضوعات --------------//
     'show_topics_menus'        => 'قائمة الموضوعات',

@@ -50,6 +50,12 @@ return [
     'add_new_important_link_menu_item'              => 'Add New Important Link Menu Item',
     'edit_existing_important_link_menu_item'        => 'Edit Existing Important Link Menu Item',
 
+    // --------------- contact us Menu --------------//
+    'manage_contact_us_menus'   =>  'Manage Contact Us Menus',
+    'show_contact_us_menus'        => 'Contact Us Menus',
+    'add_new_contact_us_menu_item'              => 'Add New Contact Us Menu Item',
+    'edit_existing_contact_us_menu_item'        => 'Edit Existing Contact Us Menu Item',
+
     // --------------- Topics Menu --------------//
     'show_topics_menus'        => 'Topics Menus',
     'add_new_topics_link'              => 'Add New Topics Menu',
