@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\CompanyMenuController;
 use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\DocumentArchivesController;
 use App\Http\Controllers\Backend\EventsController;
+use App\Http\Controllers\Backend\ImportantLinkMenuController;
 use App\Http\Controllers\Backend\InstructorController;
 use App\Http\Controllers\Backend\LocaleController;
 use App\Http\Controllers\Backend\MainMenuController;
@@ -144,6 +145,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
         Route::post('support_menus/update-support-menu-status', [SupportMenuController::class, 'updateSupportMenuStatus'])->name('support_menus.update_support_menu_status');
         Route::resource('support_menus', SupportMenuController::class);
+
+        Route::resource('important_link_menus', ImportantLinkMenuController::class);
 
         // ==============   Page Categories Tab   ==============  //
         Route::post('page-categories/remove-image', [PageCategoriesController::class, 'remove_image'])->name('page_categories.remove_image');
