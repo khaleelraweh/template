@@ -188,4 +188,18 @@ class PartnerController extends Controller
 
         return true;
     }
+
+    public function updatePartnerStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            Partner::where('id', $data['partner_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'partner_id' => $data['partner_id']]);
+        }
+    }
 }
