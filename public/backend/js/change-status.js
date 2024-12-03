@@ -625,4 +625,28 @@ $(document).ready(function(){
         });
     });
 
+    //  updateCommonQuestionVideoStatus Status
+    $(document).on("click",".updateCommonQuestionVideoStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var common_question_video_id = $(this).attr("common_question_video_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/common_question_videos/update-common-question-video-status',
+            data:{status:status,common_question_video_id:common_question_video_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#common-question-video-"+common_question_video_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#common-question-video-"+common_question_video_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 });

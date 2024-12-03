@@ -206,4 +206,18 @@ class CommonQuestionVideoController extends Controller
 
         return true;
     }
+
+    public function updateCommonQuestionVideoStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            CommonQuestionVideo::where('id', $data['common_question_video_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'common_question_video_id' => $data['common_question_video_id']]);
+        }
+    }
 }

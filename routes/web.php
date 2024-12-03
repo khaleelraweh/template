@@ -242,7 +242,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         //=============== common question =========================//
         Route::post('common_questions/update-common-question-status', [CommonQuestionController::class, 'updateCommonQuestionStatus'])->name('common_questions.update_common_question_status');
         Route::resource('common_questions', CommonQuestionController::class);
+
         Route::post('common_question_videos/remove-image', [CommonQuestionVideoController::class, 'remove_image'])->name('common_question_videos.remove_image');
+        Route::post('common_question_videos/update-common-question-video-status', [CommonQuestionVideoController::class, 'updateCommonQuestionVideoStatus'])->name('common_question_videos.update_common_question_video_status');
         Route::resource('common_question_videos', CommonQuestionVideoController::class);
 
 
