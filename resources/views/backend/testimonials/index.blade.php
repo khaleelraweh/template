@@ -62,29 +62,31 @@
                                     {{ Str::limit($testimonial->title, 50) }}
                                 </td>
                                 <td>{{ $testimonial->created_by }}</td>
-                                <td>{{ $testimonial->status() }}</td>
+                                <td>
+
+
+                                    @if ($testimonial->status == 1)
+                                        <a href="javascript:void(0);" class="updatetestimonialStatus "
+                                            id="testimonial-{{ $testimonial->id }}"
+                                            testimonial_id="{{ $testimonial->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updatetestimonialStatus"
+                                            id="testimonial-{{ $testimonial->id }}"
+                                            testimonial_id="{{ $testimonial->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
+
+                                </td>
                                 <td>
                                     {{ \Carbon\Carbon::parse($testimonial->published_on)->diffForHumans() }}
                                 </td>
 
                                 <td>
-                                    {{-- <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.testimonials.edit', $testimonial->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-question-{{ $testimonial->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                    <form action="{{ route('admin.testimonials.destroy', $testimonial->id) }}" method="post"
-                                        class="d-none" id="delete-question-{{ $testimonial->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form> --}}
-
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
                                             <a type="button" class="d-flex" id="dropdownMenuButton"
