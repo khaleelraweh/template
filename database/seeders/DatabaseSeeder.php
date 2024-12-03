@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SupportMenuSeeder::class); //section 5
         $this->call(CompanyMenuSeeder::class); // section 6
         $this->call(ImportantLinkMenuSeeder::class); // section 7
+        $this->call(ContactUsMenuSeeder::class); // section 8
 
         $this->call(PageCategorySeeder::class);
         $this->call(PageSeeder::class);
