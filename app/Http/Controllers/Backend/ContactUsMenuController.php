@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\ContactUsMenuRequest;
 use App\Http\Requests\Backend\SupportMenuRequest;
 use App\Models\Menu;
 use Carbon\Carbon;
@@ -43,7 +44,7 @@ class ContactUsMenuController extends Controller
         return view('backend.contact_us_menus.create');
     }
 
-    public function store(SupportMenuRequest $request)
+    public function store(ContactUsMenuRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_contact_us_menus')) {
             return redirect('admin/index');
@@ -54,7 +55,7 @@ class ContactUsMenuController extends Controller
         $input['link'] = $request->link;
         $input['icon'] = $request->icon;
 
-        $input['section']    = 5;
+        $input['section']    = 8;
 
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
@@ -82,10 +83,10 @@ class ContactUsMenuController extends Controller
         $input['published_on']            = $publishedOn;
 
 
-        $support_menu = Menu::create($input);
+        $contact_us_menu = Menu::create($input);
 
 
-        if ($support_menu) {
+        if ($contact_us_menu) {
             return redirect()->route('admin.contact_us_menus.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -108,29 +109,29 @@ class ContactUsMenuController extends Controller
     }
 
 
-    public function edit($supportMenu)
+    public function edit($contactUsMenu)
     {
         if (!auth()->user()->ability('admin', 'update_contact_us_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $contactUsMenu = Menu::where('id', $contactUsMenu)->first();
 
-        return view('backend.contact_us_menus.edit', compact('supportMenu'));
+        return view('backend.contact_us_menus.edit', compact('contactUsMenu'));
     }
 
-    public function update(SupportMenuRequest $request,  $supportMenu)
+    public function update(ContactUsMenuRequest $request,  $contactUsMenu)
     {
         if (!auth()->user()->ability('admin', 'update_contact_us_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $contactUsMenu = Menu::where('id', $contactUsMenu)->first();
 
         $input['title']     = $request->title;
         $input['link']      = $request->link;
         $input['icon']      = $request->icon;
-        $input['section']    = 5;
+        $input['section']    = 8;
 
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
@@ -159,9 +160,9 @@ class ContactUsMenuController extends Controller
         $input['published_on']            = $publishedOn;
 
 
-        $supportMenu->update($input);
+        $contactUsMenu->update($input);
 
-        if ($supportMenu) {
+        if ($contactUsMenu) {
             return redirect()->route('admin.contact_us_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -174,18 +175,18 @@ class ContactUsMenuController extends Controller
         ]);
     }
 
-    public function destroy($supportMenu)
+    public function destroy($contactUsMenu)
     {
 
         if (!auth()->user()->ability('admin', 'delete_contact_us_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $contactUsMenu = Menu::where('id', $contactUsMenu)->first();
 
-        $supportMenu->delete();
+        $contactUsMenu->delete();
 
-        if ($supportMenu) {
+        if ($contactUsMenu) {
             return redirect()->route('admin.contact_us_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
