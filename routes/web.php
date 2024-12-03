@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdvsController;
 use App\Http\Controllers\Backend\AlbumsController;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Controllers\Backend\CollegeMenuController;
+use App\Http\Controllers\Backend\CommonQuestionController;
 use App\Http\Controllers\Backend\CompanyMenuController;
 use App\Http\Controllers\Backend\ContactUsMenuController;
 use App\Http\Controllers\Backend\CustomerController;
@@ -234,6 +235,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('testimonials/remove-image', [TestimonialController::class, 'remove_image'])->name('testimonials.remove_image');
         Route::resource('testimonials', TestimonialController::class);
 
+        //=============== common question =========================//
+        Route::resource('common_questions', CommonQuestionController::class);
+        // Route::post('common_question_videos/remove-image', [CommonQuestionVideoController::class, 'remove_image'])->name('common_question_videos.remove_image');
+        // Route::resource('common_question_videos', CommonQuestionVideoController::class);
 
 
         // ==============   Site Setting  Tab   ==============  //
