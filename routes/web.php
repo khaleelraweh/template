@@ -146,6 +146,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('support_menus/update-support-menu-status', [SupportMenuController::class, 'updateSupportMenuStatus'])->name('support_menus.update_support_menu_status');
         Route::resource('support_menus', SupportMenuController::class);
 
+        Route::post('important_link_menus/update-important-link-menu-status', [ImportantLinkMenuController::class, 'updateImportantLinkMenuStatus'])->name('important_link_menus.update_important_link_menu_status');
         Route::resource('important_link_menus', ImportantLinkMenuController::class);
 
         // ==============   Page Categories Tab   ==============  //

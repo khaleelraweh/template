@@ -197,7 +197,7 @@ class ImportantLinkMenuController extends Controller
         ]);
     }
 
-    public function updateSupportMenuStatus(Request $request)
+    public function updateImportantLinkMenuStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->all();
@@ -206,8 +206,8 @@ class ImportantLinkMenuController extends Controller
             } else {
                 $status = 1;
             }
-            Menu::where('id', $data['support_menu_id'])->update(['status' => $status]);
-            return response()->json(['status' => $status, 'support_menu_id' => $data['support_menu_id']]);
+            Menu::where('id', $data['important_link_menu_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'important_link_menu_id' => $data['important_link_menu_id']]);
         }
     }
 }
