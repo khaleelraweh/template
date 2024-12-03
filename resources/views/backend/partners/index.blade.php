@@ -52,7 +52,6 @@
                             <th>{{ __('panel.name') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                             <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.send_for_review') }} </th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.status') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
@@ -73,30 +72,8 @@
                                 <td>{{ $partner->name }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->created_by }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->created_at }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $partner->send_for_review }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->status() }}</td>
                                 <td>
-                                    {{-- <div class="btn-group btn-group-sm">
-                                      
-
-                                        <a href="{{ route('admin.partners.edit', $partner->id) }}" class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-
-
-
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('Are you sure to delete this record?') ){document.getElementById('delete-product-{{ $partner->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                    <form action="{{ route('admin.partners.destroy', $partner->id) }}" method="post"
-                                        class="d-none" id="delete-product-{{ $partner->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form> --}}
-
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
                                             <a type="button" class="d-flex" id="dropdownMenuButton"
@@ -147,14 +124,14 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="7" class="text-center">No partner found</td>
+                                <td colspan="6" class="text-center">No partner found</td>
                             </tr>
                         @endforelse
                     </tbody>
 
                     <tfoot>
                         <tr>
-                            <td colspan="7">
+                            <td colspan="6">
                                 <div class="float-right">
                                     {!! $partners->appends(request()->all())->links() !!}
                                 </div>
