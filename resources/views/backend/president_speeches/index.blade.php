@@ -24,7 +24,7 @@
                     </li>
                 </ul>
             </div>
-            @if (count($about_instatutes) <= 0)
+            @if (count($president_speeches) <= 0)
                 <div class="ml-auto">
                     @ability('admin', 'create_about_instatutes')
                         <a href="{{ route('admin.president_speeches.create') }}" class="btn btn-primary">
@@ -59,43 +59,43 @@
 
 
                 <tbody>
-                    @forelse ($about_instatutes as $about_instatute)
+                    @forelse ($president_speeches as $president_speech)
                         <tr>
                             <td class="d-none d-sm-table-cell">
                                 @php
-                                    if ($about_instatute->promotional_image != null) {
-                                        $about_instatute_img = asset(
-                                            'assets/president_speeches/' . $about_instatute->promotional_image,
+                                    if ($president_speech->promotional_image != null) {
+                                        $president_speech_img = asset(
+                                            'assets/president_speeches/' . $president_speech->promotional_image,
                                         );
 
                                         if (
                                             !file_exists(
                                                 public_path(
-                                                    'assets/president_speeches/' . $about_instatute->promotional_image,
+                                                    'assets/president_speeches/' . $president_speech->promotional_image,
                                                 ),
                                             )
                                         ) {
-                                            $about_instatute_img = asset('image/not_found/avator1.webp');
+                                            $president_speech_img = asset('image/not_found/avator1.webp');
                                         }
                                     } else {
-                                        $about_instatute_img = asset('image/not_found/avator1.webp');
+                                        $president_speech_img = asset('image/not_found/avator1.webp');
                                     }
                                 @endphp
-                                <img src="{{ $about_instatute_img }}" width="60" height="60" alt="not found">
+                                <img src="{{ $president_speech_img }}" width="60" height="60" alt="not found">
 
                             </td>
                             <td>
-                                {{ $about_instatute->title }}
+                                {{ $president_speech->title }}
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $about_instatute->created_by ?? 'admin' }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $president_speech->created_by ?? 'admin' }}</td>
                             <td>
                                 <span
-                                    class="btn btn-round rounded-pill btn-success btn-xs">{{ $about_instatute->status() }}</span>
+                                    class="btn btn-round rounded-pill btn-success btn-xs">{{ $president_speech->status() }}</span>
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $about_instatute->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">{{ $president_speech->created_at }}</td>
                             <td>
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('admin.president_speeches.edit', $about_instatute->id) }}"
+                                    <a href="{{ route('admin.president_speeches.edit', $president_speech->id) }}"
                                         class="btn btn-primary" title="Edit the About Instatute">
                                         <i class="fa fa-edit"></i>
                                     </a>
@@ -103,14 +103,14 @@
                                     <span class="copyMessage" style="display:none;">{{ __('panel.copied') }}</span>
 
                                     <a href="javascript:void(0);"
-                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $about_instatute->id }}').submit();}else{return false;}"
+                                        onclick="if(confirm('{{ __('panel.confirm_delete_message') }}')){document.getElementById('delete-product-category-{{ $president_speech->id }}').submit();}else{return false;}"
                                         class="btn btn-danger" title="Delete the About Instatute">
                                         <i class="fa fa-trash"></i>
                                     </a>
 
                                 </div>
-                                <form action="{{ route('admin.president_speeches.destroy', $about_instatute->id) }}"
-                                    method="post" class="d-none" id="delete-product-category-{{ $about_instatute->id }}">
+                                <form action="{{ route('admin.president_speeches.destroy', $president_speech->id) }}"
+                                    method="post" class="d-none" id="delete-product-category-{{ $president_speech->id }}">
                                     @csrf
                                     @method('DELETE')
                                 </form>

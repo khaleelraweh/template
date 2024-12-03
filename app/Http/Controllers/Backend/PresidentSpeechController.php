@@ -22,7 +22,7 @@ class PresidentSpeechController extends Controller
             return redirect('admin/index');
         }
 
-        $about_instatutes = PresidentSpeech::query()
+        $president_speeches = PresidentSpeech::query()
             ->when(\request()->keyword != null, function ($query) {
                 $query->search(\request()->keyword);
             })
@@ -34,7 +34,7 @@ class PresidentSpeechController extends Controller
 
 
 
-        return view('backend.president_speeches.index', compact('about_instatutes'));
+        return view('backend.president_speeches.index', compact('president_speeches'));
     }
 
     public function create()
