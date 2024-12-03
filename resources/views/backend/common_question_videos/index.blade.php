@@ -62,28 +62,27 @@
                                     {{ Str::limit($common_question_video->title, 50) }}
                                 </td>
                                 <td>{{ $common_question_video->created_by }}</td>
-                                <td>{{ $common_question_video->status() }}</td>
+                                <td>
+                                    @if ($common_question_video->status == 1)
+                                        <a href="javascript:void(0);" class="updateCommonQuestionVideoStatus"
+                                            id="common-question-video-{{ $common_question_video->id }}"
+                                            common_question_video_id="{{ $common_question_video->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updateCommonQuestionVideoStatus"
+                                            id="common-question-video-{{ $common_question_video->id }}"
+                                            common_question_video_id="{{ $common_question_video->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
+                                </td>
                                 <td>
                                     {{ \Carbon\Carbon::parse($common_question_video->published_on)->diffForHumans() }}
                                 </td>
                                 <td>
-                                    {{-- <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.common_question_videos.edit', $common_question_video->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-question-{{ $common_question_video->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                    <form action="{{ route('admin.common_question_videos.destroy', $common_question_video->id) }}"
-                                        method="post" class="d-none" id="delete-question-{{ $common_question_video->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form> --}}
-
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
                                             <a type="button" class="d-flex" id="dropdownMenuButton"
