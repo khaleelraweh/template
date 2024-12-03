@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\CommonQuestionVideoRequest;
 use App\Http\Requests\Backend\TestimonialRequest;
-use App\Models\CommonQuestionVideo;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManager;
@@ -60,7 +58,7 @@ class TestimonialController extends Controller
         if ($image = $request->file('image')) {
 
             $manager = new ImageManager(new Driver());
-            $file_name = 'questionVideo' . '_' . time() .  "." . $image->getClientOriginalExtension();
+            $file_name = 'testimonial' . '_' . time() .  "." . $image->getClientOriginalExtension();
 
             $img = $manager->read($request->file('image'));
 
