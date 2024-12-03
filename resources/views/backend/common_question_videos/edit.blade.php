@@ -133,10 +133,10 @@
                                     <input type="file" name="question_video_image" id="question_video_image"
                                         value="{{ old('question_video_image') }}" class="file-input-overview ">
                                     <span class="form-text text-muted">{{ __('panel.question_video_image_size') }} </span>
-                                    @error('question_video_image')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
+                                @error('question_video_image')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
 
