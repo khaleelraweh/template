@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\PoliciesPrivacyMenuRequest;
 use App\Http\Requests\Backend\SupportMenuRequest;
 use App\Models\Menu;
 use Carbon\Carbon;
@@ -41,7 +42,7 @@ class PoliciesPrivacyMenuController extends Controller
         return view('backend.policies_privacy_menus.create');
     }
 
-    public function store(SupportMenuRequest $request)
+    public function store(PoliciesPrivacyMenuRequest $request)
     {
         if (!auth()->user()->ability('admin', 'create_policies_privacy_menus')) {
             return redirect('admin/index');
@@ -80,10 +81,10 @@ class PoliciesPrivacyMenuController extends Controller
         $input['published_on']            = $publishedOn;
 
 
-        $support_menu = Menu::create($input);
+        $policies_privacy_menu = Menu::create($input);
 
 
-        if ($support_menu) {
+        if ($policies_privacy_menu) {
             return redirect()->route('admin.policies_privacy_menus.index')->with([
                 'message' => __('panel.created_successfully'),
                 'alert-type' => 'success'
@@ -106,24 +107,24 @@ class PoliciesPrivacyMenuController extends Controller
     }
 
 
-    public function edit($supportMenu)
+    public function edit($policiesPrivacyMenu)
     {
         if (!auth()->user()->ability('admin', 'update_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $policiesPrivacyMenu = Menu::where('id', $policiesPrivacyMenu)->first();
 
-        return view('backend.policies_privacy_menus.edit', compact('supportMenu'));
+        return view('backend.policies_privacy_menus.edit', compact('policiesPrivacyMenu'));
     }
 
-    public function update(SupportMenuRequest $request,  $supportMenu)
+    public function update(PoliciesPrivacyMenuRequest $request,  $policiesPrivacyMenu)
     {
         if (!auth()->user()->ability('admin', 'update_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $policiesPrivacyMenu = Menu::where('id', $policiesPrivacyMenu)->first();
 
         $input['title']     = $request->title;
         $input['link']      = $request->link;
@@ -157,9 +158,9 @@ class PoliciesPrivacyMenuController extends Controller
         $input['published_on']            = $publishedOn;
 
 
-        $supportMenu->update($input);
+        $policiesPrivacyMenu->update($input);
 
-        if ($supportMenu) {
+        if ($policiesPrivacyMenu) {
             return redirect()->route('admin.policies_privacy_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -172,18 +173,18 @@ class PoliciesPrivacyMenuController extends Controller
         ]);
     }
 
-    public function destroy($supportMenu)
+    public function destroy($policiesPrivacyMenu)
     {
 
         if (!auth()->user()->ability('admin', 'delete_policies_privacy_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $policiesPrivacyMenu = Menu::where('id', $policiesPrivacyMenu)->first();
 
-        $supportMenu->delete();
+        $policiesPrivacyMenu->delete();
 
-        if ($supportMenu) {
+        if ($policiesPrivacyMenu) {
             return redirect()->route('admin.policies_privacy_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
@@ -196,7 +197,7 @@ class PoliciesPrivacyMenuController extends Controller
         ]);
     }
 
-    public function updatePoliciesSupportMenuStatus(Request $request)
+    public function updatePoliciesPrivacyMenuStatus(Request $request)
     {
         if ($request->ajax()) {
             $data = $request->all();

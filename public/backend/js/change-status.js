@@ -505,8 +505,8 @@ $(document).ready(function(){
         });
     });
     
-    //  updatePoliciesSupportMenuStatus Status
-    $(document).on("click",".updatePoliciesSupportMenuStatus",function(){
+    //  updatePoliciesPrivacyMenuStatus Status
+    $(document).on("click",".updatePoliciesPrivacyMenuStatus",function(){
         var status = $(this).children("i").attr("status");
         var policies_privacy_menu_id = $(this).attr("policies_privacy_menu_id");
 

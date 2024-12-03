@@ -72,14 +72,14 @@
                                         <td class="d-none d-sm-table-cell">{{ $policies_privacy_menu->created_by }}</td>
                                         <td>
                                             @if ($policies_privacy_menu->status == 1)
-                                                <a href="javascript:void(0);" class="updatePoliciesSupportMenuStatus "
+                                                <a href="javascript:void(0);" class="updatePoliciesPrivacyMenuStatus "
                                                     id="policies-privacy-menu-{{ $policies_privacy_menu->id }}"
                                                     policies_privacy_menu_id="{{ $policies_privacy_menu->id }}">
                                                     <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
                                                         status="Active" style="font-size: 1.6em"></i>
                                                 </a>
                                             @else
-                                                <a href="javascript:void(0);" class="updatePoliciesSupportMenuStatus"
+                                                <a href="javascript:void(0);" class="updatePoliciesPrivacyMenuStatus"
                                                     id="policies-privacy-menu-{{ $policies_privacy_menu->id }}"
                                                     policies_privacy_menu_id="{{ $policies_privacy_menu->id }}">
                                                     <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"

@@ -154,7 +154,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::post('contact_us_menus/update-contact-us-menu-status', [ContactUsMenuController::class, 'updateContactUsMenuStatus'])->name('contact_us_menus.update_contact_us_menu_status');
         Route::resource('contact_us_menus', ContactUsMenuController::class);
 
-        Route::post('policies_privacy_menus/update-policies-privacy-menu-status', [PoliciesPrivacyMenuController::class, 'updatePoliciesSupportMenuStatus'])->name('policies_privacy_menus.update_policies_privacy_menu_status');
+        Route::post('policies_privacy_menus/update-policies-privacy-menu-status', [PoliciesPrivacyMenuController::class, 'updatePoliciesPrivacyMenuStatus'])->name('policies_privacy_menus.update_policies_privacy_menu_status');
         Route::resource('policies_privacy_menus', PoliciesPrivacyMenuController::class);
 
         // ==============   Page Categories Tab   ==============  //
