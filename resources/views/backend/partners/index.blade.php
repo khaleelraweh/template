@@ -51,7 +51,7 @@
                             <th>{{ __('panel.image') }}</th>
                             <th>{{ __('panel.name') }}</th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
-                            <th class="d-none d-sm-table-cell"> {{ __('panel.created_at') }} </th>
+                            <th class="d-none d-sm-table-cell"> {{ __('panel.published_on') }} </th>
                             <th class="d-none d-sm-table-cell">{{ __('panel.status') }}</th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
@@ -71,7 +71,9 @@
                                 </td>
                                 <td>{{ $partner->name }}</td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->created_by }}</td>
-                                <td class="d-none d-sm-table-cell">{{ $partner->created_at }}</td>
+                                <td class="d-none d-sm-table-cell">
+                                    {{ \Carbon\Carbon::parse($partner->published_on)->diffForHumans() }}
+                                </td>
                                 <td class="d-none d-sm-table-cell">{{ $partner->status() }}</td>
                                 <td>
                                     <div class="btn-group btn-group-sm">
