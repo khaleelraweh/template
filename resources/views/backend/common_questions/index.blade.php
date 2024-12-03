@@ -51,7 +51,7 @@
                             <th>{{ __('panel.title') }}</th>
                             <th>{{ __('panel.author') }}</th>
                             <th> {{ __('panel.status') }} </th>
-                            <th> {{ __('panel.created_at') }} </th>
+                            <th> {{ __('panel.published_on') }} </th>
                             <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
                         </tr>
                     </thead>
@@ -63,24 +63,10 @@
                                 </td>
                                 <td>{{ $common_question->created_by }}</td>
                                 <td>{{ $common_question->status() }}</td>
-                                <td>{{ $common_question->created_at->format('Y-m-d h:i a') }}</td>
                                 <td>
-                                    {{-- <div class="btn-group btn-group-sm">
-                                        <a href="{{ route('admin.common_questions.edit', $common_question->id) }}"
-                                            class="btn btn-primary">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="javascript:void(0);"
-                                            onclick=" if( confirm('{{ __('panel.confirm_delete_message') }}') ){document.getElementById('delete-question-{{ $common_question->id }}').submit();}else{return false;}"
-                                            class="btn btn-danger">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </div>
-                                    <form action="{{ route('admin.common_questions.destroy', $common_question->id) }}"
-                                        method="post" class="d-none" id="delete-question-{{ $common_question->id }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form> --}}
+                                    {{ \Carbon\Carbon::parse($common_question->published_on)->diffForHumans() }}
+                                </td>
+                                <td>
                                     <div class="btn-group btn-group-sm">
                                         <div class="dropdown mb-2 ">
                                             <a type="button" class="d-flex" id="dropdownMenuButton"
