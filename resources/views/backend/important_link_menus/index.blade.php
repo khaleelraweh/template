@@ -9,7 +9,7 @@
                     <div class="card-naving">
                         <h3 class="font-weight-bold text-primary">
                             <i class="fa fa-folder"></i>
-                            {{ __('panel.manage_support_menus') }}
+                            {{ __('panel.manage_important_link_menus') }}
                         </h3>
                         <ul class="breadcrumb pt-3">
                             <li>
@@ -21,13 +21,13 @@
                                 @endif
                             </li>
                             <li class="ms-1">
-                                {{ __('panel.show_support_menus') }}
+                                {{ __('panel.show_important_link_menus') }}
                             </li>
                         </ul>
                     </div>
                     <div class="ml-auto">
-                        @ability('admin', 'create_support_menus')
-                            <a href="{{ route('admin.support_menus.create') }}" class="btn btn-primary">
+                        @ability('admin', 'create_important_link_menus')
+                            <a href="{{ route('admin.important_link_menus.create') }}" class="btn btn-primary">
                                 <span class="icon text-white-50">
                                     <i class="fa fa-plus-square"></i>
                                 </span>
@@ -40,7 +40,7 @@
                 <div class="card-body">
 
                     {{-- filter form part  --}}
-                    @include('backend.support_menus.filter.filter')
+                    @include('backend.important_link_menus.filter.filter')
 
                     {{-- table part --}}
                     <div class="table-responsive">
@@ -72,16 +72,16 @@
                                         <td class="d-none d-sm-table-cell">{{ $important_link_menu->created_by }}</td>
                                         <td>
                                             @if ($important_link_menu->status == 1)
-                                                <a href="javascript:void(0);" class="updateSupportMenuStatus "
-                                                    id="support-menu-{{ $important_link_menu->id }}"
-                                                    support_menu_id="{{ $important_link_menu->id }}">
+                                                <a href="javascript:void(0);" class="updateImportantLinkMenuStatus"
+                                                    id="important-link-menu-{{ $important_link_menu->id }}"
+                                                    important_link_menu_id="{{ $important_link_menu->id }}">
                                                     <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
                                                         status="Active" style="font-size: 1.6em"></i>
                                                 </a>
                                             @else
-                                                <a href="javascript:void(0);" class="updateSupportMenuStatus"
-                                                    id="support-menu-{{ $important_link_menu->id }}"
-                                                    support_menu_id="{{ $important_link_menu->id }}">
+                                                <a href="javascript:void(0);" class="updateImportantLinkMenuStatus"
+                                                    id="important-link-menu-{{ $important_link_menu->id }}"
+                                                    important_link_menu_id="{{ $important_link_menu->id }}">
                                                     <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
                                                         status="Inactive" style="font-size: 1.6em"></i>
                                                 </a>
@@ -111,28 +111,28 @@
                                                     </a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item d-flex align-items-center"
-                                                            href="{{ route('admin.support_menus.edit', $important_link_menu->id) }}">
+                                                            href="{{ route('admin.important_link_menus.edit', $important_link_menu->id) }}">
                                                             <i data-feather="edit-2" class="icon-sm me-2"></i>
                                                             <span class="">{{ __('panel.operation_edit') }}</span>
                                                         </a>
 
                                                         <a href="javascript:void(0);"
-                                                            onclick="confirmDelete('delete-support_menu-{{ $important_link_menu->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
+                                                            onclick="confirmDelete('delete-important_link_menu-{{ $important_link_menu->id }}', '{{ __('panel.confirm_delete_message') }}', '{{ __('panel.yes_delete') }}', '{{ __('panel.cancel') }}')"
                                                             class="dropdown-item d-flex align-items-center">
                                                             <i data-feather="trash" class="icon-sm me-2"></i>
                                                             <span class="">{{ __('panel.operation_delete') }}</span>
                                                         </a>
                                                         <form
-                                                            action="{{ route('admin.support_menus.destroy', $important_link_menu->id) }}"
+                                                            action="{{ route('admin.important_link_menus.destroy', $important_link_menu->id) }}"
                                                             method="post" class="d-none"
-                                                            id="delete-support_menu-{{ $important_link_menu->id }}">
+                                                            id="delete-important_link_menu-{{ $important_link_menu->id }}">
                                                             @csrf
                                                             @method('DELETE')
                                                         </form>
 
                                                         <a href="javascript:void(0);"
                                                             class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                            data-copy-text="https://ibbuniv.era-t.com/support_menus/{{ $important_link_menu->slug }}"
+                                                            data-copy-text="https://ibbuniv.era-t.com/important_link_menus/{{ $important_link_menu->slug }}"
                                                             data-id="{{ $important_link_menu->id }}" title="Copy the link">
                                                             <i data-feather="copy" class="icon-sm me-2"></i>
                                                             <span
