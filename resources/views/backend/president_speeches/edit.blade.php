@@ -123,18 +123,18 @@
                             </div>
                         @endforeach
 
-                    </div>
-
-                    <div class="tab-pane fade" id="image" role="tabpanel" aria-labelledby="image-tab">
-
-                        <div class="row pt-4">
-                            <div class="col-12">
-                                <label for="promotional_image"> {{ __('panel.image') }}
-                                    <span><small> ( {{ __('panel.best_size') }}: 250 * 240 )</small></span>
-
+                        <div class="row ">
+                            <div class="col-sm-12 col-md-2 pt-3">
+                                <label for="images">
+                                    {{ __('panel.image') }} / {{ __('panel.images') }}
+                                    <span>
+                                        <br>
+                                        <small> {{ __('panel.best_size') }}</small>
+                                        <small> 350 * 250</small>
+                                    </span>
                                 </label>
-                                <br>
-                                <span class="form-text text-muted">{{ __('panel.promotional_image_size') }} </span>
+                            </div>
+                            <div class="col-sm-12 col-md-10 pt-3">
                                 <div class="file-loading">
                                     <input type="file" name="promotional_image" id="customer_image"
                                         value="{{ old('customer_image') }}" class="file-input-overview ">
@@ -146,61 +146,11 @@
                             </div>
                         </div>
 
-                    </div>
-
-                    <div class="tab-pane fade" id="published" role="tabpanel" aria-labelledby="published-tab">
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on"> {{ __('panel.published_date') }}</label>
-                                    <input type="text" id="published_on" name="published_on"
-                                        value="{{ old('published_on', now()->format('Y-m-d')) }}" class="form-control">
-                                    @error('published_on')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 col-md-12 pt-3">
-                                <div class="form-group">
-                                    <label for="published_on_time"> {{ __('panel.published_time') }}</label>
-                                    <input type="text" id="published_on_time" name="published_on_time"
-                                        value="{{ old('published_on_time', now()->format('h:m A')) }}"
-                                        class="form-control">
-                                    @error('published_on_time')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-
-                        </div>
-
-
-
-                        <div class="row">
-                            <div class="col-md-12 col-sm-12 pt-3">
-                                <label for="status" class="control-label col-md-2 col-sm-12 ">
-                                    <span>{{ __('panel.status') }}</span>
-                                </label>
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
 
 
                     </div>
+
+
 
 
                     <div class="row">
