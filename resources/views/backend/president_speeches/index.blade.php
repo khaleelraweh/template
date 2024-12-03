@@ -51,7 +51,7 @@
                         <th>{{ __('panel.title') }}</th>
                         <th class="d-none d-sm-table-cell">{{ __('panel.author') }}</th>
                         <th>{{ __('panel.status') }}</th>
-                        <th class="d-none d-sm-table-cell">{{ __('panel.created_at') }}</th>
+                        <th class="d-none d-sm-table-cell">{{ __('panel.published_on') }}</th>
                         <th class="text-center" style="width:30px;">{{ __('panel.actions') }}</th>
 
                     </tr>
@@ -92,7 +92,9 @@
                                 <span
                                     class="btn btn-round rounded-pill btn-success btn-xs">{{ $president_speech->status() }}</span>
                             </td>
-                            <td class="d-none d-sm-table-cell">{{ $president_speech->created_at }}</td>
+                            <td class="d-none d-sm-table-cell">
+                                {{ \Carbon\Carbon::parse($president_speech->published_on)->diffForHumans() }}
+                            </td>
                             <td>
                                 {{-- <div class="btn-group btn-group-sm">
                                     <a href="{{ route('admin.president_speeches.edit', $president_speech->id) }}"
