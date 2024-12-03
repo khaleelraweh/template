@@ -49,5 +49,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PlaylistSeeder::class);
 
         $this->call(StatisticSeeder::class);
+
+        $this->call(PresidentSpeechSeeder::class);
     }
 }
