@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\AlbumRequest;
-use App\Http\Requests\Backend\PageCategoryRequest;
 use App\Models\Album;
-use App\Models\PageCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Intervention\Image\Drivers\Gd\Driver;
