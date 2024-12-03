@@ -145,29 +145,6 @@
 
                         <hr>
 
-                        {{-- status --}}
-                        <div class="row">
-                            <div class="col-sm-12 col-md-2 pt-3">
-                                <label for="status">{{ __('panel.status') }}</label>
-                            </div>
-                            <div class="col-sm-12 col-md-10 pt-3">
-                                <select name="status" class="form-control">
-                                    <option value="1" {{ old('status') == '1' ? 'selected' : null }}>
-                                        {{ __('panel.status_active') }}
-                                    </option>
-
-                                    <option value="0" {{ old('status') == '0' ? 'selected' : null }}>
-                                        {{ __('panel.status_inactive') }}
-                                    </option>
-                                </select>
-                                @error('status')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <hr>
-
                         <div class="row ">
                             <div class="col-sm-12 col-md-2 pt-3">
                                 <label for="partner_image">
