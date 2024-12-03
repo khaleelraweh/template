@@ -57,18 +57,10 @@
                     </li>
 
                     <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="image-tab" data-bs-toggle="tab" data-bs-target="#image" type="button"
-                            role="tab" aria-controls="image" aria-selected="false">{{ __('panel.image_tab') }}
+                        <button class="nav-link" id="SEO-tab" data-bs-toggle="tab" data-bs-target="#SEO" type="button"
+                            role="tab" aria-controls="SEO" aria-selected="false">{{ __('panel.SEO_tab') }}
                         </button>
                     </li>
-
-
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="published-tab" data-bs-toggle="tab" data-bs-target="#published"
-                            type="button" role="tab" aria-controls="published"
-                            aria-selected="false">{{ __('panel.published_tab') }}</button>
-                    </li>
-
                 </ul>
 
                 <div class="tab-content" id="myTabContent">
@@ -196,8 +188,6 @@
                         </div>
 
                     </div>
-
-
 
 
                     <div class="row">

@@ -141,8 +141,31 @@ class PresidentSpeechController extends Controller
         $input['title'] = $request->title;
         $input['content'] = $request->content;
 
+
+        $input['metadata_title'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $input['metadata_title'][$localeKey] = $request->metadata_title[$localeKey]
+                ?: $request->title[$localeKey] ?? null;
+        }
+        $input['metadata_description'] = [];
+        foreach (config('locales.languages') as $localeKey => $localeValue) {
+            $content = $request->content[$localeKey] ?? '';
+            // Remove all tags and decode HTML entities
+            $plainContent = html_entity_decode(strip_tags($content), ENT_QUOTES | ENT_HTML5);
+            // Limit to 30 words
+            $limitedContent = implode(' ', array_slice(explode(' ', $plainContent), 0, 30));
+            $input['metadata_description'][$localeKey] = $request->metadata_description[$localeKey]
+                ?: $limitedContent ?: null;
+        }
+        $input['metadata_keywords']     = $request->metadata_keywords;
+
+
         $input['status']            =   $request->status;
         $input['created_by'] = auth()->user()->full_name;
+
+        $published_on = str_replace(['ص', 'م'], ['AM', 'PM'], $request->published_on);
+        $publishedOn = Carbon::createFromFormat('Y/m/d h:i A', $published_on)->format('Y-m-d H:i:s');
+        $input['published_on']            = $publishedOn;
 
 
 
