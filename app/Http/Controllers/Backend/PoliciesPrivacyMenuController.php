@@ -53,7 +53,7 @@ class PoliciesPrivacyMenuController extends Controller
         $input['link'] = $request->link;
         $input['icon'] = $request->icon;
 
-        $input['section']    = 5;
+        $input['section']    = 9;
 
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
@@ -129,7 +129,7 @@ class PoliciesPrivacyMenuController extends Controller
         $input['title']     = $request->title;
         $input['link']      = $request->link;
         $input['icon']      = $request->icon;
-        $input['section']    = 5;
+        $input['section']    = 9;
 
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
