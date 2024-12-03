@@ -19,6 +19,12 @@ return new class extends Migration
             $table->json('slug');
             $table->json('description');
 
+            // SEO
+            $table->json('metadata_title');
+            $table->json('metadata_description');
+            $table->json('metadata_keywords');
+            // end SEO
+
             // will be use always
             $table->boolean('status')->default(true);
             $table->dateTime('published_on')->nullable();
