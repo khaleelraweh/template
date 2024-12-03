@@ -481,5 +481,29 @@ $(document).ready(function(){
         });
     });
 
+    //  updateContactUsMenuStatus Status
+    $(document).on("click",".updateContactUsMenuStatus",function(){
+        var status = $(this).children("i").attr("status");
+        var contact_us_menu_id = $(this).attr("contact_us_menu_id");
+
+        $.ajax({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type:'post',
+            url:'/admin/contact_us_menus/update-contact-us-menu-status',
+            data:{status:status,contact_us_menu_id:contact_us_menu_id},
+            success:function(resp){
+                if(resp['status']==0){
+                    $("#contact-us-menu-"+contact_us_menu_id).html("<i class='fas fa-toggle-off fa-lg text-warning' aria-hidden='true' status='Inactive' style='font-size:1.6em' />");
+                }else if (resp['status'] ==1 ){
+                    $("#contact-us-menu-"+contact_us_menu_id).html("<i class='fas fa-toggle-on fa-lg text-success' aria-hidden='true' status='Active' style='font-size:1.6em' />");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
 
 });
