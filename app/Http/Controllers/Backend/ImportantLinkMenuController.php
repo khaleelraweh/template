@@ -118,18 +118,18 @@ class ImportantLinkMenuController extends Controller
         return view('backend.important_link_menus.edit', compact('importantLinkMenu'));
     }
 
-    public function update(SupportMenuRequest $request,  $supportMenu)
+    public function update(ImportantLinkMenuRequest $request,  $importantLinkMenu)
     {
         if (!auth()->user()->ability('admin', 'update_important_link_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $importantLinkMenu = Menu::where('id', $importantLinkMenu)->first();
 
         $input['title']     = $request->title;
         $input['link']      = $request->link;
         $input['icon']      = $request->icon;
-        $input['section']    = 5;
+        $input['section']    = 7;
 
         $input['metadata_title'] = [];
         foreach (config('locales.languages') as $localeKey => $localeValue) {
@@ -158,9 +158,9 @@ class ImportantLinkMenuController extends Controller
         $input['published_on']            = $publishedOn;
 
 
-        $supportMenu->update($input);
+        $importantLinkMenu->update($input);
 
-        if ($supportMenu) {
+        if ($importantLinkMenu) {
             return redirect()->route('admin.important_link_menus.index')->with([
                 'message' => __('panel.updated_successfully'),
                 'alert-type' => 'success'
@@ -173,18 +173,18 @@ class ImportantLinkMenuController extends Controller
         ]);
     }
 
-    public function destroy($supportMenu)
+    public function destroy($importantLinkMenu)
     {
 
         if (!auth()->user()->ability('admin', 'delete_important_link_menus')) {
             return redirect('admin/index');
         }
 
-        $supportMenu = Menu::where('id', $supportMenu)->first();
+        $importantLinkMenu = Menu::where('id', $importantLinkMenu)->first();
 
-        $supportMenu->delete();
+        $importantLinkMenu->delete();
 
-        if ($supportMenu) {
+        if ($importantLinkMenu) {
             return redirect()->route('admin.important_link_menus.index')->with([
                 'message' => __('panel.deleted_successfully'),
                 'alert-type' => 'success'
