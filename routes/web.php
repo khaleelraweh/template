@@ -240,6 +240,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::resource('testimonials', TestimonialController::class);
 
         //=============== common question =========================//
+        Route::post('common_questions/update-common-question-status', [CommonQuestionController::class, 'updateCommonQuestionStatus'])->name('common_questions.update_common_question_status');
         Route::resource('common_questions', CommonQuestionController::class);
         Route::post('common_question_videos/remove-image', [CommonQuestionVideoController::class, 'remove_image'])->name('common_question_videos.remove_image');
         Route::resource('common_question_videos', CommonQuestionVideoController::class);

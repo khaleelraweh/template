@@ -154,4 +154,18 @@ class CommonQuestionController extends Controller
             'alert-type' => 'danger'
         ]);
     }
+
+    public function updateCommonQuestionStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == "Active") {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            CommonQuestion::where('id', $data['common_question_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'common_question_id' => $data['common_question_id']]);
+        }
+    }
 }

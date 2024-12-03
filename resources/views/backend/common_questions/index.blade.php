@@ -62,7 +62,23 @@
                                     {{ Str::limit($common_question->title, 50) }}
                                 </td>
                                 <td>{{ $common_question->created_by }}</td>
-                                <td>{{ $common_question->status() }}</td>
+                                <td>
+                                    @if ($common_question->status == 1)
+                                        <a href="javascript:void(0);" class="updateCommonQuestionStatus "
+                                            id="common-question-{{ $common_question->id }}"
+                                            common_question_id="{{ $common_question->id }}">
+                                            <i class="fas fa-toggle-on fa-lg text-success" aria-hidden="true"
+                                                status="Active" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @else
+                                        <a href="javascript:void(0);" class="updateCommonQuestionStatus"
+                                            id="common-question-{{ $common_question->id }}"
+                                            common_question_id="{{ $common_question->id }}">
+                                            <i class="fas fa-toggle-off fa-lg text-warning" aria-hidden="true"
+                                                status="Inactive" style="font-size: 1.6em"></i>
+                                        </a>
+                                    @endif
+                                </td>
                                 <td>
                                     {{ \Carbon\Carbon::parse($common_question->published_on)->diffForHumans() }}
                                 </td>
