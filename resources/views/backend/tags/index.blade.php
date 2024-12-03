@@ -61,10 +61,10 @@
                                 <td>
                                     {{ $tag->name }}
                                     <br>
-                                    <small>
+                                    <small class="d-inline-block mt-1">
                                         <span class="bg-info px-2 text-white rounded-pill">
-                                            {{ __('panel.category') }}:
-                                            <strong>{{ $tag->section }}</strong>
+                                            {{-- {{ __('panel.category') }}: --}}
+                                            <strong>{{ $tag->section() }}</strong>
                                         </span>
                                     </small>
                                 </td>
