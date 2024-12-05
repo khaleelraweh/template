@@ -191,8 +191,8 @@
                  </div>
                  <div class="col-lg-6 text-right md-text-left">
                      <ul class="copy-right-menu">
-                         @foreach ($web_menus->where('section', 3) as $topic_menu)
-                             <li><a href="{{ $topic_menu->link }}">{{ $topic_menu->title }}</a></li>
+                         @foreach ($web_menus->where('section', 3) as $PoliciesPrivacy)
+                             <li><a href="{{ $PoliciesPrivacy->link }}">{{ $PoliciesPrivacy->title }}</a></li>
                          @endforeach
 
                          {{-- <li><a href="#">Blog</a></li>
