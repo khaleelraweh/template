@@ -117,8 +117,8 @@
                      <h3 class="widget-title">{{ __('panel.links_that_interest_you') }}</h3>
                      <ul class="site-map">
 
-                         @foreach ($web_menus->where('section', 5) as $support_menu)
-                             <li><a href="{{ $support_menu->link }}">{{ $support_menu->title }}</a></li>
+                         @foreach ($web_menus->where('section', 7) as $important_link_menu)
+                             <li><a href="{{ $important_link_menu->link }}">{{ $important_link_menu->title }}</a></li>
                          @endforeach
 
                      </ul>
@@ -191,7 +191,7 @@
                  </div>
                  <div class="col-lg-6 text-right md-text-left">
                      <ul class="copy-right-menu">
-                         @foreach ($web_menus->where('section', 3) as $PoliciesPrivacy)
+                         @foreach ($web_menus->where('section', 9) as $PoliciesPrivacy)
                              <li><a href="{{ $PoliciesPrivacy->link }}">{{ $PoliciesPrivacy->title }}</a></li>
                          @endforeach
 

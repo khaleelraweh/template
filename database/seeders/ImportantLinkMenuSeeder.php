@@ -17,12 +17,9 @@ class ImportantLinkMenuSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        Menu::create(['title'  => ['ar' => 'الرئيسية', 'en' => 'Our Company'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        Menu::create(['title'  => ['ar' => 'من نحن', 'en' => 'About Us'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        Menu::create(['title'  => ['ar' => 'تواصل معنا', 'en' => 'Contact Us'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        Menu::create(['title'  => ['ar' => 'المجتمع', 'en' => 'Community'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        Menu::create(['title'  => ['ar' => 'امتيازات الطلاب', 'en' => 'Student Perks'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        Menu::create(['title'  => ['ar' => 'المدونة', 'en' => 'Blog'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
-        Menu::create(['title'  => ['ar' => 'وظائف', 'en' => 'Careers'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'وزارة التعليم العالي والبحث العلمي', 'en' => 'Ministry of Higher Education and Scientific Research'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'مجلس الاعتماد الأكاديمي وضمان الجودة', 'en' => 'Council for Academic Accreditation and Quality Assurance'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'مركز تقنية المعلومات في التعليم العالي', 'en' => 'Center for Information Technology in Higher Education'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  7, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
+        Menu::create(['title'  => ['ar' => 'مدونة الجامعة', 'en' => 'University Blog'], 'icon'   => 'fa fa-home', 'created_by' => 'admin', 'status' => true, 'section'    =>  5, 'published_on' => $faker->dateTime(), 'parent_id' => null]);
     }
 }
