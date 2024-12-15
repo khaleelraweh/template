@@ -196,6 +196,7 @@
                                         </div>
 
                                         <div class="blog-content">
+
                                             <h3 class="blog-title">
                                                 <x-post-link :route="$linkRoute" :slug="$post->slug">
                                                     {{ $post->title }}
@@ -209,14 +210,9 @@
                                                             {{ formatPostDate($post->created_at) }}
                                                         </div>
                                                     </li>
-                                                    <li>
-                                                        <div class="author">
-                                                            <i class="fa fa-user-o"></i>
-                                                            {{ $post->users && $post->users->isNotEmpty() ? $post->users->first()->full_name : __('panel.admin') }}
-                                                        </div>
-                                                    </li>
                                                 </ul>
                                             </div>
+
                                             <div class="blog-desc">
                                                 {!! \Illuminate\Support\Str::words($post->content, 30, '...') !!}
                                             </div>
