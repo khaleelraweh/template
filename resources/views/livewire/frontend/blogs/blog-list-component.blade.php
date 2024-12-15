@@ -1,6 +1,7 @@
 <div>
     <!-- Main content Start -->
     <div class="main-content">
+
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
@@ -16,7 +17,7 @@
                     alt="{{ $siteSettings['site_name']->value }}">
 
             </div>
-            <div class="breadcrumbs-text white-color">
+            <div class="breadcrumbs-text">
                 <h1 class="page-title">
                     @switch(true)
                         @case($currentRoute === 'frontend.blog_list')
