@@ -4,7 +4,11 @@
             <div id="rs-blog" class="rs-blog rs-news-events main-home ">
                 <div class="container">
                     <div class="sec-title mb-40 md-mb-20 text-left">
-                        <h2 class="title mb-0 header-news">{{ __('panel.university_news') }}</h2>
+                        <h2 class="title mb-0 header-news">
+                            <a href="{{ route('frontend.news_list') }}">
+                                {{ __('panel.university_news') }}
+                            </a>
+                        </h2>
                     </div>
 
                     <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
@@ -88,7 +92,11 @@
             <div id="rs-blog" class="rs-blog style1 ">
                 <div class="container">
                     <div class="sec-title mb-40 md-mb-20 text-left">
-                        <h2 class="title mb-0 header-events main-color">{{ __('panel.university_activities') }}</h2>
+                        <h2 class="title mb-0 header-events main-color">
+                            <a href="{{ route('frontend.events_list') }}">
+                                {{ __('panel.university_activities') }}
+                            </a>
+                        </h2>
                     </div>
                     <div class="row bg2 event-row">
                         <div class="col-lg-12 col-md-12">
