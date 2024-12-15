@@ -6,8 +6,6 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                {{-- <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/lite-logo.png') }}"
-                    alt="{{ $siteSettings['site_name']->value }}"> --}}
 
                 @php
                     $imagePath = public_path('assets/site_settings/' . $siteSettings['site_img']->value);
@@ -51,31 +49,6 @@
                         <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
                     </li>
                     <li>
-                        {{-- @switch(true)
-                            @case(Route::is('frontend.blog_single'))
-                                {{ __('panel.blog_single') }}
-                            @break
-
-                            @case(Route::is('frontend.news_single'))
-                                {{ __('panel.news_single') }}
-                            @break
-
-                            @case(Route::is('frontend.event_single'))
-                                {{ __('panel.event_single') }}
-                            @break
-
-                            @case(Route::is('frontend.blog_index'))
-                                Blog Index
-                            @break
-
-                            @case(Route::is('frontend.contact'))
-                                Contact Us
-                            @break
-
-                            @default
-                                Default Title
-                        @endswitch --}}
-
                         {{ $post->title }}
                     </li>
                 </ul>
@@ -127,7 +100,7 @@
                             }
                         @endphp
 
-                        <a href="#"><img src="{{ $post_img }}" alt=""></a>
+                        <a href="#"><img style="width:100%;height:30em" src="{{ $post_img }}" alt=""></a>
                     </div>
 
                     <div class="blog-full">
@@ -147,12 +120,12 @@
                                     {{ $post->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
                                 </span>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <span class="p-date">
                                     <i class="fa fa-user-o"></i>
                                     {{ $post->users && $post->users->isNotEmpty() ? $post->users->first()->full_name : __('panel.admin') }}
                                 </span>
-                            </li>
+                            </li> --}}
 
                         </ul>
                         <div class="blog-desc">
