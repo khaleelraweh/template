@@ -171,7 +171,7 @@
                     <div class="col-lg-8 pr-50 md-pr-15">
                         <div class="row">
                             @foreach ($posts as $post)
-                                <div class="col-lg-12 mb-70">
+                                <div class="col-lg-6 mb-70">
                                     <div class="blog-item">
                                         <div class="blog-img">
                                             @php
