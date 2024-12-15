@@ -4,8 +4,17 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/breadcrumbs/2.jpg') }}"
+                {{-- <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/breadcrumbs/2.jpg') }}"
+                    alt="{{ $siteSettings['site_name']->value }}"> --}}
+                @php
+                    $imagePath = public_path('assets/site_settings/' . $siteSettings['site_img']->value);
+                @endphp
+
+                <img src="{{ $siteSettings['site_img']->value && file_exists($imagePath)
+                    ? asset('assets/site_settings/' . $siteSettings['site_img']->value)
+                    : asset('image/not_found/placeholder2.jpg') }}"
                     alt="{{ $siteSettings['site_name']->value }}">
+
             </div>
             <div class="breadcrumbs-text white-color">
                 <h1 class="page-title">
