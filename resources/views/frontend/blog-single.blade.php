@@ -142,6 +142,59 @@
         </div>
         <!-- Blog Section End -->
 
+        <!-- Blog section Start -->
+        <div class="rs-inner-blog orange-color pt-40 pb-40 md-pt-70 md-pb-70">
+            <div class="container">
+                <div class="row">
+                    @foreach ($post->photos as $photo)
+                        <div class="col-lg-3">
+                            @php
+                                $defaultImg = asset('image/not_found/placeholder.jpg');
+                                $photo_img = $defaultImg; // Set a default image
+
+                                switch (true) {
+                                    case Route::is('frontend.blog_single'):
+                                        $photo_img =
+                                            $photo && $photo->file_name
+                                                ? asset('assets/posts/' . $photo->file_name)
+                                                : $defaultImg;
+                                        break;
+
+                                    case Route::is('frontend.news_single'):
+                                        $photo_img =
+                                            $photo && $photo->file_name
+                                                ? asset('assets/news/' . $photo->file_name)
+                                                : $defaultImg;
+                                        break;
+
+                                    case Route::is('frontend.events'):
+                                        $photo_img =
+                                            $photo && $photo->file_name
+                                                ? asset('assets/events/' . $photo->file_name)
+                                                : $defaultImg;
+                                        break;
+
+                                    // Add more cases as needed for other routes
+
+                                    default:
+                                        $photo_img = $defaultImg;
+                                        break;
+                                }
+
+                                // Check if the file exists in public directory
+                                if (!file_exists(public_path(parse_url($photo_img, PHP_URL_PATH)))) {
+                                    $photo_img = $defaultImg;
+                                }
+                            @endphp
+
+                            <img src="{{ $photo_img }}" alt="not found">
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+        <!-- Blog section End -->
+
     </div>
     <!-- Main content End -->
 @endsection
