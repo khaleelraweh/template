@@ -12,6 +12,16 @@
             </div>
         </form>
         <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link " href="{{ route('frontend.index') }}" role="button" aria-haspopup="true"
+                    aria-expanded="false" title="{{ __('panel.customer_view') }}">
+                    <span class="ms-1 me-1 d-none d-md-inline-block">
+                        <i class="fa fa-home"></i>
+                    </span>
+                </a>
+
+
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

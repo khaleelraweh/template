@@ -15,6 +15,7 @@ return [
     'total_admin_pages'         =>  'Total Admin Pages',
     'ibb'                       =>  'Ibb',
     'univercity'                =>  'Univercity',
+    'customer_view'             =>  'Customer View',
 
     ############################ Manage Web Menus #################################
     'manage_menus'              => 'Manage  Menus',
