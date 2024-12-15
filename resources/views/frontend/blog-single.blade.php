@@ -57,7 +57,7 @@
         <!-- Breadcrumbs End -->
 
         <!-- Blog Section Start -->
-        <div class="rs-inner-blog orange-color pt-100 pb-100 md-pt-70 md-pb-70">
+        <div class="rs-inner-blog orange-color pt-100 pb-40 md-pt-70 md-pb-70">
             <div class="container">
                 <div class="blog-deatails">
                     <div class="bs-img">
@@ -143,7 +143,7 @@
         <!-- Blog Section End -->
 
         <!-- Blog section Start -->
-        <div class="rs-inner-blog orange-color pt-40 pb-40 md-pt-70 md-pb-70">
+        <div class="rs-inner-blog orange-color pt-40 pb-100 md-pt-70 md-pb-70">
             <div class="container">
                 <div class="row">
                     @foreach ($post->photos->skip(1) as $photo)
