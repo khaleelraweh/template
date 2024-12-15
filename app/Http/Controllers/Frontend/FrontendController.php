@@ -109,6 +109,6 @@ class FrontendController extends Controller
     {
         $albums = Album::with('photos')->where('slug->' . app()->getLocale(), $slug)->firstOrFail();
 
-        return view('frontend.album', compact('albums'));
+        return view('frontend.album-single', compact('albums'));
     }
 }
