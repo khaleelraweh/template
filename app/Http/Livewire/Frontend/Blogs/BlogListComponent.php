@@ -21,7 +21,12 @@ class BlogListComponent extends Component
 
     public $searchQuery = '';
 
-    protected $queryString = ['searchQuery'];
+    // protected $queryString = ['searchQuery'];
+
+    protected $queryString = [
+        'searchQuery' => ['except' => ''] // Exclude from URL if empty
+    ];
+
 
     // Define a property to store the route name
     public $currentRoute;
