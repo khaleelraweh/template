@@ -6,12 +6,20 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/lite-logo.png') }}"
+                {{-- <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/lite-logo.png') }}"
+                    alt="{{ $siteSettings['site_name']->value }}"> --}}
+
+                @php
+                    $imagePath = public_path('assets/site_settings/' . $siteSettings['site_img']->value);
+                @endphp
+
+                <img src="{{ $siteSettings['site_img']->value && file_exists($imagePath)
+                    ? asset('assets/site_settings/' . $siteSettings['site_img']->value)
+                    : asset('image/not_found/placeholder2.jpg') }}"
                     alt="{{ $siteSettings['site_name']->value }}">
 
-                {{-- <img src="{{ asset('frontend/images/breadcrumbs/2.jpg') }}" alt="Breadcrumbs Image"> --}}
             </div>
-            <div class="breadcrumbs-text white-color">
+            <div class="breadcrumbs-text ">
                 <h1 class="page-title">
                     @switch(true)
                         @case(Route::is('frontend.blog_single'))
