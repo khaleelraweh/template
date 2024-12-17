@@ -34,7 +34,6 @@
     <!-- endinject -->
 
     <!-- Plugin css for this page -->
-    {{-- <link rel="stylesheet" href="{{ asset('backend/vendors/flatpickr/flatpickr.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('backend/vendors/flatpickr/flatpickr' . $rtl . '.min.css') }}">
     <!-- End plugin css for this page -->
 
@@ -120,7 +119,6 @@
 
 
     <!-- Plugin js for this page -->
-    {{-- <script src="{{ asset('backend/vendors/flatpickr/flatpickr.min.js') }}"></script> --}}
     <script src="{{ asset('backend/vendors/flatpickr/flatpickr' . $rtl . '.min.js') }}"></script>
     <script src="{{ asset('backend/js/flatpickr.js') }}"></script>
     <script src="https://npmcdn.com/flatpickr/dist/l10n/ar.js"></script>
