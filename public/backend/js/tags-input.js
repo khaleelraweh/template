@@ -19,7 +19,7 @@ $(function() {
     'width': '100%',
     'height': '75%',
     'interactive': true,
-    'defaultText': 'Add More',
+    'defaultText': 'اضافة اكثر',
     'removeWithBackspace': true,
     'minChars': 0,
     'maxChars': 20,
