@@ -315,9 +315,15 @@
                                         </label>
                                     </div>
                                     <div class="col-sm-12 col-md-9 pt-3">
-                                        <input type="text" name="metadata_keywords[{{ $key }}]"
-                                            id="metadata_keywords[{{ $key }}]"
-                                            value="{{ old('metadata_keywords.' . $key) }}" class="form-control">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div>
+                                                    <input name="metadata_keywords[{{ $key }}]"
+                                                        id="tags{{ $loop->index + 1 }}"
+                                                        value="{{ old('metadata_keywords.' . $key) }}" />
+                                                </div>
+                                            </div>
+                                        </div>
                                         @error('metadata_keywords.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror

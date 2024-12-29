@@ -278,7 +278,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         @error('metadata_keywords.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
