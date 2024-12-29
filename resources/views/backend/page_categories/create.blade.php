@@ -278,6 +278,51 @@
                                     </div>
                                 </div>
                             @endforeach
+
+                            {{-- Test tags  --}}
+                            <div class="row">
+                                <div class="col-md-6 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Tags input</h6>
+                                            <p class="text-muted mb-3">Read the <a
+                                                    href="https://www.npmjs.com/package/jquery-tags-input"
+                                                    target="_blank"> Official jQuery-tags-input Documentation </a>for a
+                                                full list of instructions and
+                                                other options.</p>
+                                            <p class="mb-2">Type something to add a new tag</p>
+                                            <div>
+                                                <input name="tags" id="tags"
+                                                    value="New York,Texas,Florida,New Mexico" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 grid-margin stretch-card">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Color picker</h6>
+                                            <p class="text-muted mb-3">Flat, simple, and responsive Color-Picker library.
+                                                Read the <a href="https://github.com/Simonwep/pickr" target="_blank">
+                                                    Official @simonwep/pickr Documentation
+                                                </a>for a full list of instructions and other options.</p>
+                                            <p class="mb-2">Click the color square to activate the Color Picker</p>
+                                            <div class="d-flex">
+                                                <div class="me-2">
+                                                    <div id="pickr_1"></div>
+                                                </div>
+                                                <div class="me-2">
+                                                    <div id="pickr_2"></div>
+                                                </div>
+                                                <div class="me-2">
+                                                    <div id="pickr_3"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
 
                         <div class="row">

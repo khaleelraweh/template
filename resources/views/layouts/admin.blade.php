@@ -63,6 +63,7 @@
 
     {{-- end plugin added  --}}
 
+    <link rel="stylesheet" href="{{ asset('backend/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
 
 
     <!-- Layout styles -->
@@ -149,6 +150,8 @@
     {{-- Calling fontawesome icon picker   --}}
     <script src="{{ asset('backend/vendors/fontawesomepicker/js/fontawesome-iconpicker.js') }}"></script>
 
+    <script src="{{ asset('backend/vendors/jquery-tags-input/jquery.tagsinput.min.js') }}"></script>
+    <script src="{{ asset('backend/js/tags-input.js') }}"></script>
 
 
 
