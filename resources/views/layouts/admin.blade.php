@@ -63,7 +63,9 @@
 
     {{-- end plugin added  --}}
 
-    <link rel="stylesheet" href="{{ asset('backend/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('backend/vendors/jquery-tags-input/jquery.tagsinput.min.css') }}"> --}}
+
+    <link rel="stylesheet" href="{{ asset('backend/vendors/jquery-tags-input/jquery.tagsinput' . $rtl . '.min.css') }}">
 
 
     <!-- Layout styles -->
