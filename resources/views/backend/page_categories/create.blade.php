@@ -269,9 +269,27 @@
                                         </label>
                                     </div>
                                     <div class="col-sm-12 col-md-9 pt-3">
-                                        <input type="text" name="metadata_keywords[{{ $key }}]"
+                                        {{-- <input type="text" name="metadata_keywords[{{ $key }}]"
                                             id="metadata_keywords[{{ $key }}]"
-                                            value="{{ old('metadata_keywords.' . $key) }}" class="form-control">
+                                            value="{{ old('metadata_keywords.' . $key) }}" class="form-control"> --}}
+
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div>
+                                                    @if ($loop->first)
+                                                        <input name="metadata_keywords[{{ $key }}]"
+                                                            id="tags"
+                                                            value="{{ old('metadata_keywords.' . $key) }}" />
+                                                    @else
+                                                        <input name="metadata_keywords[{{ $key }}]"
+                                                            id="tags2"
+                                                            value="{{ old('metadata_keywords.' . $key) }}" />
+                                                    @endif
+
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         @error('metadata_keywords.' . $key)
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -281,14 +299,13 @@
 
 
 
-                            {{-- Test tags  --}}
-                            <div class="card">
+                            {{-- <div class="card">
                                 <div class="card-body">
                                     <div>
                                         <input name="tags" id="tags" value="New York,Texas,Florida,New Mexico" />
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                         </div>
