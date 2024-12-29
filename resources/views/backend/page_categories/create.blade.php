@@ -286,17 +286,6 @@
                                 </div>
                             @endforeach
 
-
-
-                            {{-- <div class="card">
-                                <div class="card-body">
-                                    <div>
-                                        <input name="tags" id="tags" value="New York,Texas,Florida,New Mexico" />
-                                    </div>
-                                </div>
-                            </div> --}}
-
-
                         </div>
 
                         <div class="row">
