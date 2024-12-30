@@ -5,8 +5,6 @@
         <!-- Breadcrumbs Start -->
         <div class="rs-breadcrumbs breadcrumbs-overlay">
             <div class="breadcrumbs-img">
-                {{-- <img src="{{ $siteSettings['site_img']->value ? asset('assets/site_settings/' . $siteSettings['site_img']->value) : asset('frontend/images/breadcrumbs/2.jpg') }}"
-                    alt="{{ $siteSettings['site_name']->value }}"> --}}
                 @php
                     $imagePath = public_path('assets/site_settings/' . $siteSettings['site_img']->value);
                 @endphp
@@ -32,14 +30,6 @@
                             {{ __('panel.events_list') }}
                         @break
 
-                        @case(Route::is('frontend.blog_index'))
-                            Blog Index
-                        @break
-
-                        @case(Route::is('frontend.contact'))
-                            Contact Us
-                        @break
-
                         @default
                             Default Title
                     @endswitch
@@ -49,6 +39,7 @@
                         <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
                     </li>
                     <li>
+
                         @switch(true)
                             @case($currentRoute === 'frontend.blog_list')
                                 {{ __('panel.blog_list') }}
@@ -62,9 +53,19 @@
                                 {{ __('panel.events_list') }}
                             @break
 
+                            @case(Route::is('frontend.blog_index'))
+                                Blog Index
+                            @break
+
+                            @case(Route::is('frontend.contact'))
+                                Contact Us
+                            @break
+
                             @default
                                 Default Title
                         @endswitch
+
+
                     </li>
                 </ul>
             </div>
