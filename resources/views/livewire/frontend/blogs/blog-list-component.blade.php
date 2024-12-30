@@ -102,13 +102,15 @@
                                     action="https://keenitsolutions.com/products/html/educavo/mailer.php">
                                     <!-- Form Group -->
                                     <div class="form-group mb-0">
-                                        <div wire:ignore class="custom-select-box">
+                                        <div class="custom-select-box">
                                             <select id="timing" wire:model="sortingBy">
                                                 <option value="default">Default</option>
                                                 <option value="new">Newest</option>
-                                                <option value="old">Old</option>
+                                                <option value="old">Oldest</option>
                                             </select>
                                         </div>
+
+
                                     </div>
                                 </form>
                             </div>
