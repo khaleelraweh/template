@@ -15,7 +15,7 @@ class BlogListComponent extends Component
     use LivewireAlert;
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
-    public $paginationLimit = 1;
+    public $paginationLimit = 4;
 
     public $slug;
 
