@@ -94,7 +94,7 @@ class FrontendController extends Controller
         $shareRoute = $currentRoute === 'frontend.blog_single' ? 'frontend.blog_single' : ($currentRoute === 'frontend.news_single' ? 'frontend.news_single' : 'frontend.event_single');
         $whatsappShareUrl = 'https://api.whatsapp.com/send?text=' . urlencode($post->name . ': ' . route($shareRoute, $post->slug));
 
-        return view('frontend.blog-single', compact('post', 'latest_posts', 'whatsappShareUrl'));
+        return view('frontend.blog-single', compact('post', 'latest_posts', 'whatsappShareUrl', 'currentRoute'));
     }
 
     public function album_list()
