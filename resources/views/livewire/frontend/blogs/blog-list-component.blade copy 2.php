@@ -271,32 +271,166 @@
                         <div class="course-part clearfix">
 
 
-
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <img src="{{ asset('frontend/images/event/2.jpg') }}" alt="Image">
-                                </div>
-                                <div class="categorie">
-                                    <a href="#">Recipes</a>
-                                </div>
-                                <div class="content-part">
-                                    <div class="address"><i class="fa fa-map-o"></i> New Margania</div>
-                                    <h4 class="title"><a href="#">Persim, Pomegran, And Massag Kale
-                                            Salad</a>
-                                    </h4>
-                                    <p class="text">
-                                        Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
-                                        adipiscing elit, sed diam nonummy nibh euismod...
-                                    </p>
-                                    <div class="event-btm">
-                                        <div class="date-part">
-                                            <div class="date">
-                                                <i class="fa fa-calendar-check-o"></i>
-                                                July 24, 2020
+                            <div class="row">
+                                <div class="col-lg-4 mb-60 col-md-6 ">
+                                    <div class="event-item">
+                                        <div class="event-short">
+                                            <div class="featured-img">
+                                                <img src="{{ asset('frontend/images/event/1.jpg') }}" alt="Image">
+                                            </div>
+                                            <div class="categorie">
+                                                <a href="#">Recipes</a>
+                                            </div>
+                                            <div class="content-part">
+                                                <div class="address"><i class="fa fa-map-o"></i> New Margania</div>
+                                                <h4 class="title"><a href="#">Spicy Quince And Cranberry
+                                                        Chutney</a></h4>
+                                                <p class="text">
+                                                    Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod...
+                                                </p>
+                                                <div class="event-btm">
+                                                    <div class="date-part">
+                                                        <div class="date">
+                                                            <i class="fa fa-calendar-check-o"></i>
+                                                            July 24, 2020
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-part">
+                                                        <a href="#">Join Event</a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="btn-part">
-                                            <a href="#">Join Event</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-60 col-md-6 right">
+                                    <div class="event-item">
+                                        <div class="event-short">
+                                            <div class="featured-img">
+                                                <img src="{{ asset('frontend/images/event/2.jpg') }}" alt="Image">
+                                            </div>
+                                            <div class="categorie">
+                                                <a href="#">Recipes</a>
+                                            </div>
+                                            <div class="content-part">
+                                                <div class="address"><i class="fa fa-map-o"></i> New Margania</div>
+                                                <h4 class="title"><a href="#">Persim, Pomegran, And Massag Kale
+                                                        Salad</a></h4>
+                                                <p class="text">
+                                                    Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod...
+                                                </p>
+                                                <div class="event-btm">
+                                                    <div class="date-part">
+                                                        <div class="date">
+                                                            <i class="fa fa-calendar-check-o"></i>
+                                                            July 24, 2020
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-part">
+                                                        <a href="#">Join Event</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-60 col-md-6">
+                                    <div class="event-item">
+                                        <div class="event-short">
+                                            <div class="featured-img">
+                                                <img src="{{ asset('frontend/images/event/3.jpg') }}" alt="Image">
+                                            </div>
+                                            <div class="categorie">
+                                                <a href="#">Recipes</a>
+                                            </div>
+                                            <div class="content-part">
+                                                <div class="address"><i class="fa fa-map-o"></i> New Margania</div>
+                                                <h4 class="title"><a href="#">Essential Fall Fruits That Aren’t
+                                                        Apples</a></h4>
+                                                <p class="text">
+                                                    Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod...
+                                                </p>
+                                                <div class="event-btm">
+                                                    <div class="date-part">
+                                                        <div class="date">
+                                                            <i class="fa fa-calendar-check-o"></i>
+                                                            July 24, 2020
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-part">
+                                                        <a href="#">Join Event</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 mb-60 col-md-6 right">
+                                    <div class="event-item">
+                                        <div class="event-short">
+                                            <div class="featured-img">
+                                                <img src="{{ asset('frontend/images/event/4.jpg') }}" alt="Image">
+                                            </div>
+                                            <div class="categorie">
+                                                <a href="#">Recipes</a>
+                                            </div>
+                                            <div class="content-part">
+                                                <div class="address"><i class="fa fa-map-o"></i> New Margania</div>
+                                                <h4 class="title"><a href="#">Seekers From Overcoming
+                                                        Failure</a></h4>
+                                                <p class="text">
+                                                    Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
+                                                    adipiscing elit, sed diam nonummy nibh euismod...
+                                                </p>
+                                                <div class="event-btm">
+                                                    <div class="date-part">
+                                                        <div class="date">
+                                                            <i class="fa fa-calendar-check-o"></i>
+                                                            July 24, 2020
+                                                        </div>
+                                                    </div>
+                                                    <div class="btn-part">
+                                                        <a href="#">Join Event</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="courses-item">
+                                <div class="event-short">
+                                    <div class="featured-img">
+                                        <img src="{{ asset('frontend/images/event/2.jpg') }}" alt="Image">
+                                    </div>
+                                    <div class="categorie">
+                                        <a href="#">Recipes</a>
+                                    </div>
+                                    <div class="content-part">
+                                        <div class="address"><i class="fa fa-map-o"></i> New Margania</div>
+                                        <h4 class="title"><a href="#">Persim, Pomegran, And Massag Kale
+                                                Salad</a>
+                                        </h4>
+                                        <p class="text">
+                                            Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
+                                            adipiscing elit, sed diam nonummy nibh euismod...
+                                        </p>
+                                        <div class="event-btm">
+                                            <div class="date-part">
+                                                <div class="date">
+                                                    <i class="fa fa-calendar-check-o"></i>
+                                                    July 24, 2020
+                                                </div>
+                                            </div>
+                                            <div class="btn-part">
+                                                <a href="#">Join Event</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
