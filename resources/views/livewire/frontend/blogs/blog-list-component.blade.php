@@ -98,21 +98,21 @@
                             </div>
                             <div class="type-form">
 
-                                {{-- <form method="post"
-                                    action="https://keenitsolutions.com/products/html/educavo/mailer.php"> --}}
-                                <!-- Form Group -->
-                                {{-- <div class="form-group mb-0"> --}}
-                                {{-- <div class="custom-select-box"> --}}
-                                <select id="timing" wire:model="sortingBy">
-                                    <option value="default">Default</option>
-                                    <option value="new">Newest</option>
-                                    <option value="old">Oldest</option>
-                                </select>
-                                {{-- </div> --}}
+                                <form method="post"
+                                    action="https://keenitsolutions.com/products/html/educavo/mailer.php">
+                                    <!-- Form Group -->
+                                    <div class="form-group mb-0">
+                                        <div class="custom-select-box">
+                                            <select id="timing" wire:model="sortingBy">
+                                                <option value="default">Default</option>
+                                                <option value="new">Newest</option>
+                                                <option value="old">Oldest</option>
+                                            </select>
+                                        </div>
 
 
-                                {{-- </div> --}}
-                                {{-- </form> --}}
+                                    </div>
+                                </form>
                             </div>
                         </div>
 
