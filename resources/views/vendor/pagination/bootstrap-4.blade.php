@@ -5,7 +5,7 @@
             @if (!$paginator->onFirstPage())
                 <li>
                     <a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
-                        <i class="fa fa-long-arrow-left px-2"></i> Previous
+                        <i class="fa fa-long-arrow-left px-2"></i> {{ __('panel.previous') }}
                     </a>
                 </li>
             @endif
@@ -33,7 +33,7 @@
             @if ($paginator->hasMorePages())
                 <li>
                     <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">
-                        Next <i class="fa fa-long-arrow-right"></i>
+                        {{ __('panel.next') }} <i class="fa fa-long-arrow-right"></i>
                     </a>
                 </li>
             @endif
