@@ -19,6 +19,7 @@ class BlogListComponent extends Component
 
     public $slug;
 
+    public $sortingBy = "default";
     public $searchQuery = '';
 
     // protected $queryString = ['searchQuery'];
@@ -41,6 +42,7 @@ class BlogListComponent extends Component
 
     public function resetFilters()
     {
+        $this->sortingBy = "default";
         $this->searchQuery = '';
     }
 
@@ -50,6 +52,23 @@ class BlogListComponent extends Component
 
         // Get common tags
         $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
+
+        switch ($this->sortingBy) {
+
+            case 'new':
+                $sort_field = "published_on";
+                $sort_type = "asc";
+                break;
+
+            case 'old':
+                $sort_field = "published_on";
+                $sort_type = "asc";
+                break;
+
+            default:
+                $sort_field = "id";
+                $sort_type = "asc";
+        }
 
         if ($this->currentRoute === 'frontend.blog_list' || $this->currentRoute === 'frontend.news_list') {
             $postsQuery = Post::with('photos');
@@ -81,6 +100,7 @@ class BlogListComponent extends Component
                     $query->where('title', 'LIKE', '%' . $this->searchQuery . '%');
                 })
                 ->active()
+                ->orderBy($sort_field, $sort_type)
                 ->paginate($this->paginationLimit);
 
             $total_Posts = Event::query()->count();
