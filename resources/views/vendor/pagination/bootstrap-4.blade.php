@@ -36,12 +36,6 @@
                         Next <i class="fa fa-long-arrow-right"></i>
                     </a>
                 </li>
-            @else
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <span aria-hidden="true" class="d-flex">
-                        Next <i class="fa fa-long-arrow-right"></i>
-                    </span>
-                </li>
             @endif
         </ul>
     </div>
