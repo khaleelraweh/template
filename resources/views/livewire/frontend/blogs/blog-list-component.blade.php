@@ -84,9 +84,20 @@
                                     <a href="#" class="view-grid mr-10"><i class="fa fa-th-large"></i></a>
                                     <a href="#" class="view-list"><i class="fa fa-list-ul"></i></a>
                                 </div>
-                                <div class="view-text">Showing 1-9 of 11 results</div>
+                                {{-- <div class="view-text">Showing 1-9 of 11 results</div> --}}
+
+                                <div class="view-text">
+                                    <div class="search-wrap">
+                                        <input type="search" wire:model="searchQuery"
+                                            placeholder="{{ __('transf.search') }}..." name="s"
+                                            class="search-input form-control" value="">
+                                    </div>
+                                </div>
+
+
                             </div>
                             <div class="type-form">
+
                                 <form method="post"
                                     action="https://keenitsolutions.com/products/html/educavo/mailer.php">
                                     <!-- Form Group -->
@@ -106,10 +117,11 @@
 
 
 
+
                         <div class="course-part clearfix">
 
                             @foreach ($posts as $post)
-                                <div class="courses-item {{ $loop->index % 2 === 0 ? 'right' : '' }}">
+                                <div class="courses-item {{ $loop->index % 2 === 1 ? 'right' : '' }}">
                                     <div class="img-part">
                                         @php
                                             $linkRoute = match ($currentRoute) {
