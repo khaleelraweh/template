@@ -2,14 +2,11 @@
     <div class="pagination-area orange-color text-center mt-30 md-mt-0">
         <ul class="pagination-part">
             {{-- Previous Page Link --}}
-            @if ($paginator->onFirstPage())
-                <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                    <span aria-hidden="true">&lsaquo;</span>
-                </li>
-            @else
+            @if (!$paginator->onFirstPage())
                 <li>
-                    <a href="{{ $paginator->previousPageUrl() }}" rel="prev"
-                        aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                    <a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
+                        <i class="fa fa-long-arrow-left px-2"></i> Previous
+                    </a>
                 </li>
             @endif
 
@@ -35,12 +32,15 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li>
-                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">Next <i
-                            class="fa fa-long-arrow-right"></i></a>
+                    <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">
+                        Next <i class="fa fa-long-arrow-right"></i>
+                    </a>
                 </li>
             @else
                 <li class="disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <span aria-hidden="true" class="d-flex">Next <i class="fa fa-long-arrow-right"></i></span>
+                    <span aria-hidden="true" class="d-flex">
+                        Next <i class="fa fa-long-arrow-right"></i>
+                    </span>
                 </li>
             @endif
         </ul>
