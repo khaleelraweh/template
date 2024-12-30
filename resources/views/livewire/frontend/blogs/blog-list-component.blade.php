@@ -71,7 +71,7 @@
         </div>
         <!-- Breadcrumbs End -->
 
-        <!-- Blog Section Start -->
+        {{-- <!-- Blog Section Start -->
         <div class="rs-inner-blog orange-color pt-100 pb-100 md-pt-70 md-pb-70">
             <div class="container">
                 <div class="row">
@@ -232,7 +232,7 @@
                 </div>
             </div>
         </div>
-        <!-- Blog Section End -->
+        <!-- Blog Section End --> --}}
 
         <!-- Popular Course Section Start -->
         <div
@@ -270,63 +270,55 @@
 
                         <div class="course-part clearfix">
 
-                            <div class="courses-item">
-                                <div class="img-part">
-                                    <img src="{{ asset('frontend/images/event/2.jpg') }}" alt="Image">
-                                </div>
-                                <div class="content-part">
-                                    <h3 class="title">
-                                        <a href="#">
-                                            Persim, Pomegran, And Massag Kale
-                                            Salad
-                                        </a>
-                                    </h3>
-                                    <p class="text">
-                                        Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
-                                        adipiscing elit, sed diam nonummy nibh euismod...
-                                    </p>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <div class="date">
-                                                <i class="fa fa-calendar-check-o"></i>
-                                                July 24, 2020
+                            @foreach ($posts as $post)
+                                <div class="courses-item {{ $loop->index % 2 === 0 ? 'right' : '' }}">
+                                    <div class="img-part">
+                                        @php
+                                            $linkRoute = match ($currentRoute) {
+                                                'frontend.blog_list' => 'frontend.blog_single',
+                                                'frontend.news_list' => 'frontend.news_single',
+                                                'frontend.events_list' => 'frontend.event_single',
+                                                default => 'frontend.blog_single',
+                                            };
+                                        @endphp
+                                        <x-post-link :route="$linkRoute" :slug="$post->slug">
+                                            @php
+                                                $post_img = getPostImage(
+                                                    $post,
+                                                    $currentRoute,
+                                                    asset('image/not_found/placeholder.jpg'),
+                                                );
+                                            @endphp
+                                            <img src="{{ $post_img }}" alt="">
+                                        </x-post-link>
+                                    </div>
+                                    <div class="content-part">
+                                        <h3 class="title">
+                                            <x-post-link :route="$linkRoute" :slug="$post->slug">
+                                                {{ $post->title }}
+                                            </x-post-link>
+                                        </h3>
+                                        <p class="text">
+                                            {!! \Illuminate\Support\Str::words($post->content, 30, '...') !!}
+                                        </p>
+                                        <div class="bottom-part">
+                                            <div class="info-meta">
+                                                <div class="date">
+                                                    <i class="fa fa-calendar-check-o"></i>
+                                                    {{ formatPostDate($post->created_at) }}
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#">Join Event</a>
+                                            <div class="btn-part">
+                                                <x-post-link :route="$linkRoute" :slug="$post->slug" class="blog-btn">
+                                                    {{ __('panel.continue_reading') }}
+                                                </x-post-link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
 
-                            <div class="courses-item right">
-                                <div class="img-part">
-                                    <img src="{{ asset('frontend/images/event/2.jpg') }}" alt="Image">
-                                </div>
-                                <div class="content-part">
-                                    <h3 class="title">
-                                        <a href="#">
-                                            Persim, Pomegran, And Massag Kale
-                                            Salad
-                                        </a>
-                                    </h3>
-                                    <p class="text">
-                                        Bootcamp Events Description Lorem ipsum dolor sit amet, consectetuer
-                                        adipiscing elit, sed diam nonummy nibh euismod...
-                                    </p>
-                                    <div class="bottom-part">
-                                        <div class="info-meta">
-                                            <div class="date">
-                                                <i class="fa fa-calendar-check-o"></i>
-                                                July 24, 2020
-                                            </div>
-                                        </div>
-                                        <div class="btn-part">
-                                            <a href="#">Join Event</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
 
