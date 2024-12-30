@@ -310,8 +310,8 @@
                                             </div>
                                             <div class="btn-part">
                                                 {{-- <a href="#">Join Event</a> --}}
-                                                <x-post-link :route="$linkRoute" :slug="$post->slug" class="blog-btn">
-                                                    {{ __('panel.continue_reading') }}
+                                                <x-post-link :route="$linkRoute" :slug="$post->slug" class="">
+                                                    {{ __('panel.continue_reading') }} ...
                                                 </x-post-link>
                                             </div>
                                         </div>
