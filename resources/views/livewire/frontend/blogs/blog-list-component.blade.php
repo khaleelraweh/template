@@ -72,12 +72,6 @@
         </div>
         <!-- Breadcrumbs End -->
 
-        <select id="timing" wire:model="sortingBy">
-            <option value="default">Default</option>
-            <option value="new">Newest</option>
-            <option value="old">Oldest</option>
-        </select>
-
         <!-- Popular Course Section Start -->
         <div
             class="rs-popular-courses style1 course-view-style orange-color rs-inner-blog white-bg pt-70 pb-70 md-pt-50 md-pb-50">
