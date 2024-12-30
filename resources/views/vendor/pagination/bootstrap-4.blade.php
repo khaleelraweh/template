@@ -5,7 +5,11 @@
             @if (!$paginator->onFirstPage())
                 <li>
                     <a href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">
-                        <i class="fa fa-long-arrow-left px-2"></i> {{ __('panel.previous') }}
+                        @if (app()->getLocale() === 'ar')
+                            <i class="fa fa-long-arrow-right px-2"></i> {{ __('panel.previous') }}
+                        @else
+                            <i class="fa fa-long-arrow-left px-2"></i> {{ __('panel.previous') }}
+                        @endif
                     </a>
                 </li>
             @endif
@@ -33,7 +37,11 @@
             @if ($paginator->hasMorePages())
                 <li>
                     <a href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">
-                        {{ __('panel.next') }} <i class="fa fa-long-arrow-right"></i>
+                        @if (app()->getLocale() === 'ar')
+                            {{ __('panel.next') }} <i class="fa fa-long-arrow-left"></i>
+                        @else
+                            {{ __('panel.next') }} <i class="fa fa-long-arrow-right"></i>
+                        @endif
                     </a>
                 </li>
             @endif
