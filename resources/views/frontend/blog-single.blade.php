@@ -19,37 +19,38 @@
             </div>
             <div class="breadcrumbs-text ">
                 <h1 class="page-title">
-                    @switch(true)
-                        @case(Route::is('frontend.blog_single'))
-                            {{ __('panel.blog_single') }}
-                        @break
+                    {{ $post->title }}
 
-                        @case(Route::is('frontend.news_single'))
-                            {{ __('panel.news_single') }}
-                        @break
-
-                        @case(Route::is('frontend.event_single'))
-                            {{ __('panel.event_single') }}
-                        @break
-
-                        @case(Route::is('frontend.blog_index'))
-                            Blog Index
-                        @break
-
-                        @case(Route::is('frontend.contact'))
-                            Contact Us
-                        @break
-
-                        @default
-                            Default Title
-                    @endswitch
                 </h1>
                 <ul>
                     <li>
                         <a class="active" href="{{ route('frontend.index') }}">{{ __('panel.main') }}</a>
                     </li>
                     <li>
-                        {{ $post->title }}
+                        @switch(true)
+                            @case(Route::is('frontend.blog_single'))
+                                {{ __('panel.blog_single') }}
+                            @break
+
+                            @case(Route::is('frontend.news_single'))
+                                {{ __('panel.news_single') }}
+                            @break
+
+                            @case(Route::is('frontend.event_single'))
+                                {{ __('panel.event_single') }}
+                            @break
+
+                            @case(Route::is('frontend.blog_index'))
+                                Blog Index
+                            @break
+
+                            @case(Route::is('frontend.contact'))
+                                Contact Us
+                            @break
+
+                            @default
+                                Default Title
+                        @endswitch
                     </li>
                 </ul>
             </div>
