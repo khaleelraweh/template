@@ -468,7 +468,7 @@ blockquote p {
 }
 .blog-btn:after {
   position: absolute;
-  content: "\f133";
+  content: "\f134";
   left: 20px;
   top: 50%;
   font-size: 15px;
