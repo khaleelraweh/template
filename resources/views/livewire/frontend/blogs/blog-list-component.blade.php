@@ -183,9 +183,16 @@
                             </ul>
                         </nav> --}}
 
+                        {{-- <div class="pagination-area orange-color text-center mt-30 md-mt-0">
+                            <ul class="pagination-part">
+                                <li class="active"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">Next <i class="fa fa-long-arrow-right"></i></a></li>
+                            </ul>
+                        </div> --}}
+
                         <div class="pagination-area orange-color text-center mt-30 md-mt-0">
                             {!! $posts->appends(request()->all())->onEachSide(3)->links('vendor.pagination.bootstrap-4') !!}
-
                         </div>
                     </div>
                 </div>
