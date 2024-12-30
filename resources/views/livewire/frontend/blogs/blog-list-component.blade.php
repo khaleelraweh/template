@@ -182,7 +182,6 @@
                             </ul>
                         </nav>
 
-
                         {{-- <div class="pagination-area orange-color text-center mt-30 md-mt-0">
                             <ul class="pagination-part">
                                 <li class="active"><a href="#">1</a></li>
