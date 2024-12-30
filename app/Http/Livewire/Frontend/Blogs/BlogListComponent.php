@@ -46,22 +46,95 @@ class BlogListComponent extends Component
         $this->searchQuery = '';
     }
 
+    // public function render()
+    // {
+
+
+    //     // Get common tags
+    //     $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
+
+    //     switch ($this->sortingBy) {
+    //         case 'new':
+    //             $sort_field = "published_on";
+    //             $sort_type = "desc"; // Corrected to descending order for newest first
+    //             break;
+
+    //         case 'old':
+    //             $sort_field = "published_on";
+    //             $sort_type = "asc"; // Ascending order for oldest first
+    //             break;
+
+    //         default:
+    //             $sort_field = "id";
+    //             $sort_type = "asc";
+    //     }
+
+
+    //     if ($this->currentRoute === 'frontend.blog_list' || $this->currentRoute === 'frontend.news_list') {
+    //         $postsQuery = Post::with('photos');
+
+    //         // Apply specific scope based on the route
+    //         if ($this->currentRoute === 'frontend.blog_list') {
+    //             $postsQuery = $postsQuery->Blog();
+    //             $total_Posts = Post::query()->Blog()->count();
+    //             $recent_posts = Post::with('photos')->Blog()->orderBy('created_at', 'DESC')->take(3)->get();
+    //         } else {
+    //             $postsQuery = $postsQuery->News();
+    //             $total_Posts = Post::query()->News()->count();
+    //             $recent_posts = Post::with('photos')->News()->orderBy('created_at', 'DESC')->take(3)->get();
+    //         }
+
+    //         // Apply search and pagination
+    //         $posts = $postsQuery
+    //             ->when($this->searchQuery, function ($query) {
+    //                 $query->where('title', 'LIKE', '%' . $this->searchQuery . '%');
+    //             })
+    //             ->active()
+    //             ->orderBy($sort_field, $sort_type)
+    //             ->paginate($this->paginationLimit);
+    //     } elseif ($this->currentRoute === 'frontend.events_list') {
+    //         // Events-specific setup
+    //         $postsQuery = Event::with('photos');
+
+    //         $posts = $postsQuery
+    //             ->when($this->searchQuery, function ($query) {
+    //                 $query->where('title', 'LIKE', '%' . $this->searchQuery . '%');
+    //             })
+    //             ->active()
+    //             ->orderBy($sort_field, $sort_type) // Add sorting here
+    //             ->paginate($this->paginationLimit);
+
+    //         $total_Posts = Event::query()->count();
+    //         $recent_posts = Event::with('photos')->orderBy('created_at', 'DESC')->take(3)->get();
+    //     } else {
+    //         abort(404); // Handle unsupported routes
+    //     }
+
+
+    //     return view(
+    //         'livewire.frontend.blogs.blog-list-component',
+    //         [
+    //             'posts'             =>  $posts,
+    //             'total_Posts'       =>  $total_Posts,
+    //             'recent_posts'      =>  $recent_posts,
+    //             'tags'              =>  $tags,
+    //         ]
+    //     );
+    // }
+
     public function render()
     {
-
-
-        // Get common tags
         $tags = Tag::query()->whereStatus(1)->where('section', 3)->get();
 
         switch ($this->sortingBy) {
             case 'new':
-                $sort_field = "published_on";
-                $sort_type = "desc"; // Corrected to descending order for newest first
+                $sort_field = "created_at";
+                $sort_type = "desc";
                 break;
 
             case 'old':
-                $sort_field = "published_on";
-                $sort_type = "asc"; // Ascending order for oldest first
+                $sort_field = "created_at";
+                $sort_type = "asc";
                 break;
 
             default:
@@ -69,11 +142,9 @@ class BlogListComponent extends Component
                 $sort_type = "asc";
         }
 
-
         if ($this->currentRoute === 'frontend.blog_list' || $this->currentRoute === 'frontend.news_list') {
             $postsQuery = Post::with('photos');
 
-            // Apply specific scope based on the route
             if ($this->currentRoute === 'frontend.blog_list') {
                 $postsQuery = $postsQuery->Blog();
                 $total_Posts = Post::query()->Blog()->count();
@@ -84,7 +155,6 @@ class BlogListComponent extends Component
                 $recent_posts = Post::with('photos')->News()->orderBy('created_at', 'DESC')->take(3)->get();
             }
 
-            // Apply search and pagination
             $posts = $postsQuery
                 ->when($this->searchQuery, function ($query) {
                     $query->where('title', 'LIKE', '%' . $this->searchQuery . '%');
@@ -93,7 +163,6 @@ class BlogListComponent extends Component
                 ->orderBy($sort_field, $sort_type)
                 ->paginate($this->paginationLimit);
         } elseif ($this->currentRoute === 'frontend.events_list') {
-            // Events-specific setup
             $postsQuery = Event::with('photos');
 
             $posts = $postsQuery
@@ -101,26 +170,23 @@ class BlogListComponent extends Component
                     $query->where('title', 'LIKE', '%' . $this->searchQuery . '%');
                 })
                 ->active()
-                ->orderBy($sort_field, $sort_type) // Add sorting here
+                ->orderBy($sort_field, $sort_type)
                 ->paginate($this->paginationLimit);
 
             $total_Posts = Event::query()->count();
             $recent_posts = Event::with('photos')->orderBy('created_at', 'DESC')->take(3)->get();
         } else {
-            abort(404); // Handle unsupported routes
+            abort(404);
         }
 
-
-        return view(
-            'livewire.frontend.blogs.blog-list-component',
-            [
-                'posts'             =>  $posts,
-                'total_Posts'       =>  $total_Posts,
-                'recent_posts'      =>  $recent_posts,
-                'tags'              =>  $tags,
-            ]
-        );
+        return view('livewire.frontend.blogs.blog-list-component', [
+            'posts' => $posts,
+            'total_Posts' => $total_Posts,
+            'recent_posts' => $recent_posts,
+            'tags' => $tags,
+        ]);
     }
+
 
     public function updatingSortingBy()
     {
