@@ -26,7 +26,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot()
     {
         //check if request is admin 
-        if (request()->is(env('APP_URL') . '/' . 'admin/*')) {
+        if (request()->is('admin/*')) {
 
             //send cache to every view under admin 
             View()->composer('*', function ($view) {
