@@ -95,7 +95,7 @@ Route::get('/download-pdf/{filename}', function ($filename) {
 //Backend
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
-    //guest to website 
+    //guest to website  
     Route::group(['middleware' => 'guest'], function () {
         Route::get('/login', [BackendController::class, 'login'])->name('login');
         Route::get('/register', [BackendController::class, 'register'])->name('register');
