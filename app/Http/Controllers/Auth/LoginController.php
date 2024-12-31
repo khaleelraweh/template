@@ -47,7 +47,7 @@ class LoginController extends Controller
     public function redirectTo()
     {
         if (auth()->user()->roles->first()->allowed_route != '') {
-            return $this->redirectTo = env('APP_URL') . auth()->user()->roles->first()->allowed_route . '/index';
+            return $this->redirectTo = env('APP_URL') . '/' . auth()->user()->roles->first()->allowed_route . '/index';
         }
     }
 }
