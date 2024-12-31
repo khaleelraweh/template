@@ -40,10 +40,12 @@ class DatabaseSeeder extends Seeder
         $this->call(PageCategorySeeder::class);
         $this->call(PageSeeder::class);
 
-        $this->call(PostSeeder::class);
-        $this->call(newsSeeder::class);
-        $this->call(AdvsSeeder::class);
-        $this->call(EventSeeder::class);
+        // $this->call(PostSeeder::class);
+        // $this->call(newsSeeder::class);
+        // $this->call(AdvsSeeder::class);
+        // $this->call(EventSeeder::class);
+
+        $this->call(TransferSeeder::class);
 
         $this->call(AlbumsSeeder::class);
         $this->call(PlaylistSeeder::class);
