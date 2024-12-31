@@ -41,9 +41,9 @@ class TransferSeeder extends Seeder
             $image = $dataNews['img'];
             $file_name = $fileName;
             $imageString = file_get_contents($dataNews['img']);
-            $image1 = file_put_contents(base_path('public/assets/posts/' . $file_name), $imageString);
+            $image1 = file_put_contents(base_path('public/assets/news/' . $file_name), $imageString);
             $file_type = Storage::mimeType(basename($imageString));
-            $file_size = filesize(base_path('public/assets/posts/' . $file_name));
+            $file_size = filesize(base_path('public/assets/news/' . $file_name));
 
             $post->photos()->create([
                 'file_name' => $file_name,
