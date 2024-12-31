@@ -18,7 +18,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $main_sliders = Slider::with('firstMedia')->orderBy('published_on', 'desc')->Active()->take(8)->get();
+        $main_sliders = Slider::with('firstMedia')->latest()->orderBy('published_on', 'desc')->Active()->take(8)->get();
 
         $posts = Post::with('photos')->where('section', 1)->orderBy('created_at', 'ASC')->take(10)->get();
         $news = Post::with('photos')->where('section', 2)->orderBy('created_at', 'ASC')->take(10)->get();
