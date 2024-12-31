@@ -50,4 +50,9 @@ class LoginController extends Controller
             return $this->redirectTo = env('APP_URL') . '/' . auth()->user()->roles->first()->allowed_route . '/index';
         }
     }
+
+    // protected function loggedOut(\Illuminate\Http\Request $request)
+    // {
+    //     return redirect('https://www.ibbuniv.edu.ye/main-web');
+    // }
 }
