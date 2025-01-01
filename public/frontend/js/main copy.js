@@ -47,76 +47,20 @@
    }
 
    // onepage nav
-//    var navclose = $('#onepage-menu');
-//    if(navclose.length){
-//        $(".nav-menu li a").on("click", function () {
-//            if ($(".showhide").is(":visible")) {
-//                $(".showhide").trigger("click");
-//            }
-//        });
+   var navclose = $('#onepage-menu');
+   if(navclose.length){
+       $(".nav-menu li a").on("click", function () {
+           if ($(".showhide").is(":visible")) {
+               $(".showhide").trigger("click");
+           }
+       });
        
-//        if ($.fn.onePageNav) {
-//            $(".nav-menu").onePageNav({
-//                currentClass: "active-menu"
-//            });
-//        }
-//    }
-
-   // waleed openpage nav
-    // OnePage Nav
-    var navclose = $("#onepage-menu");
-
-    if (navclose.length) {
-        $(".nav-menu li a").on("click", function (e) {
-            e.preventDefault();
-
-            var subMenu = $(this).next(".sub-menu");
-
-            if (subMenu.length) {
-                if (subMenu.hasClass("visible")) {
-                    subMenu.removeClass("visible");
-                } else {
-                    $(".sub-menu.visible").removeClass("visible");
-
-                    subMenu.addClass("visible");
-                }
-            }
-
-            if ($(".showhide").is(":visible")) {
-                $(".showhide").trigger("click");
-            }
-        });
-
-        if ($.fn.onePageNav) {
-            $(".nav-menu").onePageNav({
-                currentClass: "active-menu",
-            });
-        }
-    }
-
-    // تابع
-    $(".menu-item-has-children.has-children > a").on("click", function (e) {
-        e.preventDefault();
-
-        var parentLi = $(this).closest(".menu-item-has-children.has-children");
-        var subMenu = parentLi.find(".sub-menu").first();
-
-        if (subMenu.length) {
-            if (subMenu.hasClass("visible")) {
-                subMenu.removeClass("visible").slideUp(300);
-                parentLi.removeClass("active-parent");
-            } else {
-                $(".sub-menu.visible").removeClass("visible").slideUp(300);
-                $(
-                    ".menu-item-has-children.has-children.active-parent"
-                ).removeClass("active-parent");
-
-                subMenu.addClass("visible").slideDown(300);
-                parentLi.addClass("active-parent");
-            }
-        }
-    });
-    // end waleed edit
+       if ($.fn.onePageNav) {
+           $(".nav-menu").onePageNav({
+               currentClass: "active-menu"
+           });
+       }
+   }
 
    //Testimonials Slider
     var sliderfor = $('.slider-for');
@@ -248,32 +192,30 @@
     -------------------------------------*/
     $('.rs-carousel').each(function() {
         var owlCarousel = $(this),
-            loop = owlCarousel.data('loop'),
-            items = owlCarousel.data('items'),
-            margin = owlCarousel.data('margin'),
-            stagePadding = owlCarousel.data('stage-padding'),
-            autoplay = owlCarousel.data('autoplay'),
-            autoplayTimeout = owlCarousel.data('autoplay-timeout'),
-            smartSpeed = owlCarousel.data('smart-speed'),
-            dots = owlCarousel.data('dots'),
-            nav = owlCarousel.data('nav'),
-            navSpeed = owlCarousel.data('nav-speed'),
-            xsDevice = owlCarousel.data('mobile-device'),
-            xsDeviceNav = owlCarousel.data('mobile-device-nav'),
-            xsDeviceDots = owlCarousel.data('mobile-device-dots'),
-            smDevice = owlCarousel.data('ipad-device'),
-            smDeviceNav = owlCarousel.data('ipad-device-nav'),
-            smDeviceDots = owlCarousel.data('ipad-device-dots'),
-            smDevice2 = owlCarousel.data('ipad-device2'),
-            smDeviceNav2 = owlCarousel.data('ipad-device-nav2'),
-            smDeviceDots2 = owlCarousel.data('ipad-device-dots2'),
-            mdDevice = owlCarousel.data('md-device'),
-            centerMode = owlCarousel.data('center-mode'),
-            HoverPause = owlCarousel.data('hoverpause'),
-            mdDeviceNav = owlCarousel.data('md-device-nav'),
-            mdDeviceDots = owlCarousel.data('md-device-dots'),
-            rtlMode = $("body").attr("dir") === "rtl"; // Detect RTL layout
-        
+        loop = owlCarousel.data('loop'),
+        items = owlCarousel.data('items'),
+        margin = owlCarousel.data('margin'),
+        stagePadding = owlCarousel.data('stage-padding'),
+        autoplay = owlCarousel.data('autoplay'),
+        autoplayTimeout = owlCarousel.data('autoplay-timeout'),
+        smartSpeed = owlCarousel.data('smart-speed'),
+        dots = owlCarousel.data('dots'),
+        nav = owlCarousel.data('nav'),
+        navSpeed = owlCarousel.data('nav-speed'),
+        xsDevice = owlCarousel.data('mobile-device'),
+        xsDeviceNav = owlCarousel.data('mobile-device-nav'),
+        xsDeviceDots = owlCarousel.data('mobile-device-dots'),
+        smDevice = owlCarousel.data('ipad-device'),
+        smDeviceNav = owlCarousel.data('ipad-device-nav'),
+        smDeviceDots = owlCarousel.data('ipad-device-dots'),
+        smDevice2 = owlCarousel.data('ipad-device2'),
+        smDeviceNav2 = owlCarousel.data('ipad-device-nav2'),
+        smDeviceDots2 = owlCarousel.data('ipad-device-dots2'),
+        mdDevice = owlCarousel.data('md-device'),
+        centerMode = owlCarousel.data('center-mode'),
+        HoverPause = owlCarousel.data('hoverpause'),
+        mdDeviceNav = owlCarousel.data('md-device-nav'),
+        mdDeviceDots = owlCarousel.data('md-device-dots');
         owlCarousel.owlCarousel({
             loop: (loop ? true : false),
             items: (items ? items : 4),
@@ -281,6 +223,7 @@
             center: (centerMode ? true : false),
             autoplayHoverPause: (HoverPause ? true : false),
             margin: (margin ? margin : 0),
+            //stagePadding: (stagePadding ? stagePadding : 0),
             autoplay: (autoplay ? true : false),
             autoplayTimeout: (autoplayTimeout ? autoplayTimeout : 1000),
             smartSpeed: (smartSpeed ? smartSpeed : 250),
@@ -288,7 +231,6 @@
             nav: (nav ? true : false),
             navText: ["<i class='fa fa-angle-left'></i>", "<i class='fa fa-angle-right'></i>"],
             navSpeed: (navSpeed ? true : false),
-            rtl: rtlMode,  // Enable RTL mode if layout is RTL
             responsiveClass: true,
             responsive: {
                 0: {
@@ -317,7 +259,7 @@
             }
         });
     });
-    
+
     // Skill bar 
     var skillbar = $('.skillbar');
     if(skillbar.length) {
