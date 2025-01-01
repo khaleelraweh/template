@@ -101,6 +101,15 @@
     top: 9px;
 }
 
+/* Quick access Start */
+.qabg{
+    background: url(../images/bg/bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* Quick access end */
+
 /* news part  */
 .rs-blog.main-home .blog-item .blog-content .blog-meta li:last-child{
     font-size: 12px;

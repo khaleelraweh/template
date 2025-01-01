@@ -1,3 +1,16 @@
+<div class="rs-degree rs-college-institute style1 modify gray-bg pt-70 pb-70 md-pt-70 md-pb-70 qabg">
+    <div class="container">
+        <div class="row y-middle">
+            <div class="col-lg-10 col-md-12 mb-30">
+                item 1
+            </div>
+            <div class="col-lg-2 col-md-12 mb-30">
+                item2
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="image-main">
     <div class="container mt-5 serv">
         <div class="sec-title mb-60 md-mb-30 text-left">

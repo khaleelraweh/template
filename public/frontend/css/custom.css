@@ -85,6 +85,15 @@
     width: 100%;
 }
 
+/* Quick access Start */
+.qabg{
+    background: url(../images/bg/bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* Quick access end */
+
 /* news part  */
 .header-news{
     position: relative;
