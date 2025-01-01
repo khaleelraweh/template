@@ -34,15 +34,10 @@
 
                 <div class="col-lg-6">
                     <div class="sec-title mb-40 md-mb-20 text-left">
-                        <h2 class="title mb-0 header-news">كلمة نائب الرئيس للشؤون الطلبة</h2>
+                        <h2 class="title mb-0 header-news"> {!! $president_speech->title ?? '' !!} </h2>
                     </div>
                     <div class="sec-title mb-26 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-                        التابع لـ (عدم تجانس التطور المظهري) مركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور
-                        المظهري)مركز بيولوجيا أنظمة السرطان التابعمركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس
-                        التطور المظهري)مركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور المظهري) مركز
-                        بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور المظهري)مركز بيولوجيا أنظمة السرطان
-                        التابع مركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور المظهري)مركز بيولوجيا أنظمة
-                        السرطان السرطان الت
+                        {!! $president_speech->content ?? '' !!}
                     </div>
                     <div class="btn-part wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
                         <a class="readon2" href="#">إنتقل الى باقي الكلمة</a>
