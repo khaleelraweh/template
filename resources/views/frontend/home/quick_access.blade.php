@@ -5,8 +5,8 @@
         </div>
         <div class="row">
             @foreach ($main_sliders->where('section', 2)->take(3) as $adv_slider)
-                <div class="col-6  col-md-4 col-lg-4 col-xl-2 mb-4">
-                    <div class="qa-content p-3">
+                <div class="col-6  col-md-4 col-lg-4 col-xl-2 mb-4 d-flex justify-content-stretch align-items-stretch">
+                    <div class="qa-content p-3 flex-fill">
                         @php
                             if ($adv_slider->firstMedia != null && $adv_slider->firstMedia->file_name != null) {
                                 $advertisor_slider_img = asset(
@@ -18,11 +18,9 @@
                                         public_path('assets/advertisor_sliders/' . $adv_slider->firstMedia->file_name),
                                     )
                                 ) {
-                                    // $advertisor_slider_img = asset('image/not_found/placeholder.jpg');
                                     $advertisor_slider_img = asset('frontend/images/quick_access/icon/1.png');
                                 }
                             } else {
-                                // $advertisor_slider_img = asset('image/not_found/placeholder.jpg');
                                 $advertisor_slider_img = asset('frontend/images/quick_access/icon/1.png');
                             }
                         @endphp
