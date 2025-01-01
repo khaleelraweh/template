@@ -1,7 +1,7 @@
 <div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-100 md-pt-70 md-pb-70 qabg">
     <div class="container">
         <div class="sec-title mb-60 md-mb-30 text-left">
-            <h2 class="title-1 mb-0 qa-title-line text-white">الوصول السريع</h2>
+            <h2 class="title-1 mb-0 qa-title-line text-white">{{ __('panel.quick_access') }}</h2>
         </div>
         <div class="row y-middle">
             <div class="col-lg-10 col-md-12 mb-30">

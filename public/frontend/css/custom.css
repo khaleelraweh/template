@@ -87,10 +87,23 @@
 
 /* Quick access Start */
 .qabg{
-    background: url(../images/bg/bg2.jpg);
+    background: url(../images/quick_access/qabg.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.qa-title-line{
+    position: relative;
+}
+
+.qa-title-line::after{
+    content: '';
+    width: 6.2em;
+    height: 5px;
+    background-color: #A2A2B2;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
 }
 /* Quick access end */
 
