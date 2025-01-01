@@ -357,7 +357,7 @@ h4{
 
 .header-album{
     position: relative;
-    font-size: 33px;
+    font-size: 1.5em;
 }
 
 .header-album::after{
@@ -371,7 +371,7 @@ h4{
     right: -12px;
 }
 .header-album-subtitle{
-    font-size: 22px;
+    font-size: 1em;
     margin-top: 1.5em;
 }
 
