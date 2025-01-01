@@ -3,12 +3,9 @@
         <div class="sec-title mb-60 md-mb-30 text-left">
             <h2 class="title-1 mb-0 qa-title-line text-white">{{ __('panel.quick_access') }}</h2>
         </div>
-        <div class="row y-middle">
-            <div class="col-lg-10 col-md-12 mb-30">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 md-mb-30 lg-mb-70">
                 item 1
-            </div>
-            <div class="col-lg-2 col-md-12 mb-30">
-                item2
             </div>
         </div>
     </div>
