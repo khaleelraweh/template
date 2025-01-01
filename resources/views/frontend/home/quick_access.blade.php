@@ -4,8 +4,36 @@
             <h2 class="title-1 mb-0 qa-title-line text-white">{{ __('panel.quick_access') }}</h2>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 md-mb-30 lg-mb-70">
-                item 1
+            <div class="col-sm-6 col-md-4 col-lg-2">
+
+                <img src="{{ asset('frontend/images/quick_access/icon/1.png') }}" class="d-block my-0 mb-4 mx-auto"
+                    alt="Icon">
+                <h5 class="text-white text-center">محاضرات الأقسام</h5>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <img src="{{ asset('frontend/images/quick_access/icon/1.png') }}" class="d-block my-0 mb-4 mx-auto"
+                    alt="Icon">
+                <h5 class="text-white text-center">محاضرات الأقسام</h5>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <img src="{{ asset('frontend/images/quick_access/icon/1.png') }}" class="d-block my-0 mb-4 mx-auto"
+                    alt="Icon">
+                <h5 class="text-white text-center">محاضرات الأقسام</h5>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <img src="{{ asset('frontend/images/quick_access/icon/1.png') }}" class="d-block my-0 mb-4 mx-auto"
+                    alt="Icon">
+                <h5 class="text-white text-center">محاضرات الأقسام</h5>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <img src="{{ asset('frontend/images/quick_access/icon/1.png') }}" class="d-block my-0 mb-4 mx-auto"
+                    alt="Icon">
+                <h5 class="text-white text-center">محاضرات الأقسام</h5>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-2">
+                <img src="{{ asset('frontend/images/quick_access/icon/1.png') }}" class="d-block my-0 mb-4 mx-auto"
+                    alt="Icon">
+                <h5 class="text-white text-center">محاضرات الأقسام</h5>
             </div>
         </div>
     </div>
@@ -47,7 +75,8 @@
 
                 <div class="col pp">
                     <div class="card-1">
-                        <img src="{{ asset('frontend/images/waleed/Vector.png') }}" class="card-img-top" alt="Icon">
+                        <img src="{{ asset('frontend/images/waleed/Vector.png') }}" class="card-img-top"
+                            alt="Icon">
                         <div class="card-body">
                             <h5 class="card-title-1">محاضرات الأقسام</h5>
                         </div>
@@ -56,7 +85,8 @@
 
                 <div class="col pp">
                     <div class="card-1">
-                        <img src="{{ asset('frontend/images/waleed/Vector.png') }}" class="card-img-top" alt="Icon">
+                        <img src="{{ asset('frontend/images/waleed/Vector.png') }}" class="card-img-top"
+                            alt="Icon">
                         <div class="card-body">
                             <h5 class="card-title-1">محاضرات الأقسام</h5>
                         </div>
