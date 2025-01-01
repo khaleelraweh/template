@@ -3,6 +3,8 @@
 @section('content')
     @include('frontend.home.main-slider')
 
+    @include('frontend.home.quick_access')
+
     @include('frontend.home.news-events')
 
     @include('frontend.home.academic-programs')
