@@ -92,7 +92,7 @@
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                        data-copy-text="https://ibbuniv.era-t.com/playlists/{{ $playlist->slug }}"
+                                        data-copy-text="{{ config('app.url') }}/playlists/{{ $playlist->slug }}"
                                         title="Copy the link">
                                         <i class="far fa-copy"></i>
                                     </a>
@@ -144,7 +144,7 @@
 
                                             <a href="javascript:void(0);"
                                                 class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                data-copy-text="https://ibbuniv.era-t.com/playlists/{{ $playlist->slug }}"
+                                                data-copy-text="{{ config('app.url') }}/playlists/{{ $playlist->slug }}"
                                                 data-id="{{ $playlist->id }}" title="Copy the link">
                                                 <i data-feather="copy" class="icon-sm me-2"></i>
                                                 <span class="">{{ __('panel.operation_copy_link') }}</span>

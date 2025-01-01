@@ -129,7 +129,7 @@
 
                                                 <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                    data-copy-text="https://ibbuniv.era-t.com/academic_program_menus/{{ $academic_program_menu->slug }}"
+                                                    data-copy-text="{{ config('app.url') }}/academic_program_menus/{{ $academic_program_menu->slug }}"
                                                     data-id="{{ $academic_program_menu->id }}" title="Copy the link">
                                                     <i data-feather="copy" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_copy_link') }}</span>

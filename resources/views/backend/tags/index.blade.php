@@ -125,7 +125,7 @@
 
                                                 <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                    data-copy-text="https://ibbuniv.era-t.com/tags/{{ $tag->slug }}"
+                                                    data-copy-text="{{ config('app.url') }}/tags/{{ $tag->slug }}"
                                                     data-id="{{ $tag->id }}" title="Copy the link">
                                                     <i data-feather="copy" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_copy_link') }}</span>

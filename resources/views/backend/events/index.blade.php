@@ -102,7 +102,7 @@
                                         </a>
 
                                         <a href="javascript:void(0);" class="btn btn-success copyButton"
-                                            data-copy-text="https://ibbuniv.era-t.com/blog-single/{{ $event->slug }}"
+                                            data-copy-text="{{ config('app.url') }}/blog-single/{{ $event->slug }}"
                                             title="Copy the link">
                                             <i class="far fa-copy"></i>
                                         </a>

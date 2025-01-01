@@ -119,7 +119,7 @@
 
                                                 <a href="javascript:void(0);"
                                                     class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                    data-copy-text="https://ibbuniv.era-t.com/common_question_videos/{{ $common_question_video->slug }}"
+                                                    data-copy-text="{{ config('app.url') }}/common_question_videos/{{ $common_question_video->slug }}"
                                                     data-id="{{ $common_question_video->id }}" title="Copy the link">
                                                     <i data-feather="copy" class="icon-sm me-2"></i>
                                                     <span class="">{{ __('panel.operation_copy_link') }}</span>

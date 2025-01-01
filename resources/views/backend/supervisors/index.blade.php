@@ -158,7 +158,7 @@
 
                                             <a href="javascript:void(0);"
                                                 class="dropdown-item d-flex align-items-center btn btn-success copyButton"
-                                                data-copy-text="https://ibbuniv.era-t.com/supervisor-single/{{ $supervisor->slug }}"
+                                                data-copy-text="{{ config('app.url') }}/supervisor-single/{{ $supervisor->slug }}"
                                                 data-id="{{ $supervisor->id }}" title="Copy the link">
                                                 <i data-feather="copy" class="icon-sm me-2"></i>
                                                 <span class="">{{ __('panel.operation_copy_link') }}</span>
