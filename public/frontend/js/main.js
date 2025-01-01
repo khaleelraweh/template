@@ -47,52 +47,20 @@
    }
 
    // onepage nav
-//    var navclose = $('#onepage-menu');
-//    if(navclose.length){
-//        $(".nav-menu li a").on("click", function () {
-//            if ($(".showhide").is(":visible")) {
-//                $(".showhide").trigger("click");
-//            }
-//        });
+   var navclose = $('#onepage-menu');
+   if(navclose.length){
+       $(".nav-menu li a").on("click", function () {
+           if ($(".showhide").is(":visible")) {
+               $(".showhide").trigger("click");
+           }
+       });
        
-//        if ($.fn.onePageNav) {
-//            $(".nav-menu").onePageNav({
-//                currentClass: "active-menu"
-//            });
-//        }
-//    }
-
-// waleed openpage nav
-    // OnePage Nav
-    var navclose = $("#onepage-menu");
-
-    if (navclose.length) {
-        $(".nav-menu li a").on("click", function (e) {
-            e.preventDefault();
-
-            var subMenu = $(this).next(".sub-menu");
-
-            if (subMenu.length) {
-                if (subMenu.hasClass("visible")) {
-                    subMenu.removeClass("visible");
-                } else {
-                    $(".sub-menu.visible").removeClass("visible");
-
-                    subMenu.addClass("visible");
-                }
-            }
-
-            if ($(".showhide").is(":visible")) {
-                $(".showhide").trigger("click");
-            }
-        });
-
-        if ($.fn.onePageNav) {
-            $(".nav-menu").onePageNav({
-                currentClass: "active-menu",
-            });
-        }
-    }
+       if ($.fn.onePageNav) {
+           $(".nav-menu").onePageNav({
+               currentClass: "active-menu"
+           });
+       }
+   }
 
    //Testimonials Slider
     var sliderfor = $('.slider-for');

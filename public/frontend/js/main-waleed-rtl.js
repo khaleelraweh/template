@@ -47,20 +47,76 @@
    }
 
    // onepage nav
-   var navclose = $('#onepage-menu');
-   if(navclose.length){
-       $(".nav-menu li a").on("click", function () {
-           if ($(".showhide").is(":visible")) {
-               $(".showhide").trigger("click");
-           }
-       });
+//    var navclose = $('#onepage-menu');
+//    if(navclose.length){
+//        $(".nav-menu li a").on("click", function () {
+//            if ($(".showhide").is(":visible")) {
+//                $(".showhide").trigger("click");
+//            }
+//        });
        
-       if ($.fn.onePageNav) {
-           $(".nav-menu").onePageNav({
-               currentClass: "active-menu"
-           });
-       }
-   }
+//        if ($.fn.onePageNav) {
+//            $(".nav-menu").onePageNav({
+//                currentClass: "active-menu"
+//            });
+//        }
+//    }
+
+   // waleed openpage nav
+    // OnePage Nav
+    var navclose = $("#onepage-menu");
+
+    if (navclose.length) {
+        $(".nav-menu li a").on("click", function (e) {
+            e.preventDefault();
+
+            var subMenu = $(this).next(".sub-menu");
+
+            if (subMenu.length) {
+                if (subMenu.hasClass("visible")) {
+                    subMenu.removeClass("visible");
+                } else {
+                    $(".sub-menu.visible").removeClass("visible");
+
+                    subMenu.addClass("visible");
+                }
+            }
+
+            if ($(".showhide").is(":visible")) {
+                $(".showhide").trigger("click");
+            }
+        });
+
+        if ($.fn.onePageNav) {
+            $(".nav-menu").onePageNav({
+                currentClass: "active-menu",
+            });
+        }
+    }
+
+    // تابع
+    $(".menu-item-has-children.has-children > a").on("click", function (e) {
+        e.preventDefault();
+
+        var parentLi = $(this).closest(".menu-item-has-children.has-children");
+        var subMenu = parentLi.find(".sub-menu").first();
+
+        if (subMenu.length) {
+            if (subMenu.hasClass("visible")) {
+                subMenu.removeClass("visible").slideUp(300);
+                parentLi.removeClass("active-parent");
+            } else {
+                $(".sub-menu.visible").removeClass("visible").slideUp(300);
+                $(
+                    ".menu-item-has-children.has-children.active-parent"
+                ).removeClass("active-parent");
+
+                subMenu.addClass("visible").slideDown(300);
+                parentLi.addClass("active-parent");
+            }
+        }
+    });
+    // end waleed edit
 
    //Testimonials Slider
     var sliderfor = $('.slider-for');
