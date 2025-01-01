@@ -643,5 +643,6 @@ body {
 .full-width-header.header-style2 .rs-header .menu-area.sticky .main-menu .rs-menu ul.nav-menu > li.active,
 .full-width-header.header-style2 .rs-header .menu-area.sticky .main-menu .rs-menu ul.nav-menu > li.current-menu-item > a
 {
-    color: #21a7d0  !important;
+    /* color: #21a7d0  !important; */
+    color: #ffffffbf  !important;
 }
