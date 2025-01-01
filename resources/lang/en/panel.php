@@ -751,6 +751,22 @@ return [
 
     ##############################################################
 
+    // =============  Manage quick access   ===============//
+    'manage_quick_access'               => 'Manage Quick Access',
+
+    // ---------------  Quick Access   --------------//
+    'show_quick_access'                 => 'Quick Access',
+    'add_new_quick_access'              => 'Add New Quick Access',
+    'edit_existing_quick_access'        => 'Edit Existing Quick Access ',
+
+
+    // ........... commons in Quck Access   ....... //
+    'quick_access'                      => 'Quick Access',
+
+
+
+    ##############################################################
+
     // =============  Manage News   ===============//
     'manage_news'                      => 'Manage News',
 
