@@ -259,6 +259,8 @@ h4{
 .rs-counter .counter-item .rs-count{
     padding-right: 0;
     padding-left: 0;
+    font-size: 2.75em;
+    font-weight: 400;
 }
 .lg-mb-70{
     margin-bottom: 70px;
@@ -266,6 +268,8 @@ h4{
 .rs-counter .counter-item .title ,
 .rs-counter.style2-about .counter-item .title{
     color: #248874;
+    font-size: 1.25em;
+    font-weight: 400;
 }
 
 /* playlist */
