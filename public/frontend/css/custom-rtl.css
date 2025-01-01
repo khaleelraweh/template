@@ -108,6 +108,20 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+/* playlist */
+.qa-title-line{
+    position: relative;
+}
+
+.qa-title-line::after{
+    content: '';
+    width: 6.9em;
+    height: 5px;
+    background-color: #A2A2B2;
+    position: absolute;
+    bottom: -12px;
+    right: 0;
+}
 /* Quick access end */
 
 /* news part  */
