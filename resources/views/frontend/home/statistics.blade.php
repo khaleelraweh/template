@@ -31,7 +31,7 @@
                                 <img src="{{ $statistic_img }}" alt="" class="image">
 
                             </div>
-                            <div class="statistic-content">
+                            <div class="statistic-content text-center">
                                 <h2 class="rs-count">{{ $statistic->statistic_number }}</h2>
                                 <h4 class="title mb-0 ">{{ $statistic->title }}</h4>
                             </div>

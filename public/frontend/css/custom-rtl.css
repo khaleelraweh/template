@@ -2,7 +2,18 @@
 /*Start Global */ 
 body {
     font-family: 'cairo-regular', sans-serif;
-} 
+}
+h2{
+    font-size:1.75em;
+    font-weight: 400;
+}
+h4{
+    font-size: 1.25em;
+    font-weight: 500;
+}
+.title a{
+    font-size: 1.25em;
+}
 /*End Global */ 
 
 /* Strat header  */
