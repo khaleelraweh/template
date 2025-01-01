@@ -679,3 +679,82 @@ h4{
 .full-width-header.header-style2 .rs-header .menu-area .rs-menu-area .main-menu .rs-menu ul.sub-menu{
     background: white;
 }
+
+
+/* waleed Ameed */
+.rs-about.style1 .img-part .top-center {
+    top: -30px;
+    right: 72%;
+    z-index: -1;
+}
+.readon2:hover {
+    background: #fff;
+    color: #000;
+    border: 2px solid #248874;
+    border-radius: 5px;
+}
+.ameed {
+    padding-top: 40px;
+}
+@media (max-width: 992px) {
+    .rs-about.style1 .img-part .top-center {
+        top: -30px;
+        right: 55% !important;
+        z-index: -1;
+    }
+    .rs-about .ima {
+        max-width: 100%;
+        height: auto;
+        margin-right: 63px;
+    }
+}
+@media (max-width: 768px) {
+    .rs-about.style1 .img-part .top-center {
+        top: -30px;
+        right: 67% !important;
+        z-index: -1;
+    }
+    .rs-about .ima {
+        max-width: 100%;
+        height: auto;
+        margin-right: 63px;
+    }
+}
+.rs-cta.main-home .partition-bg-wrap:after {
+    background: url(../images/waleed/Rectangle\ 93.png);
+    background-color: #248874;
+    background-repeat: no-repeat;
+    background-position: top;
+    left: 0;
+}
+.rs-cta.main-home .padin {
+    padding: 0;
+}
+.rs-cta.main-home .partition-bg-wrap:before {
+    background: #bcc5d6;
+
+    right: 0;
+}
+.sec-title3 .desc.white-color {
+    color: #777777 !important;
+}
+.rs-cta.main-home .partition-bg-wrap {
+    padding: 40px 0;
+}
+
+.header-news {
+    position: relative;
+    display: inline-block;
+}
+.header-news::after {
+    height: 2px !important;
+    content: "";
+    width: 100% !important;
+    height: 5px;
+    background-color: #a2a2b2;
+    position: absolute;
+    bottom: -12px;
+    left: 0;
+}
+
+/* end ammed  */

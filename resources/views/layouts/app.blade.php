@@ -145,6 +145,18 @@
     {{-- <script src="{{ asset('frontend/js/main.js') }}"></script> --}}
     <script src="{{ asset('frontend/js/main' . $rtl . '.js') }}"></script>
 
+    {{-- tilt image  --}}
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.0/dist/vanilla-tilt.min.js"></script>
+
+    <script>
+        VanillaTilt.init(document.querySelectorAll('.img-part.js-tilt'), {
+            max: 25, // أقصى زاوية للدوران
+            speed: 400, // سرعة التأثير
+            glare: true, // تمكين تأثير اللمعان
+            "max-glare": 0.5 // أقصى تأثير لللمعان
+        });
+    </script>
+
 
     @livewireScripts
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

@@ -1,22 +1,34 @@
-<div class="rs-cta main-home d-none">
-    <div class="partition-bg-wrap">
-        <div class="container">
-            <div class="row">
-                <div class="offset-lg-6"></div>
-                <div class="col-lg-6 pl-70 md-pl-15">
-                    <div class="sec-title3 mb-40">
-                        <h2 class="title white-color mb-16">20% Offer Running - Join Today</h2>
-                        <div class="desc white-color pr-100 md-pr-0">We denounce with righteous indignation and
-                            dislike men who are so beguiled and demoralized by the charms of pleasure of your
-                            moment, so blinded by desire those who fail in their duty through weakness. These
-                            cases are perfectly simple and easy every pleasure is to be welcomed and every pain
-                            avoided.</div>
-                    </div>
-                    <div class="btn-part">
-                        <a class="readon orange-btn transparent" href="#">Register Now</a>
-                    </div>
+<!-- waleed -->
+<div id="rs-about" class="rs-about style1 pt-100 pb-100 md-pt-70 md-pb-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 pl-110 order-last md-pl-15 md-mb-60">
+                <div class="img-part js-tilt">
+                    <img class="ima" src="{{ asset('frontend/images/president_speech/president_img.png') }}"
+                        alt="">
+                    <img class="shape top-center animated rotate infinite"
+                        src="{{ asset('frontend/images/president_speech/image-center-circle.png') }}"
+                        alt="Cirle Shape Img">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="sec-title mb-40 md-mb-20 text-left">
+                    <h2 class="title mb-0 header-news">كلمة نائب الرئيس للشؤون الطلبة</h2>
+                </div>
+                <div class="sec-title mb-26 wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
+                    التابع لـ (عدم تجانس التطور المظهري) مركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور
+                    المظهري)مركز بيولوجيا أنظمة السرطان التابعمركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس
+                    التطور المظهري)مركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور المظهري) مركز
+                    بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور المظهري)مركز بيولوجيا أنظمة السرطان
+                    التابع مركز بيولوجيا أنظمة السرطان التابع لـ (عدم تجانس التطور المظهري)مركز بيولوجيا أنظمة
+                    السرطان السرطان الت
+                </div>
+                <div class="btn-part wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
+                    <a class="readon2" href="#">إنتقل الى باقي الكلمة</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- .......... -->
