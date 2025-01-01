@@ -398,6 +398,7 @@ return [
     'edit_existing_president_speech'                    => 'Edit Existing President Speech',
 
     // ........... commons in President Speeches  ....... //
+    'move_to_the_rest_of_the_speech'                      =>  'Move to the rest of the Speech',
 
 
 

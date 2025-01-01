@@ -40,7 +40,7 @@
                         {!! $president_speech->content ?? '' !!}
                     </div>
                     <div class="btn-part wow fadeInUp" data-wow-delay="300ms" data-wow-duration="2000ms">
-                        <a class="readon2" href="#">إنتقل الى باقي الكلمة</a>
+                        <a class="readon2" href="#">{{ __('panel.move_to_the_rest_of_the_speech') }}</a>
                     </div>
                 </div>
             </div>
