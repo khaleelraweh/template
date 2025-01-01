@@ -1,4 +1,4 @@
-<div class="rs-degree rs-college-institute style1 modify gray-bg pt-70 pb-70 md-pt-70 md-pb-70 qabg">
+<div class="rs-degree rs-college-institute style1 modify gray-bg pt-100 pb-100 md-pt-70 md-pb-70 qabg">
     <div class="container">
         <div class="row y-middle">
             <div class="col-lg-10 col-md-12 mb-30">
