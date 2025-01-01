@@ -121,6 +121,11 @@
     bottom: -12px;
     right: 0;
 }
+.qa-content{
+    border-radius: 10px;
+    transition: all 0.3s;
+    background-color: #00856a;
+}
 /* Quick access end */
 
 /* news part  */
