@@ -17,8 +17,7 @@
 
     @include('frontend.home.albums')
 
-    {{-- d-none --}}
-    @include('frontend.home.president_speech')
+
 
     {{-- d-none --}}
     @include('frontend.home.common_questions')
