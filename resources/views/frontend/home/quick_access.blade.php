@@ -19,11 +19,11 @@
                                     )
                                 ) {
                                     // $advertisor_slider_img = asset('image/not_found/placeholder.jpg');
-                                    $advertisor_slider_img = asset('frontend/images/features/icon/3.png');
+                                    $advertisor_slider_img = asset('frontend/images/quick_access/icon/1.png');
                                 }
                             } else {
                                 // $advertisor_slider_img = asset('image/not_found/placeholder.jpg');
-                                $advertisor_slider_img = asset('frontend/images/features/icon/3.png');
+                                $advertisor_slider_img = asset('frontend/images/quick_access/icon/1.png');
                             }
                         @endphp
                         <img style="width: 5.06em;height:5.43em" src="{{ $advertisor_slider_img }}"
