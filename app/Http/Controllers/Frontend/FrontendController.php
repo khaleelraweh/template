@@ -9,6 +9,7 @@ use App\Models\Event;
 use App\Models\Page;
 use App\Models\Playlist;
 use App\Models\Post;
+use App\Models\PresidentSpeech;
 use App\Models\Slider;
 use App\Models\Statistic;
 use Illuminate\Http\Request;
@@ -28,9 +29,10 @@ class FrontendController extends Controller
         $statistics = Statistic::Active()->orderBy('created_at', 'ASC')->take(10)->get();
         $playlists = Playlist::Active()->orderBy('created_at', 'ASC')->take(10)->get();
         $albums = Album::Active()->orderBy('created_at', 'ASC')->take(10)->get();
+        $president_speech = PresidentSpeech::get()->first();
 
         // $statistics = Statistic::Active()->orderBy('created_at', 'ASC')->get();
-        return view('frontend.index', compact('main_sliders',  'posts', 'news', 'Advertisements', 'events', 'statistics', 'playlists', 'albums'));
+        return view('frontend.index', compact('main_sliders',  'posts', 'president_speech', 'news', 'Advertisements', 'events', 'statistics', 'playlists', 'albums'));
     }
 
 
