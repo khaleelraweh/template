@@ -1,9 +1,12 @@
+
 .main-color{
     color: #248874;
 }
 .main-bg{
     background-color: #248874;
 }
+
+
 
 
 
@@ -105,6 +108,12 @@
     bottom: -12px;
     left: 0;
 }
+.qa-content{
+    border-radius: 10px;
+    transition: all 0.3s;
+    background-color: #00856a;
+}
+
 /* Quick access end */
 
 /* news part  */

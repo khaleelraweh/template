@@ -1,3 +1,18 @@
+
+/*Start Global */ 
+body {
+    font-family: 'cairo-regular', sans-serif;
+} 
+/*End Global */ 
+
+/* Strat header  */
+.rs-header .menu-area .main-menu .rs-menu ul.nav-menu li a{
+    font-family: 'cairo-regular', sans-serif;
+}
+
+/* end header  */
+
+
 .main-color{
     color: #248874;
 }
