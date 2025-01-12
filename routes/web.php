@@ -48,6 +48,7 @@ Route::get('/',         [FrontendController::class, 'index'])->name('frontend.in
 Route::get('/index',    [FrontendController::class, 'index'])->name('frontend.index');
 
 Route::get('/pages/{slug}', [FrontendController::class, 'pages'])->name('frontend.pages');
+Route::get('/category/{slug}', [FrontendController::class, 'categories'])->name('frontend.pages');
 
 // Route::get('/blog-list/{blog?}', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
 Route::get('/blog', [FrontendController::class, 'blog_list'])->name('frontend.blog_list');
@@ -67,11 +68,10 @@ Route::get('/news/{blog?}', [FrontendController::class, 'blog_single'])->name('f
 // Route::get('/event-single/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.event_single'); //section 3
 Route::get('/events/{blog?}', [FrontendController::class, 'blog_single'])->name('frontend.event_single'); //section 3
 
-Route::get('/album-list', [FrontendController::class, 'album_list'])->name('frontend.album_list');
-Route::get('/album-single/{album?}', [FrontendController::class, 'album_single'])->name('frontend.album_single');
+Route::get('/albums', [FrontendController::class, 'album_list'])->name('frontend.album_list');
+Route::get('/album/{album?}', [FrontendController::class, 'album_single'])->name('frontend.album_single');
 
 // Route::get('/album', [FrontendController::class, 'album'])->name('frontend.album');
-
 
 Route::get('/change-language/{locale}',     [LocaleController::class, 'switch'])->name('change.language');
 
@@ -285,4 +285,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         // ==============   Theme Icon To Style Website Ready ==============  //
         Route::post('/cookie/create/update', [BackendController::class, 'create_update_theme'])->name('create_update_theme');
     });
+});
+Route::get('page',function(){
+    return view('frontend.page');
+});
+
+Route::get('page-details',function(){
+    return view('frontend.page-details');
 });

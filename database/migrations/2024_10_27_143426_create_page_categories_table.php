@@ -27,7 +27,7 @@ return new class extends Migration
 
             // will be use always
             $table->boolean('status')->nullable()->default(true);
-            $table->dateTime('published_on')->nullable();
+            $table->timestamp('published_on')->nullable()->useCurrent();;
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->string('deleted_by')->nullable();

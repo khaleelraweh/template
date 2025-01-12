@@ -11,40 +11,32 @@
                         </h2>
                     </div>
 
-                    <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30"
-                        data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800"
-                        data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false"
-                        data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false"
-                        data-ipad-device="1" data-ipad-device-nav="false" data-ipad-device-dots="false"
-                        data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
-                        data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
+                    <div class="rs-carousel owl-carousel" data-loop="true" data-items="2" data-margin="30" data-autoplay="true" data-hoverpause="true" data-autoplay-timeout="5000" data-smart-speed="800" data-dots="false" data-nav="false" data-nav-speed="false" data-center-mode="false" data-mobile-device="1" data-mobile-device-nav="false" data-mobile-device-dots="false" data-ipad-device="2" data-ipad-device-nav="false" data-ipad-device-dots="false" data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false" data-md-device="2" data-md-device-nav="false" data-md-device-dots="false">
                         @foreach ($news as $news)
                             <div class="blog-item">
-                                <div class="image-part">
-                                    @php
-                                        if (
-                                            $news->photos->first() != null &&
-                                            $news->photos->first()->file_name != null
-                                        ) {
-                                            $news_img = asset('assets/news/' . $news->photos->first()->file_name);
+                                @php
+                                    if (
+                                        $news->photos->first() != null &&
+                                        $news->photos->first()->file_name != null
+                                    ) {
+                                        $news_img = asset('assets/news/' . $news->photos->first()->file_name);
 
-                                            if (
-                                                !file_exists(
-                                                    public_path('assets/news/' . $news->photos->first()->file_name),
-                                                )
-                                            ) {
-                                                $news_img = asset('image/not_found/placeholder.jpg');
-                                            }
-                                        } else {
+                                        if (
+                                            !file_exists(
+                                                public_path('assets/news/' . $news->photos->first()->file_name),
+                                            )
+                                        ) {
                                             $news_img = asset('image/not_found/placeholder.jpg');
                                         }
-                                    @endphp
+                                    } else {
+                                        $news_img = asset('image/not_found/placeholder.jpg');
+                                    }
+                                @endphp
+                                <div class="image-part">
                                     <img src="{{ $news_img }}" alt="">
                                 </div>
                                 <div class="blog-content">
-
                                     <ul class="blog-meta">
-                                        {{-- <li><i class="fa fa-user-o"></i> {{ $news->created_by }}</li> --}}
                                         <li>
                                             <?php
                                             $date = $news->created_at;
@@ -56,33 +48,21 @@
                                             {{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
 
                                         </li>
-
                                     </ul>
-
-                                    <h3 class="title">
-                                        <a href="{{ route('frontend.news_single', $news->slug) }}">
-
-                                            {!! \Illuminate\Support\Str::words($news->title, 8, '...') !!}
-
-                                        </a>
-                                    </h3>
-
+                                    <a href="{{ route('frontend.news_single', $news->slug) }}">
+                                        {!! \Illuminate\Support\Str::words($news->title, 8, '...') !!}
+                                    </a>
                                     <div class="desc">
-                                        {!! \Illuminate\Support\Str::words($news->content, 10, '...') !!}
+                                        {{ \Illuminate\Support\Str::words(strip_tags(htmlspecialchars_decode($news->content)), 10, '...') }}
                                     </div>
                                     <div class="btn-btm">
-                                        <div class="cat-list">
-                                            {{-- <ul class="post-categories">
-                                                <li><a href="#">{{ $news->created_by }}</a></li>
-                                            </ul> --}}
-                                        </div>
+                                        
                                         <div class="rs-view-btn">
-                                            <a
-                                                href="{{ route('frontend.news_single', $news->slug) }}">{{ __('panel.read_more') }}</a>
+                                            <a href="#">Read More</a>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> 
                         @endforeach
                     </div>
                 </div>

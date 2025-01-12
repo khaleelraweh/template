@@ -413,7 +413,7 @@ return [
     'edit_existing_president_speech'                    => 'تعديل كلمة الرئيس',
 
     // ........... commons in President Speeches  ....... //
-    'move_to_the_rest_of_the_speech'                      =>  'إنتقل الى باقي الكلمة',
+    'move_to_the_rest_of_the_speech'                      =>  'تصفح المزيد',
 
 
 

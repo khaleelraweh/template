@@ -5,7 +5,8 @@
 
     @include('frontend.home.quick_access')
 
-    @include('frontend.home.president_speech')
+    {{-- @include('frontend.home.president_speech') --}}
+    @include('frontend.home.president_speech1')
 
     @include('frontend.home.news-events')
 

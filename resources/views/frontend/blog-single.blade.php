@@ -13,7 +13,7 @@
 
                 <img src="{{ $siteSettings['site_img']->value && file_exists($imagePath)
                     ? asset('assets/site_settings/' . $siteSettings['site_img']->value)
-                    : asset('image/not_found/placeholder2.jpg') }}"
+                    : asset('image/not_found/placeholder6.jpg') }}"
                     alt="{{ $siteSettings['site_name']->value }}">
 
             </div>
@@ -67,20 +67,20 @@
                             <div class="recent-posts-widget mb-50">
 
                                 @switch(true)
-                                    @case($currentRoute === 'frontend.blog_list')
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
+                                    @case($currentRoute === 'frontend.blog_single')
+                                        <h3 class="widget-title">{{ __('panel.recent_posts') }}</h3>
                                     @break
 
-                                    @case($currentRoute === 'frontend.news_list')
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_news') }}</h3>
+                                    @case($currentRoute === 'frontend.news_single')
+                                        <h3 class="widget-title">{{ __('panel.recent_news') }}</h3>
                                     @break
 
-                                    @case($currentRoute === 'frontend.events_list')
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_events') }}</h3>
+                                    @case($currentRoute === 'frontend.events_single')
+                                        <h3 class="widget-title">{{ __('panel.recent_events') }}</h3>
                                     @break
 
                                     @default
-                                        <h3 class="widget-title recent_post_title">{{ __('panel.recent_posts') }}</h3>
+                                        <h3 class="widget-title">{{ __('panel.recent_posts') }}</h3>
                                 @endswitch
 
 
@@ -93,7 +93,7 @@
                                                 $recent_post_img = $recentDefaultImg; // Set a default image
 
                                                 switch (true) {
-                                                    case $currentRoute === 'frontend.blog_list':
+                                                    case $currentRoute === 'frontend.blog_single':
                                                         $recent_post_img =
                                                             $recent_post->photos->first() &&
                                                             $recent_post->photos->first()->file_name
@@ -104,7 +104,7 @@
                                                                 : $recentDefaultImg;
                                                         break;
 
-                                                    case $currentRoute === 'frontend.news_list':
+                                                    case $currentRoute === 'frontend.news_single':
                                                         $recent_post_img =
                                                             $recent_post->photos->first() &&
                                                             $recent_post->photos->first()->file_name
@@ -115,7 +115,7 @@
                                                                 : $recentDefaultImg;
                                                         break;
 
-                                                    case $currentRoute === 'frontend.events_list':
+                                                    case $currentRoute === 'frontend.events_single':
                                                         $recent_post_img =
                                                             $recent_post->photos->first() &&
                                                             $recent_post->photos->first()->file_name
@@ -142,19 +142,19 @@
                                             @endphp
 
                                             @switch(true)
-                                                @case($currentRoute === 'frontend.blog_list')
+                                                @case($currentRoute === 'frontend.blog_single')
                                                     <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
                                                         <img src="{{ $recent_post_img }}" alt="">
                                                     </a>
                                                 @break
 
-                                                @case($currentRoute === 'frontend.news_list')
+                                                @case($currentRoute === 'frontend.news_single')
                                                     <a href="{{ route('frontend.news_single', $recent_post->slug) }}">
                                                         <img src="{{ $recent_post_img }}" alt="">
                                                     </a>
                                                 @break
 
-                                                @case($currentRoute === 'frontend.events_list')
+                                                @case($currentRoute === 'frontend.events_single')
                                                     <a href="{{ route('frontend.event_single', $recent_post->slug) }}">
                                                         <img src="{{ $recent_post_img }}" alt="">
                                                     </a>
@@ -172,19 +172,19 @@
 
 
                                             @switch(true)
-                                                @case($currentRoute === 'frontend.blog_list')
+                                                @case($currentRoute === 'frontend.blog_single')
                                                     <a href="{{ route('frontend.blog_single', $recent_post->slug) }}">
                                                         {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
                                                     </a>
                                                 @break
 
-                                                @case($currentRoute === 'frontend.news_list')
+                                                @case($currentRoute === 'frontend.news_single')
                                                     <a href="{{ route('frontend.news_single', $recent_post->slug) }}">
                                                         {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
                                                     </a>
                                                 @break
 
-                                                @case($currentRoute === 'frontend.events_list')
+                                                @case($currentRoute === 'frontend.events_single')
                                                     <a href="{{ route('frontend.event_single', $recent_post->slug) }}">
                                                         {{ \Illuminate\Support\Str::words($recent_post->title, 10, '...') }}
                                                     </a>
@@ -222,26 +222,26 @@
                                 @foreach ($tags as $tag)
                                     <li>
                                         @switch(true)
-                                            @case($currentRoute === 'frontend.blog_list')
-                                                <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">
+                                            @case($currentRoute === 'frontend.blog_single')
+                                                <a href="{{ route('frontend.blog_tag_single', $tag->slug) }}">
                                                     {{ $tag->name }}
                                                 </a>
                                             @break
 
-                                            @case($currentRoute === 'frontend.news_list')
-                                                <a href="{{ route('frontend.news_tag_list', $tag->slug) }}">
+                                            @case($currentRoute === 'frontend.news_single')
+                                                <a href="{{ route('frontend.news_tag_single', $tag->slug) }}">
                                                     {{ $tag->name }}
                                                 </a>
                                             @break
 
-                                            @case($currentRoute === 'frontend.events_list')
-                                                <a href="{{ route('frontend.events_tag_list', $tag->slug) }}">
+                                            @case($currentRoute === 'frontend.events_single')
+                                                <a href="{{ route('frontend.events_tag_single', $tag->slug) }}">
                                                     {{ $tag->name }}
                                                 </a>
                                             @break
 
                                             @default
-                                                <a href="{{ route('frontend.blog_tag_list', $tag->slug) }}">
+                                                <a href="{{ route('frontend.blog_tag_single', $tag->slug) }}">
                                                     {{ $tag->name }}
                                                 </a>
                                         @endswitch

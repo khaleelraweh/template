@@ -45,7 +45,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(AdvsSeeder::class);
         // $this->call(EventSeeder::class);
 
-        $this->call(TransferSeeder::class);
+        // $this->call(TransferSeeder::class);
 
         $this->call(AlbumsSeeder::class);
         $this->call(PlaylistSeeder::class);

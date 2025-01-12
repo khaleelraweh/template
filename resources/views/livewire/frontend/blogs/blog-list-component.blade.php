@@ -12,7 +12,7 @@
 
                 <img src="{{ $siteSettings['site_img']->value && file_exists($imagePath)
                     ? asset('assets/site_settings/' . $siteSettings['site_img']->value)
-                    : asset('image/not_found/placeholder2.jpg') }}"
+                    : asset('image/not_found/placeholder6.jpg') }}"
                     alt="{{ $siteSettings['site_name']->value }}">
 
             </div>

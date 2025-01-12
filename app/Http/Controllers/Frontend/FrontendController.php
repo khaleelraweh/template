@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\AboutInstatute;
+use App\Models\Page;
+use App\Models\Post;
 use App\Models\Album;
 use App\Models\Event;
-use App\Models\Page;
-use App\Models\Playlist;
-use App\Models\Post;
-use App\Models\PresidentSpeech;
 use App\Models\Slider;
+use App\Models\Playlist;
 use App\Models\Statistic;
+use App\Models\PageCategory;
 use Illuminate\Http\Request;
+use App\Models\AboutInstatute;
+use App\Models\PresidentSpeech;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 class FrontendController extends Controller
@@ -41,6 +42,10 @@ class FrontendController extends Controller
         $page = Page::where('slug->' . app()->getLocale(), $slug)
             ->firstOrFail();
 
+        $categoryPages =Page::where('page_category_id', $page->page_category_id)
+        ->orderBy('published_on', 'ASC')
+        ->get();
+
         // Retrieve the latest 3 posts from section 1, excluding the current post
         $latest_posts = Post::with('photos')
             ->where('section', 1)
@@ -48,7 +53,26 @@ class FrontendController extends Controller
             ->take(3)
             ->get();
 
-        return view('frontend.pages', compact('page', 'latest_posts'));
+        return view('frontend.pages', compact('page', 'latest_posts','categoryPages'));
+    }
+
+    public function categories($slug)
+    {
+        $category = PageCategory::where('slug->' . app()->getLocale(), $slug)
+            ->firstOrFail();
+
+        $categoryPages =Page::where('page_category_id', $category->id)
+        ->orderBy('published_on', 'ASC')
+        ->get();
+
+        // Retrieve the latest 3 posts from section 1, excluding the current post
+        $latest_posts = Post::with('photos')
+            ->where('section', 1)
+            ->orderBy('created_at', 'ASC')
+            ->take(3)
+            ->get();
+
+        return view('frontend.categories', compact( 'category',  'latest_posts','categoryPages'));
     }
 
     public function blog_list($slug = null)
