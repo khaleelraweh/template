@@ -20,6 +20,13 @@ class Menu extends Model
     protected $guarded = [];
     public $translatable = ['title', 'slug', 'link', 'description', 'metadata_title', 'metadata_description', 'metadata_keywords'];
 
+    protected $casts = [
+        'published_on' => 'datetime',
+    ];
+
+    protected $dates = [
+        'published_on'
+    ];
 
     /**
      * Get the options for generating the slug.

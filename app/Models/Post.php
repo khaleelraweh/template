@@ -25,6 +25,14 @@ class Post extends Model
     // for translatable field 
     public $translatable = ['title', 'slug', 'content', 'metadata_title', 'metadata_description', 'metadata_keywords'];
 
+    protected $casts = [
+        'published_on' => 'datetime',
+    ];
+
+    protected $dates = [
+        'published_on'
+    ];
+    
     // searchable lab 
     protected $searchable = [
         'columns' => [

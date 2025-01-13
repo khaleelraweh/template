@@ -80,7 +80,7 @@
                                 @endif
                             </td>
                             <td class="d-none d-sm-table-cell">
-                                {{ \Carbon\Carbon::parse($page->published_on)->diffForHumans() }}
+                                {{ $page->published_on->diffForHumans() }}
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm">

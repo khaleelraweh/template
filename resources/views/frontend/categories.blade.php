@@ -58,9 +58,9 @@
                             <div class="bs-img">
                                 @php
                                     if ($category->photos->last() != null && $category->photos->last()->file_name != null) {
-                                        $page_img = asset('assets/pages/' . $category->photos->last()->file_name);
+                                        $page_img = asset('assets/page_categories/' . $category->photos->last()->file_name);
 
-                                        if (!file_exists(public_path('assets/pages/' . $category->photos->last()->file_name))) {
+                                        if (!file_exists(public_path('assets/page_categories/' . $category->photos->last()->file_name))) {
                                             $page_img = asset('image/not_found/placeholder.jpg');
                                         }
                                     } else {
