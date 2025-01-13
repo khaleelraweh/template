@@ -52,7 +52,6 @@
                                         {{ $higriShortDate . ' ' . __('panel.calendar_hijri') }}
                                         <span>{{ __('panel.corresponding_to') }} </span>
                                         {{ $news->created_at->isoFormat('YYYY/MM/DD') . ' ' . __('panel.calendar_gregorian') }}
-
                                     </li>
                                 </ul>
                                 <a href="{{ route('frontend.news_single', $news->slug) }}">
@@ -68,51 +67,60 @@
                                     </div>
                                 </div>
 
+                                >>>>>>> 2e33ce2a532fb9b0df46fb4b956232db21932d78
                             </div>
+                            <div class="btn-btm justify-content-end">
+                                <div class="rs-view-btn">
+                                    <a
+                                        href="{{ route('frontend.news_single', $news->slug) }}">{{ __('panel.read_more') }}</a>
+                                </div>
+                            </div>
+
                         </div>
-                        @endforeach
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-5  pt-94 pb-70 md-pt-64 md-pb-70">
-            <div id="rs-blog" class="rs-blog style1 ">
-                <div class="container">
-                    <div class="sec-title mb-40 md-mb-20 text-left">
-                        <h2 class="title mb-0 header-events main-color">
-                            <a href="{{ route('frontend.events_list') }}">
-                                {{ __('panel.university_activities') }}
-                            </a>
-                        </h2>
-                    </div>
-                    <div class="row bg2 event-row">
-                        <div class="col-lg-12 col-md-12">
-                            @foreach ($events as $index => $event)
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="events-short {{ $loop->last ? '' : 'mb-15' }}  wow fadeInUp"
-                                        data-wow-delay="{{ ($index + 1) * 100 }}ms" data-wow-duration="2000ms">
-                                        <div class="date-part">
-                                            <span class="month">{{ $event->created_at->translatedFormat('F Y') }}</span>
-                                            <div class="date">{{ $event->created_at->format('d') }}</div>
-                                        </div>
-                                        <div class="content-part">
-                                            <h4 class="title mb-0">
-                                                <a href="{{ route('frontend.event_single', $event->slug) }}">
-                                                    {{ $event->title }}
-                                                </a>
-                                            </h4>
-                                        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-5  pt-94 pb-70 md-pt-64 md-pb-70">
+        <div id="rs-blog" class="rs-blog style1 ">
+            <div class="container">
+                <div class="sec-title mb-40 md-mb-20 text-left">
+                    <h2 class="title mb-0 header-events main-color">
+                        <a href="{{ route('frontend.events_list') }}">
+                            {{ __('panel.university_activities') }}
+                        </a>
+                    </h2>
+                </div>
+                <div class="row bg2 event-row">
+                    <div class="col-lg-12 col-md-12">
+                        @foreach ($events as $index => $event)
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="events-short {{ $loop->last ? '' : 'mb-15' }}  wow fadeInUp"
+                                    data-wow-delay="{{ ($index + 1) * 100 }}ms" data-wow-duration="2000ms">
+                                    <div class="date-part">
+                                        <span class="month">{{ $event->created_at->translatedFormat('F Y') }}</span>
+                                        <div class="date">{{ $event->created_at->format('d') }}</div>
+                                    </div>
+                                    <div class="content-part">
+                                        <h4 class="title mb-0">
+                                            <a href="{{ route('frontend.event_single', $event->slug) }}">
+                                                {{ $event->title }}
+                                            </a>
+                                        </h4>
                                     </div>
                                 </div>
                             </div>
-                            @endforeach
-
-
                         </div>
+                        @endforeach
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
