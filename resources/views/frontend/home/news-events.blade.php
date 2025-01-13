@@ -55,7 +55,7 @@
                                     <div class="desc">
                                         {{ \Illuminate\Support\Str::words(strip_tags(htmlspecialchars_decode($news->content)), 10, '...') }}
                                     </div>
-                                    <div class="btn-btm">
+                                    <div class="btn-btm justify-content-end">
                                         <div class="rs-view-btn">
                                             <a
                                                 href="{{ route('frontend.news_single', $news->slug) }}">{{ __('panel.read_more') }}</a>
