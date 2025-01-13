@@ -21,6 +21,9 @@ class Slider extends Model
     protected $guarded = [];
     public $translatable = ['title', 'slug', 'description', 'subtitle', 'btn_title', 'metadata_title', 'metadata_description', 'metadata_keywords', 'url'];
 
+    protected $dates = [
+        'published_on'
+    ];
 
     protected $casts = [
         'start_date' => 'datetime',

@@ -17,6 +17,14 @@ class DocumentArchive extends Model
 
     public $translatable = ['doc_archive_name', 'slug', 'doc_archive_attached_file'];
 
+    protected $casts = [
+        'published_on' => 'datetime',
+    ];
+
+    protected $dates = [
+        'published_on'
+    ];
+
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()

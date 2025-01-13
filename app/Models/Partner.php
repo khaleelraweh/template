@@ -19,6 +19,14 @@ class Partner extends Model
     // for translatable field 
     public $translatable = ['name', 'slug', 'description', 'partner_link', 'metadata_title', 'metadata_description', 'metadata_keywords'];
 
+    protected $casts = [
+        'published_on' => 'datetime',
+    ];
+
+    protected $dates = [
+        'published_on'
+    ];
+    
     // searchable lab 
     protected $searchable = [
         'columns' => [

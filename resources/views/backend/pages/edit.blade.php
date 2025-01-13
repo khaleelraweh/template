@@ -162,7 +162,7 @@
                                     <div class="input-group flatpickr" id="flatpickr-datetime">
                                         <input type="text" name="published_on" class="form-control"
                                             placeholder="Select date" data-input
-                                            value="{{ old('published_on', $page->published_on ? \Carbon\Carbon::parse($page->published_on)->format('Y/m/d h:i A') : '') }}">
+                                            value="{{ old('published_on', $page->published_on ? str_replace(['AM', 'PM'],['ص', 'م'] , $page->published_on->format('Y/m/d h:i A')) : '') }}">
                                         <span class="input-group-text input-group-addon" data-toggle>
                                             <i data-feather="calendar"></i>
                                         </span>
