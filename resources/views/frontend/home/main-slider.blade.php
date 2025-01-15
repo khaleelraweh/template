@@ -19,8 +19,7 @@
         // $main_slider_img = asset('frontend/images/slider/main-home/1.jpg');
         }
         @endphp
-        <div class="slider-content slide1"
-            style="background-image: url({{ $main_slider_img }}) !important">
+        <div class="slider-content slide1" style="background-image: url({{ $main_slider_img }}) !important">
             <div class="container">
                 <div class="content-part">
                     @if ($main_slider->show_info)

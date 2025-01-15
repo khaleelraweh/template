@@ -1354,3 +1354,11 @@ h4 {
     background-size: contain;
 }
 /* add new class for page news */
+
+/* soultion for mobile touch */
+.owl-carousel .owl-stage,
+.owl-carousel.owl-drag .owl-item {
+    -ms-touch-action: auto;
+    touch-action: auto;
+}
+/* soultion for mobile touch */

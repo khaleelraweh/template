@@ -19,25 +19,25 @@
                     data-ipad-device2="1" data-ipad-device-nav2="false" data-ipad-device-dots2="false"
                     data-md-device="3" data-md-device-nav="false" data-md-device-dots="false">
                     @foreach ($albums as $album)
-                        <div class="blog-item degree-wrap">
-                            @php
-                                if ($album->album_profile != null) {
-                                    $album_img = asset('assets/albums/' . $album->album_profile);
+                    <div class="blog-item degree-wrap">
+                        @php
+                        if ($album->album_profile != null) {
+                        $album_img = asset('assets/albums/' . $album->album_profile);
 
-                                    if (!file_exists(public_path('assets/albums/' . $album->album_profile))) {
-                                        $album_img = asset('image/not_found/placeholder.jpg');
-                                    }
-                                } else {
-                                    $album_img = asset('image/not_found/placeholder.jpg');
-                                }
-                            @endphp
-                            <img src="{{ $album_img }}" alt="">
-                            <div class="title-part">
-                                <a href="{{ route('frontend.album_single', $album->slug) }}">
-                                    <h4 class="title">{{ $album->title }}</h4>
-                                </a>
-                            </div>
+                        if (!file_exists(public_path('assets/albums/' . $album->album_profile))) {
+                        $album_img = asset('image/not_found/placeholder.jpg');
+                        }
+                        } else {
+                        $album_img = asset('image/not_found/placeholder.jpg');
+                        }
+                        @endphp
+                        <img src="{{ $album_img }}" alt="">
+                        <div class="title-part">
+                            <a href="{{ route('frontend.album_single', $album->slug) }}">
+                                <h4 class="title">{{ $album->title }}</h4>
+                            </a>
                         </div>
+                    </div>
                     @endforeach
 
                 </div>
